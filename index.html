@@ -17,10 +17,10 @@
     --sans:'Jost','Helvetica Neue',Arial,sans-serif;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;overflow-x:hidden}
   body{font-family:var(--sans);color:var(--negro);background:var(--blanco);line-height:1.5;-webkit-font-smoothing:antialiased}
   .wrap{max-width:var(--ancho);margin:0 auto;padding:0 24px}
-  img{display:block}
+  img{display:block;max-width:100%;height:auto}
 
   /* HEADER */
   header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--linea)}
@@ -70,11 +70,11 @@
   .card:hover{transform:translateY(-3px);box-shadow:0 18px 50px rgba(17,17,17,.10)}
   @keyframes flashring{0%,100%{box-shadow:0 0 0 0 rgba(176,141,87,0)}30%{box-shadow:0 0 0 3px rgba(176,141,87,.6)}}
   .card.flash{animation:flashring 1.5s ease}
-  .card-media{background:#fff;aspect-ratio:4/3;display:grid;place-items:center;position:relative;padding:12px;border-bottom:1px solid var(--linea)}
-  .viewer{width:100%;height:100%;display:grid;place-items:center;cursor:zoom-in}
-  .view{width:100%;display:grid;place-items:center}
-  .view img{max-width:100%;max-height:100%;object-fit:contain}
-  .view .glasses{max-width:240px;width:100%}
+  .card-media{background:#fff;aspect-ratio:4/3;display:grid;place-items:center;position:relative;padding:12px;border-bottom:1px solid var(--linea);overflow:hidden}
+  .viewer{width:100%;height:100%;min-width:0;min-height:0;display:grid;place-items:center;cursor:zoom-in;overflow:hidden}
+  .view{width:100%;height:100%;min-width:0;min-height:0;display:grid;place-items:center}
+  img.view,.view img{width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain}
+  .view .glasses{width:100%;height:100%;max-width:240px;max-height:100%}
   .view-lado .glasses{transform:perspective(720px) rotateY(-28deg) scale(.9);transform-origin:62% 50%}
   .tag-cat{position:absolute;top:12px;left:12px;font-weight:600;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;background:var(--negro);color:#fff;padding:5px 10px}
   .badge-top{position:absolute;top:12px;right:12px;font-weight:600;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;background:var(--dorado);color:#fff;padding:5px 9px}
@@ -83,8 +83,8 @@
   .thumb{width:56px;height:44px;border:1px solid var(--linea);background:#fff;cursor:pointer;display:grid;place-items:center;overflow:hidden;padding:3px;transition:.15s}
   .thumb:hover{border-color:var(--negro)}
   .thumb.active{border-color:var(--dorado)}
-  .thumb img{max-width:100%;max-height:100%;object-fit:contain}
-  .thumb .glasses{max-width:100%;max-height:100%}
+  .thumb .view,.thumb img{width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain}
+  .thumb .glasses{width:100%;height:100%;max-width:100%;max-height:100%}
 
   .card-body{padding:16px 18px 20px;display:flex;flex-direction:column;flex:1}
   .card-name{font-family:var(--serif);font-weight:600;font-size:24px;line-height:1.12}
@@ -151,7 +151,7 @@
   .cart-empty{text-align:center;color:var(--gris-texto);padding:50px 10px;font-size:14px;line-height:1.6}
   .cart-item{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--linea)}
   .ci-thumb{width:64px;height:50px;border:1px solid var(--linea);flex:none;display:grid;place-items:center;overflow:hidden}
-  .ci-thumb img{max-width:100%;max-height:100%;object-fit:contain}
+  .ci-thumb img{width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain}
   .ci-info{flex:1;min-width:0}
   .ci-name{font-family:var(--serif);font-weight:600;font-size:16px;line-height:1.1}
   .ci-ref{font-size:11px;color:var(--gris-texto);letter-spacing:.5px;margin:3px 0 8px;font-family:ui-monospace,Consolas,monospace}
@@ -874,7 +874,7 @@ function glassesSVG(forma, marco, lente){
 function oneView(p, color, vista){
   const esLado=(vista==='lado'); const src=esLado?color.lado:color.frente;
   const cls='view'+(esLado?' view-lado':'');
-  if(src) return `<img class="${cls}" src="${src}" alt="${p.nombre} ${color.nombre||''} ${esLado?'3/4':'frontal'}" loading="lazy">`;
+  if(src) return `<img class="${cls}" src="${src}" alt="${p.nombre} ${color.nombre||''} ${esLado?'3/4':'frontal'}" loading="lazy" decoding="async">`;
   return `<div class="${cls}">${glassesSVG(p.forma,(color.hex||'#333'),(color.hex||'#1c1c1c'))}</div>`;
 }
 
