@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ferrati · Catálogo Gafas de Sol</title>
+<meta name="description" content="Catálogo de gafas de sol Ferrati. Diseño suizo, lentes polarizadas con protección UV400. Busca por nombre o referencia. Envío gratis a toda Colombia." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --negro:#111111; --tinta:#0e0e0e; --blanco:#ffffff; --hueso:#f7f5f2;
+    --dorado:#b08d57; --dorado2:#c9a86b; --rojo:#E3000F;
+    --gris-texto:#7c7c7c; --linea:#e7e4df; --ancho:1180px;
+    --serif:'Playfair Display', Georgia, serif;
+    --sans:'Jost','Helvetica Neue',Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--negro);background:var(--blanco);line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--ancho);margin:0 auto;padding:0 24px}
+  img{display:block}
+
+  /* HEADER */
+  header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--linea)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo-img{height:22px;width:auto}
+  .nav-cta{font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--negro);text-decoration:none;border:1px solid var(--negro);padding:10px 18px;transition:.2s}
+  .nav-cta:hover{background:var(--negro);color:#fff}
+
+  /* HERO */
+  .hero{background:var(--tinta);color:#fff;text-align:center;padding:62px 0 54px}
+  .hero .logo-img{height:38px;margin:0 auto 24px}
+  .hero .eyebrow{font-weight:500;font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--dorado2);margin-bottom:14px}
+  .hero h1{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(34px,5vw,56px);line-height:1.05}
+  .hero p{font-weight:300;font-size:16px;color:#d6d6d6;max-width:520px;margin:16px auto 0}
+  .hero .rule{width:54px;height:1px;background:var(--dorado);margin:24px auto 0}
+
+  /* FILTROS + BUSCADOR */
+  .filtros{position:sticky;top:68px;z-index:55;background:#fff;border-bottom:1px solid var(--linea);padding:18px 0}
+  .buscador{position:relative;margin-bottom:14px}
+  .buscador input{width:100%;font-family:var(--sans);font-size:15px;padding:14px 16px 14px 46px;border:1px solid var(--linea);background:var(--hueso);color:var(--negro)}
+  .buscador input:focus{outline:none;border-color:var(--dorado);background:#fff}
+  .buscador .ico{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--gris-texto);pointer-events:none}
+  .filtros-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+  .filtros-row+.filtros-row{margin-top:10px}
+  .flabel{font-weight:600;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gris-texto);margin-right:6px;min-width:78px}
+  .tab{font-family:var(--sans);font-weight:500;font-size:13px;letter-spacing:.5px;cursor:pointer;border:1px solid var(--linea);background:#fff;color:var(--negro);padding:9px 18px;transition:.18s}
+  .tab:hover{border-color:var(--negro)}
+  .tab.active{background:var(--negro);color:#fff;border-color:var(--negro)}
+  .chip-f{font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:.5px;cursor:pointer;border:1px solid var(--linea);background:#fff;color:var(--negro);padding:8px 15px;transition:.18s}
+  .chip-f:hover{border-color:var(--negro)}
+  .chip-f.active{background:var(--dorado);border-color:var(--dorado);color:#fff}
+
+  /* RESULTADOS */
+  .resultados{padding:34px 0 6px;display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  .resultados h2{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(26px,3.5vw,40px)}
+  .conteo{font-size:13px;color:var(--gris-texto);letter-spacing:.5px}
+
+  /* TOP SELLERS */
+  .topsellers{padding:46px 0;border-bottom:1px solid var(--linea)}
+  .topsellers .resultados{padding:0 0 6px;align-items:flex-end}
+  .kick-top{font-weight:600;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--dorado);margin-bottom:8px}
+
+  /* GRID + CARD */
+  .catalogo{padding:18px 0 10px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .card{border:1px solid var(--linea);background:#fff;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+  .card:hover{transform:translateY(-3px);box-shadow:0 18px 50px rgba(17,17,17,.10)}
+  @keyframes flashring{0%,100%{box-shadow:0 0 0 0 rgba(176,141,87,0)}30%{box-shadow:0 0 0 3px rgba(176,141,87,.6)}}
+  .card.flash{animation:flashring 1.5s ease}
+  .card-media{background:#fff;aspect-ratio:4/3;display:grid;place-items:center;position:relative;padding:12px;border-bottom:1px solid var(--linea)}
+  .viewer{width:100%;height:100%;display:grid;place-items:center;cursor:zoom-in}
+  .view{width:100%;display:grid;place-items:center}
+  .view img{max-width:100%;max-height:100%;object-fit:contain}
+  .view .glasses{max-width:240px;width:100%}
+  .view-lado .glasses{transform:perspective(720px) rotateY(-28deg) scale(.9);transform-origin:62% 50%}
+  .tag-cat{position:absolute;top:12px;left:12px;font-weight:600;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;background:var(--negro);color:#fff;padding:5px 10px}
+  .badge-top{position:absolute;top:12px;right:12px;font-weight:600;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;background:var(--dorado);color:#fff;padding:5px 9px}
+
+  .thumbs{display:flex;gap:8px;padding:12px 16px 0}
+  .thumb{width:56px;height:44px;border:1px solid var(--linea);background:#fff;cursor:pointer;display:grid;place-items:center;overflow:hidden;padding:3px;transition:.15s}
+  .thumb:hover{border-color:var(--negro)}
+  .thumb.active{border-color:var(--dorado)}
+  .thumb img{max-width:100%;max-height:100%;object-fit:contain}
+  .thumb .glasses{max-width:100%;max-height:100%}
+
+  .card-body{padding:16px 18px 20px;display:flex;flex-direction:column;flex:1}
+  .card-name{font-family:var(--serif);font-weight:600;font-size:24px;line-height:1.12}
+  .card-code{font-weight:600;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dorado);margin-top:5px}
+  .card-code:empty{display:none}
+  .ficha{margin:12px 0 14px;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);padding:10px 0;display:flex;flex-direction:column;gap:6px}
+  .ficha div{font-size:13.5px;color:var(--negro)}
+  .ficha div span{display:inline-block;min-width:64px;font-weight:600;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gris-texto)}
+  .colores-label{font-weight:600;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gris-texto);margin-bottom:9px}
+  .swatches{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:16px}
+  .sw{width:26px;height:26px;border-radius:50%;cursor:pointer;padding:0;border:2px solid #fff;box-shadow:0 0 0 1px var(--linea);background:var(--c,#999);transition:transform .15s,box-shadow .15s}
+  .sw:hover{transform:scale(1.12)}
+  .sw.active{box-shadow:0 0 0 2px var(--dorado)}
+  .specs{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+  .chip{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;background:var(--hueso);color:var(--negro);padding:6px 10px;border:1px solid var(--linea)}
+
+  .card-bottom{margin-top:auto}
+  .qty{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+  .qty-label{font-weight:600;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gris-texto)}
+  .stepper{display:flex;align-items:center;border:1px solid var(--linea)}
+  .step{width:34px;height:34px;border:none;background:#fff;cursor:pointer;font-size:18px;color:var(--negro);line-height:1;display:grid;place-items:center}
+  .step:hover{background:var(--hueso)}
+  .qty-input{width:46px;text-align:center;border:none;background:transparent;font-family:var(--sans);font-weight:600;font-size:15px;color:var(--negro)}
+  .btn-wa{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--negro);color:#fff;text-decoration:none;font-family:var(--sans);font-weight:500;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;padding:14px;transition:background .2s}
+  .btn-wa:hover{background:var(--dorado)}
+
+  .vacio{text-align:center;padding:60px 0;color:var(--gris-texto);font-size:15px}
+
+  /* CIERRE */
+  .cierre{background:var(--tinta);color:#fff;margin-top:60px;padding:64px 0;text-align:center}
+  .cierre .logo-img{height:28px;margin:0 auto 22px}
+  .cierre h2{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(30px,4vw,50px)}
+  .cierre p{font-weight:300;color:#d6d6d6;max-width:480px;margin:16px auto 26px}
+  .btn-grande{display:inline-flex;align-items:center;gap:10px;background:var(--dorado);color:#fff;text-decoration:none;font-family:var(--sans);font-weight:500;letter-spacing:1.5px;text-transform:uppercase;font-size:13px;padding:16px 30px;transition:.2s}
+  .btn-grande:hover{background:#fff;color:var(--negro)}
+
+  /* FOOTER */
+  footer{background:#000;color:#fff;padding:34px 0}
+  .foot-grid{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+  .foot-logo{height:18px}
+  .foot-meta{font-size:12px;color:#9a9a9a;margin-top:8px;letter-spacing:.5px}
+  .foot-links a{color:#fff;text-decoration:none;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;margin-left:18px}
+  .foot-links a:hover{color:var(--dorado)}
+
+  /* HEADER nav-right + carrito */
+  .nav-right{display:flex;align-items:center;gap:14px}
+  .nav-link{font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--negro);text-decoration:none;cursor:pointer;background:none;border:none}
+  .nav-link:hover{color:var(--dorado)}
+  .cart-btn{position:relative;background:none;border:1px solid var(--negro);padding:9px 14px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--negro)}
+  .cart-btn:hover{background:var(--negro);color:#fff}
+  .cart-count{position:absolute;top:-9px;right:-9px;min-width:19px;height:19px;border-radius:50%;background:var(--dorado);color:#fff;font-size:11px;font-weight:600;display:grid;place-items:center;padding:0 5px}
+  @keyframes bump{0%,100%{transform:scale(1)}30%{transform:scale(1.4)}}
+  .cart-count.bump{animation:bump .4s ease}
+
+  /* CART drawer */
+  .cart-overlay{position:fixed;inset:0;background:rgba(14,14,14,.5);z-index:120}
+  .cart-overlay[hidden]{display:none}
+  .cart-drawer{position:fixed;top:0;right:0;height:100%;width:380px;max-width:90vw;background:#fff;z-index:130;transform:translateX(100%);transition:transform .28s ease;display:flex;flex-direction:column;box-shadow:-10px 0 40px rgba(0,0,0,.15)}
+  .cart-drawer.open{transform:translateX(0)}
+  .cart-head{display:flex;align-items:center;justify-content:space-between;padding:20px;border-bottom:1px solid var(--linea)}
+  .cart-head h3{font-family:var(--serif);font-style:italic;font-weight:600;font-size:22px}
+  .cart-x{background:none;border:none;font-size:26px;cursor:pointer;color:var(--negro);line-height:1}
+  .cart-body{flex:1;overflow-y:auto;padding:8px 20px}
+  .cart-empty{text-align:center;color:var(--gris-texto);padding:50px 10px;font-size:14px;line-height:1.6}
+  .cart-item{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--linea)}
+  .ci-thumb{width:64px;height:50px;border:1px solid var(--linea);flex:none;display:grid;place-items:center;overflow:hidden}
+  .ci-thumb img{max-width:100%;max-height:100%;object-fit:contain}
+  .ci-info{flex:1;min-width:0}
+  .ci-name{font-family:var(--serif);font-weight:600;font-size:16px;line-height:1.1}
+  .ci-ref{font-size:11px;color:var(--gris-texto);letter-spacing:.5px;margin:3px 0 8px;font-family:ui-monospace,Consolas,monospace}
+  .ci-qty{display:flex;align-items:center;gap:6px}
+  .ci-step{width:28px;height:28px;border:1px solid var(--linea);background:#fff;cursor:pointer;font-size:15px;line-height:1}
+  .ci-input{width:42px;height:28px;text-align:center;border:1px solid var(--linea);font-family:var(--sans);font-size:13px}
+  .ci-rm{margin-left:auto;background:none;border:none;color:var(--gris-texto);font-size:11px;letter-spacing:1px;text-transform:uppercase;cursor:pointer}
+  .ci-rm:hover{color:var(--rojo)}
+  .cart-foot{padding:18px 20px;border-top:1px solid var(--linea)}
+  .cart-tot{display:flex;justify-content:space-between;font-size:13px;color:var(--gris-texto);margin-bottom:12px;letter-spacing:.5px}
+  .cart-tot b{color:var(--negro)}
+  .cart-send{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--negro);color:#fff;border:none;font-family:var(--sans);font-weight:500;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;padding:14px;cursor:pointer;transition:background .2s}
+  .cart-send:hover{background:var(--dorado)}
+  .cart-clear{display:block;width:100%;text-align:center;background:none;border:none;color:var(--gris-texto);font-size:11px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;margin-top:10px}
+  .cart-clear:hover{color:var(--rojo)}
+
+  /* GUÍA DE ROSTRO */
+  .rostro-sec{padding:48px 0;border-bottom:1px solid var(--linea)}
+  .rostro-sec h2{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(26px,3.5vw,40px);margin-top:2px}
+  .rostro-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:18px}
+  .rostro-card{border:1px solid var(--linea);background:#fff;padding:16px 10px;text-align:center;cursor:pointer;transition:.18s}
+  .rostro-card:hover{border-color:var(--negro)}
+  .rostro-card.active{border-color:var(--dorado);background:#fbf8f3}
+  .rostro-card svg{width:40px;height:48px;margin:0 auto 8px;display:block;stroke:var(--negro);fill:none;stroke-width:3}
+  .rostro-card.active svg{stroke:var(--dorado)}
+  .rostro-card span{font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:.5px}
+  .rostro-detalle{margin-top:18px;border:1px solid var(--linea);background:var(--hueso);padding:22px;display:none}
+  .rostro-detalle.show{display:block}
+  .rostro-detalle h3{font-family:var(--serif);font-style:italic;font-weight:600;font-size:23px;margin-bottom:8px}
+  .rostro-detalle p{font-size:14.5px;margin:5px 0;max-width:700px}
+  .rostro-detalle p b{color:var(--negro)}
+  .rostro-detalle .lab{display:inline-block;min-width:96px;font-weight:600;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gris-texto)}
+  .rostro-ver{margin-top:14px;background:var(--negro);color:#fff;border:none;font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;padding:11px 20px;cursor:pointer}
+  .rostro-ver:hover{background:var(--dorado)}
+  @media(max-width:900px){.rostro-grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:600px){.rostro-grid{grid-template-columns:repeat(2,1fr)}}
+
+  /* LIGHTBOX (zoom) */
+  .lb{position:fixed;inset:0;z-index:200;background:rgba(14,14,14,.96);display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .lb[hidden]{display:none}
+  .lb-close{position:absolute;top:14px;right:22px;background:none;border:none;color:#fff;font-size:34px;line-height:1;cursor:pointer;font-family:var(--sans)}
+  .lb-stage{flex:1;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:24px}
+  .lb-stage img{max-width:92vw;max-height:70vh;object-fit:contain;cursor:zoom-in;transition:transform .12s ease;will-change:transform}
+  .lb-stage img.zoom{cursor:zoom-out;transition:none}
+  .lb-bar{width:100%;max-width:780px;padding:6px 20px 24px;text-align:center;color:#fff}
+  .lb-cap{font-family:var(--serif);font-style:italic;font-size:20px;margin-bottom:12px}
+  .lb-views{display:inline-flex;gap:8px;margin-bottom:14px}
+  .lb-view{font-family:var(--sans);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#fff;background:none;border:1px solid #4a4a4a;padding:8px 16px;cursor:pointer}
+  .lb-view.active{background:var(--dorado);border-color:var(--dorado)}
+  .lb-sws{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+  .lb-sws .sw{box-shadow:0 0 0 1px #555}
+  .lb-hint{font-size:11px;letter-spacing:.5px;color:#8a8a8a}
+
+  @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:600px){
+    .grid{grid-template-columns:1fr}
+    .nav-cta{display:none}
+    .flabel{min-width:100%;margin-bottom:2px}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="wrap nav">
+    <img class="logo-img" src="logo-negro.png" alt="Ferrati" onerror="this.style.display='none'">
+    <div class="nav-right">
+      <button class="nav-link" id="abrirGuia" type="button">Guía de rostro</button>
+      <button class="cart-btn" id="abrirCarrito" type="button">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/><path d="M2 3h3l2.4 12.4a1 1 0 0 0 1 .8h8.7a1 1 0 0 0 1-.8L21 7H6"/></svg>
+        Carrito <span class="cart-count" id="cartCount" style="display:none">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <img class="logo-img" src="logo-blanco.png" alt="Ferrati" onerror="this.style.display='none'">
+    <div class="eyebrow">Maison suisse · Eyewear</div>
+    <h1>El sol, con distinción</h1>
+    <p>Colección de gafas de sol polarizadas con protección UV400. Diseño atemporal, elegancia suiza.</p>
+    <div class="rule"></div>
+  </div>
+</section>
+
+<!-- FILTROS -->
+<section class="filtros">
+  <div class="wrap">
+    <div class="buscador">
+      <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
+      <input type="text" id="buscar" placeholder="Busca por nombre o referencia (ej. St. Moritz o 7331)…" autocomplete="off">
+    </div>
+    <div class="filtros-row" id="cats">
+      <span class="flabel">Categoría</span>
+      <button class="tab active" data-cat="todas">Todas</button>
+      <button class="tab" data-cat="dama">Dama</button>
+      <button class="tab" data-cat="hombre">Hombre</button>
+      <button class="tab" data-cat="unisex">Unisex</button>
+    </div>
+    <div class="filtros-row" id="mats">
+      <span class="flabel">Material</span>
+      <button class="chip-f active" data-mat="todas">Todos</button>
+      <button class="chip-f" data-mat="metalica">Metálica</button>
+      <button class="chip-f" data-mat="acetato">Acetato</button>
+      <button class="chip-f" data-mat="tr90">TR90</button>
+    </div>
+  </div>
+</section>
+
+<!-- TOP SELLERS -->
+<section class="topsellers" id="topsellers">
+  <div class="wrap resultados">
+    <div>
+      <div class="kick-top">Selección Ferrati</div>
+      <h2>Los más deseados</h2>
+    </div>
+    <div class="conteo">Favoritos de la temporada</div>
+  </div>
+  <div class="wrap"><div class="grid" id="grid-top"></div></div>
+</section>
+
+<!-- GUÍA DE ROSTRO -->
+<section class="rostro-sec" id="guia">
+  <div class="wrap">
+    <div class="kick-top">Asesoría Ferrati</div>
+    <h2>¿Qué montura para tu rostro?</h2>
+    <div class="rostro-grid" id="rostroGrid"></div>
+    <div class="rostro-detalle" id="rostroDet"></div>
+  </div>
+</section>
+
+<!-- RESULTADOS -->
+<div class="wrap resultados">
+  <h2 id="subtitulo">Toda la colección</h2>
+  <div class="conteo" id="conteo"></div>
+</div>
+
+<!-- GRID -->
+<section class="catalogo">
+  <div class="wrap"><div class="grid" id="grid"></div></div>
+</section>
+
+<!-- CIERRE -->
+<section class="cierre" id="contacto">
+  <div class="wrap">
+    <img class="logo-img" src="logo-blanco.png" alt="Ferrati" onerror="this.style.display='none'">
+    <h2>Tu próxima mirada</h2>
+    <p>Escríbenos por WhatsApp con el nombre o la referencia. Te asesoramos y coordinamos el envío gratis a toda Colombia.</p>
+    <a class="btn-grande" href="https://wa.me/573244073508?text=Hola%20Ferrati%2C%20quiero%20info%20de%20las%20gafas%20de%20sol" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.9.9-2.8-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5 0a6.6 6.6 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4a.5.5 0 0 0 0-.4l-.7-1.7c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.6 2.6 0 0 0-.8 1.9 4.5 4.5 0 0 0 1 2.4 10.3 10.3 0 0 0 4 3.5c2 .8 2 .5 2.4.5a2.3 2.3 0 0 0 1.5-1.1 1.9 1.9 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z"/></svg>
+      Cotizar por WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <img class="logo-img foot-logo" src="logo-blanco.png" alt="Ferrati" onerror="this.style.display='none'">
+      <div class="foot-meta">Distribuido por Solare · Envío gratis a toda Colombia</div>
+    </div>
+    <div class="foot-links">
+      <a href="https://instagram.com/ferrati.co" target="_blank" rel="noopener">@ferrati.co</a>
+      <a href="#contacto">WhatsApp</a>
+    </div>
+  </div>
+</footer>
+
+<!-- CARRITO -->
+<div class="cart-overlay" id="cartOverlay" hidden></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Tu pedido">
+  <div class="cart-head">
+    <h3>Tu pedido</h3>
+    <button class="cart-x" id="cartClose" aria-label="Cerrar">&times;</button>
+  </div>
+  <div class="cart-body" id="cartBody"></div>
+  <div class="cart-foot" id="cartFoot" style="display:none">
+    <div class="cart-tot"><span>Unidades: <b id="cartUnits">0</b></span><span>Referencias: <b id="cartRefs">0</b></span></div>
+    <button class="cart-send" id="cartSend">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2z"/></svg>
+      Enviar pedido por WhatsApp
+    </button>
+    <button class="cart-clear" id="cartClear">Vaciar pedido</button>
+  </div>
+</aside>
+
+<!-- LIGHTBOX (zoom) -->
+<div id="lightbox" class="lb" hidden>
+  <button class="lb-close" id="lbClose" aria-label="Cerrar">&times;</button>
+  <div class="lb-stage" id="lbStage"><img id="lbImg" src="" alt="Ferrati"></div>
+  <div class="lb-bar">
+    <div class="lb-cap" id="lbCap"></div>
+    <div class="lb-views">
+      <button class="lb-view active" data-view="frente" type="button">Frente</button>
+      <button class="lb-view" data-view="lado" type="button">3/4</button>
+    </div>
+    <div class="lb-sws" id="lbSws"></div>
+    <div class="lb-hint">Clic en la imagen para acercar · rueda del mouse para más zoom · Esc para cerrar</div>
+  </div>
+</div>
+
+<script>
+const WHATSAPP    = "573244073508";
+const CATALOGO_URL = "";
+
+/* ===== DATA (la reescribe cargar-fotos.py) ===== */
+const productos = [
+  { id:'st-moritz', codigo:'7322', nombre:'St. Moritz', categoria:'unisex', material:'metalica', forma:'aviador', medida:'59 -15 -149',
+    tagline:'Aviador clásico de perfil bajo',
+    colores:[
+      {nombre:'Negro', codigo:'7322C1', hex:'#323435', frente:'img/7322C1.jpg', lado:'img/7322C1-34.jpg'},
+      {nombre:'Plata', codigo:'7322C2', hex:'#515e55', frente:'img/7322C2.jpg', lado:'img/7322C2-34.jpg'},
+      {nombre:'Dorado Mate', codigo:'7322C4', hex:'#c6ad8a', frente:'img/7322C4.jpg', lado:'img/7322C4-34.jpg'},
+    ] },
+  { id:'gstaad', codigo:'7323', nombre:'Gstaad', categoria:'unisex', material:'metalica', forma:'aviador', medida:'61 - 13 - 149',
+    tagline:'Aviador slim y ligero',
+    colores:[
+      {nombre:'Negro', codigo:'7323C1', hex:'#3f3e42', frente:'img/7323C1.jpg', lado:'img/7323C1-34.jpg'},
+      {nombre:'Gris', codigo:'7323C3', hex:'#4e5352', frente:'img/7323C3.jpg', lado:'img/7323C3-34.jpg'},
+      {nombre:'Dorado', codigo:'7323C4', hex:'#fed9a1', frente:'img/7323C4.jpg', lado:'img/7323C4-34.jpg'},
+    ] },
+  { id:'verbier', codigo:'7201', nombre:'Verbier', categoria:'dama', material:'metalica', forma:'aviador', medida:'60-15-147',
+    tagline:'Aviador hexagonal',
+    colores:[
+      {nombre:'Gris', codigo:'7201C2', hex:'#4e5256', frente:'img/7201C2.jpg', lado:'img/7201C2-34.jpg'},
+      {nombre:'Dorado', codigo:'7201C3', hex:'#e3ad4f', frente:'img/7201C3.jpg', lado:'img/7201C3-34.jpg'},
+      {nombre:'Negro', codigo:'7201C4', hex:'#000000', frente:'img/7201C4.jpg', lado:'img/7201C4-34.jpg'},
+    ] },
+  { id:'zermatt', codigo:'7331', nombre:'Zermatt', categoria:'hombre', material:'metalica', forma:'rectangular', medida:'55 - 19 - 145',
+    tagline:'Rectangular metálico de líneas finas',
+    colores:[
+      {nombre:'Negro', codigo:'7331C1', hex:'#3f414b', frente:'img/7331C1.jpg', lado:'img/7331C1-34.jpg'},
+      {nombre:'Dorado Mate', codigo:'7331C2', hex:'#f4d7ab', frente:'img/7331C2.jpg', lado:'img/7331C2-34.jpg'},
+      {nombre:'Plata', codigo:'7331C3', hex:'#6d6a67', frente:'img/7331C3.jpg', lado:'img/7331C3-34.jpg'},
+    ] },
+  { id:'montreux', codigo:'9810P', nombre:'Montreux', categoria:'hombre', material:'acetato', forma:'cuadrada', medida:'56 - 16 - 144', top:true,
+    tagline:'Cuadrada gruesa de acetato',
+    colores:[
+      {nombre:'Negro', codigo:'9810PC1', hex:'#2f2f33', frente:'img/9810PC1.jpg', lado:'img/9810PC1-34.jpg'},
+      {nombre:'Negro mate', codigo:'9810PC2', hex:'#2a2a2b', frente:'img/9810PC2.jpg', lado:'img/9810PC2-34.jpg'},
+      {nombre:'Gris', codigo:'9810PC4', hex:'#60686d', frente:'img/9810PC4.jpg', lado:'img/9810PC4-34.jpg'},
+      {nombre:'Café', codigo:'9810PC8', hex:'#653622', frente:'img/9810PC8.jpg', lado:'img/9810PC8-34.jpg'},
+    ] },
+  { id:'davos', codigo:'MARC876', nombre:'Davos', categoria:'hombre', material:'acetato', forma:'cuadrada', medida:'55 - 17- 145',
+    tagline:'Flat-top de acetato',
+    colores:[
+      {nombre:'Negro', codigo:'MARC876C1', hex:'#000000', frente:'img/MARC876C1.jpg', lado:'img/MARC876C1-34.jpg'},
+      {nombre:'Café', codigo:'MARC876C3', hex:'#6e321c', frente:'img/MARC876C3.jpg', lado:'img/MARC876C3-34.jpg'},
+      {nombre:'Gris', codigo:'MARC876C5', hex:'#54515c', frente:'img/MARC876C5.jpg', lado:'img/MARC876C5-34.jpg'},
+      {nombre:'Gris', codigo:'MARC876C7', hex:'#686771', frente:'img/MARC876C7.jpg', lado:'img/MARC876C7-34.jpg'},
+    ] },
+  { id:'klosters', codigo:'SPRA58', nombre:'Klosters', categoria:'hombre', material:'metalica', forma:'aviador', medida:'57 - 16- 145',
+    tagline:'Aviador doble puente hexagonal',
+    colores:[
+      {nombre:'Negro', codigo:'SPRA58C1', hex:'#353437', frente:'img/SPRA58C1.jpg', lado:'img/SPRA58C1-34.jpg'},
+      {nombre:'Plata', codigo:'SPRA58C4', hex:'#36363a', frente:'img/SPRA58C4.jpg', lado:'img/SPRA58C4-34.jpg'},
+      {nombre:'Gris', codigo:'SPRA58C5', hex:'#525252', frente:'img/SPRA58C5.jpg', lado:'img/SPRA58C5-34.jpg'},
+      {nombre:'Dorado', codigo:'SPRA58C6', hex:'#d0aa73', frente:'img/SPRA58C6.jpg', lado:'img/SPRA58C6-34.jpg'},
+    ] },
+  { id:'lugano', codigo:'10003', nombre:'Lugano', categoria:'dama', material:'metalica', forma:'redonda', medida:'55 - 22 - 147', top:true,
+    tagline:'Ovalada',
+    colores:[
+      {nombre:'Negro', codigo:'10003C1', hex:'#000000', frente:'img/10003C1.jpg', lado:'img/10003C1-34.jpg'},
+      {nombre:'Gris', codigo:'10003C3', hex:'#7e746b', frente:'img/10003C3.jpg', lado:'img/10003C3-34.jpg'},
+      {nombre:'Oro Rosa', codigo:'10003C4', hex:'#e7c0a8', frente:'img/10003C4.jpg', lado:'img/10003C4-34.jpg'},
+      {nombre:'Gris', codigo:'10003C5', hex:'#726e7d', frente:'img/10003C5.jpg', lado:'img/10003C5-34.jpg'},
+    ] },
+  { id:'crans', codigo:'3188', nombre:'Crans', categoria:'unisex', material:'acetato', forma:'cuadrada', medida:'54 - 22 - 135',
+    tagline:'cuadrada folding',
+    colores:[
+      {nombre:'Negro', codigo:'3188C1', hex:'#39373b', frente:'img/3188C1.jpg', lado:'img/3188C1-34.jpg'},
+      {nombre:'Negro mate', codigo:'3188C2', hex:'#3f3f40', frente:'img/3188C2.jpg', lado:'img/3188C2-34.jpg'},
+      {nombre:'Café', codigo:'3188C4', hex:'#af9e93', frente:'img/3188C4.jpg', lado:'img/3188C4-34.jpg'},
+      {nombre:'Carey', codigo:'3188C7', hex:'#c02e1d', frente:'img/3188C7.jpg', lado:'img/3188C7-34.jpg'},
+    ] },
+  { id:'geneve', codigo:'6215P', nombre:'Genève', categoria:'unisex', material:'acetato', forma:'redonda', medida:'49 - 23 - 147',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'6215PC2', hex:'#3f3f47', frente:'img/6215PC2.jpg', lado:'img/6215PC2-34.jpg'},
+      {nombre:'Negro', codigo:'6215PC3', hex:'#363738', frente:'img/6215PC3.jpg', lado:'img/6215PC3-34.jpg'},
+      {nombre:'Negro', codigo:'6215PC4', hex:'#393b41', frente:'img/6215PC4.jpg', lado:'img/6215PC4-34.jpg'},
+    ] },
+  { id:'lausanne', codigo:'7245', nombre:'Lausanne', categoria:'unisex', material:'metalica', forma:'rectangular', medida:'58 - 17 - 147',
+    tagline:'',
+    colores:[
+      {nombre:'Gris', codigo:'7245C1', hex:'#505058', frente:'img/7245C1.jpg', lado:'img/7245C1-34.jpg'},
+      {nombre:'Plata', codigo:'7245C2', hex:'#545e55', frente:'img/7245C2.jpg', lado:'img/7245C2-34.jpg'},
+      {nombre:'Café', codigo:'7245C4', hex:'#a19382', frente:'img/7245C4.jpg', lado:'img/7245C4-34.jpg'},
+    ] },
+  { id:'lucerne', codigo:'7246', nombre:'Lucerne', categoria:'unisex', material:'metalica', forma:'rectangular', medida:'58 - 17 - 147',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'7246C1', hex:'#525157', frente:'img/7246C1.jpg', lado:'img/7246C1-34.jpg'},
+      {nombre:'Plata', codigo:'7246C2', hex:'#40444b', frente:'img/7246C2.jpg', lado:'img/7246C2-34.jpg'},
+      {nombre:'Dorado', codigo:'7246C3', hex:'#dbb588', frente:'img/7246C3.jpg', lado:'img/7246C3-34.jpg'},
+      {nombre:'Café', codigo:'7246C4', hex:'#cfaf9d', frente:'img/7246C4.jpg', lado:'img/7246C4-34.jpg'},
+    ] },
+  { id:'interlaken', codigo:'7287', nombre:'Interlaken', categoria:'dama', material:'metalica', forma:'cateye', medida:'59 - 17 - 147',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'7287C1', hex:'#39383b', frente:'img/7287C1.jpg', lado:'img/7287C1-34.jpg'},
+      {nombre:'Gris', codigo:'7287C2', hex:'#4b4e4d', frente:'img/7287C2.jpg', lado:'img/7287C2-34.jpg'},
+      {nombre:'Gris', codigo:'7287C3', hex:'#786b6f', frente:'img/7287C3.jpg', lado:'img/7287C3-34.jpg'},
+      {nombre:'Plata', codigo:'7287C4', hex:'#79787a', frente:'img/7287C4.jpg', lado:'img/7287C4-34.jpg'},
+    ] },
+  { id:'andermatt', codigo:'7289', nombre:'Andermatt', categoria:'unisex', material:'metalica', forma:'redonda', medida:'55 - 20- 147',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'7289C1', hex:'#5c5964', frente:'img/7289C1.jpg', lado:'img/7289C1-34.jpg'},
+      {nombre:'Café', codigo:'7289C2', hex:'#a17c69', frente:'img/7289C2.jpg', lado:'img/7289C2-34.jpg'},
+      {nombre:'Café', codigo:'7289C3', hex:'#454549', frente:'img/7289C3.jpg', lado:'img/7289C3-34.jpg'},
+      {nombre:'Gris', codigo:'7289C4', hex:'#796e80', frente:'img/7289C4.jpg', lado:'img/7289C4-34.jpg'},
+    ] },
+  { id:'wengen', codigo:'7297', nombre:'Wengen', categoria:'unisex', material:'metalica', forma:'aviador', medida:'59 - 16 - 147',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'7297C1', hex:'#000000', frente:'img/7297C1.jpg', lado:'img/7297C1-34.jpg'},
+      {nombre:'Plata', codigo:'7297C2', hex:'#9d948d', frente:'img/7297C2.jpg', lado:'img/7297C2-34.jpg'},
+      {nombre:'Dorado', codigo:'7297C3', hex:'#be7a2a', frente:'img/7297C3.jpg', lado:'img/7297C3-34.jpg'},
+      {nombre:'Dorado Mate', codigo:'7297C4', hex:'#e1c1a0', frente:'img/7297C4.jpg', lado:'img/7297C4-34.jpg'},
+    ] },
+  { id:'grindelwald', codigo:'7299', nombre:'Grindelwald', categoria:'unisex', material:'metalica', forma:'wrap', medida:'59 - 16 - 147',
+    tagline:'tres piezas hexagonal',
+    colores:[
+      {nombre:'Negro', codigo:'7299C1', hex:'#000000', frente:'img/7299C1.jpg', lado:'img/7299C1-34.jpg'},
+      {nombre:'Plata', codigo:'7299C2', hex:'#252423', frente:'img/7299C2.jpg', lado:'img/7299C2-34.jpg'},
+      {nombre:'Verde', codigo:'7299C3', hex:'#394535', frente:'img/7299C3.jpg', lado:'img/7299C3-34.jpg'},
+      {nombre:'Dorado Mate', codigo:'7299C4', hex:'#978976', frente:'img/7299C4.jpg', lado:'img/7299C4-34.jpg'},
+    ] },
+  { id:'ascona', codigo:'7300', nombre:'Ascona', categoria:'dama', material:'metalica', forma:'cateye', medida:'65 - 15 - 146',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'7300C1', hex:'#000000', frente:'img/7300C1.jpg', lado:'img/7300C1-34.jpg'},
+      {nombre:'Dorado', codigo:'7300C2', hex:'#d1967f', frente:'img/7300C2.jpg', lado:'img/7300C2-34.jpg'},
+      {nombre:'Café', codigo:'7300C3', hex:'#6f584a', frente:'img/7300C3.jpg', lado:'img/7300C3-34.jpg'},
+      {nombre:'Morado', codigo:'7300C4', hex:'#6c5766', frente:'img/7300C4.jpg', lado:'img/7300C4-34.jpg'},
+    ] },
+  { id:'locarno', codigo:'7306', nombre:'Locarno', categoria:'dama', material:'metalica', forma:'cateye', medida:'145 - 0 - 147',
+    tagline:'Mono lente cateye',
+    colores:[
+      {nombre:'Negro', codigo:'7306C1', hex:'#333436', frente:'img/7306C1.jpg', lado:'img/7306C1-34.jpg'},
+      {nombre:'Gris', codigo:'7306C2', hex:'#5a5b5f', frente:'img/7306C2.jpg', lado:'img/7306C2-34.jpg'},
+      {nombre:'Café espejo rojo', codigo:'7306C3', hex:'#785340', frente:'img/7306C3.jpg', lado:'img/7306C3-34.jpg'},
+    ] },
+  { id:'vevey', codigo:'7316', nombre:'Vevey', categoria:'dama', material:'metalica', forma:'cateye', medida:'145 - 0 - 136',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'7316C1', hex:'#000000', frente:'img/7316C1.jpg', lado:'img/7316C1-34.jpg'},
+      {nombre:'Café', codigo:'7316C2', hex:'#8e7771', frente:'img/7316C2.jpg', lado:'img/7316C2-34.jpg'},
+      {nombre:'Morado', codigo:'7316C3', hex:'#c8b2c5', frente:'img/7316C3.jpg', lado:'img/7316C3-34.jpg'},
+      {nombre:'Plata', codigo:'7316C4', hex:'#82858c', frente:'img/7316C4.jpg', lado:'img/7316C4-34.jpg'},
+    ] },
+  { id:'nyon', codigo:'7317', nombre:'Nyon', categoria:'dama', material:'metalica', forma:'cateye', medida:'66 - 16 - 136',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'7317C1', hex:'#000000', frente:'img/7317C1.jpg', lado:'img/7317C1-34.jpg'},
+      {nombre:'Dorado', codigo:'7317C2', hex:'#c8b299', frente:'img/7317C2.jpg', lado:'img/7317C2-34.jpg'},
+      {nombre:'Gris', codigo:'7317C3', hex:'#605b62', frente:'img/7317C3.jpg', lado:'img/7317C3-34.jpg'},
+    ] },
+  { id:'arosa', codigo:'7319', nombre:'Arosa', categoria:'unisex', material:'metalica', forma:'cuadrada', medida:'55 - 20 - 149',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'7319C1', hex:'#000000', frente:'img/7319C1.jpg', lado:'img/7319C1-34.jpg'},
+      {nombre:'Negro', codigo:'7319C2', hex:'#3b3c4e', frente:'img/7319C2.jpg', lado:'img/7319C2-34.jpg'},
+      {nombre:'Gris', codigo:'7319C3', hex:'#464e48', frente:'img/7319C3.jpg', lado:'img/7319C3-34.jpg'},
+      {nombre:'Gris', codigo:'7319C4', hex:'#605b58', frente:'img/7319C4.jpg', lado:'img/7319C4-34.jpg'},
+    ] },
+  { id:'flims', codigo:'7320', nombre:'Flims', categoria:'unisex', material:'metalica', forma:'redonda', medida:'54 - 19 - 149',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'7320C1', hex:'#54555b', frente:'img/7320C1.jpg', lado:'img/7320C1-34.jpg'},
+      {nombre:'Negro', codigo:'7320C2', hex:'#4f4b53', frente:'img/7320C2.jpg', lado:'img/7320C2-34.jpg'},
+      {nombre:'Gris', codigo:'7320C3', hex:'#423e39', frente:'img/7320C3.jpg', lado:'img/7320C3-34.jpg'},
+      {nombre:'Vino Tinto', codigo:'7320C4', hex:'#5e5f52', frente:'img/7320C4.jpg', lado:'img/7320C4-34.jpg'},
+    ] },
+  { id:'laax', codigo:'7321', nombre:'Laax', categoria:'hombre', material:'metalica', forma:'aviador', medida:'',
+    tagline:'Aviador hexagonal',
+    colores:[
+      {nombre:'Negro', codigo:'7321C2', hex:'#000000', frente:'img/7321C2.jpg', lado:'img/7321C2-34.jpg'},
+      {nombre:'Plata', codigo:'7321C3', hex:'#b9afa5', frente:'img/7321C3.jpg', lado:'img/7321C3-34.jpg'},
+      {nombre:'Dorado', codigo:'7321C4', hex:'#fbd49e', frente:'img/7321C4.jpg', lado:'img/7321C4-34.jpg'},
+    ] },
+  { id:'pontresina', codigo:'7327', nombre:'Pontresina', categoria:'unisex', material:'metalica', forma:'cuadrada', medida:'56 - 17 - 147',
+    tagline:'cuadrada metalica',
+    colores:[
+      {nombre:'Negro', codigo:'7327C2', hex:'#000000', frente:'img/7327C2.jpg', lado:'img/7327C2-34.jpg'},
+      {nombre:'Gris', codigo:'7327C3', hex:'#474b49', frente:'img/7327C3.jpg', lado:'img/7327C3-34.jpg'},
+      {nombre:'Azul Metalico', codigo:'7327C4', hex:'#3b5382', frente:'img/7327C4.jpg', lado:'img/7327C4-34.jpg'},
+    ] },
+  { id:'engadin', codigo:'7901', nombre:'Engadin', categoria:'unisex', material:'metalica', forma:'aviador', medida:'60 - 15 -150',
+    tagline:'Aviador Reverse',
+    colores:[
+      {nombre:'Negro', codigo:'7901C1', hex:'#000000', frente:'img/7901C1.jpg', lado:'img/7901C1-34.jpg'},
+      {nombre:'Gris', codigo:'7901C2', hex:'#5d554e', frente:'img/7901C2.jpg', lado:'img/7901C2-34.jpg'},
+      {nombre:'Plata', codigo:'7901C3', hex:'#514d49', frente:'img/7901C3.jpg', lado:'img/7901C3-34.jpg'},
+    ] },
+  { id:'champery', codigo:'9085', nombre:'Champéry', categoria:'dama', material:'acetato', forma:'wrap', medida:'59 - 18 - 148',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'9085C1', hex:'#000000', frente:'img/9085C1.jpg', lado:'img/9085C1-34.jpg'},
+      {nombre:'Vino Tinto', codigo:'9085C2', hex:'#33272b', frente:'img/9085C2.jpg', lado:'img/9085C2-34.jpg'},
+      {nombre:'Café', codigo:'9085C3', hex:'#8d8593', frente:'img/9085C3.jpg', lado:'img/9085C3-34.jpg'},
+      {nombre:'Rosado', codigo:'9085C4', hex:'#e1d2c8', frente:'img/9085C4.jpg', lado:'img/9085C4-34.jpg'},
+    ] },
+  { id:'villars', codigo:'9089', nombre:'Villars', categoria:'dama', material:'acetato', forma:'cateye', medida:'55 -18 -150',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'9089C2', hex:'#000000', frente:'img/9089C2.jpg', lado:'img/9089C2-34.jpg'},
+      {nombre:'Gris', codigo:'9089C3', hex:'#424347', frente:'img/9089C3.jpg', lado:'img/9089C3-34.jpg'},
+      {nombre:'Rosa', codigo:'9089C4', hex:'#d8a4a0', frente:'img/9089C4.jpg', lado:'img/9089C4-34.jpg'},
+    ] },
+  { id:'leysin', codigo:'9100', nombre:'Leysin', categoria:'dama', material:'acetato', forma:'cateye', medida:'62 - 15 - 148',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'9100C1', hex:'#000000', frente:'img/9100C1.jpg', lado:'img/9100C1-34.jpg'},
+      {nombre:'Verde', codigo:'9100C3', hex:'#9c9777', frente:'img/9100C3.jpg', lado:'img/9100C3-34.jpg'},
+      {nombre:'Blanco', codigo:'9100C4', hex:'#ffffff', frente:'img/9100C4.jpg', lado:'img/9100C4-34.jpg'},
+    ] },
+  { id:'saas-fee', codigo:'9105', nombre:'Saas-Fee', categoria:'dama', material:'acetato', forma:'cateye', medida:'65 - 16 - 148',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'9105C1', hex:'#202020', frente:'img/9105C1.jpg', lado:'img/9105C1-34.jpg'},
+      {nombre:'Carey', codigo:'9105C2', hex:'#564031', frente:'img/9105C2.jpg', lado:'img/9105C2-34.jpg'},
+      {nombre:'Naranja', codigo:'9105C3', hex:'#b77127', frente:'img/9105C3.jpg', lado:'img/9105C3-34.jpg'},
+      {nombre:'Azul', codigo:'9105C4', hex:'#6a707d', frente:'img/9105C4.jpg', lado:'img/9105C4-34.jpg'},
+    ] },
+  { id:'burgenstock', codigo:'9106', nombre:'Bürgenstock', categoria:'dama', material:'acetato', forma:'rectangular', medida:'63 - 16 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'9106C1', hex:'#000000', frente:'img/9106C1.jpg', lado:'img/9106C1-34.jpg'},
+      {nombre:'Café', codigo:'9106C2', hex:'#855b4c', frente:'img/9106C2.jpg', lado:'img/9106C2-34.jpg'},
+      {nombre:'Vino Tinto', codigo:'9106C3', hex:'#372b29', frente:'img/9106C3.jpg', lado:'img/9106C3-34.jpg'},
+    ] },
+  { id:'murren', codigo:'9133', nombre:'Mürren', categoria:'dama', material:'metalica', forma:'cateye', medida:'53 - 20 -147',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'9133C1', hex:'#000000', frente:'img/9133C1.jpg', lado:'img/9133C1-34.jpg'},
+      {nombre:'Gris', codigo:'9133C3', hex:'#605d69', frente:'img/9133C3.jpg', lado:'img/9133C3-34.jpg'},
+      {nombre:'Blanco', codigo:'9133C4', hex:'#ffffff', frente:'img/9133C4.jpg', lado:'img/9133C4-34.jpg'},
+    ] },
+  { id:'adelboden', codigo:'9162', nombre:'Adelboden', categoria:'dama', material:'acetato', forma:'cateye', medida:'55 - 18 - 147',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'9162C1', hex:'#000000', frente:'img/9162C1.jpg', lado:'img/9162C1-34.jpg'},
+      {nombre:'Carey', codigo:'9162C2', hex:'#4d3822', frente:'img/9162C2.jpg', lado:'img/9162C2-34.jpg'},
+      {nombre:'Vino Tinto', codigo:'9162C3', hex:'#972e20', frente:'img/9162C3.jpg', lado:'img/9162C3-34.jpg'},
+      {nombre:'Café', codigo:'9162C4', hex:'#432018', frente:'img/9162C4.jpg', lado:'img/9162C4-34.jpg'},
+    ] },
+  { id:'kandersteg', codigo:'9166', nombre:'Kandersteg', categoria:'dama', material:'acetato', forma:'cateye', medida:'54 - 20 - 147',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'9166C1', hex:'#212225', frente:'img/9166C1.jpg', lado:'img/9166C1-34.jpg'},
+      {nombre:'Carey', codigo:'9166C2', hex:'#9c4902', frente:'img/9166C2.jpg', lado:'img/9166C2-34.jpg'},
+      {nombre:'Blanco', codigo:'9166C3', hex:'#ffffff', frente:'img/9166C3.jpg', lado:'img/9166C3-34.jpg'},
+      {nombre:'Rosa', codigo:'9166C4', hex:'#d8cccc', frente:'img/9166C4.jpg', lado:'img/9166C4-34.jpg'},
+    ] },
+  { id:'lenzerheide', codigo:'9812P', nombre:'Lenzerheide', categoria:'hombre', material:'acetato', forma:'cuadrada', medida:'52 - 17 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'9812PC1', hex:'#000000', frente:'img/9812PC1.jpg', lado:'img/9812PC1-34.jpg'},
+      {nombre:'Café', codigo:'9812PC2', hex:'#513e2d', frente:'img/9812PC2.jpg', lado:'img/9812PC2-34.jpg'},
+      {nombre:'Carey', codigo:'9812PC6', hex:'#b05c0d', frente:'img/9812PC6.jpg', lado:'img/9812PC6-34.jpg'},
+    ] },
+  { id:'scuol', codigo:'BE2436', nombre:'Scuol', categoria:'dama', material:'acetato', forma:'cuadrada', medida:'54 - 19 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'BE2436C1', hex:'#000000', frente:'img/BE2436C1.jpg', lado:'img/BE2436C1-34.jpg'},
+      {nombre:'Café', codigo:'BE2436C5', hex:'#6e6866', frente:'img/BE2436C5.jpg', lado:'img/BE2436C5-34.jpg'},
+      {nombre:'Negro con amarillo', codigo:'BE2436C6', hex:'#c5a387', frente:'img/BE2436C6.jpg', lado:'img/BE2436C6-34.jpg'},
+      {nombre:'Verde Menta', codigo:'BE2436C8', hex:'#92b4ae', frente:'img/BE2436C8.jpg', lado:'img/BE2436C8-34.jpg'},
+    ] },
+  { id:'sils', codigo:'BE2437', nombre:'Sils', categoria:'dama', material:'acetato', forma:'cateye', medida:'53 - 19 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'BE2437C1', hex:'#000000', frente:'img/BE2437C1.jpg', lado:'img/BE2437C1-34.jpg'},
+      {nombre:'Verde', codigo:'BE2437C6', hex:'#e1ce06', frente:'img/BE2437C6.jpg', lado:'img/BE2437C6-34.jpg'},
+      {nombre:'Negro con amarillo', codigo:'BE2437C8', hex:'#caa57c', frente:'img/BE2437C8.jpg', lado:'img/BE2437C8-34.jpg'},
+    ] },
+  { id:'celerina', codigo:'BV400061', nombre:'Celerina', categoria:'dama', material:'acetato', forma:'cuadrada', medida:'53 - 18 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'BV400061C1', hex:'#282628', frente:'img/BV400061C1.jpg', lado:'img/BV400061C1-34.jpg'},
+      {nombre:'Carey', codigo:'BV400061C3', hex:'#302925', frente:'img/BV400061C3.jpg', lado:'img/BV400061C3-34.jpg'},
+      {nombre:'Verde', codigo:'BV400061C4', hex:'#585e55', frente:'img/BV400061C4.jpg', lado:'img/BV400061C4-34.jpg'},
+      {nombre:'Azul', codigo:'BV400061C5', hex:'#245ab6', frente:'img/BV400061C5.jpg', lado:'img/BV400061C5-34.jpg'},
+    ] },
+  { id:'maloja', codigo:'BV4000612', nombre:'Maloja', categoria:'dama', material:'acetato', forma:'cuadrada', medida:'53 - 18 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'BV4000612C1', hex:'#282628', frente:'img/BV4000612C1.jpg', lado:'img/BV4000612C1-34.jpg'},
+      {nombre:'Carey', codigo:'BV4000612C3', hex:'#302925', frente:'img/BV4000612C3.jpg', lado:'img/BV4000612C3-34.jpg'},
+      {nombre:'Verde', codigo:'BV4000612C4', hex:'#585e55', frente:'img/BV4000612C4.jpg', lado:'img/BV4000612C4-34.jpg'},
+      {nombre:'Azul', codigo:'BV4000612C5', hex:'#245ab6', frente:'img/BV4000612C5.jpg', lado:'img/BV4000612C5-34.jpg'},
+    ] },
+  { id:'soglio', codigo:'BV50048I', nombre:'Soglio', categoria:'dama', material:'acetato', forma:'cateye', medida:'52 - 20 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'BV50048IC1', hex:'#000000', frente:'img/BV50048IC1.jpg', lado:'img/BV50048IC1-34.jpg'},
+      {nombre:'Vino Tinto', codigo:'BV50048IC4', hex:'#742328', frente:'img/BV50048IC4.jpg', lado:'img/BV50048IC4-34.jpg'},
+      {nombre:'Beige', codigo:'BV50048IC5', hex:'#a67c55', frente:'img/BV50048IC5.jpg', lado:'img/BV50048IC5-34.jpg'},
+    ] },
+  { id:'bregaglia', codigo:'BV50049I', nombre:'Bregaglia', categoria:'dama', material:'acetato', forma:'cuadrada', medida:'53 - 19 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'BV50049IC1', hex:'#000000', frente:'img/BV50049IC1.jpg', lado:'img/BV50049IC1-34.jpg'},
+      {nombre:'Carey', codigo:'BV50049IC2', hex:'#e47e02', frente:'img/BV50049IC2.jpg', lado:'img/BV50049IC2-34.jpg'},
+      {nombre:'Beige', codigo:'BV50049IC7', hex:'#bf9976', frente:'img/BV50049IC7.jpg', lado:'img/BV50049IC7-34.jpg'},
+      {nombre:'Azul', codigo:'BV50049IC8', hex:'#4a5776', frente:'img/BV50049IC8.jpg', lado:'img/BV50049IC8-34.jpg'},
+    ] },
+  { id:'splugen', codigo:'CT0377', nombre:'Splügen', categoria:'unisex', material:'acetato', forma:'cuadrada', medida:'53 - 19 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'CT0377C1', hex:'#000000', frente:'img/CT0377C1.jpg', lado:'img/CT0377C1-34.jpg'},
+      {nombre:'Café', codigo:'CT0377C5', hex:'#ad5a19', frente:'img/CT0377C5.jpg', lado:'img/CT0377C5-34.jpg'},
+      {nombre:'Beige', codigo:'CT0377C6', hex:'#d2a481', frente:'img/CT0377C6.jpg', lado:'img/CT0377C6-34.jpg'},
+      {nombre:'Rosa', codigo:'CT0377C8', hex:'#e4d6cc', frente:'img/CT0377C8.jpg', lado:'img/CT0377C8-34.jpg'},
+    ] },
+  { id:'zinal', codigo:'GG1531SK', nombre:'Zinal', categoria:'unisex', material:'acetato', forma:'rectangular', medida:'54 - 18 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'GG1531SKC3', hex:'#000000', frente:'img/GG1531SKC3.jpg', lado:'img/GG1531SKC3-34.jpg'},
+      {nombre:'Vino Tinto', codigo:'GG1531SKC4', hex:'#57323d', frente:'img/GG1531SKC4.jpg', lado:'img/GG1531SKC4-34.jpg'},
+      {nombre:'Azul', codigo:'GG1531SKC6', hex:'#a9c1db', frente:'img/GG1531SKC6.jpg', lado:'img/GG1531SKC6-34.jpg'},
+      {nombre:'Carey', codigo:'GG1531SKC8', hex:'#986016', frente:'img/GG1531SKC8.jpg', lado:'img/GG1531SKC8-34.jpg'},
+    ] },
+  { id:'grimentz', codigo:'L6050SPLB', nombre:'Grimentz', categoria:'unisex', material:'acetato', forma:'cuadrada', medida:'54 - 19 -145',
+    tagline:'',
+    colores:[
+      {nombre:'Carey', codigo:'L6050SPLBC2', hex:'#df8e03', frente:'img/L6050SPLBC2.jpg', lado:'img/L6050SPLBC2-34.jpg'},
+      {nombre:'Café', codigo:'L6050SPLBC4', hex:'#765442', frente:'img/L6050SPLBC4.jpg', lado:'img/L6050SPLBC4.jpg'},
+      {nombre:'Azul espejo azul', codigo:'L6050SPLBC5', hex:'#384c72', frente:'img/L6050SPLBC5.jpg', lado:'img/L6050SPLBC5-34.jpg'},
+      {nombre:'Gris', codigo:'L6050SPLBC6', hex:'#5c545c', frente:'img/L6050SPLBC6.jpg', lado:'img/L6050SPLBC6-34.jpg'},
+    ] },
+  { id:'anzere', codigo:'LY2347', nombre:'Anzère', categoria:'dama', material:'metalica', forma:'redonda', medida:'50 - 20 - 141',
+    tagline:'',
+    colores:[
+      {nombre:'Dorado', codigo:'LY2347C1', hex:'#f5d4ae', frente:'img/LY2347C1.jpg', lado:'img/LY2347C1-34.jpg'},
+      {nombre:'Dorado Carey', codigo:'LY2347C2', hex:'#533123', frente:'img/LY2347C2.jpg', lado:'img/LY2347C2-34.jpg'},
+      {nombre:'Plata', codigo:'LY2347C3', hex:'#bfb9b2', frente:'img/LY2347C3.jpg', lado:'img/LY2347C3-34.jpg'},
+    ] },
+  { id:'nendaz', codigo:'LY2421', nombre:'Nendaz', categoria:'dama', material:'metalica', forma:'redonda', medida:'50 - 21 - 142',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'LY2421C1', hex:'#000000', frente:'img/LY2421C1.jpg', lado:'img/LY2421C1-34.jpg'},
+      {nombre:'Carey', codigo:'LY2421C2', hex:'#7e4503', frente:'img/LY2421C2.jpg', lado:'img/LY2421C2-34.jpg'},
+      {nombre:'Beige', codigo:'LY2421C3', hex:'#e8e1d4', frente:'img/LY2421C3.jpg', lado:'img/LY2421C3-34.jpg'},
+      {nombre:'Café', codigo:'LY2421C4', hex:'#b3925e', frente:'img/LY2421C4.jpg', lado:'img/LY2421C4-34.jpg'},
+    ] },
+  { id:'veysonnaz', codigo:'OLD088S', nombre:'Veysonnaz', categoria:'hombre', material:'metalica', forma:'aviador', medida:'58 - 17 -145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'OLD088SC3', hex:'#323139', frente:'img/OLD088SC3.jpg', lado:'img/OLD088SC3-34.jpg'},
+      {nombre:'Café', codigo:'OLD088SC5', hex:'#635249', frente:'img/OLD088SC5.jpg', lado:'img/OLD088SC5-34.jpg'},
+    ] },
+  { id:'bettmeralp', codigo:'OLD1307S', nombre:'Bettmeralp', categoria:'hombre', material:'tr90', forma:'cuadrada', medida:'60 - 17 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'OLD1307SC1', hex:'#000000', frente:'img/OLD1307SC1.jpg', lado:'img/OLD1307SC1-34.jpg'},
+      {nombre:'Gris', codigo:'OLD1307SC3', hex:'#4a4c54', frente:'img/OLD1307SC3.jpg', lado:'img/OLD1307SC3-34.jpg'},
+      {nombre:'Azul', codigo:'OLD1307SC4', hex:'#454f65', frente:'img/OLD1307SC4.jpg', lado:'img/OLD1307SC4-34.jpg'},
+    ] },
+  { id:'riederalp', codigo:'OLD2026', nombre:'Riederalp', categoria:'unisex', material:'tr90', forma:'cuadrada', medida:'54 - 19 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro mate', codigo:'OLD2026C01', hex:'#000000', frente:'img/OLD2026C01.jpg', lado:'img/OLD2026C01-34.jpg'},
+      {nombre:'Café', codigo:'OLD2026C04', hex:'#574741', frente:'img/OLD2026C04.jpg', lado:'img/OLD2026C04-34.jpg'},
+      {nombre:'Gris', codigo:'OLD2026C05', hex:'#454449', frente:'img/OLD2026C05.jpg', lado:'img/OLD2026C05-34.jpg'},
+    ] },
+  { id:'appenzell', codigo:'OLD25032A', nombre:'Appenzell', categoria:'unisex', material:'acetato', forma:'cuadrada', medida:'52 - 19 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'OLD25032AC2', hex:'#000000', frente:'img/OLD25032AC2.jpg', lado:'img/OLD25032AC2-34.jpg'},
+      {nombre:'Gris', codigo:'OLD25032AC3', hex:'#3b3b45', frente:'img/OLD25032AC3.jpg', lado:'img/OLD25032AC3-34.jpg'},
+      {nombre:'Azul', codigo:'OLD25032AC4', hex:'#272d3e', frente:'img/OLD25032AC4.jpg', lado:'img/OLD25032AC4-34.jpg'},
+    ] },
+  { id:'gruyeres', codigo:'OLD25037A', nombre:'Gruyères', categoria:'unisex', material:'acetato', forma:'cuadrada', medida:'53 - 17 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'OLD25037AC1', hex:'#403d4c', frente:'img/OLD25037AC1.jpg', lado:'img/OLD25037AC1-34.jpg'},
+      {nombre:'Carey', codigo:'OLD25037AC5', hex:'#3e3835', frente:'img/OLD25037AC5.jpg', lado:'img/OLD25037AC5-34.jpg'},
+    ] },
+  { id:'murten', codigo:'OLD2504A', nombre:'Murten', categoria:'unisex', material:'acetato', forma:'cuadrada', medida:'54 - 18 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'OLD2504AC1', hex:'#000000', frente:'img/OLD2504AC1.jpg', lado:'img/OLD2504AC1-34.jpg'},
+      {nombre:'Gris', codigo:'OLD2504AC3', hex:'#4b4d5f', frente:'img/OLD2504AC3.jpg', lado:'img/OLD2504AC3-34.jpg'},
+      {nombre:'Café', codigo:'OLD2504AC5', hex:'#593f3b', frente:'img/OLD2504AC5.jpg', lado:'img/OLD2504AC5-34.jpg'},
+    ] },
+  { id:'stein', codigo:'OLD25104A', nombre:'Stein', categoria:'unisex', material:'acetato', forma:'rectangular', medida:'53 - 19 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'OLD25104AC1', hex:'#272834', frente:'img/OLD25104AC1.jpg', lado:'img/OLD25104AC1-34.jpg'},
+      {nombre:'Negro', codigo:'OLD25104AC2', hex:'#272834', frente:'img/OLD25104AC2.jpg', lado:'img/OLD25104AC2-34.jpg'},
+    ] },
+  { id:'thun', codigo:'OLD2992S', nombre:'Thun', categoria:'unisex', material:'tr90', forma:'aviador', medida:'56 - 15 - 142',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'OLD2992SC1', hex:'#000000', frente:'img/OLD2992SC1.jpg', lado:'img/OLD2992SC1-34.jpg'},
+      {nombre:'Negro', codigo:'OLD2992SC2', hex:'#000000', frente:'img/OLD2992SC2.jpg', lado:'img/OLD2992SC2-34.jpg'},
+      {nombre:'Azul', codigo:'OLD2992SC3', hex:'#222b3d', frente:'img/OLD2992SC3.jpg', lado:'img/OLD2992SC3-34.jpg'},
+    ] },
+  { id:'spiez', codigo:'OLD3919A', nombre:'Spiez', categoria:'unisex', material:'acetato', forma:'cuadrada', medida:'55 - 17 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'OLD3919AC1', hex:'#2e2e40', frente:'img/OLD3919AC1.jpg', lado:'img/OLD3919AC1-34.jpg'},
+      {nombre:'Negro', codigo:'OLD3919AC2', hex:'#23222d', frente:'img/OLD3919AC2.jpg', lado:'img/OLD3919AC2-34.jpg'},
+      {nombre:'Carey', codigo:'OLD3919AC5', hex:'#573d40', frente:'img/OLD3919AC5.jpg', lado:'img/OLD3919AC5-34.jpg'},
+    ] },
+  { id:'brienz', codigo:'OLD6140S', nombre:'Brienz', categoria:'unisex', material:'acetato', forma:'cuadrada', medida:'57 - 16 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'OLD6140SC1', hex:'#000000', frente:'img/OLD6140SC1.jpg', lado:'img/OLD6140SC1-34.jpg'},
+      {nombre:'Azul', codigo:'OLD6140SC5', hex:'#2c2f43', frente:'img/OLD6140SC5.jpg', lado:'img/OLD6140SC5-34.jpg'},
+    ] },
+  { id:'sion', codigo:'P9190', nombre:'Sion', categoria:'unisex', material:'acetato', forma:'redonda', medida:'50 - 23 - 148',
+    tagline:'',
+    colores:[
+      {nombre:'Verde Oliva', codigo:'P9190C17', hex:'#625a41', frente:'img/P9190C17.jpg', lado:'img/P9190C17-34.jpg'},
+      {nombre:'Gris', codigo:'P9190C2', hex:'#3f3f3f', frente:'img/P9190C2.jpg', lado:'img/P9190C2-34.jpg'},
+      {nombre:'Café', codigo:'P9190C3', hex:'#5c4e3e', frente:'img/P9190C3.jpg', lado:'img/P9190C3-34.jpg'},
+      {nombre:'Carey', codigo:'P9190C32', hex:'#934703', frente:'img/P9190C32.jpg', lado:'img/P9190C32-34.jpg'},
+    ] },
+  { id:'bellinzona', codigo:'PRA18V', nombre:'Bellinzona', categoria:'dama', material:'acetato', forma:'cateye', medida:'53 - 19 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'PRA18VC1', hex:'#000000', frente:'img/PRA18VC1.jpg', lado:'img/PRA18VC1-34.jpg'},
+      {nombre:'Carey', codigo:'PRA18VC3', hex:'#bb4001', frente:'img/PRA18VC3.jpg', lado:'img/PRA18VC3-34.jpg'},
+      {nombre:'Gris', codigo:'PRA18VC5', hex:'#494850', frente:'img/PRA18VC5.jpg', lado:'img/PRA18VC5-34.jpg'},
+      {nombre:'Rosa', codigo:'PRA18VC6', hex:'#ecd5e7', frente:'img/PRA18VC6.jpg', lado:'img/PRA18VC6-34.jpg'},
+    ] },
+  { id:'vals', codigo:'PRA19V', nombre:'Vals', categoria:'dama', material:'acetato', forma:'cuadrada', medida:'54 - 18 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'PRA19VC1', hex:'#000000', frente:'img/PRA19VC1.jpg', lado:'img/PRA19VC1-34.jpg'},
+      {nombre:'Café', codigo:'PRA19VC4', hex:'#897165', frente:'img/PRA19VC4.jpg', lado:'img/PRA19VC4-34.jpg'},
+      {nombre:'Gris', codigo:'PRA19VC5', hex:'#595860', frente:'img/PRA19VC5.jpg', lado:'img/PRA19VC5-34.jpg'},
+      {nombre:'Rosa', codigo:'PRA19VC6', hex:'#ddc2d7', frente:'img/PRA19VC6.jpg', lado:'img/PRA19VC6-34.jpg'},
+    ] },
+  { id:'guarda', codigo:'PS2195', nombre:'Guarda', categoria:'unisex', material:'metalica', forma:'aviador', medida:'59 - 15 - 145',
+    tagline:'Aviador reverse',
+    colores:[
+      {nombre:'Negro', codigo:'PS2195C32', hex:'#353537', frente:'img/PS2195C32.jpg', lado:'img/PS2195C32-34.jpg'},
+      {nombre:'Gris', codigo:'PS2195C8', hex:'#53565a', frente:'img/PS2195C8.jpg', lado:'img/PS2195C8.jpg'},
+    ] },
+  { id:'ftan', codigo:'PS33206', nombre:'Ftan', categoria:'unisex', material:'metalica', forma:'wrap', medida:'56 - 17 - 148',
+    tagline:'',
+    colores:[
+      {nombre:'Dorado', codigo:'PS33206C101', hex:'#c4a78d', frente:'img/PS33206C101.jpg', lado:'img/PS33206C101-34.jpg'},
+      {nombre:'Gris', codigo:'PS33206C2', hex:'#45414f', frente:'img/PS33206C2.jpg', lado:'img/PS33206C2-34.jpg'},
+      {nombre:'Café', codigo:'PS33206C20', hex:'#9e7556', frente:'img/PS33206C20.jpg', lado:'img/PS33206C20-34.jpg'},
+      {nombre:'Plata', codigo:'PS33206C54', hex:'#99938c', frente:'img/PS33206C54.jpg', lado:'img/PS33206C54-34.jpg'},
+    ] },
+  { id:'sent', codigo:'RX1086', nombre:'Sent', categoria:'dama', material:'metalica', forma:'redonda', medida:'57 - 16 - 148',
+    tagline:'',
+    colores:[
+      {nombre:'Plata', codigo:'RX1086C1', hex:'#494b4c', frente:'img/RX1086C1.jpg', lado:'img/RX1086C1-34.jpg'},
+      {nombre:'Dorado', codigo:'RX1086C4', hex:'#f0c99d', frente:'img/RX1086C4.jpg', lado:'img/RX1086C4-34.jpg'},
+    ] },
+  { id:'zurich', codigo:'S15112', nombre:'Zürich', categoria:'unisex', material:'metalica', forma:'aviador', medida:'57 - 16 - 145',
+    tagline:'aviador rectangular',
+    colores:[
+      {nombre:'Dorado', codigo:'S15112C5', hex:'#d7a96f', frente:'img/S15112C5.jpg', lado:'img/S15112C5-34.jpg'},
+    ] },
+  { id:'cervin', codigo:'TF4230', nombre:'Cervin', categoria:'dama', material:'acetato', forma:'cateye', medida:'54 - 19 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'TF4230C1', hex:'#000000', frente:'img/TF4230C1.jpg', lado:'img/TF4230C1-34.jpg'},
+      {nombre:'Café', codigo:'TF4230C2', hex:'#482f20', frente:'img/TF4230C2.jpg', lado:'img/TF4230C2-34.jpg'},
+      {nombre:'Beige', codigo:'TF4230C4', hex:'#e5d0bd', frente:'img/TF4230C4.jpg', lado:'img/TF4230C4-34.jpg'},
+      {nombre:'Verde Menta', codigo:'TF4230C6', hex:'#aeccc4', frente:'img/TF4230C6.jpg', lado:'img/TF4230C6-34.jpg'},
+    ] },
+  { id:'leman', codigo:'VCH401S', nombre:'Léman', categoria:'dama', material:'acetato', forma:'cuadrada', medida:'54 - 18 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'VCH401SC1', hex:'#000000', frente:'img/VCH401SC1.jpg', lado:'img/VCH401SC1-34.jpg'},
+      {nombre:'Café', codigo:'VCH401SC2', hex:'#5f4330', frente:'img/VCH401SC2.jpg', lado:'img/VCH401SC2-34.jpg'},
+      {nombre:'Vino Tinto', codigo:'VCH401SC4', hex:'#835054', frente:'img/VCH401SC4.jpg', lado:'img/VCH401SC4-34.jpg'},
+      {nombre:'Beige', codigo:'VCH401SC8', hex:'#b58e6b', frente:'img/VCH401SC8.jpg', lado:'img/VCH401SC8-34.jpg'},
+    ] },
+  { id:'jungfrau', codigo:'VCH402S', nombre:'Jungfrau', categoria:'dama', material:'acetato', forma:'cateye', medida:'54 - 18 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Café', codigo:'VCH402SC3', hex:'#5e443f', frente:'img/VCH402SC3.jpg', lado:'img/VCH402SC3-34.jpg'},
+      {nombre:'Azul', codigo:'VCH402SC6', hex:'#6371a7', frente:'img/VCH402SC6.jpg', lado:'img/VCH402SC6-34.jpg'},
+      {nombre:'Gris', codigo:'VCH402SC7', hex:'#565461', frente:'img/VCH402SC7.jpg', lado:'img/VCH402SC7-34.jpg'},
+      {nombre:'Beige', codigo:'VCH402SC8', hex:'#a1867f', frente:'img/VCH402SC8.jpg', lado:'img/VCH402SC8-34.jpg'},
+    ] },
+];
+
+/* ===== ETIQUETAS + HELPERS ===== */
+const CAT = { dama:'Dama', hombre:'Hombre', unisex:'Unisex' };
+const MAT = { metalica:'Metálica', acetato:'Acetato', tr90:'TR90' };
+const byId = id => productos.find(p => p.id === id);
+const cap = s => s ? s.charAt(0).toUpperCase()+s.slice(1) : '';
+const slug = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')
+                   .replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+
+/* ===== GAFA SVG (respaldo si falta foto) ===== */
+function glassesSVG(forma, marco, lente){
+  const shine = `<ellipse cx="95" cy="62" rx="15" ry="8" fill="#fff" opacity="0.18" transform="rotate(-20 95 62)"/><ellipse cx="250" cy="62" rx="15" ry="8" fill="#fff" opacity="0.18" transform="rotate(-20 250 62)"/>`;
+  let body='';
+  switch(forma){
+    case 'aviador':
+      body=`<line x1="55" y1="50" x2="20" y2="42" stroke="${marco}" stroke-width="5" stroke-linecap="round"/><line x1="305" y1="50" x2="340" y2="42" stroke="${marco}" stroke-width="5" stroke-linecap="round"/><path d="M55 48 Q55 120 110 120 Q160 120 156 60 Q156 50 142 48 Z" fill="${lente}" stroke="${marco}" stroke-width="5"/><path d="M305 48 Q305 120 250 120 Q200 120 204 60 Q204 50 218 48 Z" fill="${lente}" stroke="${marco}" stroke-width="5"/><path d="M156 56 Q180 46 204 56" fill="none" stroke="${marco}" stroke-width="5" stroke-linecap="round"/>`;break;
+    case 'redonda': case 'ovalada': case 'oval':
+      body=`<line x1="56" y1="68" x2="20" y2="58" stroke="${marco}" stroke-width="6" stroke-linecap="round"/><line x1="304" y1="68" x2="340" y2="58" stroke="${marco}" stroke-width="6" stroke-linecap="round"/><ellipse cx="100" cy="80" rx="50" ry="42" fill="${lente}" stroke="${marco}" stroke-width="6"/><ellipse cx="260" cy="80" rx="50" ry="42" fill="${lente}" stroke="${marco}" stroke-width="6"/><path d="M150 72 Q180 60 210 72" fill="none" stroke="${marco}" stroke-width="6" stroke-linecap="round"/>`;break;
+    case 'rectangular': case 'cateye':
+      body=`<line x1="42" y1="64" x2="10" y2="58" stroke="${marco}" stroke-width="5" stroke-linecap="round"/><line x1="318" y1="64" x2="350" y2="58" stroke="${marco}" stroke-width="5" stroke-linecap="round"/><rect x="42" y="58" width="120" height="46" rx="8" fill="${lente}" stroke="${marco}" stroke-width="5"/><rect x="198" y="58" width="120" height="46" rx="8" fill="${lente}" stroke="${marco}" stroke-width="5"/><path d="M162 66 Q180 60 198 66" fill="none" stroke="${marco}" stroke-width="5" stroke-linecap="round"/>`;break;
+    case 'wrap':
+      body=`<line x1="40" y1="50" x2="10" y2="46" stroke="${marco}" stroke-width="7" stroke-linecap="round"/><line x1="320" y1="50" x2="350" y2="46" stroke="${marco}" stroke-width="7" stroke-linecap="round"/><path d="M40 55 Q45 40 120 44 L170 60 Q172 100 110 104 Q50 104 40 55 Z" fill="${lente}" stroke="${marco}" stroke-width="6"/><path d="M320 55 Q315 40 240 44 L190 60 Q188 100 250 104 Q310 104 320 55 Z" fill="${lente}" stroke="${marco}" stroke-width="6"/><path d="M170 58 Q180 52 190 58" fill="none" stroke="${marco}" stroke-width="7" stroke-linecap="round"/>`;break;
+    default:
+      body=`<line x1="40" y1="55" x2="8" y2="48" stroke="${marco}" stroke-width="7" stroke-linecap="round"/><line x1="320" y1="55" x2="352" y2="48" stroke="${marco}" stroke-width="7" stroke-linecap="round"/><rect x="40" y="45" width="115" height="70" rx="12" fill="${lente}" stroke="${marco}" stroke-width="6"/><rect x="205" y="45" width="115" height="70" rx="12" fill="${lente}" stroke="${marco}" stroke-width="6"/><path d="M155 60 Q180 52 205 60" fill="none" stroke="${marco}" stroke-width="7" stroke-linecap="round"/>`;
+  }
+  return `<svg class="glasses" viewBox="0 0 360 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gafa ${forma||''}">${body}${shine}</svg>`;
+}
+function oneView(p, color, vista){
+  const esLado=(vista==='lado'); const src=esLado?color.lado:color.frente;
+  const cls='view'+(esLado?' view-lado':'');
+  if(src) return `<img class="${cls}" src="${src}" alt="${p.nombre} ${color.nombre||''} ${esLado?'3/4':'frontal'}" loading="lazy">`;
+  return `<div class="${cls}">${glassesSVG(p.forma,(color.hex||'#333'),(color.hex||'#1c1c1c'))}</div>`;
+}
+
+/* ===== ENLACE + WHATSAPP ===== */
+function refLink(p, s){ const base=CATALOGO_URL||(location.origin+location.pathname); return base+'#'+p.id+(s?'__'+s:''); }
+function waLink(p, color, qty){
+  const link=refLink(p, slug(color.codigo||color.nombre||''));
+  const msg='Hola Ferrati, quiero cotizar estas gafas de sol:\n'
+    +'• Modelo: '+p.nombre+'\n'
+    +'• Referencia: '+(color.codigo||p.codigo||'')+'\n'
+    +'• Color: '+(color.nombre||'')+'\n'
+    +'• Cantidad: '+qty+'\n'
+    +'• Link: '+link;
+  return 'https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(msg);
+}
+
+/* ===== TARJETA ===== */
+function cardHTML(p){
+  const c0=p.colores[0]||{};
+  const swatches=p.colores.map((c,idx)=>
+    `<button class="sw ${idx===0?'active':''}" type="button" style="--c:${c.hex||'#999'}" data-idx="${idx}" data-nombre="${c.nombre||''}" data-codigo="${c.codigo||''}" data-slug="${slug(c.codigo||c.nombre||'')}" aria-label="${(c.nombre||'')} ${c.codigo||''}" title="${(c.nombre||'')} ${c.codigo||''}"></button>`
+  ).join('');
+  const n=p.colores.length;
+  return `
+  <article class="card" id="${p.id}" data-id="${p.id}" data-color="0" data-view="frente">
+    <div class="card-media">
+      <span class="tag-cat">${CAT[p.categoria]||''}</span>
+      ${p.top?'<span class="badge-top">★ Selección</span>':''}
+      <div class="viewer">${oneView(p,c0,'frente')}</div>
+    </div>
+    <div class="thumbs">
+      <button class="thumb active" type="button" data-view="frente" aria-label="Frontal">${oneView(p,c0,'frente')}</button>
+      <button class="thumb" type="button" data-view="lado" aria-label="3/4">${oneView(p,c0,'lado')}</button>
+    </div>
+    <div class="card-body">
+      <div class="card-name">${p.nombre}</div>
+      <div class="card-code">${c0.codigo?('Ref. '+c0.codigo):(p.codigo?('Ref. '+p.codigo):'')}</div>
+      <div class="ficha">
+        ${p.forma?`<div><span>Forma</span> ${cap(p.forma)}</div>`:''}
+        ${p.medida?`<div><span>Tamaño</span> ${p.medida}</div>`:''}
+      </div>
+      <div class="colores-label">${n} ${n===1?'color disponible':'colores disponibles'}</div>
+      <div class="swatches">${swatches}</div>
+      <div class="specs">
+        <span class="chip">${MAT[p.material]||''}</span>
+        <span class="chip">Polarizada</span>
+        <span class="chip">UV400</span>
+      </div>
+      <div class="card-bottom">
+        <div class="qty">
+          <span class="qty-label">Cantidad</span>
+          <div class="stepper">
+            <button class="step" type="button" data-d="-1" aria-label="Quitar uno">&minus;</button>
+            <input class="qty-input" type="text" inputmode="numeric" value="1" aria-label="Cantidad">
+            <button class="step" type="button" data-d="1" aria-label="Sumar uno">+</button>
+          </div>
+        </div>
+        <button class="btn-wa btn-add" type="button">Agregar al carrito</button>
+      </div>
+    </div>
+  </article>`;
+}
+
+/* ===== ACTUALIZACIONES ===== */
+function renderViewer(card){
+  const p=byId(card.dataset.id); const color=p.colores[+card.dataset.color]; const vista=card.dataset.view||'frente';
+  card.querySelector('.viewer').innerHTML=oneView(p,color,vista);
+  card.querySelector('.thumb[data-view="frente"]').innerHTML=oneView(p,color,'frente');
+  card.querySelector('.thumb[data-view="lado"]').innerHTML=oneView(p,color,'lado');
+}
+function setActiveThumb(card,v){ card.querySelectorAll('.thumb').forEach(t=>t.classList.toggle('active',t.dataset.view===v)); }
+function updateWA(card){} /* el botón ahora agrega al carrito; no necesita href */
+function selectColor(card,sw){
+  card.dataset.color=sw.dataset.idx; card.dataset.view='frente';
+  card.querySelectorAll('.sw').forEach(s=>s.classList.remove('active')); sw.classList.add('active');
+  const codeEl=card.querySelector('.card-code'); if(codeEl) codeEl.textContent=sw.dataset.codigo?('Ref. '+sw.dataset.codigo):'';
+  setActiveThumb(card,'frente'); renderViewer(card); updateWA(card);
+}
+document.addEventListener('click',e=>{
+  if(e.target.closest('#lightbox')) return;
+  const viewer=e.target.closest('.viewer'); if(viewer){ lbOpen(viewer.closest('.card')); return; }
+  const add=e.target.closest('.btn-add'); if(add){ const card=add.closest('.card'); const p=byId(card.dataset.id); const color=p.colores[+card.dataset.color]; const qty=Math.max(1,(+card.querySelector('.qty-input').value||1)); addToCart(p,color,qty); add.textContent='✓ Agregado'; clearTimeout(add._t); add._t=setTimeout(()=>{add.textContent='Agregar al carrito';},1100); return; }
+  const sw=e.target.closest('.sw'); if(sw){ const card=sw.closest('.card'); card.dataset.manual='1'; stopAuto(card); selectColor(card,sw); return; }
+  const thumb=e.target.closest('.thumb'); if(thumb){ const card=thumb.closest('.card'); card.dataset.view=thumb.dataset.view; setActiveThumb(card,thumb.dataset.view); const p=byId(card.dataset.id); card.querySelector('.viewer').innerHTML=oneView(p,p.colores[+card.dataset.color],thumb.dataset.view); return; }
+  const step=e.target.closest('.step'); if(step){ const card=step.closest('.card'); const inp=card.querySelector('.qty-input'); let q=(+inp.value||1)+(+step.dataset.d); if(q<1)q=1; if(q>99)q=99; inp.value=q; updateWA(card); return; }
+});
+
+/* ===== FILTROS + BÚSQUEDA ===== */
+const estado={cat:'todas',mat:'todas',q:'',formas:null,formaLabel:''};
+const grid=document.getElementById('grid');
+const conteo=document.getElementById('conteo');
+const subtitulo=document.getElementById('subtitulo');
+function subLabel(){
+  const {cat,mat}=estado;
+  if(cat==='todas'&&mat==='todas') return 'Toda la colección';
+  if(cat==='todas') return 'Gafas '+MAT[mat].toLowerCase();
+  if(mat==='todas') return 'Gafas de sol '+CAT[cat].toLowerCase();
+  return 'Gafa '+MAT[mat].toLowerCase()+' '+CAT[cat].toLowerCase();
+}
+function match(p,q){
+  if(!q) return true;
+  if((p.nombre||'').toLowerCase().includes(q)) return true;
+  if((p.codigo||'').toLowerCase().includes(q)) return true;
+  return p.colores.some(c=>(c.codigo||'').toLowerCase().includes(q));
+}
+function matchForma(p){ if(!estado.formas) return true; const f=(p.forma||'').toLowerCase(); return estado.formas.some(k=>f.includes(k)); }
+function render(){
+  const q=estado.q.trim().toLowerCase();
+  const lista=productos.filter(p=>(estado.cat==='todas'||p.categoria===estado.cat)&&(estado.mat==='todas'||p.material===estado.mat)&&match(p,q)&&matchForma(p));
+  document.getElementById('topsellers').style.display = (q||estado.formas) ? 'none' : '';
+  subtitulo.textContent = estado.formas ? ('Recomendadas para '+estado.formaLabel) : (q ? ('Resultados: “'+estado.q.trim()+'”') : subLabel());
+  conteo.textContent = lista.length+(lista.length===1?' referencia':' referencias');
+  grid.innerHTML = lista.length ? lista.map(cardHTML).join('') : `<div class="vacio" style="grid-column:1/-1">Sin resultados. Prueba otro filtro, búsqueda o tipo de rostro.</div>`;
+  observeAll();
+}
+function syncFilterButtons(){
+  document.querySelectorAll('#cats .tab').forEach(t=>t.classList.toggle('active',t.dataset.cat===estado.cat));
+  document.querySelectorAll('#mats .chip-f').forEach(t=>t.classList.toggle('active',t.dataset.mat===estado.mat));
+}
+document.getElementById('cats').addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;estado.cat=b.dataset.cat;estado.formas=null;syncFilterButtons();render();});
+document.getElementById('mats').addEventListener('click',e=>{const b=e.target.closest('.chip-f');if(!b)return;estado.mat=b.dataset.mat;estado.formas=null;syncFilterButtons();render();});
+document.getElementById('buscar').addEventListener('input',e=>{estado.q=e.target.value;estado.formas=null;render();});
+
+/* ===== DEEP LINK ===== */
+function openFromHash(){
+  const raw=location.hash.replace(/^#/,''); if(!raw) return;
+  const [id,colorSlug]=decodeURIComponent(raw).split('__'); if(!byId(id)) return;
+  estado.cat='todas';estado.mat='todas';estado.q='';document.getElementById('buscar').value='';
+  syncFilterButtons();render();
+  const card=document.querySelector('#grid .card[data-id="'+id+'"]'); if(!card) return;
+  if(colorSlug){ const sw=card.querySelector('.sw[data-slug="'+colorSlug+'"]'); if(sw) selectColor(card,sw); }
+  card.scrollIntoView({behavior:'smooth',block:'center'});
+  card.classList.remove('flash'); void card.offsetWidth; card.classList.add('flash');
+}
+
+/* ===== AUTO-CAMBIO DE COLOR (tarjetas visibles) ===== */
+let lightboxOpen=false;
+const timers=new Map();
+function nextColorAuto(card){
+  if(card.dataset.manual||card.matches(':hover')) return;
+  const p=byId(card.dataset.id); if(!p||p.colores.length<2) return;
+  const next=((+card.dataset.color)+1)%p.colores.length;
+  const sw=card.querySelector('.sw[data-idx="'+next+'"]'); if(sw) selectColor(card,sw);
+}
+function startAuto(card){
+  if(timers.has(card)||card.dataset.manual) return;
+  const p=byId(card.dataset.id); if(!p||p.colores.length<2) return;
+  const id=setInterval(()=>{ if(!lightboxOpen) nextColorAuto(card); }, 1400+Math.random()*700);
+  timers.set(card,id);
+}
+function stopAuto(card){ const id=timers.get(card); if(id){clearInterval(id);timers.delete(card);} }
+const io=('IntersectionObserver' in window)?new IntersectionObserver(es=>{
+  es.forEach(en=> en.isIntersecting?startAuto(en.target):stopAuto(en.target));
+},{threshold:0.45}):null;
+function observeAll(){
+  if(!io) return;
+  io.disconnect(); timers.forEach(id=>clearInterval(id)); timers.clear();
+  document.querySelectorAll('.card').forEach(c=>io.observe(c));
+}
+
+/* ===== VISOR CON ZOOM (lightbox) ===== */
+const lb={pid:null,idx:0,view:'frente'}; let lbZoom=1;
+const lbEl=document.getElementById('lightbox'), lbImg=document.getElementById('lbImg');
+function lbRender(){
+  const p=byId(lb.pid); if(!p) return; const color=p.colores[lb.idx]||{};
+  lbZoom=1; lbImg.style.transform=''; lbImg.classList.remove('zoom'); lbImg.style.transformOrigin='center';
+  const src=(lb.view==='lado')?color.lado:color.frente;
+  lbImg.src=src||''; lbImg.style.display=src?'':'none';
+  document.getElementById('lbCap').textContent=p.nombre+' · Ref. '+(color.codigo||'')+(color.nombre?(' · '+color.nombre):'');
+  lbEl.querySelectorAll('.lb-view').forEach(b=>b.classList.toggle('active',b.dataset.view===lb.view));
+  document.getElementById('lbSws').innerHTML=p.colores.map((c,i)=>`<button class="sw ${i===lb.idx?'active':''}" type="button" style="--c:${c.hex||'#999'}" data-i="${i}" title="${(c.nombre||'')} ${c.codigo||''}"></button>`).join('');
+}
+function lbOpen(card){
+  lb.pid=card.dataset.id; lb.idx=+card.dataset.color; lb.view=card.dataset.view||'frente';
+  lightboxOpen=true; lbEl.hidden=false; document.body.style.overflow='hidden'; lbRender();
+}
+function lbClose(){ lightboxOpen=false; lbEl.hidden=true; document.body.style.overflow=''; }
+function lbOrigin(e){ const r=lbImg.getBoundingClientRect(); lbImg.style.transformOrigin=(((e.clientX-r.left)/r.width)*100)+'% '+(((e.clientY-r.top)/r.height)*100)+'%'; }
+lbImg.addEventListener('click',e=>{ e.stopPropagation();
+  if(lbZoom>1){ lbZoom=1; lbImg.style.transform=''; lbImg.classList.remove('zoom'); }
+  else { lbZoom=2.4; lbOrigin(e); lbImg.style.transform='scale(2.4)'; lbImg.classList.add('zoom'); } });
+lbImg.addEventListener('mousemove',e=>{ if(lbZoom>1) lbOrigin(e); });
+lbImg.addEventListener('wheel',e=>{ e.preventDefault(); lbOrigin(e); lbZoom=Math.min(4,Math.max(1,lbZoom+(e.deltaY<0?0.3:-0.3))); lbImg.style.transform=lbZoom>1?('scale('+lbZoom+')'):''; lbImg.classList.toggle('zoom',lbZoom>1); },{passive:false});
+lbEl.addEventListener('click',e=>{
+  if(e.target.id==='lbClose'||e.target.id==='lightbox'||e.target.id==='lbStage'){ lbClose(); return; }
+  const v=e.target.closest('.lb-view'); if(v){ lb.view=v.dataset.view; lbRender(); return; }
+  const sw=e.target.closest('#lbSws .sw'); if(sw){ lb.idx=+sw.dataset.i; lbRender(); return; }
+});
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&lightboxOpen) lbClose(); });
+
+/* ===== CARRITO ===== */
+let cart=[]; try{ cart=JSON.parse(localStorage.getItem('ferrati_cart')||'[]')||[]; }catch(_){ cart=[]; }
+function saveCart(){ try{ localStorage.setItem('ferrati_cart',JSON.stringify(cart)); }catch(_){} }
+function cartUnits(){ return cart.reduce((s,i)=>s+i.qty,0); }
+function bumpCart(){ const b=document.getElementById('cartCount'); b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump'); }
+function addToCart(p,color,qty){
+  qty=Math.max(1,Math.min(999,qty|0||1));
+  const key=color.codigo||(p.id+'-'+(color.nombre||''));
+  const ex=cart.find(i=>i.key===key);
+  if(ex) ex.qty=Math.min(999,ex.qty+qty);
+  else cart.push({key,id:p.id,modelo:p.nombre,ref:color.codigo||p.codigo||'',color:color.nombre||'',img:color.frente||'',qty});
+  saveCart(); renderCart(); bumpCart();
+}
+function setCartQty(key,qty){ const i=cart.find(x=>x.key===key); if(!i)return; i.qty=Math.max(1,Math.min(999,qty|0||1)); saveCart(); renderCart(); }
+function removeCart(key){ cart=cart.filter(x=>x.key!==key); saveCart(); renderCart(); }
+function renderCart(){
+  const u=cartUnits(); const b=document.getElementById('cartCount');
+  b.textContent=u; b.style.display=u?'':'none';
+  const body=document.getElementById('cartBody'), foot=document.getElementById('cartFoot');
+  if(!cart.length){ body.innerHTML='<div class="cart-empty">Tu pedido está vacío.<br>Agrega modelos desde el catálogo.</div>'; foot.style.display='none'; return; }
+  foot.style.display='';
+  body.innerHTML=cart.map(i=>`<div class="cart-item" data-key="${i.key}">
+    <div class="ci-thumb">${i.img?('<img src="'+i.img+'" alt="">'):''}</div>
+    <div class="ci-info">
+      <div class="ci-name">${i.modelo}</div>
+      <div class="ci-ref">Ref. ${i.ref}${i.color?(' · '+i.color):''}</div>
+      <div class="ci-qty">
+        <button class="ci-step" data-d="-1" type="button">&minus;</button>
+        <input class="ci-input" type="text" inputmode="numeric" value="${i.qty}">
+        <button class="ci-step" data-d="1" type="button">+</button>
+        <button class="ci-rm" type="button">Quitar</button>
+      </div>
+    </div></div>`).join('');
+  document.getElementById('cartUnits').textContent=u;
+  document.getElementById('cartRefs').textContent=cart.length;
+}
+function cartWA(){
+  let msg='Hola Ferrati, quiero cotizar este pedido:\n\n';
+  cart.forEach((i,n)=>{ msg+=(n+1)+') '+i.modelo+' · Ref. '+i.ref+(i.color?(' · '+i.color):'')+' · x'+i.qty+'\n'; });
+  msg+='\nTotal: '+cartUnits()+' unidades · '+cart.length+' referencias.';
+  msg+='\nCatálogo: '+(CATALOGO_URL||(location.origin+location.pathname));
+  return 'https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(msg);
+}
+function openCart(){ document.getElementById('cartDrawer').classList.add('open'); document.getElementById('cartOverlay').hidden=false; }
+function closeCart(){ document.getElementById('cartDrawer').classList.remove('open'); document.getElementById('cartOverlay').hidden=true; }
+document.getElementById('abrirCarrito').addEventListener('click',openCart);
+document.getElementById('cartClose').addEventListener('click',closeCart);
+document.getElementById('cartOverlay').addEventListener('click',closeCart);
+document.getElementById('cartClear').addEventListener('click',()=>{ cart=[]; saveCart(); renderCart(); });
+document.getElementById('cartSend').addEventListener('click',()=>{ if(cart.length) window.open(cartWA(),'_blank'); });
+document.getElementById('cartBody').addEventListener('click',e=>{
+  const item=e.target.closest('.cart-item'); if(!item)return; const key=item.dataset.key;
+  const step=e.target.closest('.ci-step'); if(step){ const it=cart.find(x=>x.key===key); setCartQty(key,(it?it.qty:1)+(+step.dataset.d)); return; }
+  if(e.target.closest('.ci-rm')){ removeCart(key); return; }
+});
+document.getElementById('cartBody').addEventListener('change',e=>{ const inp=e.target.closest('.ci-input'); if(inp){ setCartQty(inp.closest('.cart-item').dataset.key, +inp.value.replace(/[^0-9]/g,'')||1); } });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeCart(); });
+/* sanitizar cantidad en tarjetas */
+document.addEventListener('input',e=>{ const inp=e.target.closest('.qty-input'); if(inp) inp.value=inp.value.replace(/[^0-9]/g,'').slice(0,3); });
+
+/* ===== GUÍA DE ROSTRO ===== */
+const ICO={
+ ovalado:'<svg viewBox="0 0 40 50"><ellipse cx="20" cy="25" rx="12" ry="20"/></svg>',
+ redondo:'<svg viewBox="0 0 40 50"><circle cx="20" cy="25" r="16"/></svg>',
+ cuadrado:'<svg viewBox="0 0 40 50"><rect x="6" y="9" width="28" height="32" rx="5"/></svg>',
+ corazon:'<svg viewBox="0 0 40 50"><path d="M20 43 C7 31 6 15 14 13 C18 12 20 16 20 18 C20 16 22 12 26 13 C34 15 33 31 20 43 Z"/></svg>',
+ alargado:'<svg viewBox="0 0 40 50"><rect x="9" y="4" width="22" height="42" rx="10"/></svg>',
+ diamante:'<svg viewBox="0 0 40 50"><polygon points="20,4 33,25 20,46 7,25"/></svg>'
+};
+const ROSTROS=[
+ {k:'ovalado',n:'Ovalado',formas:['aviador','cuadrada','rectangular','redonda','ovalada','cat'],rec:'Casi todas te favorecen — aviador, cuadrada o redonda lucen muy bien.',tam:'Tamaño proporcional a tu cara; ni muy grande ni muy pequeña.'},
+ {k:'redondo',n:'Redondo',formas:['cuadrada','rectangular','hexagonal','geometr'],rec:'Monturas angulares que estilizan: cuadrada, rectangular o geométrica.',tam:'Más anchas que altas; evita las muy redondas o pequeñas.'},
+ {k:'cuadrado',n:'Cuadrado',formas:['redonda','ovalada','aviador','cat'],rec:'Monturas curvas que suavizan los ángulos: redonda, ovalada o aviador.',tam:'Redondeadas y de tamaño medio; no demasiado anchas.'},
+ {k:'corazon',n:'Corazón',formas:['aviador','redonda','cat','ovalada'],rec:'Equilibran la frente ancha: aviador, redonda o cat-eye ligera.',tam:'Más anchas en la parte inferior; livianas y al ras de las cejas.'},
+ {k:'alargado',n:'Alargado',formas:['cuadrada','redonda','wrap','aviador'],rec:'Monturas con altura para acortar el rostro: cuadradas o redondas grandes.',tam:'Grandes y con buena altura; aportan equilibrio.'},
+ {k:'diamante',n:'Diamante',formas:['ovalada','cat','redonda'],rec:'Suavizan los pómulos: ovalada, cat-eye o redonda.',tam:'Anchas a la altura de las cejas; evita lo muy angular.'},
+];
+function renderRostros(){
+  document.getElementById('rostroGrid').innerHTML=ROSTROS.map(r=>`<button class="rostro-card" type="button" data-k="${r.k}">${ICO[r.k]}<span>${r.n}</span></button>`).join('');
+}
+function selRostro(k){
+  const r=ROSTROS.find(x=>x.k===k); if(!r)return;
+  document.querySelectorAll('.rostro-card').forEach(c=>c.classList.toggle('active',c.dataset.k===k));
+  const det=document.getElementById('rostroDet'); det.className='rostro-detalle show';
+  det.innerHTML='<h3>Rostro '+r.n.toLowerCase()+'</h3>'
+    +'<p><span class="lab">Te favorecen</span><b>'+r.rec+'</b></p>'
+    +'<p><span class="lab">Tamaño ideal</span>'+r.tam+'</p>'
+    +'<button class="rostro-ver" type="button" data-k="'+k+'">Ver monturas recomendadas</button>';
+}
+document.getElementById('rostroGrid').addEventListener('click',e=>{ const c=e.target.closest('.rostro-card'); if(c) selRostro(c.dataset.k); });
+document.getElementById('rostroDet').addEventListener('click',e=>{
+  const v=e.target.closest('.rostro-ver'); if(!v)return;
+  const r=ROSTROS.find(x=>x.k===v.dataset.k); if(!r)return;
+  estado.formas=r.formas; estado.formaLabel='rostro '+r.n.toLowerCase(); estado.cat='todas'; estado.mat='todas'; estado.q=''; document.getElementById('buscar').value='';
+  syncFilterButtons(); render();
+  document.querySelector('.catalogo').scrollIntoView({behavior:'smooth',block:'start'});
+});
+document.getElementById('abrirGuia').addEventListener('click',()=>document.getElementById('guia').scrollIntoView({behavior:'smooth',block:'start'}));
+
+/* ===== INIT ===== */
+renderRostros();
+document.getElementById('grid-top').innerHTML = productos.filter(p=>p.top).map(cardHTML).join('');
+renderCart();
+render();
+openFromHash();
+window.addEventListener('hashchange',openFromHash);
+</script>
+</body>
+</html>
