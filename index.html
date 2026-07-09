@@ -194,7 +194,7 @@
   .ia-btn:hover{background:var(--dorado)}
   .ia-try{display:flex;align-items:center;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid var(--linea);flex-wrap:wrap}
   .ia-try-label{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--gris-texto);margin-right:auto}
-  .btn-ia{font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.8px;padding:7px 14px;background:#fff;border:1px solid var(--linea);cursor:pointer;transition:.15s}
+  .btn-ia{display:inline-block;text-decoration:none;color:inherit;font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.8px;padding:7px 14px;background:#fff;border:1px solid var(--linea);cursor:pointer;transition:.15s}
   .btn-ia:hover{border-color:var(--dorado);color:var(--dorado)}
   @media(max-width:900px){.rostro-grid{grid-template-columns:repeat(3,1fr)}}
   @media(max-width:600px){.rostro-grid{grid-template-columns:repeat(2,1fr)}}
@@ -972,7 +972,7 @@ function cardHTML(p){
       </div>
       <div class="ia-try">
         <span class="ia-try-label">Pruébatelas con IA</span>
-        <button class="btn-ia" type="button" data-ia="gemini">Gemini</button>
+        <a class="btn-ia" data-ia="gemini" href="https://gemini.google.com/app" target="_blank" rel="noopener">Gemini</a>
         <button class="btn-ia" type="button" data-ia="chatgpt">ChatGPT</button>
       </div>
     </div>
@@ -1002,7 +1002,7 @@ document.addEventListener('click',e=>{
     if(ia.dataset.ia==='chatgpt'){ window.open('https://chatgpt.com/?q='+encodeURIComponent(tx),'_blank','noopener'); }
     else{ try{ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(tx);} else{ const ta=document.createElement('textarea'); ta.value=tx; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); } }catch(_){}
       ia.textContent='¡Copiado! Pégalo allá'; clearTimeout(ia._t); ia._t=setTimeout(()=>{ia.textContent='Gemini';},4000);
-      window.open('https://gemini.google.com/app','_blank','noopener'); }
+      return; /* sin preventDefault: el enlace navega a Gemini por sí solo */ }
     return; }
   const sw=e.target.closest('.sw'); if(sw){ const card=sw.closest('.card'); card.dataset.manual='1'; stopAuto(card); selectColor(card,sw); return; }
   const thumb=e.target.closest('.thumb'); if(thumb){ const card=thumb.closest('.card'); card.dataset.view=thumb.dataset.view; setActiveThumb(card,thumb.dataset.view); const p=byId(card.dataset.id); card.querySelector('.viewer').innerHTML=oneView(p,p.colores[+card.dataset.color],thumb.dataset.view); return; }
