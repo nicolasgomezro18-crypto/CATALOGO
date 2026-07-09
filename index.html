@@ -192,6 +192,10 @@
   .ia-cta p{font-size:14.5px;color:var(--gris-texto);max-width:620px;margin:0}
   .ia-btn{background:var(--negro);color:#fff;text-decoration:none;border:none;cursor:pointer;font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;padding:13px 22px;white-space:nowrap}
   .ia-btn:hover{background:var(--dorado)}
+  .ia-try{display:flex;align-items:center;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid var(--linea);flex-wrap:wrap}
+  .ia-try-label{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--gris-texto);margin-right:auto}
+  .btn-ia{font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.8px;padding:7px 14px;background:#fff;border:1px solid var(--linea);cursor:pointer;transition:.15s}
+  .btn-ia:hover{border-color:var(--dorado);color:var(--dorado)}
   @media(max-width:900px){.rostro-grid{grid-template-columns:repeat(3,1fr)}}
   @media(max-width:600px){.rostro-grid{grid-template-columns:repeat(2,1fr)}}
 
@@ -908,6 +912,10 @@ function oneView(p, color, vista){
 
 /* ===== ENLACE + WHATSAPP ===== */
 function refLink(p, s){ const base=CATALOGO_URL||(location.origin+location.pathname); return base+'#'+p.id+(s?'__'+s:''); }
+function promptModelo(p,color){
+  const foto=color.frente?new URL(color.frente,location.href).href:'';
+  return `Actúa como el asesor de estilo de Ferrati, marca premium de gafas. Responde en español, cercano y honesto. Quiero probarme virtualmente el modelo ${p.nombre} (ref. ${color.codigo||p.codigo}${p.forma?', forma '+p.forma:''}${p.medida?', medida '+p.medida:''}${color.nombre?', color '+color.nombre:''}).${foto?' Foto del producto: '+foto+' — si no puedes abrirla, pídeme que la adjunte.':''} Te adjunto mi selfie de frente. Haz esto: 1) Determina internamente mi tipo de rostro (ovalado, redondo, cuadrado, corazón, alargado o diamante; ovalado no es la opción por defecto). 2) EDITA mi selfie agregando únicamente estas gafas: conserva intactos mi rostro, expresión, peinado, fondo e iluminación, y replica la montura exacta de la foto del producto sin inventar detalles; la imagen debe mostrarme solo a mí con las gafas puestas, sin textos ni collages. 3) Dame un veredicto honesto — "te favorece mucho", "te queda bien, con matices" o "hay mejores opciones para ti" — verificando: que la forma sea favorable para mi tipo de rostro; el tamaño según la medida (el primer número es el calibre: hasta 55 mediano, 56-58 grande, 59 o más oversized, y un oversized en rostro estrecho se ve grande); que mis cejas se vean al menos parcialmente; y que la montura no sobresalga de mi contorno. No me complazcas: si algo falla, dímelo claro. Si me queda bien, recuérdame cotizar por el WhatsApp de Ferrati +57 324 4073508 con el nombre y la referencia. Aquí está mi selfie:`;
+}
 function waLink(p, color, qty){
   const link=refLink(p, slug(color.codigo||color.nombre||''));
   const msg='Hola Ferrati, quiero cotizar estas gafas de sol:\n'
@@ -962,6 +970,11 @@ function cardHTML(p){
         </div>
         <button class="btn-wa btn-add" type="button">Agregar al carrito</button>
       </div>
+      <div class="ia-try">
+        <span class="ia-try-label">Pruébatelas con IA</span>
+        <button class="btn-ia" type="button" data-ia="gemini">Gemini</button>
+        <button class="btn-ia" type="button" data-ia="chatgpt">ChatGPT</button>
+      </div>
     </div>
   </article>`;
 }
@@ -985,6 +998,12 @@ document.addEventListener('click',e=>{
   if(e.target.closest('#lightbox')) return;
   const viewer=e.target.closest('.viewer'); if(viewer){ lbOpen(viewer.closest('.card')); return; }
   const add=e.target.closest('.btn-add'); if(add){ const card=add.closest('.card'); const p=byId(card.dataset.id); const color=p.colores[+card.dataset.color]; const qty=Math.max(1,(+card.querySelector('.qty-input').value||1)); addToCart(p,color,qty); add.textContent='✓ Agregado'; clearTimeout(add._t); add._t=setTimeout(()=>{add.textContent='Agregar al carrito';},1100); return; }
+  const ia=e.target.closest('.btn-ia'); if(ia){ const card=ia.closest('.card'); const p=byId(card.dataset.id); const color=p.colores[+card.dataset.color]||{}; const tx=promptModelo(p,color);
+    if(ia.dataset.ia==='chatgpt'){ window.open('https://chatgpt.com/?q='+encodeURIComponent(tx),'_blank','noopener'); }
+    else{ try{ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(tx);} else{ const ta=document.createElement('textarea'); ta.value=tx; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); } }catch(_){}
+      ia.textContent='¡Copiado! Pégalo allá'; clearTimeout(ia._t); ia._t=setTimeout(()=>{ia.textContent='Gemini';},4000);
+      window.open('https://gemini.google.com/app','_blank','noopener'); }
+    return; }
   const sw=e.target.closest('.sw'); if(sw){ const card=sw.closest('.card'); card.dataset.manual='1'; stopAuto(card); selectColor(card,sw); return; }
   const thumb=e.target.closest('.thumb'); if(thumb){ const card=thumb.closest('.card'); card.dataset.view=thumb.dataset.view; setActiveThumb(card,thumb.dataset.view); const p=byId(card.dataset.id); card.querySelector('.viewer').innerHTML=oneView(p,p.colores[+card.dataset.color],thumb.dataset.view); return; }
   const step=e.target.closest('.step'); if(step){ const card=step.closest('.card'); const inp=card.querySelector('.qty-input'); let q=(+inp.value||1)+(+step.dataset.d); if(q<1)q=1; if(q>99)q=99; inp.value=q; updateWA(card); return; }
