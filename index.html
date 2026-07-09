@@ -207,6 +207,7 @@
   .ia-modal-go{display:block;text-align:center;background:var(--negro);color:#fff;text-decoration:none;font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;padding:13px 22px}
   .ia-modal-go:hover{background:var(--dorado)}
   .ia-modal-again{display:block;margin:10px auto 0;background:none;border:none;font-size:12px;color:var(--gris-texto);text-decoration:underline;cursor:pointer}
+  .ia-modal-alt{font-size:12px;color:var(--gris-texto);margin:10px 0 0;text-align:center}
   @media(max-width:900px){.rostro-grid{grid-template-columns:repeat(3,1fr)}}
   @media(max-width:600px){.rostro-grid{grid-template-columns:repeat(2,1fr)}}
 
@@ -398,6 +399,7 @@
       <li>Envía y mira cómo se te ven puestas.</li>
     </ol>
     <a class="ia-modal-go" id="iaModalGo" href="https://gemini.google.com/app" target="_blank" rel="noopener">Abrir Gemini</a>
+    <p class="ia-modal-alt">¿No se abre? Entra tú mismo a tu app de Gemini (o a gemini.google.com) y pega el prompt — ya está copiado.</p>
     <button class="ia-modal-again" id="iaModalAgain" type="button">Volver a copiar el prompt</button>
   </div>
 </div>
@@ -1259,6 +1261,17 @@ document.getElementById('iaModalX').addEventListener('click',()=>{document.getEl
 document.getElementById('iaModal').addEventListener('click',e=>{ if(e.target.id==='iaModal') document.getElementById('iaModal').hidden=true; });
 document.getElementById('iaModalAgain').addEventListener('click',e=>{ copiarTexto(iaPromptActual); e.target.textContent='Copiado ✓'; setTimeout(()=>{e.target.textContent='Volver a copiar el prompt';},2000); });
 document.getElementById('iaModalGo').addEventListener('click',()=>{ setTimeout(()=>{document.getElementById('iaModal').hidden=true;},400); });
+(function(){
+  const go=document.getElementById('iaModalGo'); const ua=navigator.userAgent;
+  if(/Android/i.test(ua)){
+    /* intent:// abre la app de Gemini si está instalada; si no, cae a la web */
+    go.href='intent://gemini.google.com/app#Intent;scheme=https;package=com.google.android.apps.bard;S.browser_fallback_url=https%3A%2F%2Fgemini.google.com%2Fapp;end';
+    go.removeAttribute('target');
+  } else if(/iPhone|iPad|iPod/i.test(ua)){
+    /* en iOS la navegación en la misma pestaña permite que el enlace universal abra la app */
+    go.removeAttribute('target');
+  }
+})();
 document.getElementById('grid-top').innerHTML = productos.filter(p=>p.top).map(cardHTML).join('');
 renderCart();
 render();
