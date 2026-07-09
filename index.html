@@ -391,15 +391,16 @@
 <div class="ia-modal" id="iaModal" hidden>
   <div class="ia-modal-box">
     <button class="ia-modal-x" id="iaModalX" type="button" aria-label="Cerrar">&times;</button>
-    <h3>Prompt copiado ✓</h3>
+    <h3 id="iaModalTitulo">Prompt copiado ✓</h3>
     <p>Ahora en Gemini:</p>
     <ol>
-      <li>Pega el prompt en el cuadro de mensaje (Ctrl+V; en el celular mantén presionado y elige "Pegar").</li>
-      <li>Adjunta una selfie tuya de frente.</li>
+      <li>Pega en el cuadro de mensaje (Ctrl+V; en el celular mantén presionado y elige "Pegar").</li>
+      <li>Adjunta una selfie tuya de frente — y la foto de la montura si no apareció al pegar (puedes descargarla aquí abajo).</li>
       <li>Envía y mira cómo se te ven puestas.</li>
     </ol>
     <a class="ia-modal-go" id="iaModalGo" href="https://gemini.google.com/app" target="_blank" rel="noopener">Abrir Gemini</a>
     <p class="ia-modal-alt">¿No se abre? Entra tú mismo a tu app de Gemini (o a gemini.google.com) y pega el prompt — ya está copiado.</p>
+    <a class="ia-modal-again" id="iaModalFoto" href="#" download hidden>Descargar la foto de la montura</a>
     <button class="ia-modal-again" id="iaModalAgain" type="button">Volver a copiar el prompt</button>
   </div>
 </div>
@@ -1029,7 +1030,7 @@ document.addEventListener('click',e=>{
   const add=e.target.closest('.btn-add'); if(add){ const card=add.closest('.card'); const p=byId(card.dataset.id); const color=p.colores[+card.dataset.color]; const qty=Math.max(1,(+card.querySelector('.qty-input').value||1)); addToCart(p,color,qty); add.textContent='✓ Agregado'; clearTimeout(add._t); add._t=setTimeout(()=>{add.textContent='Agregar al carrito';},1100); return; }
   const ia=e.target.closest('.btn-ia'); if(ia){ const card=ia.closest('.card'); const p=byId(card.dataset.id); const color=p.colores[+card.dataset.color]||{}; const tx=promptModelo(p,color);
     if(ia.dataset.ia==='chatgpt'){ window.open('https://chatgpt.com/?q='+encodeURIComponent(tx),'_blank','noopener'); }
-    else{ abrirIaModal(tx); }
+    else{ iaGemini(p,color,tx); }
     return; }
   const sw=e.target.closest('.sw'); if(sw){ const card=sw.closest('.card'); card.dataset.manual='1'; stopAuto(card); selectColor(card,sw); return; }
   const thumb=e.target.closest('.thumb'); if(thumb){ const card=thumb.closest('.card'); card.dataset.view=thumb.dataset.view; setActiveThumb(card,thumb.dataset.view); const p=byId(card.dataset.id); card.querySelector('.viewer').innerHTML=oneView(p,p.colores[+card.dataset.color],thumb.dataset.view); return; }
@@ -1256,7 +1257,31 @@ function copiarTexto(tx){
   return ok;
 }
 let iaPromptActual='';
-function abrirIaModal(tx){ iaPromptActual=tx; copiarTexto(tx); document.getElementById('iaModal').hidden=false; }
+function abrirIaModal(tx, conFoto, fotoUrl){
+  iaPromptActual=tx;
+  document.getElementById('iaModalTitulo').textContent = conFoto ? 'Prompt y foto copiados ✓' : 'Prompt copiado ✓';
+  const f=document.getElementById('iaModalFoto');
+  if(fotoUrl){ f.href=fotoUrl; f.hidden=false; } else { f.hidden=true; }
+  document.getElementById('iaModal').hidden=false;
+}
+function aPng(file){ return new Promise((res,rej)=>{ const img=new Image(); const u=URL.createObjectURL(file); img.onload=()=>{ try{ const c=document.createElement('canvas'); c.width=img.naturalWidth; c.height=img.naturalHeight; c.getContext('2d').drawImage(img,0,0); c.toBlob(b=>{ URL.revokeObjectURL(u); b?res(b):rej(new Error('png')); },'image/png'); }catch(err){ URL.revokeObjectURL(u); rej(err); } }; img.onerror=()=>{ URL.revokeObjectURL(u); rej(new Error('img')); }; img.src=u; }); }
+async function iaGemini(p,color,tx){
+  const src=color.frente?new URL(color.frente,location.href).href:'';
+  let file=null;
+  if(src){ try{ const b=await fetch(src).then(r=>r.blob()); file=new File([b],(color.codigo||p.id)+'.jpg',{type:b.type||'image/jpeg'}); }catch(_){} }
+  /* móvil: hoja de compartir nativa con foto + prompt (elegir Gemini en la lista) */
+  if(file && navigator.canShare && navigator.canShare({files:[file]})){
+    copiarTexto(tx); /* respaldo por si la app destino descarta el texto */
+    try{ await navigator.share({files:[file], text:tx}); return; }catch(_){}
+  }
+  /* escritorio: portapapeles con texto + imagen para pegar de una sola vez */
+  let conFoto=false;
+  if(file && navigator.clipboard && window.ClipboardItem){
+    try{ const png=await aPng(file); await navigator.clipboard.write([new ClipboardItem({'text/plain':new Blob([tx],{type:'text/plain'}),'image/png':png})]); conFoto=true; }
+    catch(_){ copiarTexto(tx); }
+  } else { copiarTexto(tx); }
+  abrirIaModal(tx, conFoto, src);
+}
 document.getElementById('iaModalX').addEventListener('click',()=>{document.getElementById('iaModal').hidden=true;});
 document.getElementById('iaModal').addEventListener('click',e=>{ if(e.target.id==='iaModal') document.getElementById('iaModal').hidden=true; });
 document.getElementById('iaModalAgain').addEventListener('click',e=>{ copiarTexto(iaPromptActual); e.target.textContent='Copiado ✓'; setTimeout(()=>{e.target.textContent='Volver a copiar el prompt';},2000); });
