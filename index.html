@@ -186,6 +186,12 @@
   .rostro-detalle .lab{display:inline-block;min-width:96px;font-weight:600;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gris-texto)}
   .rostro-ver{margin-top:14px;background:var(--negro);color:#fff;border:none;font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;padding:11px 20px;cursor:pointer}
   .rostro-ver:hover{background:var(--dorado)}
+  .ia-cta{margin-top:18px;border:1px solid var(--dorado);background:var(--hueso);padding:24px 22px;display:none;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+  .ia-cta.show{display:flex}
+  .ia-cta h3{font-family:var(--serif);font-style:italic;font-weight:600;font-size:23px;margin-bottom:6px}
+  .ia-cta p{font-size:14.5px;color:var(--gris-texto);max-width:620px;margin:0}
+  .ia-btn{background:var(--negro);color:#fff;text-decoration:none;border:none;cursor:pointer;font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;padding:13px 22px;white-space:nowrap}
+  .ia-btn:hover{background:var(--dorado)}
   @media(max-width:900px){.rostro-grid{grid-template-columns:repeat(3,1fr)}}
   @media(max-width:600px){.rostro-grid{grid-template-columns:repeat(2,1fr)}}
 
@@ -283,6 +289,14 @@
     <h2>¿Qué montura para tu rostro?</h2>
     <div class="rostro-grid" id="rostroGrid"></div>
     <div class="rostro-detalle" id="rostroDet"></div>
+    <div class="ia-cta" id="iaCta">
+      <div>
+        <h3>¿No conoces tu tipo de rostro?</h3>
+        <p>Te regalamos nuestro asesor de estilo con IA: copia el prompt, pégalo en Gemini o ChatGPT junto a una selfie de frente, y descubre tu tipo de rostro, las monturas que te favorecen y cómo se te ven puestas.</p>
+      </div>
+      <a class="ia-btn" id="iaBtn" href="#" target="_blank" rel="noopener" style="display:none">Hablar con el asesor IA</a>
+      <button class="ia-btn" id="iaCopy" type="button" style="display:none">Copiar prompt del asesor</button>
+    </div>
   </div>
 </section>
 
@@ -360,6 +374,20 @@
 <script>
 const WHATSAPP    = "573244073508";
 const CATALOGO_URL = "";
+const IA_URL = ""; /* link del asesor IA; si está vacío se usa PROMPT_IA */
+const PROMPT_IA = `Actúa como el asesor de estilo de Ferrati, marca premium de gafas. Responde en español, con tono fresco, cercano y honesto. Vas a ayudarme a descubrir qué gafas me favorecen y a probármelas virtualmente.
+
+Paso 1 — mi tipo de rostro. Te adjunto una selfie de frente. Estima internamente: el ratio largo/ancho de mi rostro; cuál es más ancho entre frente, pómulos y mandíbula; si mi mandíbula es angulosa o suave; y la forma de mi mentón. Clasifícame en UNO de estos tipos aplicando las reglas en orden y quedándote con la primera que se cumpla: ALARGADO (largo supera 1.5 veces el ancho), DIAMANTE (pómulos claramente lo más ancho, frente y mandíbula estrechas), CORAZÓN (frente lo más ancho, mentón fino), CUADRADO (anchos parejos, mandíbula angulosa), REDONDO (largo similar al ancho, sin ángulos), OVALADO (largo entre 1.3 y 1.5 veces el ancho, curvas suaves). Importante: ovalado no es la opción por defecto; solo concluye ovalado si descartaste las demás. Dime el resultado en una línea, con un porqué breve.
+
+Paso 2 — qué me favorece. Según mi tipo, dime qué formas de montura me convienen: ovalado → casi todas, en especial cuadradas y aviador; redondo → cuadradas y rectangulares; cuadrado → redondas y aviador; corazón → aviador, redondas y cat-eye ligeras; alargado → monturas altas y grandes; diamante → cat-eye, ovaladas y redondas. Después invítame a elegir un modelo en el catálogo Ferrati: https://nicolasgomezro18-crypto.github.io/CATALOGO/#guia (ahí toco mi tipo de rostro y veo las monturas recomendadas). Cuando elija, te traeré la foto del modelo junto con su nombre, referencia y medida, que aparecen en el catálogo.
+
+Paso 3 — pruébamelas. Cuando te dé la foto del modelo, EDITA mi selfie original agregando únicamente las gafas: conserva intactos mi rostro, expresión, peinado, fondo e iluminación, y replica la montura exacta de la foto del producto, sin inventar detalles ni cambiar sus proporciones. La imagen debe mostrarme solo a mí con las gafas puestas, sin textos ni collages.
+
+Paso 4 — sé honesto conmigo. Dame uno de tres veredictos: "te favorece mucho", "te queda bien, con matices" o "hay mejores opciones para ti". No me complazcas: verifica que la forma sea de las favorables para mi rostro; que el tamaño sea correcto usando la medida del catálogo (el primer número es el calibre del lente: hasta 55 es mediano, 56-58 grande, 59 o más oversized — y un oversized en un rostro estrecho se ve grande); que mis cejas se vean al menos parcialmente; y que la montura no sobresalga del contorno de mi cara. Si algo falla, dímelo con claridad y sugiéreme volver al catálogo por una forma mejor. Nunca digas que todo es perfecto si no lo es.
+
+Cuando encontremos el modelo ideal, recuérdame escribir al WhatsApp de Ferrati +57 324 4073508 con el nombre y la referencia para cotizarlo.
+
+Empecemos: aquí está mi selfie.`; /* prompt regalo: el botón lo copia al portapapeles; vacío = oculto */
 
 /* ===== DATA (la reescribe cargar-fotos.py) ===== */
 const productos = [
@@ -1166,6 +1194,15 @@ document.getElementById('abrirGuia').addEventListener('click',()=>document.getEl
 
 /* ===== INIT ===== */
 renderRostros();
+if(PROMPT_IA){
+  const bc=document.getElementById('iaCopy'); bc.style.display='inline-block';
+  document.getElementById('iaCta').classList.add('show');
+  bc.addEventListener('click',()=>{
+    const done=()=>{bc.textContent='¡Copiado! Pégalo en Gemini o ChatGPT con tu selfie';setTimeout(()=>bc.textContent='Copiar prompt del asesor',4500);};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(PROMPT_IA).then(done);}
+    else{const ta=document.createElement('textarea');ta.value=PROMPT_IA;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();done();}
+  });
+}else if(IA_URL){const a=document.getElementById('iaBtn');a.href=IA_URL;a.style.display='inline-block';document.getElementById('iaCta').classList.add('show');}
 document.getElementById('grid-top').innerHTML = productos.filter(p=>p.top).map(cardHTML).join('');
 renderCart();
 render();
