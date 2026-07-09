@@ -196,6 +196,17 @@
   .ia-try-label{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--gris-texto);margin-right:auto}
   .btn-ia{display:inline-block;text-decoration:none;color:inherit;font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.8px;padding:7px 14px;background:#fff;border:1px solid var(--linea);cursor:pointer;transition:.15s}
   .btn-ia:hover{border-color:var(--dorado);color:var(--dorado)}
+  .ia-modal{position:fixed;inset:0;background:rgba(17,17,17,.55);display:flex;align-items:center;justify-content:center;z-index:200;padding:20px}
+  .ia-modal[hidden]{display:none}
+  .ia-modal-box{background:#fff;max-width:420px;width:100%;padding:28px 26px;position:relative;border-top:3px solid var(--dorado)}
+  .ia-modal-box h3{font-family:var(--serif);font-style:italic;font-weight:600;font-size:24px;margin-bottom:8px}
+  .ia-modal-box p{font-size:14px;margin:0 0 8px}
+  .ia-modal-box ol{margin:0 0 18px 18px;font-size:14px}
+  .ia-modal-box li{margin:4px 0}
+  .ia-modal-x{position:absolute;top:8px;right:12px;background:none;border:none;font-size:26px;cursor:pointer;color:var(--gris-texto)}
+  .ia-modal-go{display:block;text-align:center;background:var(--negro);color:#fff;text-decoration:none;font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;padding:13px 22px}
+  .ia-modal-go:hover{background:var(--dorado)}
+  .ia-modal-again{display:block;margin:10px auto 0;background:none;border:none;font-size:12px;color:var(--gris-texto);text-decoration:underline;cursor:pointer}
   @media(max-width:900px){.rostro-grid{grid-template-columns:repeat(3,1fr)}}
   @media(max-width:600px){.rostro-grid{grid-template-columns:repeat(2,1fr)}}
 
@@ -372,6 +383,22 @@
     </div>
     <div class="lb-sws" id="lbSws"></div>
     <div class="lb-hint">Clic en la imagen para acercar · rueda del mouse para más zoom · Esc para cerrar</div>
+  </div>
+</div>
+
+<!-- MODAL ASESOR IA -->
+<div class="ia-modal" id="iaModal" hidden>
+  <div class="ia-modal-box">
+    <button class="ia-modal-x" id="iaModalX" type="button" aria-label="Cerrar">&times;</button>
+    <h3>Prompt copiado ✓</h3>
+    <p>Ahora en Gemini:</p>
+    <ol>
+      <li>Pega el prompt en el cuadro de mensaje (Ctrl+V; en el celular mantén presionado y elige "Pegar").</li>
+      <li>Adjunta una selfie tuya de frente.</li>
+      <li>Envía y mira cómo se te ven puestas.</li>
+    </ol>
+    <a class="ia-modal-go" id="iaModalGo" href="https://gemini.google.com/app" target="_blank" rel="noopener">Abrir Gemini</a>
+    <button class="ia-modal-again" id="iaModalAgain" type="button">Volver a copiar el prompt</button>
   </div>
 </div>
 
@@ -972,7 +999,7 @@ function cardHTML(p){
       </div>
       <div class="ia-try">
         <span class="ia-try-label">Pruébatelas con IA</span>
-        <a class="btn-ia" data-ia="gemini" href="https://gemini.google.com/app" target="_blank" rel="noopener">Gemini</a>
+        <button class="btn-ia" type="button" data-ia="gemini">Gemini</button>
         <button class="btn-ia" type="button" data-ia="chatgpt">ChatGPT</button>
       </div>
     </div>
@@ -1000,9 +1027,7 @@ document.addEventListener('click',e=>{
   const add=e.target.closest('.btn-add'); if(add){ const card=add.closest('.card'); const p=byId(card.dataset.id); const color=p.colores[+card.dataset.color]; const qty=Math.max(1,(+card.querySelector('.qty-input').value||1)); addToCart(p,color,qty); add.textContent='✓ Agregado'; clearTimeout(add._t); add._t=setTimeout(()=>{add.textContent='Agregar al carrito';},1100); return; }
   const ia=e.target.closest('.btn-ia'); if(ia){ const card=ia.closest('.card'); const p=byId(card.dataset.id); const color=p.colores[+card.dataset.color]||{}; const tx=promptModelo(p,color);
     if(ia.dataset.ia==='chatgpt'){ window.open('https://chatgpt.com/?q='+encodeURIComponent(tx),'_blank','noopener'); }
-    else{ try{ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(tx);} else{ const ta=document.createElement('textarea'); ta.value=tx; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); } }catch(_){}
-      ia.textContent='¡Copiado! Pégalo allá'; clearTimeout(ia._t); ia._t=setTimeout(()=>{ia.textContent='Gemini';},4000);
-      return; /* sin preventDefault: el enlace navega a Gemini por sí solo */ }
+    else{ abrirIaModal(tx); }
     return; }
   const sw=e.target.closest('.sw'); if(sw){ const card=sw.closest('.card'); card.dataset.manual='1'; stopAuto(card); selectColor(card,sw); return; }
   const thumb=e.target.closest('.thumb'); if(thumb){ const card=thumb.closest('.card'); card.dataset.view=thumb.dataset.view; setActiveThumb(card,thumb.dataset.view); const p=byId(card.dataset.id); card.querySelector('.viewer').innerHTML=oneView(p,p.colores[+card.dataset.color],thumb.dataset.view); return; }
@@ -1222,6 +1247,18 @@ if(PROMPT_IA){
     else{const ta=document.createElement('textarea');ta.value=PROMPT_IA;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();done();}
   });
 }else if(IA_URL){const a=document.getElementById('iaBtn');a.href=IA_URL;a.style.display='inline-block';document.getElementById('iaCta').classList.add('show');}
+function copiarTexto(tx){
+  let ok=false;
+  try{ const ta=document.createElement('textarea'); ta.value=tx; ta.setAttribute('readonly',''); ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0,tx.length); ok=document.execCommand('copy'); ta.remove(); }catch(_){}
+  if(!ok && navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(tx); ok=true; }
+  return ok;
+}
+let iaPromptActual='';
+function abrirIaModal(tx){ iaPromptActual=tx; copiarTexto(tx); document.getElementById('iaModal').hidden=false; }
+document.getElementById('iaModalX').addEventListener('click',()=>{document.getElementById('iaModal').hidden=true;});
+document.getElementById('iaModal').addEventListener('click',e=>{ if(e.target.id==='iaModal') document.getElementById('iaModal').hidden=true; });
+document.getElementById('iaModalAgain').addEventListener('click',e=>{ copiarTexto(iaPromptActual); e.target.textContent='Copiado ✓'; setTimeout(()=>{e.target.textContent='Volver a copiar el prompt';},2000); });
+document.getElementById('iaModalGo').addEventListener('click',()=>{ setTimeout(()=>{document.getElementById('iaModal').hidden=true;},400); });
 document.getElementById('grid-top').innerHTML = productos.filter(p=>p.top).map(cardHTML).join('');
 renderCart();
 render();
