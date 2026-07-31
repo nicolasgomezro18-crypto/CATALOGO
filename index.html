@@ -211,6 +211,72 @@
   @media(max-width:900px){.rostro-grid{grid-template-columns:repeat(3,1fr)}}
   @media(max-width:600px){.rostro-grid{grid-template-columns:repeat(2,1fr)}}
 
+  /* HERO quiz + header link */
+  .hero-quiz{margin-top:26px;display:inline-flex;align-items:center;gap:10px;background:var(--dorado);color:#fff;border:none;font-family:var(--sans);font-weight:500;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;padding:15px 30px;cursor:pointer;transition:.2s}
+  .hero-quiz:hover{background:#fff;color:var(--negro)}
+
+  /* QUIZ */
+  .quiz{position:fixed;inset:0;z-index:300;background:#fff;display:flex;flex-direction:column}
+  .quiz[hidden]{display:none}
+  .quiz-prog{height:4px;background:var(--linea)}
+  .quiz-prog-bar{height:100%;width:0;background:var(--dorado);transition:width .35s ease}
+  .quiz-top-row{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:900px;margin:0 auto;width:100%}
+  .quiz-step{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gris-texto)}
+  .quiz-skip{background:none;border:none;font-family:var(--sans);font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--gris-texto);cursor:pointer}
+  .quiz-skip:hover{color:var(--negro)}
+  .quiz-main{flex:1;overflow-y:auto;display:flex;flex-direction:column;align-items:center;padding:16px 24px 40px;text-align:center}
+  .quiz-logo{height:24px;margin:6px 0 22px}
+  .quiz-q{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(26px,4vw,40px);margin-bottom:8px}
+  .quiz-sub{font-weight:300;color:var(--gris-texto);font-size:15px;margin-bottom:26px;max-width:520px}
+  .quiz-ops{display:grid;gap:14px;width:100%;max-width:760px}
+  .quiz-ops.cols-3{grid-template-columns:repeat(3,1fr)}
+  .quiz-ops.cols-4{grid-template-columns:repeat(4,1fr)}
+  .quiz-op{border:1px solid var(--linea);background:#fff;cursor:pointer;padding:20px 12px;display:flex;flex-direction:column;align-items:center;gap:12px;transition:.18s;font-family:var(--sans);color:var(--negro)}
+  .quiz-op:hover{border-color:var(--negro)}
+  .quiz-op.sel{border-color:var(--dorado);background:#fbf8f3;box-shadow:inset 0 0 0 1px var(--dorado)}
+  .quiz-op .qi{width:88px;height:46px;display:grid;place-items:center;color:var(--negro)}
+  .quiz-op .qi svg{max-width:100%;max-height:100%}
+  .quiz-op .qsw{width:40px;height:40px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px var(--linea)}
+  .quiz-op .ql{font-size:14px;font-weight:500;letter-spacing:.3px}
+  .quiz-nav{border-top:1px solid var(--linea);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;max-width:900px;margin:0 auto;width:100%}
+  .quiz-back{background:none;border:none;font-family:var(--sans);font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--gris-texto);cursor:pointer}
+  .quiz-back:hover{color:var(--negro)}
+  .quiz-back[disabled]{opacity:.3;cursor:default}
+  .quiz-next{background:var(--negro);color:#fff;border:none;font-family:var(--sans);font-weight:500;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;padding:14px 34px;cursor:pointer}
+  .quiz-next:hover{background:var(--dorado)}
+  .quiz-email{width:100%;max-width:420px;display:flex;flex-direction:column;gap:12px}
+  .quiz-email input[type=email]{font-family:var(--sans);font-size:15px;padding:14px 16px;border:1px solid var(--linea);text-align:center}
+  .quiz-email input[type=email]:focus{outline:none;border-color:var(--dorado)}
+  .quiz-news{display:flex;align-items:center;gap:8px;justify-content:center;font-size:13px;color:var(--gris-texto)}
+  .quiz-calc{display:flex;flex-direction:column;align-items:center;gap:22px;padding-top:60px}
+  .quiz-spin{width:44px;height:44px;border:3px solid var(--linea);border-top-color:var(--dorado);border-radius:50%;animation:spin 1s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .quiz-calc-msg{font-family:var(--serif);font-style:italic;font-size:21px}
+
+  /* QUIZ banner de resultados */
+  .quiz-banner{background:var(--hueso);border:1px solid var(--linea);padding:16px 20px;margin:22px 0 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  .qb-txt{font-size:14px}
+  .qb-txt b{font-family:var(--serif);font-style:italic;font-weight:600}
+  .qb-acts{display:flex;gap:10px;flex-wrap:wrap}
+  .qb-btn{font-family:var(--sans);font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:9px 16px;border:1px solid var(--negro);background:#fff;color:var(--negro);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+  .qb-btn:hover{background:var(--negro);color:#fff}
+  .qb-btn.oro{background:var(--dorado);border-color:var(--dorado);color:#fff}
+  .qb-btn.oro:hover{background:var(--negro);border-color:var(--negro)}
+  @media(max-width:600px){.quiz-ops.cols-4{grid-template-columns:repeat(2,1fr)}}
+
+  /* QUIZ intro (popup de bienvenida) */
+  .qintro{position:fixed;inset:0;z-index:310;background:rgba(14,14,14,.72);display:flex;align-items:center;justify-content:center;padding:20px}
+  .qintro[hidden]{display:none}
+  .qintro-card{background:#fff;max-width:460px;width:100%;padding:44px 36px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.4)}
+  .qintro-logo{height:26px;margin:0 auto 22px}
+  .qintro-card h2{font-family:var(--serif);font-style:italic;font-weight:600;font-size:30px;line-height:1.12;margin-bottom:12px}
+  .qintro-card p{font-weight:300;color:var(--gris-texto);font-size:15px;margin-bottom:26px}
+  .qintro-btns{display:flex;flex-direction:column;gap:10px}
+  .qintro-pri{order:-1;background:var(--dorado);color:#fff;border:none;font-family:var(--sans);font-weight:600;font-size:14px;letter-spacing:1.5px;text-transform:uppercase;padding:16px;cursor:pointer;transition:.2s}
+  .qintro-pri:hover{background:var(--negro)}
+  .qintro-sec{background:none;color:var(--negro);border:1px solid var(--linea);font-family:var(--sans);font-weight:500;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;padding:14px;cursor:pointer;transition:.2s}
+  .qintro-sec:hover{border-color:var(--negro)}
+
   /* LIGHTBOX (zoom) */
   .lb{position:fixed;inset:0;z-index:200;background:rgba(14,14,14,.96);display:flex;flex-direction:column;align-items:center;justify-content:center}
   .lb[hidden]{display:none}
@@ -242,6 +308,7 @@
   <div class="wrap nav">
     <img class="logo-img" src="logo-negro.png" alt="Ferrati" onerror="this.style.display='none'">
     <div class="nav-right">
+      <button class="nav-link" id="abrirQuiz" type="button">Quiz de estilo</button>
       <button class="nav-link" id="abrirGuia" type="button">Guía de rostro</button>
       <button class="cart-btn" id="abrirCarrito" type="button">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/><path d="M2 3h3l2.4 12.4a1 1 0 0 0 1 .8h8.7a1 1 0 0 0 1-.8L21 7H6"/></svg>
@@ -259,6 +326,7 @@
     <h1>El sol, con distinción</h1>
     <p>Colección de gafas de sol polarizadas con protección UV400. Diseño atemporal, elegancia suiza.</p>
     <div class="rule"></div>
+    <button class="hero-quiz" id="heroQuiz" type="button">Encuentra tu montura ideal</button>
   </div>
 </section>
 
@@ -317,6 +385,7 @@
 </section>
 
 <!-- RESULTADOS -->
+<div class="wrap"><div id="quizBanner"></div></div>
 <div class="wrap resultados">
   <h2 id="subtitulo">Toda la colección</h2>
   <div class="conteo" id="conteo"></div>
@@ -353,6 +422,33 @@
     </div>
   </div>
 </footer>
+
+<!-- QUIZ intro (popup de bienvenida) -->
+<div id="quizIntro" class="qintro" hidden>
+  <div class="qintro-card">
+    <img class="qintro-logo" src="logo-negro.png" alt="Ferrati" onerror="this.style.display='none'">
+    <h2>Encuentra tu montura ideal</h2>
+    <p>Responde 5 preguntas rápidas y te mostramos las gafas Ferrati perfectas para ti.</p>
+    <div class="qintro-btns">
+      <button class="qintro-sec" id="introCatalogo" type="button">Ver el catálogo</button>
+      <button class="qintro-pri" id="introQuiz" type="button">Hacer quiz</button>
+    </div>
+  </div>
+</div>
+
+<!-- QUIZ DE ESTILO -->
+<div id="quiz" class="quiz" hidden>
+  <div class="quiz-prog"><div class="quiz-prog-bar" id="quizBar"></div></div>
+  <div class="quiz-top-row">
+    <span class="quiz-step" id="quizStep"></span>
+    <button class="quiz-skip" id="quizSkip" type="button">Ver catálogo &times;</button>
+  </div>
+  <div class="quiz-main" id="quizMain"></div>
+  <div class="quiz-nav">
+    <button class="quiz-back" id="quizBack" type="button">Atrás</button>
+    <button class="quiz-next" id="quizNext" type="button">Continuar</button>
+  </div>
+</div>
 
 <!-- CARRITO -->
 <div class="cart-overlay" id="cartOverlay" hidden></div>
@@ -1026,6 +1122,8 @@ function selectColor(card,sw){
 }
 document.addEventListener('click',e=>{
   if(e.target.closest('#lightbox')) return;
+  if(e.target.closest('#quizRetake')){ startQuiz(); return; }
+  if(e.target.closest('#quizReset')){ estado.quiz=false;estado.colores=null;estado.formas=null;estado.cat='todas';estado.mat='todas';syncFilterButtons();render(); return; }
   const viewer=e.target.closest('.viewer'); if(viewer){ lbOpen(viewer.closest('.card')); return; }
   const add=e.target.closest('.btn-add'); if(add){ const card=add.closest('.card'); const p=byId(card.dataset.id); const color=p.colores[+card.dataset.color]; const qty=Math.max(1,(+card.querySelector('.qty-input').value||1)); addToCart(p,color,qty); add.textContent='✓ Agregado'; clearTimeout(add._t); add._t=setTimeout(()=>{add.textContent='Agregar al carrito';},1100); return; }
   const ia=e.target.closest('.btn-ia'); if(ia){ const card=ia.closest('.card'); const p=byId(card.dataset.id); const color=p.colores[+card.dataset.color]||{}; const tx=promptModelo(p,color);
@@ -1038,7 +1136,7 @@ document.addEventListener('click',e=>{
 });
 
 /* ===== FILTROS + BÚSQUEDA ===== */
-const estado={cat:'todas',mat:'todas',q:'',formas:null,formaLabel:''};
+const estado={cat:'todas',mat:'todas',q:'',formas:null,formaLabel:'',colores:null,quiz:false};
 const grid=document.getElementById('grid');
 const conteo=document.getElementById('conteo');
 const subtitulo=document.getElementById('subtitulo');
@@ -1055,23 +1153,35 @@ function match(p,q){
   if((p.codigo||'').toLowerCase().includes(q)) return true;
   return p.colores.some(c=>(c.codigo||'').toLowerCase().includes(q));
 }
+const quitarAcentos=s=>(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+const COLORKW={negro:['negro'],cafe:['cafe','carey','marron','tortuga','ambar'],dorado:['dorado','oro'],plata:['plata','gunmetal'],azul:['azul'],verde:['verde'],rojo:['rojo'],gris:['gris','gunmetal','humo']};
 function matchForma(p){ if(!estado.formas) return true; const f=(p.forma||'').toLowerCase(); return estado.formas.some(k=>f.includes(k)); }
+function matchColor(p){ if(!estado.colores) return true; const kws=estado.colores.flatMap(v=>COLORKW[v]||[v]); return p.colores.some(c=>{const n=quitarAcentos(c.nombre); return kws.some(k=>n.includes(k));}); }
+function pasa(p){ const q=estado.q.trim().toLowerCase(); return (estado.cat==='todas'||p.categoria===estado.cat)&&(estado.mat==='todas'||p.material===estado.mat)&&match(p,q)&&matchForma(p)&&matchColor(p); }
+function countFiltered(){ return productos.filter(pasa).length; }
+function bannerHTML(n){
+  return '<div class="quiz-banner"><div class="qb-txt"><b>Tu selección de estilo</b> · '+n+' '+(n===1?'modelo':'modelos')+' para ti</div>'
+    +'<div class="qb-acts"><a class="qb-btn oro" href="'+quizWA()+'" target="_blank" rel="noopener">Asesoría por WhatsApp</a>'
+    +'<button class="qb-btn" type="button" id="quizRetake">Rehacer quiz</button>'
+    +'<button class="qb-btn" type="button" id="quizReset">Ver todo</button></div></div>';
+}
 function render(){
   const q=estado.q.trim().toLowerCase();
-  const lista=productos.filter(p=>(estado.cat==='todas'||p.categoria===estado.cat)&&(estado.mat==='todas'||p.material===estado.mat)&&match(p,q)&&matchForma(p));
-  document.getElementById('topsellers').style.display = (q||estado.formas) ? 'none' : '';
-  subtitulo.textContent = estado.formas ? ('Recomendadas para '+estado.formaLabel) : (q ? ('Resultados: “'+estado.q.trim()+'”') : subLabel());
+  const lista=productos.filter(pasa);
+  document.getElementById('topsellers').style.display=(q||estado.formas||estado.colores||estado.quiz)?'none':'';
+  subtitulo.textContent = estado.quiz ? 'Tu selección de estilo' : (estado.formas ? ('Recomendadas para '+estado.formaLabel) : (q ? ('Resultados: “'+estado.q.trim()+'”') : subLabel()));
   conteo.textContent = lista.length+(lista.length===1?' referencia':' referencias');
-  grid.innerHTML = lista.length ? lista.map(cardHTML).join('') : `<div class="vacio" style="grid-column:1/-1">Sin resultados. Prueba otro filtro, búsqueda o tipo de rostro.</div>`;
+  document.getElementById('quizBanner').innerHTML = estado.quiz ? bannerHTML(lista.length) : '';
+  grid.innerHTML = lista.length ? lista.map(cardHTML).join('') : `<div class="vacio" style="grid-column:1/-1">Sin resultados. Prueba otro filtro, búsqueda o el quiz.</div>`;
   observeAll();
 }
 function syncFilterButtons(){
   document.querySelectorAll('#cats .tab').forEach(t=>t.classList.toggle('active',t.dataset.cat===estado.cat));
   document.querySelectorAll('#mats .chip-f').forEach(t=>t.classList.toggle('active',t.dataset.mat===estado.mat));
 }
-document.getElementById('cats').addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;estado.cat=b.dataset.cat;estado.formas=null;syncFilterButtons();render();});
-document.getElementById('mats').addEventListener('click',e=>{const b=e.target.closest('.chip-f');if(!b)return;estado.mat=b.dataset.mat;estado.formas=null;syncFilterButtons();render();});
-document.getElementById('buscar').addEventListener('input',e=>{estado.q=e.target.value;estado.formas=null;render();});
+document.getElementById('cats').addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;estado.cat=b.dataset.cat;estado.formas=null;estado.colores=null;estado.quiz=false;syncFilterButtons();render();});
+document.getElementById('mats').addEventListener('click',e=>{const b=e.target.closest('.chip-f');if(!b)return;estado.mat=b.dataset.mat;estado.formas=null;estado.colores=null;estado.quiz=false;syncFilterButtons();render();});
+document.getElementById('buscar').addEventListener('input',e=>{estado.q=e.target.value;estado.formas=null;estado.colores=null;estado.quiz=false;render();});
 
 /* ===== DEEP LINK ===== */
 function openFromHash(){
@@ -1233,11 +1343,110 @@ document.getElementById('rostroGrid').addEventListener('click',e=>{ const c=e.ta
 document.getElementById('rostroDet').addEventListener('click',e=>{
   const v=e.target.closest('.rostro-ver'); if(!v)return;
   const r=ROSTROS.find(x=>x.k===v.dataset.k); if(!r)return;
-  estado.formas=r.formas; estado.formaLabel='rostro '+r.n.toLowerCase(); estado.cat='todas'; estado.mat='todas'; estado.q=''; document.getElementById('buscar').value='';
+  estado.formas=r.formas; estado.formaLabel='rostro '+r.n.toLowerCase(); estado.cat='todas'; estado.mat='todas'; estado.q=''; estado.colores=null; estado.quiz=false; document.getElementById('buscar').value='';
   syncFilterButtons(); render();
   document.querySelector('.catalogo').scrollIntoView({behavior:'smooth',block:'start'});
 });
 document.getElementById('abrirGuia').addEventListener('click',()=>document.getElementById('guia').scrollIntoView({behavior:'smooth',block:'start'}));
+
+/* ===== QUIZ DE ESTILO (tipo Warby Parker) ===== */
+const QUIZ_WEBHOOK=""; // (opcional) URL de webhook n8n para capturar correo + preferencias
+const answers={genero:'',forma:[],color:[],material:'',tamano:'',email:'',news:true};
+let lastQuiz=null, qStep=0;
+const faceSVG=w=>'<svg viewBox="0 0 60 70" fill="none" stroke="currentColor" stroke-width="3"><ellipse cx="30" cy="34" rx="'+w+'" ry="27"/></svg>';
+const QSTEPS=[
+ {id:'genero',tipo:'single',q:'¿Para quién buscas gafas?',sub:'Personalizamos tu selección.',cols:3,
+   ops:[{v:'dama',l:'Para ella',ico:faceSVG(15)},{v:'hombre',l:'Para él',ico:faceSVG(20)},{v:'todas',l:'Sin preferencia',ico:faceSVG(17)}]},
+ {id:'forma',tipo:'multi',q:'¿Qué formas te atraen?',sub:'Elige una o varias.',cols:3,glasses:true,
+   ops:[{v:'aviador',l:'Aviador'},{v:'cuadrada',l:'Cuadrada'},{v:'rectangular',l:'Rectangular'},{v:'redonda',l:'Redonda'},{v:'ovalada',l:'Ovalada'},{v:'cat',l:'Cat-eye'}]},
+ {id:'color',tipo:'multi',q:'¿Tus colores favoritos?',sub:'Elige una o varias.',cols:4,swatch:true,
+   ops:[{v:'negro',l:'Negro',hex:'#141414'},{v:'cafe',l:'Café / Carey',hex:'#6b3f1d'},{v:'dorado',l:'Dorado',hex:'#c8a13c'},{v:'plata',l:'Plata',hex:'#a9b1b8'},{v:'azul',l:'Azul',hex:'#2f6fa8'},{v:'verde',l:'Verde',hex:'#2f6b45'},{v:'rojo',l:'Rojo',hex:'#b3000c'},{v:'gris',l:'Gris',hex:'#6a6a6a'}]},
+ {id:'material',tipo:'single',q:'¿Material preferido?',sub:'',cols:4,
+   ops:[{v:'metalica',l:'Metálica'},{v:'acetato',l:'Acetato'},{v:'tr90',l:'TR90 · deportiva'},{v:'todas',l:'Sin preferencia'}]},
+ {id:'tamano',tipo:'single',q:'¿Tamaño de montura?',sub:'Según el ancho de tu rostro.',cols:3,
+   ops:[{v:'angosta',l:'Angosta',ico:faceSVG(13)},{v:'media',l:'Media',ico:faceSVG(17)},{v:'ancha',l:'Ancha',ico:faceSVG(22)}]},
+];
+const QEL=id=>document.getElementById(id);
+function renderQuizStep(){
+  const st=QSTEPS[qStep];
+  QEL('quizBar').style.width=(((qStep+1)/QSTEPS.length)*100)+'%';
+  QEL('quizStep').textContent='Paso '+(qStep+1)+' de '+QSTEPS.length;
+  QEL('quizBack').disabled=qStep===0;
+  QEL('quizNext').textContent=(qStep===QSTEPS.length-1)?'Ver mis resultados':'Continuar';
+  const ops=st.ops.map(o=>{
+    const sel = st.tipo==='multi' ? answers[st.id].includes(o.v) : answers[st.id]===o.v;
+    let vis='';
+    if(st.glasses) vis='<span class="qi">'+glassesSVG(o.v==='cat'?'cateye':o.v,'#3a3a3a','#1c1c1c')+'</span>';
+    else if(st.swatch) vis='<span class="qsw" style="background:'+o.hex+'"></span>';
+    else if(o.ico) vis='<span class="qi">'+o.ico+'</span>';
+    return '<button class="quiz-op '+(sel?'sel':'')+'" type="button" data-v="'+o.v+'">'+vis+'<span class="ql">'+o.l+'</span></button>';
+  }).join('');
+  QEL('quizMain').innerHTML='<div class="quiz-q">'+st.q+'</div><div class="quiz-sub">'+(st.sub||'')+'</div><div class="quiz-ops cols-'+(st.cols||3)+'">'+ops+'</div>';
+  QEL('quizMain').scrollTop=0;
+}
+QEL('quizMain').addEventListener('click',e=>{
+  const op=e.target.closest('.quiz-op'); if(!op) return;
+  const st=QSTEPS[qStep], v=op.dataset.v;
+  if(st.tipo==='multi'){
+    const arr=answers[st.id], i=arr.indexOf(v);
+    if(i>=0) arr.splice(i,1); else arr.push(v);
+    op.classList.toggle('sel');
+  } else {
+    answers[st.id]=v;
+    document.querySelectorAll('#quizMain .quiz-op').forEach(o=>o.classList.toggle('sel',o===op));
+    setTimeout(nextQuiz,240);
+  }
+});
+QEL('quizMain').addEventListener('submit',e=>{ e.preventDefault(); nextQuiz(); });
+function nextQuiz(){ if(qStep<QSTEPS.length-1){ qStep++; renderQuizStep(); } else { finishQuiz(); } }
+function backQuiz(){ if(qStep>0){ qStep--; renderQuizStep(); } }
+function finishQuiz(){
+  if(QUIZ_WEBHOOK){ try{ fetch(QUIZ_WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({},answers,{fuente:'quiz-catalogo',ts:Date.now()}))}); }catch(_){} }
+  QEL('quizBar').style.width='100%'; document.querySelector('.quiz-nav').style.display='none'; QEL('quizStep').textContent='';
+  const msgs=['Analizando tu estilo…','Cruzando con la colección…','Seleccionando tus monturas…'];
+  QEL('quizMain').innerHTML='<div class="quiz-calc"><div class="quiz-spin"></div><div class="quiz-calc-msg" id="quizCalcMsg">'+msgs[0]+'</div></div>';
+  let mi=0; const it=setInterval(()=>{ mi++; const el=QEL('quizCalcMsg'); if(el&&msgs[mi]) el.textContent=msgs[mi]; },700);
+  setTimeout(()=>{ clearInterval(it); aplicarQuiz(); closeQuiz(); document.querySelector('.catalogo').scrollIntoView({behavior:'smooth',block:'start'}); },2100);
+}
+function aplicarQuiz(){
+  lastQuiz=JSON.parse(JSON.stringify(answers));
+  estado.cat=answers.genero||'todas';
+  estado.mat=answers.material||'todas';
+  estado.formas=answers.forma.length?answers.forma.slice():null;
+  estado.colores=answers.color.length?answers.color.slice():null;
+  estado.q=''; QEL('buscar').value=''; estado.quiz=true;
+  syncFilterButtons();
+  if(countFiltered()===0 && estado.colores){ estado.colores=null; }
+  if(countFiltered()===0 && estado.formas){ estado.formas=null; }
+  if(countFiltered()===0){ estado.cat='todas'; syncFilterButtons(); }
+  render();
+}
+function quizWA(){
+  const a=lastQuiz||answers;
+  const gL=({dama:'Dama',hombre:'Hombre',todas:'Sin preferencia'})[a.genero]||'—';
+  const mL=({metalica:'Metálica',acetato:'Acetato',tr90:'TR90',todas:'Sin preferencia'})[a.material]||'—';
+  let msg='Hola Ferrati, hice el quiz de estilo. Mis gustos:\n';
+  msg+='• Para: '+gL+'\n';
+  if(a.forma.length) msg+='• Formas: '+a.forma.join(', ')+'\n';
+  if(a.color.length) msg+='• Colores: '+a.color.join(', ')+'\n';
+  msg+='• Material: '+mL+'\n';
+  if(a.tamano) msg+='• Tamaño: '+a.tamano+'\n';
+  if(a.email) msg+='• Correo: '+a.email+'\n';
+  msg+='Quiero asesoría para elegir mis gafas.';
+  return 'https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(msg);
+}
+function startQuiz(){ qStep=0; answers.genero='';answers.forma=[];answers.color=[];answers.material='';answers.tamano='';answers.email='';answers.news=true; document.querySelector('.quiz-nav').style.display=''; QEL('quiz').hidden=false; document.body.style.overflow='hidden'; renderQuizStep(); }
+function closeQuiz(){ QEL('quiz').hidden=true; document.body.style.overflow=''; try{ localStorage.setItem('ferrati_quiz_v1','1'); }catch(_){} }
+QEL('quizNext').addEventListener('click',nextQuiz);
+QEL('quizBack').addEventListener('click',backQuiz);
+QEL('quizSkip').addEventListener('click',closeQuiz);
+QEL('heroQuiz').addEventListener('click',startQuiz);
+QEL('abrirQuiz').addEventListener('click',startQuiz);
+/* popup de bienvenida */
+function openIntro(){ QEL('quizIntro').hidden=false; document.body.style.overflow='hidden'; }
+function closeIntro(){ QEL('quizIntro').hidden=true; document.body.style.overflow=''; try{ localStorage.setItem('ferrati_quiz_v1','1'); }catch(_){} }
+QEL('introCatalogo').addEventListener('click',closeIntro);
+QEL('introQuiz').addEventListener('click',()=>{ QEL('quizIntro').hidden=true; startQuiz(); });
 
 /* ===== INIT ===== */
 renderRostros();
@@ -1302,6 +1511,8 @@ renderCart();
 render();
 openFromHash();
 window.addEventListener('hashchange',openFromHash);
+/* muestra el popup de bienvenida en la primera visita (piloto Warby-style) */
+try{ if(!localStorage.getItem('ferrati_quiz_v1') && !location.hash) setTimeout(openIntro,400); }catch(_){}
 </script>
 </body>
 </html>
