@@ -235,6 +235,7 @@
   .quiz-op:hover{border-color:var(--negro)}
   .quiz-op.sel{border-color:var(--dorado);background:#fbf8f3;box-shadow:inset 0 0 0 1px var(--dorado)}
   .quiz-op .qi{width:88px;height:46px;display:grid;place-items:center;color:var(--negro)}
+  .quiz-op .qimg{width:100%;max-width:180px;height:82px;object-fit:contain}
   .quiz-op .qi svg{max-width:100%;max-height:100%}
   .quiz-op .qsw{width:40px;height:40px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px var(--linea)}
   .quiz-op .ql{font-size:14px;font-weight:500;letter-spacing:.3px}
@@ -342,7 +343,6 @@
       <button class="tab active" data-cat="todas">Todas</button>
       <button class="tab" data-cat="dama">Dama</button>
       <button class="tab" data-cat="hombre">Hombre</button>
-      <button class="tab" data-cat="unisex">Unisex</button>
     </div>
     <div class="filtros-row" id="mats">
       <span class="flabel">Material</span>
@@ -1136,7 +1136,7 @@ document.addEventListener('click',e=>{
 });
 
 /* ===== FILTROS + BÚSQUEDA ===== */
-const estado={cat:'todas',mat:'todas',q:'',formas:null,formaLabel:'',colores:null,quiz:false};
+const estado={cat:'todas',mat:'todas',mats:null,q:'',formas:null,formaLabel:'',colores:null,quiz:false};
 const grid=document.getElementById('grid');
 const conteo=document.getElementById('conteo');
 const subtitulo=document.getElementById('subtitulo');
@@ -1157,7 +1157,10 @@ const quitarAcentos=s=>(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g
 const COLORKW={negro:['negro'],cafe:['cafe','carey','marron','tortuga','ambar'],dorado:['dorado','oro'],plata:['plata','gunmetal'],azul:['azul'],verde:['verde'],rojo:['rojo'],gris:['gris','gunmetal','humo']};
 function matchForma(p){ if(!estado.formas) return true; const f=(p.forma||'').toLowerCase(); return estado.formas.some(k=>f.includes(k)); }
 function matchColor(p){ if(!estado.colores) return true; const kws=estado.colores.flatMap(v=>COLORKW[v]||[v]); return p.colores.some(c=>{const n=quitarAcentos(c.nombre); return kws.some(k=>n.includes(k));}); }
-function pasa(p){ const q=estado.q.trim().toLowerCase(); return (estado.cat==='todas'||p.categoria===estado.cat)&&(estado.mat==='todas'||p.material===estado.mat)&&match(p,q)&&matchForma(p)&&matchColor(p); }
+/* unisex aparece tanto en Dama como en Hombre (no es un filtro aparte) */
+function matchCat(p){ return estado.cat==='todas'||p.categoria===estado.cat||p.categoria==='unisex'; }
+function matchMat(p){ if(estado.mats) return estado.mats.includes(p.material); return estado.mat==='todas'||p.material===estado.mat; }
+function pasa(p){ const q=estado.q.trim().toLowerCase(); return matchCat(p)&&matchMat(p)&&match(p,q)&&matchForma(p)&&matchColor(p); }
 function countFiltered(){ return productos.filter(pasa).length; }
 function bannerHTML(n){
   return '<div class="quiz-banner"><div class="qb-txt"><b>Tu selección de estilo</b> · '+n+' '+(n===1?'modelo':'modelos')+' para ti</div>'
@@ -1179,9 +1182,9 @@ function syncFilterButtons(){
   document.querySelectorAll('#cats .tab').forEach(t=>t.classList.toggle('active',t.dataset.cat===estado.cat));
   document.querySelectorAll('#mats .chip-f').forEach(t=>t.classList.toggle('active',t.dataset.mat===estado.mat));
 }
-document.getElementById('cats').addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;estado.cat=b.dataset.cat;estado.formas=null;estado.colores=null;estado.quiz=false;syncFilterButtons();render();});
-document.getElementById('mats').addEventListener('click',e=>{const b=e.target.closest('.chip-f');if(!b)return;estado.mat=b.dataset.mat;estado.formas=null;estado.colores=null;estado.quiz=false;syncFilterButtons();render();});
-document.getElementById('buscar').addEventListener('input',e=>{estado.q=e.target.value;estado.formas=null;estado.colores=null;estado.quiz=false;render();});
+document.getElementById('cats').addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;estado.cat=b.dataset.cat;estado.formas=null;estado.colores=null;estado.mats=null;estado.quiz=false;syncFilterButtons();render();});
+document.getElementById('mats').addEventListener('click',e=>{const b=e.target.closest('.chip-f');if(!b)return;estado.mat=b.dataset.mat;estado.formas=null;estado.colores=null;estado.mats=null;estado.quiz=false;syncFilterButtons();render();});
+document.getElementById('buscar').addEventListener('input',e=>{estado.q=e.target.value;estado.formas=null;estado.colores=null;estado.mats=null;estado.quiz=false;render();});
 
 /* ===== DEEP LINK ===== */
 function openFromHash(){
@@ -1351,18 +1354,32 @@ document.getElementById('abrirGuia').addEventListener('click',()=>document.getEl
 
 /* ===== QUIZ DE ESTILO (tipo Warby Parker) ===== */
 const QUIZ_WEBHOOK=""; // (opcional) URL de webhook n8n para capturar correo + preferencias
-const answers={genero:'',forma:[],color:[],material:'',tamano:'',email:'',news:true};
+const answers={genero:'',forma:[],color:[],material:[],tamano:''};
 let lastQuiz=null, qStep=0;
 const faceSVG=w=>'<svg viewBox="0 0 60 70" fill="none" stroke="currentColor" stroke-width="3"><ellipse cx="30" cy="34" rx="'+w+'" ry="27"/></svg>';
+/* foto de un producto REAL de la marca para ilustrar cada opción del quiz */
+const fotoQuiz=f=>{const p=productos.find(f);return (p&&p.colores[0]&&p.colores[0].frente)||'';};
 const QSTEPS=[
  {id:'genero',tipo:'single',q:'¿Para quién buscas gafas?',sub:'Personalizamos tu selección.',cols:3,
-   ops:[{v:'dama',l:'Para ella',ico:faceSVG(15)},{v:'hombre',l:'Para él',ico:faceSVG(20)},{v:'todas',l:'Sin preferencia',ico:faceSVG(17)}]},
+   ops:[
+     {v:'dama',l:'Para ella',img:fotoQuiz(p=>p.categoria==='dama'&&(p.forma||'').includes('cat'))||fotoQuiz(p=>p.categoria==='dama')},
+     {v:'hombre',l:'Para él',img:fotoQuiz(p=>p.categoria==='hombre'&&(p.forma||'').includes('cuadrada'))||fotoQuiz(p=>p.categoria==='hombre')},
+     {v:'todas',l:'Sin preferencia',img:fotoQuiz(p=>p.categoria==='unisex')}]},
  {id:'forma',tipo:'multi',q:'¿Qué formas te atraen?',sub:'Elige una o varias.',cols:3,glasses:true,
-   ops:[{v:'aviador',l:'Aviador'},{v:'cuadrada',l:'Cuadrada'},{v:'rectangular',l:'Rectangular'},{v:'redonda',l:'Redonda'},{v:'ovalada',l:'Ovalada'},{v:'cat',l:'Cat-eye'}]},
+   ops:[
+     {v:'aviador',l:'Aviador',img:fotoQuiz(p=>(p.forma||'').includes('aviador'))},
+     {v:'cuadrada',l:'Cuadrada',img:fotoQuiz(p=>(p.forma||'').includes('cuadrada'))},
+     {v:'rectangular',l:'Rectangular',img:fotoQuiz(p=>(p.forma||'').includes('rectangular'))},
+     {v:'redonda',l:'Redonda',img:fotoQuiz(p=>(p.forma||'').includes('redonda'))},
+     {v:'cat',l:'Cat-eye',img:fotoQuiz(p=>(p.forma||'').includes('cat'))},
+     {v:'wrap',l:'Deportiva',img:fotoQuiz(p=>(p.forma||'').includes('wrap'))}]},
  {id:'color',tipo:'multi',q:'¿Tus colores favoritos?',sub:'Elige una o varias.',cols:4,swatch:true,
    ops:[{v:'negro',l:'Negro',hex:'#141414'},{v:'cafe',l:'Café / Carey',hex:'#6b3f1d'},{v:'dorado',l:'Dorado',hex:'#c8a13c'},{v:'plata',l:'Plata',hex:'#a9b1b8'},{v:'azul',l:'Azul',hex:'#2f6fa8'},{v:'verde',l:'Verde',hex:'#2f6b45'},{v:'rojo',l:'Rojo',hex:'#b3000c'},{v:'gris',l:'Gris',hex:'#6a6a6a'}]},
- {id:'material',tipo:'single',q:'¿Material preferido?',sub:'',cols:4,
-   ops:[{v:'metalica',l:'Metálica'},{v:'acetato',l:'Acetato'},{v:'tr90',l:'TR90 · deportiva'},{v:'todas',l:'Sin preferencia'}]},
+ {id:'material',tipo:'multi',q:'¿Qué materiales prefieres?',sub:'Elige uno o varios.',cols:3,
+   ops:[
+     {v:'metalica',l:'Metálica',img:fotoQuiz(p=>p.material==='metalica')},
+     {v:'acetato',l:'Acetato',img:fotoQuiz(p=>p.material==='acetato')},
+     {v:'tr90',l:'TR90 · deportiva',img:fotoQuiz(p=>p.material==='tr90')}]},
  {id:'tamano',tipo:'single',q:'¿Tamaño de montura?',sub:'Según el ancho de tu rostro.',cols:3,
    ops:[{v:'angosta',l:'Angosta',ico:faceSVG(13)},{v:'media',l:'Media',ico:faceSVG(17)},{v:'ancha',l:'Ancha',ico:faceSVG(22)}]},
 ];
@@ -1376,7 +1393,8 @@ function renderQuizStep(){
   const ops=st.ops.map(o=>{
     const sel = st.tipo==='multi' ? answers[st.id].includes(o.v) : answers[st.id]===o.v;
     let vis='';
-    if(st.glasses) vis='<span class="qi">'+glassesSVG(o.v==='cat'?'cateye':o.v,'#3a3a3a','#1c1c1c')+'</span>';
+    if(o.img) vis='<img class="qimg" src="'+o.img+'" alt="'+o.l+'" loading="lazy">';
+    else if(st.glasses) vis='<span class="qi">'+glassesSVG(o.v==='cat'?'cateye':o.v,'#3a3a3a','#1c1c1c')+'</span>';
     else if(st.swatch) vis='<span class="qsw" style="background:'+o.hex+'"></span>';
     else if(o.ico) vis='<span class="qi">'+o.ico+'</span>';
     return '<button class="quiz-op '+(sel?'sel':'')+'" type="button" data-v="'+o.v+'">'+vis+'<span class="ql">'+o.l+'</span></button>';
@@ -1411,31 +1429,33 @@ function finishQuiz(){
 function aplicarQuiz(){
   lastQuiz=JSON.parse(JSON.stringify(answers));
   estado.cat=answers.genero||'todas';
-  estado.mat=answers.material||'todas';
+  estado.mat='todas';
+  estado.mats=answers.material.length?answers.material.slice():null;
   estado.formas=answers.forma.length?answers.forma.slice():null;
   estado.colores=answers.color.length?answers.color.slice():null;
   estado.q=''; QEL('buscar').value=''; estado.quiz=true;
   syncFilterButtons();
   if(countFiltered()===0 && estado.colores){ estado.colores=null; }
   if(countFiltered()===0 && estado.formas){ estado.formas=null; }
+  if(countFiltered()===0 && estado.mats){ estado.mats=null; }
   if(countFiltered()===0){ estado.cat='todas'; syncFilterButtons(); }
   render();
 }
 function quizWA(){
   const a=lastQuiz||answers;
   const gL=({dama:'Dama',hombre:'Hombre',todas:'Sin preferencia'})[a.genero]||'—';
-  const mL=({metalica:'Metálica',acetato:'Acetato',tr90:'TR90',todas:'Sin preferencia'})[a.material]||'—';
+  const ML={metalica:'Metálica',acetato:'Acetato',tr90:'TR90'};
+  const mL=a.material.length?a.material.map(m=>ML[m]||m).join(', '):'Sin preferencia';
   let msg='Hola Ferrati, hice el quiz de estilo. Mis gustos:\n';
   msg+='• Para: '+gL+'\n';
   if(a.forma.length) msg+='• Formas: '+a.forma.join(', ')+'\n';
   if(a.color.length) msg+='• Colores: '+a.color.join(', ')+'\n';
-  msg+='• Material: '+mL+'\n';
+  msg+='• Materiales: '+mL+'\n';
   if(a.tamano) msg+='• Tamaño: '+a.tamano+'\n';
-  if(a.email) msg+='• Correo: '+a.email+'\n';
   msg+='Quiero asesoría para elegir mis gafas.';
   return 'https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(msg);
 }
-function startQuiz(){ qStep=0; answers.genero='';answers.forma=[];answers.color=[];answers.material='';answers.tamano='';answers.email='';answers.news=true; document.querySelector('.quiz-nav').style.display=''; QEL('quiz').hidden=false; document.body.style.overflow='hidden'; renderQuizStep(); }
+function startQuiz(){ qStep=0; answers.genero='';answers.forma=[];answers.color=[];answers.material=[];answers.tamano=''; document.querySelector('.quiz-nav').style.display=''; QEL('quiz').hidden=false; document.body.style.overflow='hidden'; renderQuizStep(); }
 function closeQuiz(){ QEL('quiz').hidden=true; document.body.style.overflow=''; try{ localStorage.setItem('ferrati_quiz_v1','1'); }catch(_){} }
 QEL('quizNext').addEventListener('click',nextQuiz);
 QEL('quizBack').addEventListener('click',backQuiz);
