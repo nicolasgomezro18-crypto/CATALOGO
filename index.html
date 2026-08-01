@@ -236,6 +236,7 @@
   .quiz-op.sel{border-color:var(--dorado);background:#fbf8f3;box-shadow:inset 0 0 0 1px var(--dorado)}
   .quiz-op .qi{width:88px;height:46px;display:grid;place-items:center;color:var(--negro)}
   .quiz-op .qimg{width:100%;max-width:180px;height:82px;object-fit:contain}
+  .quiz-op .qimg-face{width:100%;max-width:220px;height:200px;object-fit:cover;object-position:center 22%}
   .quiz-op .qi svg{max-width:100%;max-height:100%}
   .quiz-op .qsw{width:40px;height:40px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px var(--linea)}
   .quiz-op .ql{font-size:14px;font-weight:500;letter-spacing:.3px}
@@ -1362,9 +1363,9 @@ const fotoQuiz=f=>{const p=productos.find(f);return (p&&p.colores[0]&&p.colores[
 const QSTEPS=[
  {id:'genero',tipo:'single',q:'¿Para quién buscas gafas?',sub:'Personalizamos tu selección.',cols:3,
    ops:[
-     {v:'dama',l:'Para ella',img:fotoQuiz(p=>p.categoria==='dama'&&(p.forma||'').includes('cat'))||fotoQuiz(p=>p.categoria==='dama')},
-     {v:'hombre',l:'Para él',img:fotoQuiz(p=>p.categoria==='hombre'&&(p.forma||'').includes('cuadrada'))||fotoQuiz(p=>p.categoria==='hombre')},
-     {v:'todas',l:'Sin preferencia',img:fotoQuiz(p=>p.categoria==='unisex')}]},
+     {v:'dama',l:'Para ella',img:'img/quiz-dama.jpg',face:true},
+     {v:'hombre',l:'Para él',img:'img/quiz-hombre.jpg',face:true},
+     {v:'todas',l:'Sin preferencia',img:'img/quiz-unisex.jpg',face:true}]},
  {id:'forma',tipo:'multi',q:'¿Qué formas te atraen?',sub:'Elige una o varias.',cols:3,glasses:true,
    ops:[
      {v:'aviador',l:'Aviador',img:fotoQuiz(p=>(p.forma||'').includes('aviador'))},
@@ -1393,7 +1394,7 @@ function renderQuizStep(){
   const ops=st.ops.map(o=>{
     const sel = st.tipo==='multi' ? answers[st.id].includes(o.v) : answers[st.id]===o.v;
     let vis='';
-    if(o.img) vis='<img class="qimg" src="'+o.img+'" alt="'+o.l+'" loading="lazy">';
+    if(o.img) vis='<img class="qimg'+(o.face?' qimg-face':'')+'" src="'+o.img+'" alt="'+o.l+'" loading="lazy">';
     else if(st.glasses) vis='<span class="qi">'+glassesSVG(o.v==='cat'?'cateye':o.v,'#3a3a3a','#1c1c1c')+'</span>';
     else if(st.swatch) vis='<span class="qsw" style="background:'+o.hex+'"></span>';
     else if(o.ico) vis='<span class="qi">'+o.ico+'</span>';
