@@ -302,6 +302,23 @@
     .flabel{min-width:100%;margin-bottom:2px}
   }
 </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1617001106599453');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1617001106599453&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -1266,6 +1283,7 @@ function addToCart(p,color,qty){
   if(ex) ex.qty=Math.min(999,ex.qty+qty);
   else cart.push({key,id:p.id,modelo:p.nombre,ref:color.codigo||p.codigo||'',color:color.nombre||'',img:color.frente||'',qty});
   saveCart(); renderCart(); bumpCart();
+  try{ if(window.fbq) fbq('track','AddToCart'); }catch(_){}
 }
 function setCartQty(key,qty){ const i=cart.find(x=>x.key===key); if(!i)return; i.qty=Math.max(1,Math.min(999,qty|0||1)); saveCart(); renderCart(); }
 function removeCart(key){ cart=cart.filter(x=>x.key!==key); saveCart(); renderCart(); }
@@ -1303,7 +1321,7 @@ document.getElementById('abrirCarrito').addEventListener('click',openCart);
 document.getElementById('cartClose').addEventListener('click',closeCart);
 document.getElementById('cartOverlay').addEventListener('click',closeCart);
 document.getElementById('cartClear').addEventListener('click',()=>{ cart=[]; saveCart(); renderCart(); });
-document.getElementById('cartSend').addEventListener('click',()=>{ if(cart.length) window.open(cartWA(),'_blank'); });
+document.getElementById('cartSend').addEventListener('click',()=>{ if(cart.length){ try{ if(window.fbq) fbq('track','Contact'); }catch(_){} window.open(cartWA(),'_blank'); } });
 document.getElementById('cartBody').addEventListener('click',e=>{
   const item=e.target.closest('.cart-item'); if(!item)return; const key=item.dataset.key;
   const step=e.target.closest('.ci-step'); if(step){ const it=cart.find(x=>x.key===key); setCartQty(key,(it?it.qty:1)+(+step.dataset.d)); return; }
