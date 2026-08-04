@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ferrati en Casa · Pruébate 3 monturas en tu casa | Pereira</title>
+<meta name="description" content="Haz el test de 30 segundos, elige 3 monturas y pruébatelas en tu casa sin compromiso. Depósito 100% reembolsable. Solo Pereira, cupos limitados." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --negro:#111111; --tinta:#0e0e0e; --blanco:#ffffff; --hueso:#f7f5f2;
+    --dorado:#b08d57; --dorado2:#c9a86b; --gris-texto:#7c7c7c; --linea:#e7e4df;
+    --ancho:1080px;
+    --serif:'Playfair Display', Georgia, serif;
+    --sans:'Jost','Helvetica Neue',Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--negro);background:var(--blanco);line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--ancho);margin:0 auto;padding:0 22px}
+  img{display:block}
+  .kick{font-weight:600;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--dorado);margin-bottom:10px}
+  h2{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(26px,4vw,40px);line-height:1.1}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--dorado);color:#fff;border:none;text-decoration:none;font-family:var(--sans);font-weight:600;font-size:14px;letter-spacing:1.5px;text-transform:uppercase;padding:16px 28px;cursor:pointer;transition:.2s}
+  .btn:hover{background:var(--negro)}
+  .btn-neg{background:var(--negro)}
+  .btn-neg:hover{background:var(--dorado)}
+  .btn-ghost{background:none;color:#fff;border:1px solid rgba(255,255,255,.5)}
+  .btn-ghost:hover{background:#fff;color:var(--negro);border-color:#fff}
+
+  /* HEADER */
+  header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--linea)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .logo-img{height:20px;width:auto}
+  .nav .btn{padding:10px 18px;font-size:12px}
+
+  /* S1 HERO */
+  .hero{background:var(--tinta);color:#fff;overflow:hidden}
+  .hero-grid{display:grid;gap:26px;padding:44px 0 40px;align-items:center}
+  .hero .badge{display:inline-flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12.5px;font-weight:500;letter-spacing:.5px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:8px 14px;margin-bottom:18px}
+  .hero h1{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(30px,5.5vw,52px);line-height:1.08}
+  .hero p{font-weight:300;font-size:16.5px;color:#d6d6d6;margin:16px 0 24px;max-width:480px}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:12px}
+  .hero-foto{position:relative}
+  .hero-foto img{width:100%;max-width:420px;margin:0 auto;aspect-ratio:4/5;object-fit:cover}
+  .hero-foto::after{content:'';position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.15)}
+  @media(min-width:820px){.hero-grid{grid-template-columns:1.1fr .9fr;padding:64px 0 56px}}
+
+  /* S2 PROBLEMA */
+  .problema{padding:52px 0;text-align:center}
+  .problema h2{margin-bottom:16px}
+  .problema p{max-width:560px;margin:0 auto;font-size:16px;color:var(--gris-texto)}
+  .problema .q{font-family:var(--serif);font-style:italic;font-size:19px;color:var(--negro);display:block;margin:8px 0}
+
+  /* S3 CÓMO FUNCIONA */
+  .como{background:var(--hueso);padding:54px 0;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .pasos{display:grid;gap:16px;margin-top:26px}
+  .paso{background:#fff;border:1px solid var(--linea);padding:22px;display:flex;gap:16px;align-items:flex-start}
+  .paso .n{flex:none;width:40px;height:40px;border-radius:50%;background:var(--negro);color:#fff;display:grid;place-items:center;font-family:var(--serif);font-style:italic;font-size:19px}
+  .paso h3{font-family:var(--sans);font-weight:600;font-size:16px;margin-bottom:4px}
+  .paso h3 span{margin-left:6px}
+  .paso p{font-size:14px;color:var(--gris-texto)}
+  @media(min-width:820px){.pasos{grid-template-columns:repeat(4,1fr)}.paso{flex-direction:column}}
+
+  /* S4 QUIZ */
+  .test-sec{padding:56px 0}
+  .test-head{text-align:center;margin-bottom:24px}
+  .test-head p{color:var(--gris-texto);margin-top:8px}
+  .qcard{max-width:640px;margin:0 auto;border:1px solid var(--linea);background:#fff;box-shadow:0 20px 60px rgba(17,17,17,.07)}
+  .qprog{height:4px;background:var(--linea)}
+  .qprog div{height:100%;width:0;background:var(--dorado);transition:width .35s}
+  .qbody{padding:28px 22px;text-align:center;min-height:340px}
+  .qstep-lbl{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gris-texto);margin-bottom:10px}
+  .qq{font-family:var(--serif);font-style:italic;font-weight:600;font-size:24px;margin-bottom:18px}
+  .qops{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .qops.c3{grid-template-columns:repeat(3,1fr)}
+  .qop{border:1px solid var(--linea);background:#fff;cursor:pointer;padding:14px 8px;display:flex;flex-direction:column;align-items:center;gap:8px;font-family:var(--sans);color:var(--negro);transition:.15s}
+  .qop:hover{border-color:var(--negro)}
+  .qop.sel{border-color:var(--dorado);background:#fbf8f3;box-shadow:inset 0 0 0 1px var(--dorado)}
+  .qop .ql{font-size:13.5px;font-weight:500}
+  .qop img{width:100%;max-width:150px;height:110px;object-fit:cover;object-position:center 22%}
+  .qop img.prod{height:64px;object-fit:contain}
+  .qop svg{width:34px;height:42px;stroke:var(--negro);fill:none;stroke-width:3}
+  .qop .em{font-size:26px;line-height:1}
+  .qnav{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--linea);padding:14px 22px}
+  .qback{background:none;border:none;font-family:var(--sans);font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--gris-texto);cursor:pointer}
+  .qback:disabled{opacity:.3;cursor:default}
+  .mini-guia{margin-top:14px;border:1px dashed var(--dorado);background:#fbf8f3;padding:14px;text-align:left}
+  .mini-guia p{font-size:12.5px;color:var(--gris-texto);margin-bottom:10px;text-align:center}
+  .mini-guia .qops{grid-template-columns:repeat(2,1fr)}
+  .mini-guia small{font-size:11px;color:var(--gris-texto);display:block}
+
+  /* resultados */
+  .qres{padding:26px 20px;text-align:center}
+  .qres h3{font-family:var(--serif);font-style:italic;font-weight:600;font-size:23px;margin-bottom:18px}
+  .picks{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+  .pick{border:1px solid var(--linea);padding:10px 8px}
+  .pick img{width:100%;height:74px;object-fit:contain}
+  .pick .pn{font-family:var(--serif);font-weight:600;font-size:14px;margin-top:6px}
+  .pick .pr{font-size:10px;letter-spacing:1px;color:var(--dorado);text-transform:uppercase}
+  .pick .pf{font-size:11px;color:var(--gris-texto)}
+  .qform{display:flex;flex-direction:column;gap:10px;max-width:400px;margin:0 auto;text-align:left}
+  .qform label{font-weight:600;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gris-texto)}
+  .qform input[type=text],.qform input[type=tel]{width:100%;font-family:var(--sans);font-size:15px;padding:12px 14px;border:1px solid var(--linea)}
+  .qform input:focus{outline:none;border-color:var(--dorado)}
+  .peri{display:flex;gap:10px}
+  .peri .qop{flex:1;padding:10px}
+  .qres .btn{width:100%;margin-top:6px}
+  .qres .nota{font-size:12px;color:var(--gris-texto);margin-top:10px}
+  .re-test{background:none;border:none;color:var(--gris-texto);font-size:11px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;margin-top:14px}
+  .re-test:hover{color:var(--negro)}
+
+  /* S5 SIN RIESGO */
+  .riesgo{background:var(--tinta);color:#fff;padding:54px 0}
+  .riesgo h2{color:#fff}
+  .checks{display:grid;gap:14px;margin-top:24px}
+  .check{border:1px solid rgba(255,255,255,.15);padding:18px;display:flex;gap:12px;align-items:flex-start}
+  .check .c{color:var(--dorado2);font-size:18px;flex:none}
+  .check b{display:block;font-weight:600;font-size:15px;margin-bottom:3px}
+  .check p{font-size:13.5px;color:#c9c9c9}
+  @media(min-width:820px){.checks{grid-template-columns:repeat(2,1fr)}}
+
+  /* S6 OFERTA */
+  .oferta{padding:56px 0;text-align:center}
+  .precio-box{max-width:440px;margin:22px auto 0;border:1px solid var(--dorado);padding:28px}
+  .precio-box .antes{font-size:17px;color:var(--gris-texto);text-decoration:line-through}
+  .precio-box .hoy{font-family:var(--serif);font-style:italic;font-weight:700;font-size:46px;line-height:1.1}
+  .precio-box .por{font-size:13.5px;color:var(--gris-texto);margin-bottom:14px}
+  .precio-box .tags{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:18px}
+  .precio-box .tag{font-size:11.5px;font-weight:500;letter-spacing:.5px;border:1px solid var(--linea);padding:6px 11px}
+
+  /* S7 PRUEBA SOCIAL */
+  .social{background:var(--hueso);padding:54px 0;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);text-align:center}
+  .social p.desc{color:var(--gris-texto);max-width:520px;margin:10px auto 22px}
+  .videos{display:grid;gap:14px;margin-bottom:18px}
+  .videos video{width:100%;aspect-ratio:9/16;object-fit:cover;background:#000}
+  @media(min-width:820px){.videos{grid-template-columns:repeat(3,1fr)}}
+  .ig-cta{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--negro);color:var(--negro);text-decoration:none;font-weight:500;font-size:13px;letter-spacing:1px;text-transform:uppercase;padding:12px 20px;transition:.2s}
+  .ig-cta:hover{background:var(--negro);color:#fff}
+
+  /* S8 FAQ */
+  .faq{padding:54px 0}
+  .faq-list{max-width:680px;margin:22px auto 0}
+  .faq details{border-bottom:1px solid var(--linea)}
+  .faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 4px;font-weight:500;font-size:15.5px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:'+';font-family:var(--serif);font-size:22px;color:var(--dorado)}
+  .faq details[open] summary::after{content:'−'}
+  .faq .fa{padding:0 4px 16px;font-size:14px;color:var(--gris-texto)}
+
+  /* S9 CTA FINAL */
+  .final{background:var(--tinta);color:#fff;padding:60px 0;text-align:center}
+  .final h2{color:#fff}
+  .final p{color:#d6d6d6;font-weight:300;margin:14px 0 24px}
+  .final .logo-img{height:24px;margin:0 auto 20px}
+
+  footer{background:#000;color:#fff;padding:28px 0;text-align:center}
+  footer .fl{font-size:12.5px;color:#9a9a9a}
+  footer a{color:#fff;text-decoration:none}
+  footer a:hover{color:var(--dorado)}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="wrap nav">
+    <img class="logo-img" src="logo-negro.png" alt="Ferrati" onerror="this.style.display='none'">
+    <a class="btn" href="#test">Hacer el test</a>
+  </div>
+</header>
+
+<!-- S1 · HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="badge">📍 Solo Pereira · Cupos limitados · Sin riesgo</span>
+      <h1>Descubre qué gafas van con tu rostro. Pruébatelas en casa.</h1>
+      <p>Responde un test de 30 segundos, elige 3 monturas y pruébalas en tu casa sin compromiso. Nuevo en Pereira.</p>
+      <div class="hero-ctas">
+        <a class="btn" id="ctaHero" href="#test">Hacer el test →</a>
+        <a class="btn btn-ghost" href="#como">Ver cómo funciona</a>
+      </div>
+    </div>
+    <div class="hero-foto"><img src="img/quiz-unisex.jpg" alt="Probándose gafas Ferrati en casa" loading="eager"></div>
+  </div>
+</section>
+
+<!-- S2 · PROBLEMA -->
+<section class="problema">
+  <div class="wrap">
+    <h2>Comprar gafas online siempre da el mismo miedo.</h2>
+    <p>
+      <span class="q">“¿Y si me llegan y no me quedan bien?”</span>
+      <span class="q">“¿Y si no combinan con mi cara?”</span>
+      Comprar a ciegas es incómodo — por eso creamos otra forma de hacerlo.
+    </p>
+  </div>
+</section>
+
+<!-- S3 · CÓMO FUNCIONA -->
+<section class="como" id="como">
+  <div class="wrap">
+    <div class="kick">Ferrati en Casa</div>
+    <h2>Así funciona</h2>
+    <div class="pasos">
+      <div class="paso"><span class="n">1</span><div><h3>Haz el test<span>📝</span></h3><p>Responde unas preguntas rápidas sobre tu rostro y tu estilo.</p></div></div>
+      <div class="paso"><span class="n">2</span><div><h3>Elige 3 monturas<span>🕶️</span></h3><p>Te sugerimos las que mejor te quedan. Escoges tus 3 favoritas.</p></div></div>
+      <div class="paso"><span class="n">3</span><div><h3>Pruébalas en casa<span>🏠</span></h3><p>Las recibes en tu casa y te las pruebas con calma durante 3 días.</p></div></div>
+      <div class="paso"><span class="n">4</span><div><h3>Quédate con la que amas<span>❤️</span></h3><p>Pagas solo esa. Si ninguna te enamora, recogemos gratis y te devolvemos el depósito.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- S4 · TEST -->
+<section class="test-sec" id="test">
+  <div class="wrap">
+    <div class="test-head">
+      <div class="kick">El test</div>
+      <h2>Encuentra tus monturas ideales</h2>
+      <p>5 preguntas rápidas. Sin registro para empezar.</p>
+    </div>
+    <div class="qcard">
+      <div class="qprog"><div id="qBar"></div></div>
+      <div class="qbody" id="qBody"></div>
+      <div class="qnav" id="qNav">
+        <button class="qback" id="qBack" type="button">← Atrás</button>
+        <span class="qstep-lbl" id="qCount"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S5 · SIN RIESGO -->
+<section class="riesgo">
+  <div class="wrap">
+    <div class="kick">Confianza</div>
+    <h2>Probar no te compromete a nada</h2>
+    <div class="checks">
+      <div class="check"><span class="c">✅</span><div><b>Depósito 100% reembolsable</b><p>Dejas $100.000 como garantía, no el valor de las 3.</p></div></div>
+      <div class="check"><span class="c">✅</span><div><b>Devolución y recogida gratis</b><p>Si no te gusta ninguna, pasamos por ellas sin costo.</p></div></div>
+      <div class="check"><span class="c">✅</span><div><b>Te devolvemos el depósito completo</b><p>Sin letra chica.</p></div></div>
+      <div class="check"><span class="c">✅</span><div><b>3 días para decidir</b><p>Sin afán, en tu casa, frente a tu espejo.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- S6 · OFERTA PILOTO -->
+<section class="oferta">
+  <div class="wrap">
+    <div class="kick">Fase piloto</div>
+    <h2>Precio de lanzamiento en Pereira</h2>
+    <div class="precio-box">
+      <div class="antes">Antes $230.000</div>
+      <div class="hoy">$190.000</div>
+      <div class="por">por la montura que elijas</div>
+      <div class="tags"><span class="tag">📍 Solo Pereira</span><span class="tag">⏳ Cupos limitados por semana</span></div>
+      <a class="btn btn-neg" href="#test">Empezar mi test →</a>
+    </div>
+  </div>
+</section>
+
+<!-- S7 · PRUEBA SOCIAL -->
+<section class="social">
+  <div class="wrap">
+    <div class="kick">Evaluación</div>
+    <h2>Ya lo están probando</h2>
+    <p class="desc">¿1, 2 o 3? Mira cómo se las prueban y cuál se quedarían.</p>
+    <div class="videos" id="videosGrid"></div>
+    <!-- Plantilla de testimonios: pegar aquí SOLO testimonios reales (foto + nombre + ciudad)
+    <div class="testimonios">
+      <figure><img src="..."><figcaption>“...” — Nombre, Pereira</figcaption></figure>
+    </div>
+    -->
+    <a class="ig-cta" href="https://instagram.com/ferrati.co" target="_blank" rel="noopener">Ver más en @ferrati.co</a>
+  </div>
+</section>
+
+<!-- S8 · FAQ -->
+<section class="faq">
+  <div class="wrap">
+    <div class="kick">Dudas</div>
+    <h2>Preguntas frecuentes</h2>
+    <div class="faq-list">
+      <details><summary>¿Tengo que pagar las 3 gafas?</summary><div class="fa">No. Solo dejas un depósito reembolsable de $100.000 como garantía. Pagas únicamente la que te quedes ($190.000).</div></details>
+      <details><summary>¿Y si no me gusta ninguna?</summary><div class="fa">Coordinamos la recogida gratis y te devolvemos el depósito completo.</div></details>
+      <details><summary>¿Cuánto tiempo tengo para probarlas?</summary><div class="fa">3 días, con calma y en tu casa.</div></details>
+      <details><summary>¿Dónde está disponible?</summary><div class="fa">Por ahora solo en Pereira (fase piloto).</div></details>
+      <details><summary>¿Cómo elijo las 3?</summary><div class="fa">Haces el test y te sugerimos las que van con tu rostro; tú eliges tus 3 favoritas.</div></details>
+      <details><summary>¿Cuánto tarda en llegar?</summary><div class="fa">Coordinamos día y hora contigo por WhatsApp al momento de reservar.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- S9 · CTA FINAL -->
+<section class="final">
+  <div class="wrap">
+    <img class="logo-img" src="logo-blanco.png" alt="Ferrati" onerror="this.style.display='none'">
+    <h2>Deja de comprar gafas a ciegas.</h2>
+    <p>Haz el test, elige 3 y pruébalas en casa. Sin riesgo, solo en Pereira.</p>
+    <a class="btn" href="#test">Hacer el test →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap fl">
+    Ferrati · Distribuido por Solare · Pereira<br>
+    <a href="https://wa.me/573244073508" target="_blank" rel="noopener">WhatsApp: 324 407 3508</a> · <a href="https://instagram.com/ferrati.co" target="_blank" rel="noopener">@ferrati.co</a>
+  </div>
+</footer>
+
+<script>
+/* ================= CONFIG ================= */
+const WHATSAPP = "573244073508";
+const PIXEL_ID = ""; // <- pegar aquí el ID del píxel de Meta
+const VIDEOS = []; // rutas de videos de influencers, ej: ['videos/influencer1.mp4', ...]
+
+/* ================= PÍXEL DE META ================= */
+if(PIXEL_ID){
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', PIXEL_ID); fbq('track','PageView');
+}
+const track=(ev,custom)=>{ try{ if(window.fbq){ custom?fbq('trackCustom',ev):fbq('track',ev); } }catch(_){} };
+
+/* ================= DATA (la reescribe cargar-fotos.py) ================= */
+const productos = [
+  { id:'st-moritz', codigo:'7322', nombre:'St. Moritz', categoria:'unisex', material:'metalica', forma:'aviador', medida:'59 -15 -149',
+    tagline:'Aviador clásico de perfil bajo',
+    colores:[
+      {nombre:'Negro', codigo:'7322C1', hex:'#323435', frente:'img/7322C1.jpg', lado:'img/7322C1-34.jpg'},
+      {nombre:'Plata', codigo:'7322C2', hex:'#515e55', frente:'img/7322C2.jpg', lado:'img/7322C2-34.jpg'},
+      {nombre:'Dorado Mate', codigo:'7322C4', hex:'#c6ad8a', frente:'img/7322C4.jpg', lado:'img/7322C4-34.jpg'},
+    ] },
+  { id:'gstaad', codigo:'7323', nombre:'Gstaad', categoria:'unisex', material:'metalica', forma:'aviador', medida:'61 - 13 - 149',
+    tagline:'Aviador slim y ligero',
+    colores:[
+      {nombre:'Negro', codigo:'7323C1', hex:'#3f3e42', frente:'img/7323C1.jpg', lado:'img/7323C1-34.jpg'},
+      {nombre:'Gris', codigo:'7323C3', hex:'#4e5352', frente:'img/7323C3.jpg', lado:'img/7323C3-34.jpg'},
+      {nombre:'Dorado', codigo:'7323C4', hex:'#fed9a1', frente:'img/7323C4.jpg', lado:'img/7323C4-34.jpg'},
+    ] },
+  { id:'verbier', codigo:'7201', nombre:'Verbier', categoria:'dama', material:'metalica', forma:'aviador', medida:'60-15-147',
+    tagline:'Aviador hexagonal',
+    colores:[
+      {nombre:'Gris', codigo:'7201C2', hex:'#4e5256', frente:'img/7201C2.jpg', lado:'img/7201C2-34.jpg'},
+      {nombre:'Dorado', codigo:'7201C3', hex:'#e3ad4f', frente:'img/7201C3.jpg', lado:'img/7201C3-34.jpg'},
+      {nombre:'Negro', codigo:'7201C4', hex:'#000000', frente:'img/7201C4.jpg', lado:'img/7201C4-34.jpg'},
+    ] },
+  { id:'zermatt', codigo:'7331', nombre:'Zermatt', categoria:'hombre', material:'metalica', forma:'rectangular', medida:'55 - 19 - 145',
+    tagline:'Rectangular metálico de líneas finas',
+    colores:[
+      {nombre:'Negro', codigo:'7331C1', hex:'#3f414b', frente:'img/7331C1.jpg', lado:'img/7331C1-34.jpg'},
+      {nombre:'Dorado Mate', codigo:'7331C2', hex:'#f4d7ab', frente:'img/7331C2.jpg', lado:'img/7331C2-34.jpg'},
+      {nombre:'Plata', codigo:'7331C3', hex:'#6d6a67', frente:'img/7331C3.jpg', lado:'img/7331C3-34.jpg'},
+    ] },
+  { id:'montreux', codigo:'9810P', nombre:'Montreux', categoria:'hombre', material:'acetato', forma:'cuadrada', medida:'56 - 16 - 144', top:true,
+    tagline:'Cuadrada gruesa de acetato',
+    colores:[
+      {nombre:'Negro', codigo:'9810PC1', hex:'#2f2f33', frente:'img/9810PC1.jpg', lado:'img/9810PC1-34.jpg'},
+      {nombre:'Negro mate', codigo:'9810PC2', hex:'#2a2a2b', frente:'img/9810PC2.jpg', lado:'img/9810PC2-34.jpg'},
+      {nombre:'Gris', codigo:'9810PC4', hex:'#60686d', frente:'img/9810PC4.jpg', lado:'img/9810PC4-34.jpg'},
+      {nombre:'Café', codigo:'9810PC8', hex:'#653622', frente:'img/9810PC8.jpg', lado:'img/9810PC8-34.jpg'},
+    ] },
+  { id:'davos', codigo:'MARC876', nombre:'Davos', categoria:'hombre', material:'acetato', forma:'cuadrada', medida:'55 - 17- 145',
+    tagline:'Flat-top de acetato',
+    colores:[
+      {nombre:'Negro', codigo:'MARC876C1', hex:'#000000', frente:'img/MARC876C1.jpg', lado:'img/MARC876C1-34.jpg'},
+      {nombre:'Café', codigo:'MARC876C3', hex:'#6e321c', frente:'img/MARC876C3.jpg', lado:'img/MARC876C3-34.jpg'},
+      {nombre:'Gris', codigo:'MARC876C5', hex:'#54515c', frente:'img/MARC876C5.jpg', lado:'img/MARC876C5-34.jpg'},
+      {nombre:'Gris', codigo:'MARC876C7', hex:'#686771', frente:'img/MARC876C7.jpg', lado:'img/MARC876C7-34.jpg'},
+    ] },
+  { id:'klosters', codigo:'SPRA58', nombre:'Klosters', categoria:'hombre', material:'metalica', forma:'aviador', medida:'57 - 16- 145',
+    tagline:'Aviador doble puente hexagonal',
+    colores:[
+      {nombre:'Negro', codigo:'SPRA58C1', hex:'#353437', frente:'img/SPRA58C1.jpg', lado:'img/SPRA58C1-34.jpg'},
+      {nombre:'Plata', codigo:'SPRA58C4', hex:'#36363a', frente:'img/SPRA58C4.jpg', lado:'img/SPRA58C4-34.jpg'},
+      {nombre:'Gris', codigo:'SPRA58C5', hex:'#525252', frente:'img/SPRA58C5.jpg', lado:'img/SPRA58C5-34.jpg'},
+      {nombre:'Dorado', codigo:'SPRA58C6', hex:'#d0aa73', frente:'img/SPRA58C6.jpg', lado:'img/SPRA58C6-34.jpg'},
+    ] },
+  { id:'lugano', codigo:'10003', nombre:'Lugano', categoria:'dama', material:'metalica', forma:'redonda', medida:'55 - 22 - 147', top:true,
+    tagline:'Ovalada',
+    colores:[
+      {nombre:'Negro', codigo:'10003C1', hex:'#000000', frente:'img/10003C1.jpg', lado:'img/10003C1-34.jpg'},
+      {nombre:'Gris', codigo:'10003C3', hex:'#7e746b', frente:'img/10003C3.jpg', lado:'img/10003C3-34.jpg'},
+      {nombre:'Oro Rosa', codigo:'10003C4', hex:'#e7c0a8', frente:'img/10003C4.jpg', lado:'img/10003C4-34.jpg'},
+      {nombre:'Gris', codigo:'10003C5', hex:'#726e7d', frente:'img/10003C5.jpg', lado:'img/10003C5-34.jpg'},
+    ] },
+  { id:'crans', codigo:'3188', nombre:'Crans', categoria:'unisex', material:'acetato', forma:'cuadrada', medida:'54 - 22 - 135',
+    tagline:'cuadrada folding',
+    colores:[
+      {nombre:'Negro', codigo:'3188C1', hex:'#39373b', frente:'img/3188C1.jpg', lado:'img/3188C1-34.jpg'},
+      {nombre:'Negro mate', codigo:'3188C2', hex:'#3f3f40', frente:'img/3188C2.jpg', lado:'img/3188C2-34.jpg'},
+      {nombre:'Café', codigo:'3188C4', hex:'#af9e93', frente:'img/3188C4.jpg', lado:'img/3188C4-34.jpg'},
+      {nombre:'Carey', codigo:'3188C7', hex:'#c02e1d', frente:'img/3188C7.jpg', lado:'img/3188C7-34.jpg'},
+    ] },
+  { id:'geneve', codigo:'6215P', nombre:'Genève', categoria:'unisex', material:'acetato', forma:'redonda', medida:'49 - 23 - 147',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'6215PC2', hex:'#3f3f47', frente:'img/6215PC2.jpg', lado:'img/6215PC2-34.jpg'},
+      {nombre:'Negro', codigo:'6215PC3', hex:'#363738', frente:'img/6215PC3.jpg', lado:'img/6215PC3-34.jpg'},
+      {nombre:'Negro', codigo:'6215PC4', hex:'#393b41', frente:'img/6215PC4.jpg', lado:'img/6215PC4-34.jpg'},
+    ] },
+  { id:'lausanne', codigo:'7245', nombre:'Lausanne', categoria:'unisex', material:'metalica', forma:'rectangular', medida:'58 - 17 - 147',
+    tagline:'',
+    colores:[
+      {nombre:'Gris', codigo:'7245C1', hex:'#505058', frente:'img/7245C1.jpg', lado:'img/7245C1-34.jpg'},
+      {nombre:'Plata', codigo:'7245C2', hex:'#545e55', frente:'img/7245C2.jpg', lado:'img/7245C2-34.jpg'},
+      {nombre:'Café', codigo:'7245C4', hex:'#a19382', frente:'img/7245C4.jpg', lado:'img/7245C4-34.jpg'},
+    ] },
+  { id:'lucerne', codigo:'7246', nombre:'Lucerne', categoria:'unisex', material:'metalica', forma:'rectangular', medida:'58 - 17 - 147',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'7246C1', hex:'#525157', frente:'img/7246C1.jpg', lado:'img/7246C1-34.jpg'},
+      {nombre:'Plata', codigo:'7246C2', hex:'#40444b', frente:'img/7246C2.jpg', lado:'img/7246C2-34.jpg'},
+      {nombre:'Dorado', codigo:'7246C3', hex:'#dbb588', frente:'img/7246C3.jpg', lado:'img/7246C3-34.jpg'},
+      {nombre:'Café', codigo:'7246C4', hex:'#cfaf9d', frente:'img/7246C4.jpg', lado:'img/7246C4-34.jpg'},
+    ] },
+  { id:'interlaken', codigo:'7287', nombre:'Interlaken', categoria:'dama', material:'metalica', forma:'cateye', medida:'59 - 17 - 147',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'7287C1', hex:'#39383b', frente:'img/7287C1.jpg', lado:'img/7287C1-34.jpg'},
+      {nombre:'Gris', codigo:'7287C2', hex:'#4b4e4d', frente:'img/7287C2.jpg', lado:'img/7287C2-34.jpg'},
+      {nombre:'Gris', codigo:'7287C3', hex:'#786b6f', frente:'img/7287C3.jpg', lado:'img/7287C3-34.jpg'},
+      {nombre:'Plata', codigo:'7287C4', hex:'#79787a', frente:'img/7287C4.jpg', lado:'img/7287C4-34.jpg'},
+    ] },
+  { id:'andermatt', codigo:'7289', nombre:'Andermatt', categoria:'unisex', material:'metalica', forma:'redonda', medida:'55 - 20- 147',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'7289C1', hex:'#5c5964', frente:'img/7289C1.jpg', lado:'img/7289C1-34.jpg'},
+      {nombre:'Café', codigo:'7289C2', hex:'#a17c69', frente:'img/7289C2.jpg', lado:'img/7289C2-34.jpg'},
+      {nombre:'Café', codigo:'7289C3', hex:'#454549', frente:'img/7289C3.jpg', lado:'img/7289C3-34.jpg'},
+      {nombre:'Gris', codigo:'7289C4', hex:'#796e80', frente:'img/7289C4.jpg', lado:'img/7289C4-34.jpg'},
+    ] },
+  { id:'wengen', codigo:'7297', nombre:'Wengen', categoria:'unisex', material:'metalica', forma:'aviador', medida:'59 - 16 - 147',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'7297C1', hex:'#000000', frente:'img/7297C1.jpg', lado:'img/7297C1-34.jpg'},
+      {nombre:'Plata', codigo:'7297C2', hex:'#9d948d', frente:'img/7297C2.jpg', lado:'img/7297C2-34.jpg'},
+      {nombre:'Dorado', codigo:'7297C3', hex:'#be7a2a', frente:'img/7297C3.jpg', lado:'img/7297C3-34.jpg'},
+      {nombre:'Dorado Mate', codigo:'7297C4', hex:'#e1c1a0', frente:'img/7297C4.jpg', lado:'img/7297C4-34.jpg'},
+    ] },
+  { id:'grindelwald', codigo:'7299', nombre:'Grindelwald', categoria:'unisex', material:'metalica', forma:'wrap', medida:'59 - 16 - 147',
+    tagline:'tres piezas hexagonal',
+    colores:[
+      {nombre:'Negro', codigo:'7299C1', hex:'#000000', frente:'img/7299C1.jpg', lado:'img/7299C1-34.jpg'},
+      {nombre:'Plata', codigo:'7299C2', hex:'#252423', frente:'img/7299C2.jpg', lado:'img/7299C2-34.jpg'},
+      {nombre:'Verde', codigo:'7299C3', hex:'#394535', frente:'img/7299C3.jpg', lado:'img/7299C3-34.jpg'},
+      {nombre:'Dorado Mate', codigo:'7299C4', hex:'#978976', frente:'img/7299C4.jpg', lado:'img/7299C4-34.jpg'},
+    ] },
+  { id:'ascona', codigo:'7300', nombre:'Ascona', categoria:'dama', material:'metalica', forma:'cateye', medida:'65 - 15 - 146',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'7300C1', hex:'#000000', frente:'img/7300C1.jpg', lado:'img/7300C1-34.jpg'},
+      {nombre:'Dorado', codigo:'7300C2', hex:'#d1967f', frente:'img/7300C2.jpg', lado:'img/7300C2-34.jpg'},
+      {nombre:'Café', codigo:'7300C3', hex:'#6f584a', frente:'img/7300C3.jpg', lado:'img/7300C3-34.jpg'},
+      {nombre:'Morado', codigo:'7300C4', hex:'#6c5766', frente:'img/7300C4.jpg', lado:'img/7300C4-34.jpg'},
+    ] },
+  { id:'locarno', codigo:'7306', nombre:'Locarno', categoria:'dama', material:'metalica', forma:'cateye', medida:'145 - 0 - 147',
+    tagline:'Mono lente cateye',
+    colores:[
+      {nombre:'Negro', codigo:'7306C1', hex:'#333436', frente:'img/7306C1.jpg', lado:'img/7306C1-34.jpg'},
+      {nombre:'Gris', codigo:'7306C2', hex:'#5a5b5f', frente:'img/7306C2.jpg', lado:'img/7306C2-34.jpg'},
+      {nombre:'Café espejo rojo', codigo:'7306C3', hex:'#785340', frente:'img/7306C3.jpg', lado:'img/7306C3-34.jpg'},
+    ] },
+  { id:'vevey', codigo:'7316', nombre:'Vevey', categoria:'dama', material:'metalica', forma:'cateye', medida:'145 - 0 - 136',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'7316C1', hex:'#000000', frente:'img/7316C1.jpg', lado:'img/7316C1-34.jpg'},
+      {nombre:'Café', codigo:'7316C2', hex:'#8e7771', frente:'img/7316C2.jpg', lado:'img/7316C2-34.jpg'},
+      {nombre:'Morado', codigo:'7316C3', hex:'#c8b2c5', frente:'img/7316C3.jpg', lado:'img/7316C3-34.jpg'},
+      {nombre:'Plata', codigo:'7316C4', hex:'#82858c', frente:'img/7316C4.jpg', lado:'img/7316C4-34.jpg'},
+    ] },
+  { id:'nyon', codigo:'7317', nombre:'Nyon', categoria:'dama', material:'metalica', forma:'cateye', medida:'66 - 16 - 136',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'7317C1', hex:'#000000', frente:'img/7317C1.jpg', lado:'img/7317C1-34.jpg'},
+      {nombre:'Dorado', codigo:'7317C2', hex:'#c8b299', frente:'img/7317C2.jpg', lado:'img/7317C2-34.jpg'},
+      {nombre:'Gris', codigo:'7317C3', hex:'#605b62', frente:'img/7317C3.jpg', lado:'img/7317C3-34.jpg'},
+    ] },
+  { id:'arosa', codigo:'7319', nombre:'Arosa', categoria:'unisex', material:'metalica', forma:'cuadrada', medida:'55 - 20 - 149',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'7319C1', hex:'#000000', frente:'img/7319C1.jpg', lado:'img/7319C1-34.jpg'},
+      {nombre:'Negro', codigo:'7319C2', hex:'#3b3c4e', frente:'img/7319C2.jpg', lado:'img/7319C2-34.jpg'},
+      {nombre:'Gris', codigo:'7319C3', hex:'#464e48', frente:'img/7319C3.jpg', lado:'img/7319C3-34.jpg'},
+      {nombre:'Gris', codigo:'7319C4', hex:'#605b58', frente:'img/7319C4.jpg', lado:'img/7319C4-34.jpg'},
+    ] },
+  { id:'flims', codigo:'7320', nombre:'Flims', categoria:'unisex', material:'metalica', forma:'redonda', medida:'54 - 19 - 149',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'7320C1', hex:'#54555b', frente:'img/7320C1.jpg', lado:'img/7320C1-34.jpg'},
+      {nombre:'Negro', codigo:'7320C2', hex:'#4f4b53', frente:'img/7320C2.jpg', lado:'img/7320C2-34.jpg'},
+      {nombre:'Gris', codigo:'7320C3', hex:'#423e39', frente:'img/7320C3.jpg', lado:'img/7320C3-34.jpg'},
+      {nombre:'Vino Tinto', codigo:'7320C4', hex:'#5e5f52', frente:'img/7320C4.jpg', lado:'img/7320C4-34.jpg'},
+    ] },
+  { id:'laax', codigo:'7321', nombre:'Laax', categoria:'hombre', material:'metalica', forma:'aviador', medida:'',
+    tagline:'Aviador hexagonal',
+    colores:[
+      {nombre:'Negro', codigo:'7321C2', hex:'#000000', frente:'img/7321C2.jpg', lado:'img/7321C2-34.jpg'},
+      {nombre:'Plata', codigo:'7321C3', hex:'#b9afa5', frente:'img/7321C3.jpg', lado:'img/7321C3-34.jpg'},
+      {nombre:'Dorado', codigo:'7321C4', hex:'#fbd49e', frente:'img/7321C4.jpg', lado:'img/7321C4-34.jpg'},
+    ] },
+  { id:'pontresina', codigo:'7327', nombre:'Pontresina', categoria:'unisex', material:'metalica', forma:'cuadrada', medida:'56 - 17 - 147',
+    tagline:'cuadrada metalica',
+    colores:[
+      {nombre:'Negro', codigo:'7327C2', hex:'#000000', frente:'img/7327C2.jpg', lado:'img/7327C2-34.jpg'},
+      {nombre:'Gris', codigo:'7327C3', hex:'#474b49', frente:'img/7327C3.jpg', lado:'img/7327C3-34.jpg'},
+      {nombre:'Azul Metalico', codigo:'7327C4', hex:'#3b5382', frente:'img/7327C4.jpg', lado:'img/7327C4-34.jpg'},
+    ] },
+  { id:'engadin', codigo:'7901', nombre:'Engadin', categoria:'unisex', material:'metalica', forma:'aviador', medida:'60 - 15 -150',
+    tagline:'Aviador Reverse',
+    colores:[
+      {nombre:'Negro', codigo:'7901C1', hex:'#000000', frente:'img/7901C1.jpg', lado:'img/7901C1-34.jpg'},
+      {nombre:'Gris', codigo:'7901C2', hex:'#5d554e', frente:'img/7901C2.jpg', lado:'img/7901C2-34.jpg'},
+      {nombre:'Plata', codigo:'7901C3', hex:'#514d49', frente:'img/7901C3.jpg', lado:'img/7901C3-34.jpg'},
+    ] },
+  { id:'champery', codigo:'9085', nombre:'Champéry', categoria:'dama', material:'acetato', forma:'wrap', medida:'59 - 18 - 148',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'9085C1', hex:'#000000', frente:'img/9085C1.jpg', lado:'img/9085C1-34.jpg'},
+      {nombre:'Vino Tinto', codigo:'9085C2', hex:'#33272b', frente:'img/9085C2.jpg', lado:'img/9085C2-34.jpg'},
+      {nombre:'Café', codigo:'9085C3', hex:'#8d8593', frente:'img/9085C3.jpg', lado:'img/9085C3-34.jpg'},
+      {nombre:'Rosado', codigo:'9085C4', hex:'#e1d2c8', frente:'img/9085C4.jpg', lado:'img/9085C4-34.jpg'},
+    ] },
+  { id:'villars', codigo:'9089', nombre:'Villars', categoria:'dama', material:'acetato', forma:'cateye', medida:'55 -18 -150',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'9089C2', hex:'#000000', frente:'img/9089C2.jpg', lado:'img/9089C2-34.jpg'},
+      {nombre:'Gris', codigo:'9089C3', hex:'#424347', frente:'img/9089C3.jpg', lado:'img/9089C3-34.jpg'},
+      {nombre:'Rosa', codigo:'9089C4', hex:'#d8a4a0', frente:'img/9089C4.jpg', lado:'img/9089C4-34.jpg'},
+    ] },
+  { id:'leysin', codigo:'9100', nombre:'Leysin', categoria:'dama', material:'acetato', forma:'cateye', medida:'62 - 15 - 148',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'9100C1', hex:'#000000', frente:'img/9100C1.jpg', lado:'img/9100C1-34.jpg'},
+      {nombre:'Verde', codigo:'9100C3', hex:'#9c9777', frente:'img/9100C3.jpg', lado:'img/9100C3-34.jpg'},
+      {nombre:'Blanco', codigo:'9100C4', hex:'#ffffff', frente:'img/9100C4.jpg', lado:'img/9100C4-34.jpg'},
+    ] },
+  { id:'saas-fee', codigo:'9105', nombre:'Saas-Fee', categoria:'dama', material:'acetato', forma:'cateye', medida:'65 - 16 - 148',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'9105C1', hex:'#202020', frente:'img/9105C1.jpg', lado:'img/9105C1-34.jpg'},
+      {nombre:'Carey', codigo:'9105C2', hex:'#564031', frente:'img/9105C2.jpg', lado:'img/9105C2-34.jpg'},
+      {nombre:'Naranja', codigo:'9105C3', hex:'#b77127', frente:'img/9105C3.jpg', lado:'img/9105C3-34.jpg'},
+      {nombre:'Azul', codigo:'9105C4', hex:'#6a707d', frente:'img/9105C4.jpg', lado:'img/9105C4-34.jpg'},
+    ] },
+  { id:'burgenstock', codigo:'9106', nombre:'Bürgenstock', categoria:'dama', material:'acetato', forma:'rectangular', medida:'63 - 16 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'9106C1', hex:'#000000', frente:'img/9106C1.jpg', lado:'img/9106C1-34.jpg'},
+      {nombre:'Café', codigo:'9106C2', hex:'#855b4c', frente:'img/9106C2.jpg', lado:'img/9106C2-34.jpg'},
+      {nombre:'Vino Tinto', codigo:'9106C3', hex:'#372b29', frente:'img/9106C3.jpg', lado:'img/9106C3-34.jpg'},
+    ] },
+  { id:'murren', codigo:'9133', nombre:'Mürren', categoria:'dama', material:'metalica', forma:'cateye', medida:'53 - 20 -147',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'9133C1', hex:'#000000', frente:'img/9133C1.jpg', lado:'img/9133C1-34.jpg'},
+      {nombre:'Gris', codigo:'9133C3', hex:'#605d69', frente:'img/9133C3.jpg', lado:'img/9133C3-34.jpg'},
+      {nombre:'Blanco', codigo:'9133C4', hex:'#ffffff', frente:'img/9133C4.jpg', lado:'img/9133C4-34.jpg'},
+    ] },
+  { id:'adelboden', codigo:'9162', nombre:'Adelboden', categoria:'dama', material:'acetato', forma:'cateye', medida:'55 - 18 - 147',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'9162C1', hex:'#000000', frente:'img/9162C1.jpg', lado:'img/9162C1-34.jpg'},
+      {nombre:'Carey', codigo:'9162C2', hex:'#4d3822', frente:'img/9162C2.jpg', lado:'img/9162C2-34.jpg'},
+      {nombre:'Vino Tinto', codigo:'9162C3', hex:'#972e20', frente:'img/9162C3.jpg', lado:'img/9162C3-34.jpg'},
+      {nombre:'Café', codigo:'9162C4', hex:'#432018', frente:'img/9162C4.jpg', lado:'img/9162C4-34.jpg'},
+    ] },
+  { id:'kandersteg', codigo:'9166', nombre:'Kandersteg', categoria:'dama', material:'acetato', forma:'cateye', medida:'54 - 20 - 147',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'9166C1', hex:'#212225', frente:'img/9166C1.jpg', lado:'img/9166C1-34.jpg'},
+      {nombre:'Carey', codigo:'9166C2', hex:'#9c4902', frente:'img/9166C2.jpg', lado:'img/9166C2-34.jpg'},
+      {nombre:'Blanco', codigo:'9166C3', hex:'#ffffff', frente:'img/9166C3.jpg', lado:'img/9166C3-34.jpg'},
+      {nombre:'Rosa', codigo:'9166C4', hex:'#d8cccc', frente:'img/9166C4.jpg', lado:'img/9166C4-34.jpg'},
+    ] },
+  { id:'lenzerheide', codigo:'9812P', nombre:'Lenzerheide', categoria:'hombre', material:'acetato', forma:'cuadrada', medida:'52 - 17 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'9812PC1', hex:'#000000', frente:'img/9812PC1.jpg', lado:'img/9812PC1-34.jpg'},
+      {nombre:'Café', codigo:'9812PC2', hex:'#513e2d', frente:'img/9812PC2.jpg', lado:'img/9812PC2-34.jpg'},
+      {nombre:'Carey', codigo:'9812PC6', hex:'#b05c0d', frente:'img/9812PC6.jpg', lado:'img/9812PC6-34.jpg'},
+    ] },
+  { id:'scuol', codigo:'BE2436', nombre:'Scuol', categoria:'dama', material:'acetato', forma:'cuadrada', medida:'54 - 19 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'BE2436C1', hex:'#000000', frente:'img/BE2436C1.jpg', lado:'img/BE2436C1-34.jpg'},
+      {nombre:'Café', codigo:'BE2436C5', hex:'#6e6866', frente:'img/BE2436C5.jpg', lado:'img/BE2436C5-34.jpg'},
+      {nombre:'Negro con amarillo', codigo:'BE2436C6', hex:'#c5a387', frente:'img/BE2436C6.jpg', lado:'img/BE2436C6-34.jpg'},
+      {nombre:'Verde Menta', codigo:'BE2436C8', hex:'#92b4ae', frente:'img/BE2436C8.jpg', lado:'img/BE2436C8-34.jpg'},
+    ] },
+  { id:'sils', codigo:'BE2437', nombre:'Sils', categoria:'dama', material:'acetato', forma:'cateye', medida:'53 - 19 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'BE2437C1', hex:'#000000', frente:'img/BE2437C1.jpg', lado:'img/BE2437C1-34.jpg'},
+      {nombre:'Verde', codigo:'BE2437C6', hex:'#e1ce06', frente:'img/BE2437C6.jpg', lado:'img/BE2437C6-34.jpg'},
+      {nombre:'Negro con amarillo', codigo:'BE2437C8', hex:'#caa57c', frente:'img/BE2437C8.jpg', lado:'img/BE2437C8-34.jpg'},
+    ] },
+  { id:'celerina', codigo:'BV400061', nombre:'Celerina', categoria:'dama', material:'acetato', forma:'cuadrada', medida:'53 - 18 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'BV400061C1', hex:'#282628', frente:'img/BV400061C1.jpg', lado:'img/BV400061C1-34.jpg'},
+      {nombre:'Carey', codigo:'BV400061C3', hex:'#302925', frente:'img/BV400061C3.jpg', lado:'img/BV400061C3-34.jpg'},
+      {nombre:'Verde', codigo:'BV400061C4', hex:'#585e55', frente:'img/BV400061C4.jpg', lado:'img/BV400061C4-34.jpg'},
+      {nombre:'Azul', codigo:'BV400061C5', hex:'#245ab6', frente:'img/BV400061C5.jpg', lado:'img/BV400061C5-34.jpg'},
+    ] },
+  { id:'maloja', codigo:'BV4000612', nombre:'Maloja', categoria:'dama', material:'acetato', forma:'cuadrada', medida:'53 - 18 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'BV4000612C1', hex:'#282628', frente:'img/BV4000612C1.jpg', lado:'img/BV4000612C1-34.jpg'},
+      {nombre:'Carey', codigo:'BV4000612C3', hex:'#302925', frente:'img/BV4000612C3.jpg', lado:'img/BV4000612C3-34.jpg'},
+      {nombre:'Verde', codigo:'BV4000612C4', hex:'#585e55', frente:'img/BV4000612C4.jpg', lado:'img/BV4000612C4-34.jpg'},
+      {nombre:'Azul', codigo:'BV4000612C5', hex:'#245ab6', frente:'img/BV4000612C5.jpg', lado:'img/BV4000612C5-34.jpg'},
+    ] },
+  { id:'soglio', codigo:'BV50048I', nombre:'Soglio', categoria:'dama', material:'acetato', forma:'cateye', medida:'52 - 20 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'BV50048IC1', hex:'#000000', frente:'img/BV50048IC1.jpg', lado:'img/BV50048IC1-34.jpg'},
+      {nombre:'Vino Tinto', codigo:'BV50048IC4', hex:'#742328', frente:'img/BV50048IC4.jpg', lado:'img/BV50048IC4-34.jpg'},
+      {nombre:'Beige', codigo:'BV50048IC5', hex:'#a67c55', frente:'img/BV50048IC5.jpg', lado:'img/BV50048IC5-34.jpg'},
+    ] },
+  { id:'bregaglia', codigo:'BV50049I', nombre:'Bregaglia', categoria:'dama', material:'acetato', forma:'cuadrada', medida:'53 - 19 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'BV50049IC1', hex:'#000000', frente:'img/BV50049IC1.jpg', lado:'img/BV50049IC1-34.jpg'},
+      {nombre:'Carey', codigo:'BV50049IC2', hex:'#e47e02', frente:'img/BV50049IC2.jpg', lado:'img/BV50049IC2-34.jpg'},
+      {nombre:'Beige', codigo:'BV50049IC7', hex:'#bf9976', frente:'img/BV50049IC7.jpg', lado:'img/BV50049IC7-34.jpg'},
+      {nombre:'Azul', codigo:'BV50049IC8', hex:'#4a5776', frente:'img/BV50049IC8.jpg', lado:'img/BV50049IC8-34.jpg'},
+    ] },
+  { id:'splugen', codigo:'CT0377', nombre:'Splügen', categoria:'unisex', material:'acetato', forma:'cuadrada', medida:'53 - 19 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'CT0377C1', hex:'#000000', frente:'img/CT0377C1.jpg', lado:'img/CT0377C1-34.jpg'},
+      {nombre:'Café', codigo:'CT0377C5', hex:'#ad5a19', frente:'img/CT0377C5.jpg', lado:'img/CT0377C5-34.jpg'},
+      {nombre:'Beige', codigo:'CT0377C6', hex:'#d2a481', frente:'img/CT0377C6.jpg', lado:'img/CT0377C6-34.jpg'},
+      {nombre:'Rosa', codigo:'CT0377C8', hex:'#e4d6cc', frente:'img/CT0377C8.jpg', lado:'img/CT0377C8-34.jpg'},
+    ] },
+  { id:'zinal', codigo:'GG1531SK', nombre:'Zinal', categoria:'unisex', material:'acetato', forma:'rectangular', medida:'54 - 18 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'GG1531SKC3', hex:'#000000', frente:'img/GG1531SKC3.jpg', lado:'img/GG1531SKC3-34.jpg'},
+      {nombre:'Vino Tinto', codigo:'GG1531SKC4', hex:'#57323d', frente:'img/GG1531SKC4.jpg', lado:'img/GG1531SKC4-34.jpg'},
+      {nombre:'Azul', codigo:'GG1531SKC6', hex:'#a9c1db', frente:'img/GG1531SKC6.jpg', lado:'img/GG1531SKC6-34.jpg'},
+      {nombre:'Carey', codigo:'GG1531SKC8', hex:'#986016', frente:'img/GG1531SKC8.jpg', lado:'img/GG1531SKC8-34.jpg'},
+    ] },
+  { id:'grimentz', codigo:'L6050SPLB', nombre:'Grimentz', categoria:'unisex', material:'acetato', forma:'cuadrada', medida:'54 - 19 -145',
+    tagline:'',
+    colores:[
+      {nombre:'Carey', codigo:'L6050SPLBC2', hex:'#df8e03', frente:'img/L6050SPLBC2.jpg', lado:'img/L6050SPLBC2-34.jpg'},
+      {nombre:'Café', codigo:'L6050SPLBC4', hex:'#765442', frente:'img/L6050SPLBC4.jpg', lado:'img/L6050SPLBC4.jpg'},
+      {nombre:'Azul espejo azul', codigo:'L6050SPLBC5', hex:'#384c72', frente:'img/L6050SPLBC5.jpg', lado:'img/L6050SPLBC5-34.jpg'},
+      {nombre:'Gris', codigo:'L6050SPLBC6', hex:'#5c545c', frente:'img/L6050SPLBC6.jpg', lado:'img/L6050SPLBC6-34.jpg'},
+    ] },
+  { id:'anzere', codigo:'LY2347', nombre:'Anzère', categoria:'dama', material:'metalica', forma:'redonda', medida:'50 - 20 - 141',
+    tagline:'',
+    colores:[
+      {nombre:'Dorado', codigo:'LY2347C1', hex:'#f5d4ae', frente:'img/LY2347C1.jpg', lado:'img/LY2347C1-34.jpg'},
+      {nombre:'Dorado Carey', codigo:'LY2347C2', hex:'#533123', frente:'img/LY2347C2.jpg', lado:'img/LY2347C2-34.jpg'},
+      {nombre:'Plata', codigo:'LY2347C3', hex:'#bfb9b2', frente:'img/LY2347C3.jpg', lado:'img/LY2347C3-34.jpg'},
+    ] },
+  { id:'nendaz', codigo:'LY2421', nombre:'Nendaz', categoria:'dama', material:'metalica', forma:'redonda', medida:'50 - 21 - 142',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'LY2421C1', hex:'#000000', frente:'img/LY2421C1.jpg', lado:'img/LY2421C1-34.jpg'},
+      {nombre:'Carey', codigo:'LY2421C2', hex:'#7e4503', frente:'img/LY2421C2.jpg', lado:'img/LY2421C2-34.jpg'},
+      {nombre:'Beige', codigo:'LY2421C3', hex:'#e8e1d4', frente:'img/LY2421C3.jpg', lado:'img/LY2421C3-34.jpg'},
+      {nombre:'Café', codigo:'LY2421C4', hex:'#b3925e', frente:'img/LY2421C4.jpg', lado:'img/LY2421C4-34.jpg'},
+    ] },
+  { id:'veysonnaz', codigo:'OLD088S', nombre:'Veysonnaz', categoria:'hombre', material:'metalica', forma:'aviador', medida:'58 - 17 -145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'OLD088SC3', hex:'#323139', frente:'img/OLD088SC3.jpg', lado:'img/OLD088SC3-34.jpg'},
+      {nombre:'Café', codigo:'OLD088SC5', hex:'#635249', frente:'img/OLD088SC5.jpg', lado:'img/OLD088SC5-34.jpg'},
+    ] },
+  { id:'bettmeralp', codigo:'OLD1307S', nombre:'Bettmeralp', categoria:'hombre', material:'tr90', forma:'cuadrada', medida:'60 - 17 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'OLD1307SC1', hex:'#000000', frente:'img/OLD1307SC1.jpg', lado:'img/OLD1307SC1-34.jpg'},
+      {nombre:'Gris', codigo:'OLD1307SC3', hex:'#4a4c54', frente:'img/OLD1307SC3.jpg', lado:'img/OLD1307SC3-34.jpg'},
+      {nombre:'Azul', codigo:'OLD1307SC4', hex:'#454f65', frente:'img/OLD1307SC4.jpg', lado:'img/OLD1307SC4-34.jpg'},
+    ] },
+  { id:'riederalp', codigo:'OLD2026', nombre:'Riederalp', categoria:'unisex', material:'tr90', forma:'cuadrada', medida:'54 - 19 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro mate', codigo:'OLD2026C01', hex:'#000000', frente:'img/OLD2026C01.jpg', lado:'img/OLD2026C01-34.jpg'},
+      {nombre:'Café', codigo:'OLD2026C04', hex:'#574741', frente:'img/OLD2026C04.jpg', lado:'img/OLD2026C04-34.jpg'},
+      {nombre:'Gris', codigo:'OLD2026C05', hex:'#454449', frente:'img/OLD2026C05.jpg', lado:'img/OLD2026C05-34.jpg'},
+    ] },
+  { id:'appenzell', codigo:'OLD25032A', nombre:'Appenzell', categoria:'unisex', material:'acetato', forma:'cuadrada', medida:'52 - 19 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'OLD25032AC2', hex:'#000000', frente:'img/OLD25032AC2.jpg', lado:'img/OLD25032AC2-34.jpg'},
+      {nombre:'Gris', codigo:'OLD25032AC3', hex:'#3b3b45', frente:'img/OLD25032AC3.jpg', lado:'img/OLD25032AC3-34.jpg'},
+      {nombre:'Azul', codigo:'OLD25032AC4', hex:'#272d3e', frente:'img/OLD25032AC4.jpg', lado:'img/OLD25032AC4-34.jpg'},
+    ] },
+  { id:'gruyeres', codigo:'OLD25037A', nombre:'Gruyères', categoria:'unisex', material:'acetato', forma:'cuadrada', medida:'53 - 17 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'OLD25037AC1', hex:'#403d4c', frente:'img/OLD25037AC1.jpg', lado:'img/OLD25037AC1-34.jpg'},
+      {nombre:'Carey', codigo:'OLD25037AC5', hex:'#3e3835', frente:'img/OLD25037AC5.jpg', lado:'img/OLD25037AC5-34.jpg'},
+    ] },
+  { id:'murten', codigo:'OLD2504A', nombre:'Murten', categoria:'unisex', material:'acetato', forma:'cuadrada', medida:'54 - 18 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'OLD2504AC1', hex:'#000000', frente:'img/OLD2504AC1.jpg', lado:'img/OLD2504AC1-34.jpg'},
+      {nombre:'Gris', codigo:'OLD2504AC3', hex:'#4b4d5f', frente:'img/OLD2504AC3.jpg', lado:'img/OLD2504AC3-34.jpg'},
+      {nombre:'Café', codigo:'OLD2504AC5', hex:'#593f3b', frente:'img/OLD2504AC5.jpg', lado:'img/OLD2504AC5-34.jpg'},
+    ] },
+  { id:'stein', codigo:'OLD25104A', nombre:'Stein', categoria:'unisex', material:'acetato', forma:'rectangular', medida:'53 - 19 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'OLD25104AC1', hex:'#272834', frente:'img/OLD25104AC1.jpg', lado:'img/OLD25104AC1-34.jpg'},
+      {nombre:'Negro', codigo:'OLD25104AC2', hex:'#272834', frente:'img/OLD25104AC2.jpg', lado:'img/OLD25104AC2-34.jpg'},
+    ] },
+  { id:'thun', codigo:'OLD2992S', nombre:'Thun', categoria:'unisex', material:'tr90', forma:'aviador', medida:'56 - 15 - 142',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'OLD2992SC1', hex:'#000000', frente:'img/OLD2992SC1.jpg', lado:'img/OLD2992SC1-34.jpg'},
+      {nombre:'Negro', codigo:'OLD2992SC2', hex:'#000000', frente:'img/OLD2992SC2.jpg', lado:'img/OLD2992SC2-34.jpg'},
+      {nombre:'Azul', codigo:'OLD2992SC3', hex:'#222b3d', frente:'img/OLD2992SC3.jpg', lado:'img/OLD2992SC3-34.jpg'},
+    ] },
+  { id:'spiez', codigo:'OLD3919A', nombre:'Spiez', categoria:'unisex', material:'acetato', forma:'cuadrada', medida:'55 - 17 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'OLD3919AC1', hex:'#2e2e40', frente:'img/OLD3919AC1.jpg', lado:'img/OLD3919AC1-34.jpg'},
+      {nombre:'Negro', codigo:'OLD3919AC2', hex:'#23222d', frente:'img/OLD3919AC2.jpg', lado:'img/OLD3919AC2-34.jpg'},
+      {nombre:'Carey', codigo:'OLD3919AC5', hex:'#573d40', frente:'img/OLD3919AC5.jpg', lado:'img/OLD3919AC5-34.jpg'},
+    ] },
+  { id:'brienz', codigo:'OLD6140S', nombre:'Brienz', categoria:'unisex', material:'acetato', forma:'cuadrada', medida:'57 - 16 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'OLD6140SC1', hex:'#000000', frente:'img/OLD6140SC1.jpg', lado:'img/OLD6140SC1-34.jpg'},
+      {nombre:'Azul', codigo:'OLD6140SC5', hex:'#2c2f43', frente:'img/OLD6140SC5.jpg', lado:'img/OLD6140SC5-34.jpg'},
+    ] },
+  { id:'sion', codigo:'P9190', nombre:'Sion', categoria:'unisex', material:'acetato', forma:'redonda', medida:'50 - 23 - 148',
+    tagline:'',
+    colores:[
+      {nombre:'Verde Oliva', codigo:'P9190C17', hex:'#625a41', frente:'img/P9190C17.jpg', lado:'img/P9190C17-34.jpg'},
+      {nombre:'Gris', codigo:'P9190C2', hex:'#3f3f3f', frente:'img/P9190C2.jpg', lado:'img/P9190C2-34.jpg'},
+      {nombre:'Café', codigo:'P9190C3', hex:'#5c4e3e', frente:'img/P9190C3.jpg', lado:'img/P9190C3-34.jpg'},
+      {nombre:'Carey', codigo:'P9190C32', hex:'#934703', frente:'img/P9190C32.jpg', lado:'img/P9190C32-34.jpg'},
+    ] },
+  { id:'bellinzona', codigo:'PRA18V', nombre:'Bellinzona', categoria:'dama', material:'acetato', forma:'cateye', medida:'53 - 19 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'PRA18VC1', hex:'#000000', frente:'img/PRA18VC1.jpg', lado:'img/PRA18VC1-34.jpg'},
+      {nombre:'Carey', codigo:'PRA18VC3', hex:'#bb4001', frente:'img/PRA18VC3.jpg', lado:'img/PRA18VC3-34.jpg'},
+      {nombre:'Gris', codigo:'PRA18VC5', hex:'#494850', frente:'img/PRA18VC5.jpg', lado:'img/PRA18VC5-34.jpg'},
+      {nombre:'Rosa', codigo:'PRA18VC6', hex:'#ecd5e7', frente:'img/PRA18VC6.jpg', lado:'img/PRA18VC6-34.jpg'},
+    ] },
+  { id:'vals', codigo:'PRA19V', nombre:'Vals', categoria:'dama', material:'acetato', forma:'cuadrada', medida:'54 - 18 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'PRA19VC1', hex:'#000000', frente:'img/PRA19VC1.jpg', lado:'img/PRA19VC1-34.jpg'},
+      {nombre:'Café', codigo:'PRA19VC4', hex:'#897165', frente:'img/PRA19VC4.jpg', lado:'img/PRA19VC4-34.jpg'},
+      {nombre:'Gris', codigo:'PRA19VC5', hex:'#595860', frente:'img/PRA19VC5.jpg', lado:'img/PRA19VC5-34.jpg'},
+      {nombre:'Rosa', codigo:'PRA19VC6', hex:'#ddc2d7', frente:'img/PRA19VC6.jpg', lado:'img/PRA19VC6-34.jpg'},
+    ] },
+  { id:'guarda', codigo:'PS2195', nombre:'Guarda', categoria:'unisex', material:'metalica', forma:'aviador', medida:'59 - 15 - 145',
+    tagline:'Aviador reverse',
+    colores:[
+      {nombre:'Negro', codigo:'PS2195C32', hex:'#353537', frente:'img/PS2195C32.jpg', lado:'img/PS2195C32-34.jpg'},
+      {nombre:'Gris', codigo:'PS2195C8', hex:'#53565a', frente:'img/PS2195C8.jpg', lado:'img/PS2195C8.jpg'},
+    ] },
+  { id:'ftan', codigo:'PS33206', nombre:'Ftan', categoria:'unisex', material:'metalica', forma:'wrap', medida:'56 - 17 - 148',
+    tagline:'',
+    colores:[
+      {nombre:'Dorado', codigo:'PS33206C101', hex:'#c4a78d', frente:'img/PS33206C101.jpg', lado:'img/PS33206C101-34.jpg'},
+      {nombre:'Gris', codigo:'PS33206C2', hex:'#45414f', frente:'img/PS33206C2.jpg', lado:'img/PS33206C2-34.jpg'},
+      {nombre:'Café', codigo:'PS33206C20', hex:'#9e7556', frente:'img/PS33206C20.jpg', lado:'img/PS33206C20-34.jpg'},
+      {nombre:'Plata', codigo:'PS33206C54', hex:'#99938c', frente:'img/PS33206C54.jpg', lado:'img/PS33206C54-34.jpg'},
+    ] },
+  { id:'sent', codigo:'RX1086', nombre:'Sent', categoria:'dama', material:'metalica', forma:'redonda', medida:'57 - 16 - 148',
+    tagline:'',
+    colores:[
+      {nombre:'Plata', codigo:'RX1086C1', hex:'#494b4c', frente:'img/RX1086C1.jpg', lado:'img/RX1086C1-34.jpg'},
+      {nombre:'Dorado', codigo:'RX1086C4', hex:'#f0c99d', frente:'img/RX1086C4.jpg', lado:'img/RX1086C4-34.jpg'},
+    ] },
+  { id:'zurich', codigo:'S15112', nombre:'Zürich', categoria:'unisex', material:'metalica', forma:'aviador', medida:'57 - 16 - 145',
+    tagline:'aviador rectangular',
+    colores:[
+      {nombre:'Dorado', codigo:'S15112C5', hex:'#d7a96f', frente:'img/S15112C5.jpg', lado:'img/S15112C5-34.jpg'},
+    ] },
+  { id:'cervin', codigo:'TF4230', nombre:'Cervin', categoria:'dama', material:'acetato', forma:'cateye', medida:'54 - 19 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'TF4230C1', hex:'#000000', frente:'img/TF4230C1.jpg', lado:'img/TF4230C1-34.jpg'},
+      {nombre:'Café', codigo:'TF4230C2', hex:'#482f20', frente:'img/TF4230C2.jpg', lado:'img/TF4230C2-34.jpg'},
+      {nombre:'Beige', codigo:'TF4230C4', hex:'#e5d0bd', frente:'img/TF4230C4.jpg', lado:'img/TF4230C4-34.jpg'},
+      {nombre:'Verde Menta', codigo:'TF4230C6', hex:'#aeccc4', frente:'img/TF4230C6.jpg', lado:'img/TF4230C6-34.jpg'},
+    ] },
+  { id:'leman', codigo:'VCH401S', nombre:'Léman', categoria:'dama', material:'acetato', forma:'cuadrada', medida:'54 - 18 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Negro', codigo:'VCH401SC1', hex:'#000000', frente:'img/VCH401SC1.jpg', lado:'img/VCH401SC1-34.jpg'},
+      {nombre:'Café', codigo:'VCH401SC2', hex:'#5f4330', frente:'img/VCH401SC2.jpg', lado:'img/VCH401SC2-34.jpg'},
+      {nombre:'Vino Tinto', codigo:'VCH401SC4', hex:'#835054', frente:'img/VCH401SC4.jpg', lado:'img/VCH401SC4-34.jpg'},
+      {nombre:'Beige', codigo:'VCH401SC8', hex:'#b58e6b', frente:'img/VCH401SC8.jpg', lado:'img/VCH401SC8-34.jpg'},
+    ] },
+  { id:'jungfrau', codigo:'VCH402S', nombre:'Jungfrau', categoria:'dama', material:'acetato', forma:'cateye', medida:'54 - 18 - 145',
+    tagline:'',
+    colores:[
+      {nombre:'Café', codigo:'VCH402SC3', hex:'#5e443f', frente:'img/VCH402SC3.jpg', lado:'img/VCH402SC3-34.jpg'},
+      {nombre:'Azul', codigo:'VCH402SC6', hex:'#6371a7', frente:'img/VCH402SC6.jpg', lado:'img/VCH402SC6-34.jpg'},
+      {nombre:'Gris', codigo:'VCH402SC7', hex:'#565461', frente:'img/VCH402SC7.jpg', lado:'img/VCH402SC7-34.jpg'},
+      {nombre:'Beige', codigo:'VCH402SC8', hex:'#a1867f', frente:'img/VCH402SC8.jpg', lado:'img/VCH402SC8-34.jpg'},
+    ] },
+];
+
+/* ================= QUIZ ================= */
+const faceSVG={
+ ovalado:'<svg viewBox="0 0 40 50"><ellipse cx="20" cy="25" rx="12" ry="20"/></svg>',
+ redondo:'<svg viewBox="0 0 40 50"><circle cx="20" cy="25" r="16"/></svg>',
+ cuadrado:'<svg viewBox="0 0 40 50"><rect x="6" y="9" width="28" height="32" rx="5"/></svg>',
+ corazon:'<svg viewBox="0 0 40 50"><path d="M20 43 C7 31 6 15 14 13 C18 12 20 16 20 18 C20 16 22 12 26 13 C34 15 33 31 20 43 Z"/></svg>'
+};
+const fotoDe=f=>{const p=productos.find(f);return (p&&p.colores[0]&&p.colores[0].frente)||'';};
+const resp={genero:'',rostro:'',estilo:'',material:'',uso:''};
+let paso=0, started=false;
+
+const PASOS=[
+ {id:'genero',q:'¿Para quién buscas?',c3:true,ops:[
+   {v:'dama',l:'Mujer',img:'img/quiz-dama.jpg'},
+   {v:'hombre',l:'Hombre',img:'img/quiz-hombre.jpg'},
+   {v:'todas',l:'Unisex',img:'img/quiz-unisex.jpg'}]},
+ {id:'rostro',q:'¿Cuál es la forma de tu rostro?',c3:false,guia:true,ops:[
+   {v:'ovalado',l:'Ovalado',svg:'ovalado'},
+   {v:'redondo',l:'Redondo',svg:'redondo'},
+   {v:'cuadrado',l:'Cuadrado',svg:'cuadrado'},
+   {v:'corazon',l:'Corazón',svg:'corazon'},
+   {v:'nose',l:'No estoy seguro',em:'🤔'}]},
+ {id:'estilo',q:'¿Qué estilo buscas?',c3:false,ops:[
+   {v:'clasico',l:'Clásico / elegante',prod:p=>(p.forma||'').includes('aviador')&&p.material==='metalica'},
+   {v:'moderno',l:'Moderno / tendencia',prod:p=>(p.forma||'').includes('cat')},
+   {v:'deportivo',l:'Deportivo',prod:p=>(p.forma||'').includes('wrap')},
+   {v:'minimal',l:'Minimalista',prod:p=>(p.forma||'').includes('rectangular')&&p.material==='metalica'}]},
+ {id:'material',q:'¿Material preferido?',c3:false,ops:[
+   {v:'metalica',l:'Metálica',prod:p=>p.material==='metalica'},
+   {v:'acetato',l:'Acetato',prod:p=>p.material==='acetato'},
+   {v:'tr90',l:'TR90',prod:p=>p.material==='tr90'},
+   {v:'igual',l:'Me da igual',em:'✨'}]},
+ {id:'uso',q:'¿Para qué las usarás más?',c3:false,ops:[
+   {v:'diario',l:'Diario',em:'☀️'},
+   {v:'conducir',l:'Conducir',em:'🚗'},
+   {v:'playa',l:'Playa / outdoor',em:'🏖️'},
+   {v:'moda',l:'Moda',em:'💅'}]},
+];
+
+const $=id=>document.getElementById(id);
+function renderPaso(){
+  const st=PASOS[paso];
+  $('qBar').style.width=((paso+1)/(PASOS.length+1)*100)+'%';
+  $('qCount').textContent='Pregunta '+(paso+1)+' de '+PASOS.length;
+  $('qBack').disabled=paso===0;
+  $('qNav').style.display='';
+  const ops=st.ops.map(o=>{
+    let vis='';
+    if(o.img) vis='<img src="'+o.img+'" alt="'+o.l+'" loading="lazy">';
+    else if(o.prod){ const src=fotoDe(o.prod)||fotoDe(p=>true); if(src) vis='<img class="prod" src="'+src+'" alt="'+o.l+'" loading="lazy">'; }
+    else if(o.svg) vis=faceSVG[o.svg];
+    else if(o.em) vis='<span class="em">'+o.em+'</span>';
+    const sel=resp[st.id]===o.v?' sel':'';
+    return '<button class="qop'+sel+'" type="button" data-v="'+o.v+'">'+vis+'<span class="ql">'+o.l+'</span></button>';
+  }).join('');
+  $('qBody').innerHTML='<div class="qstep-lbl">Test Ferrati en Casa</div><div class="qq">'+st.q+'</div>'
+    +'<div class="qops'+(st.c3?' c3':'')+'">'+ops+'</div><div id="miniGuia"></div>';
+}
+$('qBody').addEventListener('click',e=>{
+  const op=e.target.closest('.qop'); if(!op) return;
+  if(!started){ started=true; track('QuizStart',true); }
+  const st=PASOS[paso], v=op.dataset.v;
+  if(st.id==='rostro'&&v==='nose'){ mostrarGuia(); return; }
+  if(op.closest('#miniGuia')){ resp.rostro=v; avanzar(); return; }
+  resp[st.id]=v;
+  op.parentElement.querySelectorAll('.qop').forEach(o=>o.classList.toggle('sel',o===op));
+  setTimeout(avanzar,220);
+});
+function mostrarGuia(){
+  $('miniGuia').innerHTML='<div class="mini-guia"><p>Guía rápida — toca la que más se parezca a tu rostro:</p><div class="qops">'
+   +'<button class="qop" type="button" data-v="ovalado">'+faceSVG.ovalado+'<span class="ql">Ovalado</span><small>Más largo que ancho, mentón suave</small></button>'
+   +'<button class="qop" type="button" data-v="redondo">'+faceSVG.redondo+'<span class="ql">Redondo</span><small>Ancho y alto similares, mejillas llenas</small></button>'
+   +'<button class="qop" type="button" data-v="cuadrado">'+faceSVG.cuadrado+'<span class="ql">Cuadrado</span><small>Mandíbula marcada, frente amplia</small></button>'
+   +'<button class="qop" type="button" data-v="corazon">'+faceSVG.corazon+'<span class="ql">Corazón</span><small>Frente ancha, mentón fino</small></button>'
+   +'</div></div>';
+  $('miniGuia').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function avanzar(){ if(paso<PASOS.length-1){ paso++; renderPaso(); } else { resultados(); } }
+$('qBack').addEventListener('click',()=>{ if(paso>0){ paso--; renderPaso(); } });
+
+/* ================= MOTOR DE RECOMENDACIÓN ================= */
+const ROSTRO_FORMAS={
+ ovalado:['aviador','cuadrada','rectangular','redonda','cat'],
+ redondo:['cuadrada','rectangular'],
+ cuadrado:['redonda','aviador','cat'],
+ corazon:['aviador','redonda','cat']
+};
+const ESTILO={
+ clasico:{formas:['aviador','rectangular'],mat:'metalica'},
+ moderno:{formas:['cuadrada','cat'],mat:'acetato'},
+ deportivo:{formas:['wrap'],mat:'tr90'},
+ minimal:{formas:['rectangular','redonda'],mat:'metalica'}
+};
+const USO={
+ diario:{formas:['cuadrada','rectangular']},
+ conducir:{formas:['aviador','rectangular']},
+ playa:{formas:['wrap','cuadrada'],mat:'acetato'},
+ moda:{formas:['cat','cuadrada'],mat:'acetato'}
+};
+function recomendar(){
+  const okCat=p=> resp.genero==='todas' ? true : (p.categoria===resp.genero||p.categoria==='unisex');
+  const f=(p)=> (p.forma||'').toLowerCase();
+  const scored=productos.filter(p=>p.colores&&p.colores.length&&okCat(p)).map(p=>{
+    let s=0;
+    const rf=ROSTRO_FORMAS[resp.rostro]; if(rf&&rf.some(k=>f(p).includes(k))) s+=3;
+    const es=ESTILO[resp.estilo]; if(es){ if(es.formas.some(k=>f(p).includes(k))) s+=2; if(p.material===es.mat) s+=1; }
+    if(resp.material&&resp.material!=='igual'&&p.material===resp.material) s+=2;
+    const us=USO[resp.uso]; if(us){ if(us.formas.some(k=>f(p).includes(k))) s+=1; if(us.mat&&p.material===us.mat) s+=0.5; }
+    if(p.top) s+=0.5;
+    return {p,s};
+  }).sort((a,b)=>b.s-a.s);
+  const picks=[], formasUsadas=new Set();
+  for(const {p} of scored){ if(picks.length>=3) break; const key=f(p).slice(0,4); if(!formasUsadas.has(key)){ picks.push(p); formasUsadas.add(key); } }
+  for(const {p} of scored){ if(picks.length>=3) break; if(!picks.includes(p)) picks.push(p); }
+  return picks;
+}
+
+/* ================= RESULTADOS + RESERVA ================= */
+let elegidas=[];
+function resultados(){
+  elegidas=recomendar();
+  track('Lead');
+  $('qBar').style.width='100%';
+  $('qNav').style.display='none';
+  const cards=elegidas.map(p=>{
+    const c=p.colores[0];
+    return '<div class="pick"><img src="'+(c.frente||'')+'" alt="'+p.nombre+'" loading="lazy">'
+      +'<div class="pn">'+p.nombre+'</div><div class="pr">Ref. '+(c.codigo||p.codigo||'')+'</div>'
+      +'<div class="pf">'+(p.forma?p.forma.charAt(0).toUpperCase()+p.forma.slice(1):'')+'</div></div>';
+  }).join('');
+  $('qBody').innerHTML='<div class="qres">'
+    +'<h3>Según tu rostro y tu estilo, estas 3 van contigo 👇</h3>'
+    +'<div class="picks">'+cards+'</div>'
+    +'<div class="qform">'
+    +'<label>Tu nombre</label><input type="text" id="rNombre" placeholder="Nombre y apellido" autocomplete="name">'
+    +'<label>Tu WhatsApp</label><input type="tel" id="rTel" placeholder="3XX XXX XXXX" inputmode="tel" autocomplete="tel">'
+    +'<label>¿Estás en Pereira?</label>'
+    +'<div class="peri"><button class="qop" type="button" id="pSi"><span class="ql">Sí 📍</span></button>'
+    +'<button class="qop" type="button" id="pNo"><span class="ql">No</span></button></div>'
+    +'<div id="noPereira"></div>'
+    +'<button class="btn btn-neg" id="rBtn" type="button">Reservar estas 3 para probar en casa →</button>'
+    +'<div class="nota">Al reservar abrimos tu WhatsApp con el mensaje listo. Depósito reembolsable de $100.000.</div>'
+    +'</div>'
+    +'<button class="re-test" id="reTest" type="button">↺ Repetir el test</button>'
+    +'</div>';
+  document.querySelector('.qcard').scrollIntoView({behavior:'smooth',block:'center'});
+
+  let enPereira=null;
+  $('pSi').addEventListener('click',()=>{ enPereira=true; $('pSi').classList.add('sel'); $('pNo').classList.remove('sel'); $('noPereira').innerHTML=''; $('rBtn').textContent='Reservar estas 3 para probar en casa →'; });
+  $('pNo').addEventListener('click',()=>{ enPereira=false; $('pNo').classList.add('sel'); $('pSi').classList.remove('sel');
+    $('noPereira').innerHTML='<div class="mini-guia"><p>Por ahora solo Pereira 🙏 — déjanos tu dato y te avisamos cuando lleguemos a tu ciudad.</p><label>Tu ciudad</label><input type="text" id="rCiudad" placeholder="¿En qué ciudad estás?"></div>';
+    $('rBtn').textContent='Avisarme cuando lleguen a mi ciudad →'; });
+  $('rBtn').addEventListener('click',()=>{
+    const nombre=($('rNombre').value||'').trim();
+    const tel=($('rTel').value||'').trim();
+    if(!nombre){ $('rNombre').focus(); $('rNombre').style.borderColor='#E3000F'; return; }
+    if(enPereira===null){ $('pSi').style.borderColor='#E3000F'; $('pNo').style.borderColor='#E3000F'; return; }
+    const lista=elegidas.map((p,i)=>(i+1)+') '+p.nombre+' (Ref. '+(p.colores[0].codigo||p.codigo||'')+')').join('\n');
+    let msg;
+    if(enPereira){
+      msg='¡Hola! 👋 Hice el test de Ferrati en Casa y quiero reservar mis 3 monturas para probarlas en casa. Estoy en Pereira 📍\n'
+        +'• Nombre: '+nombre+'\n'+(tel?('• WhatsApp: '+tel+'\n'):'')
+        +'• Mis 3 monturas:\n'+lista;
+      track('InitiateCheckout');
+    } else {
+      const ciudad=(document.getElementById('rCiudad')&&document.getElementById('rCiudad').value.trim())||'';
+      msg='¡Hola! Hice el test de Ferrati en Casa pero aún no están en mi ciudad'+(ciudad?(' ('+ciudad+')'):'')+'. Avísenme cuando lleguen 🙏\n'
+        +'• Nombre: '+nombre+'\n'+(tel?('• WhatsApp: '+tel+'\n'):'')
+        +'• Me gustaron:\n'+lista;
+      track('LeadFueraPereira',true);
+    }
+    window.open('https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(msg),'_blank');
+  });
+  $('reTest').addEventListener('click',()=>{ paso=0; Object.keys(resp).forEach(k=>resp[k]=''); renderPaso(); });
+}
+
+/* ================= VIDEOS ================= */
+(function(){
+  const g=$('videosGrid');
+  if(VIDEOS.length){ g.innerHTML=VIDEOS.map(v=>'<video src="'+v+'" controls playsinline preload="metadata"></video>').join(''); }
+  else{ g.style.display='none'; }
+})();
+
+/* ================= INIT ================= */
+renderPaso();
+</script>
+</body>
+</html>
