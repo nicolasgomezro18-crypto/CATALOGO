@@ -282,7 +282,9 @@
       </div>
     </div>
     <div class="hero-foto">
-      <video src="img/estuche.mp4" poster="img/hero-casa.jpg" autoplay muted loop playsinline preload="auto" aria-label="Así te llegan tus gafas Ferrati a casa"></video>
+      <video id="heroVid" poster="img/hero-casa.jpg" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture preload="auto" aria-label="Así te llegan tus gafas Ferrati a casa">
+        <source src="img/estuche.mp4" type="video/mp4">
+      </video>
     </div>
   </div>
 </section>
@@ -1368,6 +1370,24 @@ $('lbModal').addEventListener('click',e=>{
 $('lbAdd').addEventListener('click',()=>{ const p=prodDe(lb.pid); if(!p) return; const key=keyDe(p,lb.ci); if(enSel(key)) rmSel(key); else addSel(p,lb.ci); lbRender(); });
 
 document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ if(!$('lbModal').hidden){ lbClose(); return; } cerrarReserva(); cerrarExp(); } });
+
+/* ============ AUTOPLAY DEL HERO (robusto para iOS) ============ */
+(function(){
+  const v=$('heroVid'); if(!v) return;
+  /* iOS exige muted ANTES de play(); lo forzamos también por JS */
+  v.muted=true; v.defaultMuted=true; v.setAttribute('muted','');
+  v.playsInline=true;
+  let ok=false;
+  const intentar=()=>{ if(ok) return; const p=v.play(); if(p&&p.then) p.then(()=>{ok=true;}).catch(()=>{}); };
+  intentar();
+  v.addEventListener('loadeddata',intentar,{once:true});
+  v.addEventListener('canplay',intentar,{once:true});
+  v.addEventListener('playing',()=>{ok=true;});
+  /* si iOS bloquea el autoplay (p.ej. modo de bajo consumo), arranca al primer gesto */
+  ['touchstart','pointerdown','click','scroll','keydown'].forEach(ev=>
+    document.addEventListener(ev,intentar,{passive:true}));
+  document.addEventListener('visibilitychange',()=>{ if(!document.hidden) intentar(); });
+})();
 
 /* ================= VIDEOS ================= */
 (function(){
