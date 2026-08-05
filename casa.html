@@ -4,7 +4,16 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Ferrati en Casa · Pruébate 3 monturas en tu casa | Pereira</title>
-<meta name="description" content="Haz el test de 30 segundos, elige hasta 3 monturas y pruébatelas en tu casa sin compromiso. Depósito 100% reembolsable. Solo Pereira, cupos limitados." />
+<meta name="description" content="Haz el test de 30 segundos, elige hasta 3 monturas y pruébatelas en tu casa sin compromiso. Depósito 100% reembolsable. Solo Pereira, 20 cupos por semana." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Ferrati en Casa · Pruébate hasta 3 monturas en tu casa" />
+<meta property="og:description" content="Haz el test, elige tus monturas y pruébatelas en casa 3 días. Entrega en menos de 24 h. Solo Pereira, 20 cupos por semana." />
+<meta property="og:image" content="https://nicolasgomezro18-crypto.github.io/CATALOGO/img/og.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://nicolasgomezro18-crypto.github.io/CATALOGO/casa.html" />
+<meta property="og:locale" content="es_CO" />
+<meta name="twitter:card" content="summary_large_image" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -47,7 +56,7 @@
   .hero p{font-weight:300;font-size:16.5px;color:#d6d6d6;margin:16px 0 24px;max-width:480px}
   .hero-ctas{display:flex;flex-wrap:wrap;gap:12px}
   .hero-foto{position:relative}
-  .hero-foto img{width:100%;max-width:420px;margin:0 auto;aspect-ratio:4/5;object-fit:cover}
+  .hero-foto img,.hero-foto video{width:100%;max-width:420px;margin:0 auto;aspect-ratio:4/5;object-fit:cover;display:block;background:#1a1a1a}
   .hero-foto::after{content:'';position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.15)}
   @media(min-width:820px){.hero-grid{grid-template-columns:1.1fr .9fr;padding:64px 0 56px}}
 
@@ -219,6 +228,11 @@
   .videos{display:grid;gap:14px;margin-bottom:18px}
   .videos video{width:100%;aspect-ratio:9/16;object-fit:cover;background:#000}
   @media(min-width:820px){.videos{grid-template-columns:repeat(3,1fr)}}
+  .stories{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+  .stories figure{margin:0}
+  .stories img{width:100%;aspect-ratio:9/16;object-fit:cover;background:#000;border:1px solid var(--linea)}
+  .stories figcaption{font-size:11.5px;letter-spacing:.5px;color:var(--gris-texto);margin-top:7px}
+  @media(max-width:560px){.stories{gap:7px}.stories figcaption{font-size:10px}}
   .ig-cta{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--negro);color:var(--negro);text-decoration:none;font-weight:500;font-size:13px;letter-spacing:1px;text-transform:uppercase;padding:12px 20px;transition:.2s}
   .ig-cta:hover{background:var(--negro);color:#fff}
 
@@ -267,7 +281,9 @@
         <a class="btn btn-ghost" href="#como">Ver cómo funciona</a>
       </div>
     </div>
-    <div class="hero-foto"><img src="img/quiz-unisex.jpg" alt="Probándose gafas Ferrati en casa" loading="eager"></div>
+    <div class="hero-foto">
+      <video src="img/estuche.mp4" poster="img/hero-casa.jpg" autoplay muted loop playsinline preload="auto" aria-label="Así te llegan tus gafas Ferrati a casa"></video>
+    </div>
   </div>
 </section>
 
@@ -351,7 +367,12 @@
   <div class="wrap">
     <div class="kick">Evaluación</div>
     <h2>Ya lo están probando</h2>
-    <p class="desc">¿1, 2 o 3? Mira cómo se las prueban y cuál se quedarían.</p>
+    <p class="desc">Así las están usando y así llegan a tu casa.</p>
+    <div class="stories">
+      <figure><img src="img/story1.jpg" alt="Historia de Instagram usando gafas Ferrati" loading="lazy"><figcaption>@valenn.tna</figcaption></figure>
+      <figure><img src="img/story2.jpg" alt="Pedido Ferrati entregado en Pereira" loading="lazy"><figcaption>Entrega en Pereira</figcaption></figure>
+      <figure><img src="img/story3.jpg" alt="Historia de Instagram usando gafas Ferrati" loading="lazy"><figcaption>@vale.bernal.g</figcaption></figure>
+    </div>
     <div class="videos" id="videosGrid"></div>
     <!-- Plantilla de testimonios: pegar aquí SOLO testimonios reales (foto + nombre + ciudad)
     <div class="testimonios">
