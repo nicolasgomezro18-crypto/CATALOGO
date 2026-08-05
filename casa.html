@@ -525,7 +525,11 @@ if(PIXEL_ID){
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', PIXEL_ID); fbq('track','PageView');
 }
-const track=(ev,custom)=>{ try{ if(window.fbq){ custom?fbq('trackCustom',ev):fbq('track',ev); } }catch(_){} };
+const PRECIO_COP=190000;
+const track=(ev,custom,params)=>{ try{ if(window.fbq){ const p=params||{}; custom?fbq('trackCustom',ev,p):fbq('track',ev,p); } }catch(_){} };
+/* referencias (codigo de color) de lo que hay en la bandeja, para anuncios dinamicos */
+const refDe=(p,ci)=>{const c=p.colores[ci]||p.colores[0];return (c&&c.codigo)||p.codigo||p.id;};
+const refsSel=()=>seleccion.map(s=>{const p=prodDe(s.pid);return p?refDe(p,s.ci):null;}).filter(Boolean);
 
 /* ================= DATA (la reescribe cargar-fotos.py) ================= */
 const productos = [
@@ -1144,7 +1148,7 @@ function addSel(p,ci){
   const key=keyDe(p,ci);
   if(enSel(key)||seleccion.length>=3) return false;
   seleccion.push({key,pid:p.id,ci});
-  track('AddToCart');
+  track('AddToCart',false,{content_ids:[refDe(p,ci)],content_type:'product',currency:'COP'});
   syncUI(); return true;
 }
 function rmSel(key){ seleccion=seleccion.filter(s=>s.key!==key); syncUI(); }
@@ -1176,7 +1180,7 @@ function resultados(){
   seleccion=[];
   slots.forEach(sl=>{ const p=prodDe(sl.pid); if(p&&seleccion.length<3) seleccion.push({key:keyDe(p,sl.ci),pid:sl.pid,ci:sl.ci}); });
   /* las recomendadas entran solas a la bandeja: cuenta como AddToCart para no romper el embudo */
-  if(seleccion.length) track('AddToCart');
+  if(seleccion.length) track('AddToCart',false,{content_ids:refsSel(),content_type:'product',currency:'COP'});
   $('qBody').innerHTML='<div class="qres">'
     +'<h3>Según tu rostro y tu estilo, te recomendamos estas 3 👇</h3>'
     +'<div class="sub">…pero tú tienes la última palabra: cámbialas, quítalas o elige otras.</div>'
@@ -1336,7 +1340,7 @@ $('rBtn').addEventListener('click',()=>{
     msg='¡Hola! 👋 '+intro+' quiero reservar mis monturas para probarlas en casa. Estoy en Pereira 📍\n'
       +'• Nombre: '+nombre+'\n'+(tel?('• WhatsApp: '+tel+'\n'):'')
       +'• Mi selección:\n'+lista;
-    track('InitiateCheckout');
+    track('InitiateCheckout',false,{content_ids:refsSel(),content_type:'product',num_items:seleccion.length,currency:'COP',value:PRECIO_COP});
   } else {
     const ciudad=(document.getElementById('rCiudad')&&document.getElementById('rCiudad').value.trim())||'';
     msg='¡Hola! '+intro+' aún no están en mi ciudad'+(ciudad?(' ('+ciudad+')'):'')+'. Avísenme cuando lleguen 🙏\n'
@@ -1362,7 +1366,7 @@ function lbRender(){
   b.textContent=dentro?'✓ En tu selección — tocar para quitar':(lleno?'Selección llena (3/3)':'+ Agregar a mi selección');
   b.disabled=(!dentro&&lleno);
 }
-function lbOpen(pid,ci){ lb.pid=pid; lb.ci=ci||0; lb.view='frente'; $('lbModal').hidden=false; document.body.style.overflow='hidden'; lbRender(); track('VerDeCerca',true); }
+function lbOpen(pid,ci){ lb.pid=pid; lb.ci=ci||0; lb.view='frente'; $('lbModal').hidden=false; document.body.style.overflow='hidden'; lbRender(); const _p=prodDe(pid); if(_p) track('ViewContent',false,{content_ids:[refDe(_p,lb.ci)],content_type:'product',currency:'COP'}); }
 function lbClose(){ $('lbModal').hidden=true; if($('expModal').hidden&&$('resModal').hidden) document.body.style.overflow=''; }
 function lbOrigin(e){ const r=lbImgEl.getBoundingClientRect(); lbImgEl.style.transformOrigin=(((e.clientX-r.left)/r.width)*100)+'% '+(((e.clientY-r.top)/r.height)*100)+'%'; }
 lbImgEl.addEventListener('click',e=>{ e.stopPropagation();
