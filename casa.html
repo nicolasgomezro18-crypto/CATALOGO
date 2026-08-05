@@ -1175,6 +1175,8 @@ function resultados(){
   slots=top3().map(p=>({pid:p.id,ci:0}));
   seleccion=[];
   slots.forEach(sl=>{ const p=prodDe(sl.pid); if(p&&seleccion.length<3) seleccion.push({key:keyDe(p,sl.ci),pid:sl.pid,ci:sl.ci}); });
+  /* las recomendadas entran solas a la bandeja: cuenta como AddToCart para no romper el embudo */
+  if(seleccion.length) track('AddToCart');
   $('qBody').innerHTML='<div class="qres">'
     +'<h3>Según tu rostro y tu estilo, te recomendamos estas 3 👇</h3>'
     +'<div class="sub">…pero tú tienes la última palabra: cámbialas, quítalas o elige otras.</div>'
