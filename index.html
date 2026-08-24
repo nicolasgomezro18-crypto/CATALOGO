@@ -4,12 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="facebook-domain-verification" content="axdsmrewcpstayp4q2qazh99vdcp2c" />
-<title>Ferrati · Catálogo Gafas de Sol</title>
-<meta name="description" content="Catálogo de gafas de sol Ferrati. Diseño suizo, lentes polarizadas con protección UV400. Busca por nombre o referencia. Envío gratis a toda Colombia." />
+<title>Ferrati · Gafas de sol</title>
+<meta name="description" content="Gafas de sol Ferrati. Diseño suizo, lentes polarizadas con protección UV400. Encuentra tu montura y pídela por WhatsApp. Envío gratis a toda Colombia." />
+<meta name="theme-color" content="#000000" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Ferrati · El sol, con distinción" />
+<meta property="og:description" content="Gafas polarizadas diseñadas para destacar. Encuentra tu montura ideal." />
+<meta property="og:image" content="https://ferrati.com.co/img/og.jpg" />
+<meta property="og:url" content="https://ferrati.com.co/" />
+<meta property="og:locale" content="es_CO" />
+<meta name="twitter:card" content="summary_large_image" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="preload" as="image" href="img/hero-tall.jpg" media="(max-width:819px)" />
+<link rel="preload" as="image" href="img/hero-wide.jpg" media="(min-width:820px)" />
 <style>
+/* ===== BASE HEREDADA (modales, ficha, quiz, carrito, visor) ===== */
+
   :root{
     --negro:#111111; --tinta:#0e0e0e; --blanco:#ffffff; --hueso:#f7f5f2;
     --dorado:#b08d57; --dorado2:#c9a86b; --rojo:#E3000F;
@@ -302,6 +314,294 @@
     .nav-cta{display:none}
     .flabel{min-width:100%;margin-bottom:2px}
   }
+
+/* =====================================================================
+   FERRATI · CAPA DE REDISEÑO EDITORIAL (sobrescribe la base anterior)
+   ===================================================================== */
+:root{
+  --negro:#000000; --tinta:#000000; --blanco:#ffffff;
+  --rojo:#E50914; --oro:#b08d57;
+  --dorado:#E50914; --dorado2:#ff5a60;      /* estados activos -> rojo */
+  --hueso:#f6f5f3; --linea:#e6e4e1; --gris-texto:#6f6f6f;
+  --ancho:1280px;
+  --s1:8px; --s2:16px; --s3:28px; --s4:48px; --s5:80px; --s6:120px;
+}
+body{background:var(--blanco);color:var(--negro);font-family:var(--sans)}
+.wrap{max-width:var(--ancho);padding:0 20px}
+@media(min-width:900px){.wrap{padding:0 40px}}
+img{max-width:100%}
+::selection{background:var(--rojo);color:#fff}
+:focus-visible{outline:2px solid var(--rojo);outline-offset:3px}
+
+/* ---------- tipografía editorial ---------- */
+.f-kick{font-family:var(--sans);font-weight:500;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gris-texto)}
+.f-h2{font-family:var(--serif);font-weight:500;font-style:normal;font-size:clamp(30px,5vw,54px);line-height:1.04;letter-spacing:-.01em}
+.f-lead{font-family:var(--sans);font-weight:300;font-size:15px;color:var(--gris-texto);max-width:46ch}
+
+/* ---------- botones ---------- */
+.b{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--sans);font-weight:500;
+   font-size:12px;letter-spacing:.16em;text-transform:uppercase;padding:16px 30px;border:1px solid transparent;
+   cursor:pointer;text-decoration:none;transition:background .25s,color .25s,border-color .25s;min-height:48px}
+.b-rojo{background:var(--rojo);color:#fff}
+.b-rojo:hover{background:#000}
+.b-linea{background:transparent;color:var(--negro);border-color:var(--negro)}
+.b-linea:hover{background:var(--negro);color:#fff}
+.b-claro{background:#fff;color:#000}
+.b-claro:hover{background:var(--rojo);color:#fff}
+.b-fantasma{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+.b-fantasma:hover{background:#fff;color:#000;border-color:#fff}
+
+/* ---------- fade de entrada ---------- */
+/* a prueba de fallos: sin la clase .rv en <html>, el contenido se ve siempre */
+html.rv .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
+html.rv .reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){html.rv .reveal{opacity:1;transform:none;transition:none}}
+
+/* ---------- HEADER ---------- */
+header{background:rgba(255,255,255,.92);backdrop-filter:saturate(1.6) blur(12px);border-bottom:1px solid transparent;transition:border-color .3s}
+header.scrolled{border-bottom-color:var(--linea)}
+header .nav{height:66px}
+.logo-img{height:19px}
+.nav-right{display:flex;align-items:center;gap:24px}
+.nav-link{background:none;border:none;padding:0;font-family:var(--sans);font-weight:400;font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--negro);cursor:pointer;position:relative}
+.nav-link::after{content:"";position:absolute;left:0;right:100%;bottom:-5px;height:1px;background:var(--rojo);transition:right .3s}
+.nav-link:hover::after{right:0}
+.nav-solo-desktop{display:none}
+@media(min-width:860px){.nav-solo-desktop{display:inline-block}}
+.cart-btn{border:none;background:none;padding:0;gap:7px;font-size:12px;letter-spacing:.14em;color:var(--negro);min-height:44px;text-transform:uppercase}
+.cart-btn:hover{background:none;color:var(--rojo)}
+.cart-count{position:static;margin-left:2px;width:18px;height:18px;min-width:18px;background:var(--rojo);font-size:10px}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;padding:0;background:#000;color:#fff;overflow:hidden}
+.hero-media{position:absolute;inset:0}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.15) 42%,rgba(0,0,0,.72) 100%)}
+@media(min-width:820px){.hero::after{background:linear-gradient(90deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.34) 52%,rgba(0,0,0,.06) 100%)}}
+.hero-in{position:relative;z-index:2;min-height:76vh;display:flex;flex-direction:column;justify-content:flex-end;padding:96px 0 44px}
+@media(min-width:820px){.hero-in{min-height:86vh;justify-content:center;padding:120px 0}}
+.hero-eyebrow{font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.82);margin-bottom:18px}
+.hero h1{font-family:var(--serif);font-weight:400;font-style:normal;font-size:clamp(38px,8.6vw,86px);line-height:.98;letter-spacing:-.02em;max-width:12ch}
+.hero-sub{font-weight:300;font-size:15px;color:rgba(255,255,255,.86);margin-top:18px;max-width:34ch}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hero-ctas .b{flex:1 1 auto;min-width:168px}
+@media(min-width:560px){.hero-ctas .b{flex:0 0 auto}}
+.hero-scroll{display:none}
+@media(min-width:820px){
+  .hero-scroll{display:block;position:absolute;left:50%;bottom:26px;z-index:2;width:1px;height:46px;background:rgba(255,255,255,.35);overflow:hidden}
+  .hero-scroll::after{content:"";position:absolute;inset:0;background:#fff;animation:hs 2.6s ease-in-out infinite}
+  @keyframes hs{0%{transform:translateY(-100%)}60%,100%{transform:translateY(100%)}}
+}
+
+/* ---------- SECCIONES ---------- */
+.sec{padding:var(--s5) 0}
+@media(min-width:900px){.sec{padding:var(--s6) 0}}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:var(--s4)}
+.sec-head .f-kick{margin-bottom:10px}
+.sec-link{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--negro);text-decoration:none;border-bottom:1px solid var(--negro);padding-bottom:3px;white-space:nowrap}
+.sec-link:hover{color:var(--rojo);border-color:var(--rojo)}
+
+/* ---------- TARJETA DE PRODUCTO (grilla) ---------- */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px 8px}
+@media(min-width:640px){.grid{gap:28px 16px}}
+@media(min-width:900px){.grid{grid-template-columns:repeat(3,1fr);gap:40px 20px}}
+@media(min-width:1180px){.grid{grid-template-columns:repeat(4,1fr)}}
+.pcard{position:relative;cursor:pointer;background:none;border:none;padding:0;display:block;text-align:left}
+.pcard-img{position:relative;background:var(--hueso);aspect-ratio:1/1;overflow:hidden}
+.pcard-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:9%;
+  transition:opacity .5s ease,transform .7s cubic-bezier(.22,.61,.36,1)}
+.pcard-img .pl{opacity:0}
+@media(hover:hover){
+  .pcard:hover .pcard-img .pf{opacity:0}
+  .pcard:hover .pcard-img .pl{opacity:1}
+  .pcard:hover .pcard-img img{transform:scale(1.045)}
+  .pcard:hover .pver{opacity:1;transform:translate(-50%,0)}
+}
+.pver{position:absolute;left:50%;bottom:12px;transform:translate(-50%,8px);opacity:0;transition:.3s;
+  background:rgba(255,255,255,.95);color:#000;font-size:10px;letter-spacing:.16em;text-transform:uppercase;padding:9px 16px;white-space:nowrap}
+.pbadge{position:absolute;top:10px;left:10px;z-index:2;background:var(--rojo);color:#fff;font-size:9px;
+  letter-spacing:.14em;text-transform:uppercase;padding:5px 9px}
+.pcard-in{padding:14px 2px 0}
+.pname{font-family:var(--serif);font-weight:500;font-size:16px;line-height:1.2;margin:0}
+@media(min-width:900px){.pname{font-size:18px}}
+.pref{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gris-texto);margin-top:5px}
+.pdots{display:flex;align-items:center;gap:6px;margin-top:10px;flex-wrap:wrap}
+.pdot{width:13px;height:13px;border-radius:50%;padding:0;border:1px solid var(--linea);background:var(--c,#999);cursor:pointer;transition:transform .18s,box-shadow .18s}
+.pdot:hover{transform:scale(1.18)}
+.pdot.on{box-shadow:0 0 0 1.5px #fff,0 0 0 3px var(--negro)}
+.pmore{font-size:10px;color:var(--gris-texto);letter-spacing:.06em}
+@keyframes flashring{0%,100%{box-shadow:0 0 0 0 rgba(229,9,20,0)}30%{box-shadow:0 0 0 4px rgba(229,9,20,.55)}}
+.pcard.flash{animation:flashring 1.6s ease}
+
+/* ---------- BLOQUES EDITORIALES ---------- */
+.edito{position:relative;background:#000;color:#fff;overflow:hidden}
+.edito-media{position:relative;height:62vh;min-height:380px;max-height:760px}
+.edito-media img{width:100%;height:100%;object-fit:cover}
+.edito-txt{position:absolute;inset:auto 0 0 0;z-index:2;padding:0 20px 44px;
+  background:linear-gradient(180deg,transparent,rgba(0,0,0,.7))}
+@media(min-width:900px){.edito-txt{padding:0 40px 64px}}
+.edito-txt .in{max-width:var(--ancho);margin:0 auto}
+.edito-txt h3{font-family:var(--serif);font-weight:400;font-size:clamp(26px,4.6vw,50px);line-height:1.05;max-width:16ch}
+.edito-txt .b{margin-top:22px}
+.edito-dupla{display:grid;grid-template-columns:1fr;gap:6px}
+@media(min-width:760px){.edito-dupla{grid-template-columns:1fr 1fr;gap:14px}}
+.edito-dupla .edito-media{height:52vh;min-height:320px}
+
+/* ---------- QUIZ VISUAL ---------- */
+.qv{background:var(--hueso)}
+.qv-grid{display:grid;grid-template-columns:1fr;gap:var(--s4);align-items:center}
+@media(min-width:900px){.qv-grid{grid-template-columns:.92fr 1.08fr;gap:64px}}
+.qv-caras{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.qv-caras figure{margin:0;position:relative;overflow:hidden;background:#ddd;aspect-ratio:3/4}
+.qv-caras img{width:100%;height:100%;object-fit:cover;object-position:center 22%;transition:transform .8s cubic-bezier(.22,.61,.36,1)}
+.qv-caras figure:hover img{transform:scale(1.06)}
+.qv h2{margin-bottom:12px}
+.qv .f-lead{margin-bottom:26px}
+.qv-acts{display:flex;flex-wrap:wrap;gap:12px}
+
+/* ---------- FERRATI EN CASA ---------- */
+.casa{background:#000;color:#fff}
+.casa .f-kick{color:rgba(255,255,255,.55)}
+.casa h2{color:#fff}
+.casa-pasos{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.16);margin-top:var(--s4)}
+@media(min-width:820px){.casa-pasos{grid-template-columns:repeat(4,1fr)}}
+.casa-paso{background:#000;padding:30px 20px 34px}
+@media(min-width:820px){.casa-paso{padding:40px 26px 52px}}
+.casa-paso .n{font-family:var(--serif);font-size:13px;color:var(--rojo);letter-spacing:.1em}
+.casa-paso h4{font-family:var(--sans);font-weight:500;font-size:13px;letter-spacing:.2em;text-transform:uppercase;margin:14px 0 6px}
+.casa-paso p{font-weight:300;font-size:14px;color:rgba(255,255,255,.6)}
+.casa-cta{margin-top:var(--s4);display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.casa-nota{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.42)}
+
+/* ---------- SOCIAL ---------- */
+.social-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+@media(min-width:760px){.social-grid{gap:14px}}
+.social-grid figure{margin:0;position:relative;overflow:hidden;background:#000;aspect-ratio:9/16}
+.social-grid img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.22,.61,.36,1)}
+.social-grid figure:hover img{transform:scale(1.05)}
+.social-grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 12px 11px;color:#fff;font-size:10.5px;
+  letter-spacing:.1em;background:linear-gradient(180deg,transparent,rgba(0,0,0,.75))}
+
+/* ---------- COLECCIÓN: barra de control ---------- */
+.col-bar{position:sticky;top:66px;z-index:40;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--linea);padding:12px 0}
+.col-bar-in{display:flex;align-items:center;gap:10px}
+.buscador{position:relative;flex:1;margin:0}
+.buscador input{width:100%;font-family:var(--sans);font-size:14px;padding:12px 14px 12px 40px;
+  border:1px solid var(--linea);background:#fff;border-radius:0;min-height:44px}
+.buscador input:focus{outline:none;border-color:var(--negro)}
+.buscador .ico{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--gris-texto);pointer-events:none;display:flex}
+.btn-filtrar{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--negro);background:#fff;color:var(--negro);
+  font-family:var(--sans);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:12px 16px;cursor:pointer;min-height:44px;white-space:nowrap}
+.btn-filtrar:hover{background:var(--negro);color:#fff}
+#filtrosPanel{display:none;padding:16px 0 4px;border-top:1px solid var(--linea);margin-top:12px}
+#filtrosPanel.open{display:block}
+@media(min-width:900px){
+  .btn-filtrar{display:none}
+  #filtrosPanel{display:block;border-top:none;margin-top:0;padding:14px 0 2px}
+}
+.filtros-row{display:flex;flex-wrap:wrap;align-items:center;gap:7px}
+.filtros-row+.filtros-row{margin-top:10px}
+.flabel{min-width:74px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gris-texto)}
+.tab,.chip-f{font-family:var(--sans);font-size:12px;letter-spacing:.06em;border:1px solid var(--linea);background:#fff;
+  color:var(--negro);padding:9px 15px;cursor:pointer;min-height:40px;transition:.18s;border-radius:0}
+.tab:hover,.chip-f:hover{border-color:var(--negro)}
+.tab.active{background:var(--negro);border-color:var(--negro);color:#fff}
+.chip-f.active{background:var(--rojo);border-color:var(--rojo);color:#fff}
+.resultados{padding:var(--s4) 0 var(--s3);display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.resultados h2{font-family:var(--serif);font-weight:500;font-style:normal;font-size:clamp(24px,3.4vw,36px);line-height:1.06}
+.conteo{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gris-texto)}
+.catalogo{padding:0 0 var(--s2)}
+.vacio{padding:60px 0;text-align:center;color:var(--gris-texto);font-size:14px}
+
+/* ---------- BENEFICIOS ---------- */
+.benef{border-top:1px solid var(--linea);padding:var(--s4) 0}
+.benef-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px 16px}
+@media(min-width:820px){.benef-grid{grid-template-columns:repeat(4,1fr);gap:30px}}
+.benef-i{display:flex;flex-direction:column;gap:9px}
+.benef-i svg{width:22px;height:22px;stroke:var(--negro);fill:none;stroke-width:1.4}
+.benef-i b{font-family:var(--sans);font-weight:500;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase}
+.benef-i span{font-size:13px;color:var(--gris-texto);font-weight:300}
+
+/* ---------- FAQ ---------- */
+.faq{background:var(--hueso);padding:var(--s5) 0}
+.faq-list{max-width:820px;margin:var(--s4) auto 0}
+.faq details{border-bottom:1px solid var(--linea)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;
+  padding:20px 2px;font-family:var(--sans);font-weight:400;font-size:15px;min-height:52px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";width:11px;height:11px;flex:none;border-right:1px solid var(--negro);border-bottom:1px solid var(--negro);
+  transform:rotate(45deg) translate(-2px,-2px);transition:transform .3s}
+.faq details[open] summary::after{transform:rotate(-135deg) translate(-3px,-3px)}
+.faq .fa{padding:0 2px 22px;font-size:14px;font-weight:300;line-height:1.65;color:var(--gris-texto);max-width:70ch}
+
+/* ---------- FOOTER ---------- */
+footer{background:#000;color:#fff;padding:var(--s5) 0 var(--s4)}
+.foot-top{display:grid;grid-template-columns:1fr;gap:var(--s4);padding-bottom:var(--s4);border-bottom:1px solid rgba(255,255,255,.14)}
+@media(min-width:760px){.foot-top{grid-template-columns:1.4fr 1fr 1fr}}
+.foot-top .foot-logo{height:20px;margin-bottom:16px}
+.foot-claim{font-family:var(--serif);font-size:19px;line-height:1.3;color:rgba(255,255,255,.9);max-width:24ch}
+.foot-col h5{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:14px;font-weight:500}
+.foot-col a,.foot-col button{display:block;background:none;border:none;padding:6px 0;color:#fff;text-decoration:none;
+  font-family:var(--sans);font-size:14px;font-weight:300;cursor:pointer;text-align:left}
+.foot-col a:hover,.foot-col button:hover{color:var(--rojo)}
+.foot-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-top:var(--s3);
+  font-size:11px;letter-spacing:.08em;color:rgba(255,255,255,.4)}
+
+/* ---------- WHATSAPP FLOTANTE ---------- */
+.wa-float{position:fixed;right:16px;bottom:16px;z-index:95;display:inline-flex;align-items:center;gap:9px;
+  background:#000;color:#fff;text-decoration:none;padding:13px 17px;border-radius:999px;
+  font-family:var(--sans);font-size:12px;letter-spacing:.06em;box-shadow:0 8px 30px rgba(0,0,0,.28);
+  transition:background .25s,transform .25s;min-height:48px}
+.wa-float:hover{background:var(--rojo);transform:translateY(-2px)}
+.wa-float .t{display:none}
+@media(min-width:640px){.wa-float .t{display:inline}}
+@media(max-width:639px){.wa-float{padding:14px;border-radius:50%}}
+
+/* ---------- MODAL DE PRODUCTO ---------- */
+.pmodal{position:fixed;inset:0;z-index:150;background:rgba(0,0,0,.55);display:flex;align-items:flex-end;justify-content:center}
+.pmodal[hidden]{display:none}
+@media(min-width:760px){.pmodal{align-items:center;padding:28px}}
+.pmodal-box{position:relative;background:#fff;width:100%;max-width:940px;max-height:92vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.pmodal-x{position:absolute;top:8px;right:10px;z-index:5;background:rgba(255,255,255,.92);border:none;width:42px;height:42px;
+  font-size:26px;line-height:1;cursor:pointer;color:#000}
+.pmodal-x:hover{color:var(--rojo)}
+
+/* la ficha completa (cardHTML) vive dentro del modal: pierde el aspecto de tarjeta */
+.pmodal-box .card{border:none;box-shadow:none;transform:none;display:grid;grid-template-columns:1fr;gap:0}
+.pmodal-box .card:hover{transform:none;box-shadow:none}
+@media(min-width:760px){.pmodal-box .card{grid-template-columns:1.05fr .95fr;align-items:start}}
+.pmodal-box .card-media{aspect-ratio:1/1;background:var(--hueso);border-bottom:none;padding:16px}
+.pmodal-box .thumbs{padding:12px 16px 0}
+@media(min-width:760px){
+  .pmodal-box .card-media{grid-row:1;grid-column:1}
+  .pmodal-box .thumbs{grid-row:2;grid-column:1;padding:10px 16px 20px}
+  .pmodal-box .card-body{grid-row:1/span 2;grid-column:2;padding:44px 34px 34px}
+}
+.pmodal-box .card-name{font-family:var(--serif);font-weight:500;font-size:clamp(26px,4vw,38px);line-height:1.05}
+.pmodal-box .card-code{color:var(--rojo)}
+.pmodal-box .btn-wa{background:var(--rojo);letter-spacing:.16em}
+.pmodal-box .btn-wa:hover{background:#000}
+.pmodal-box .thumb.active,.pmodal-box .sw.active{border-color:var(--rojo)}
+
+/* ---------- ajustes a piezas heredadas ---------- */
+.kick-top{font-size:10.5px;letter-spacing:.24em;color:var(--gris-texto)}
+.rostro-sec{padding:var(--s5) 0;border-top:1px solid var(--linea)}
+.rostro-card.active{border-color:var(--rojo);background:#fff5f5}
+.rostro-card.active svg{stroke:var(--rojo)}
+.rostro-detalle{background:var(--hueso);border-color:var(--linea)}
+.rostro-ver:hover{background:var(--rojo)}
+.ia-cta{border-color:var(--linea);background:var(--hueso)}
+.quiz-banner{border-color:var(--rojo);background:#fff5f5}
+.qb-btn.oro{background:var(--rojo);border-color:var(--rojo)}
+.qintro-pri{background:var(--rojo)}
+.qintro-pri:hover{background:#000}
+.quiz-next:hover{background:var(--rojo)}
+.quiz-op.sel{border-color:var(--rojo);background:#fff5f5;box-shadow:inset 0 0 0 1px var(--rojo)}
+.cart-send{background:var(--rojo)}
+.cart-send:hover{background:#000}
+.lb-view.active{background:var(--rojo);border-color:var(--rojo)}
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -322,80 +622,104 @@ src="https://www.facebook.com/tr?id=1617001106599453&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
 </head>
 <body>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1617001106599453&ev=PageView&noscript=1"/></noscript>
 
-<!-- HEADER -->
-<header>
+<!-- ===================== HEADER ===================== -->
+<header id="hdr">
   <div class="wrap nav">
-    <img class="logo-img" src="logo-negro.png" alt="Ferrati" onerror="this.style.display='none'">
+    <a href="#top" aria-label="Ferrati · inicio"><img class="logo-img" src="logo-negro.png" alt="Ferrati" onerror="this.style.display='none'"></a>
     <div class="nav-right">
-      <button class="nav-link" id="abrirQuiz" type="button">Quiz de estilo</button>
-      <button class="nav-link" id="abrirGuia" type="button">Guía de rostro</button>
-      <button class="cart-btn" id="abrirCarrito" type="button">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/><path d="M2 3h3l2.4 12.4a1 1 0 0 0 1 .8h8.7a1 1 0 0 0 1-.8L21 7H6"/></svg>
-        Carrito <span class="cart-count" id="cartCount" style="display:none">0</span>
+      <button class="nav-link nav-solo-desktop" id="abrirQuiz" type="button">Tu montura</button>
+      <button class="nav-link nav-solo-desktop" id="abrirGuia" type="button">Guía de rostro</button>
+      <a class="nav-link nav-solo-desktop" href="casa.html">Ferrati en Casa</a>
+      <button class="cart-btn" id="abrirCarrito" type="button" aria-label="Abrir pedido">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/><path d="M2 3h3l2.4 12.4a1 1 0 0 0 1 .8h8.7a1 1 0 0 0 1-.8L21 7H6"/></svg>
+        <span class="nav-solo-desktop">Pedido</span><span class="cart-count" id="cartCount" style="display:none">0</span>
       </button>
     </div>
   </div>
 </header>
 
-<!-- HERO -->
-<section class="hero">
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="top">
+  <div class="hero-media">
+    <picture>
+      <source media="(min-width:820px)" srcset="img/hero-wide.jpg">
+      <img src="img/hero-tall.jpg" alt="Modelo con gafas de sol Ferrati" fetchpriority="high" decoding="async">
+    </picture>
+  </div>
+  <div class="wrap hero-in">
+    <div class="hero-eyebrow">Maison suisse · Eyewear</div>
+    <h1>El sol,<br>con distinción</h1>
+    <p class="hero-sub">Gafas polarizadas diseñadas para destacar.</p>
+    <div class="hero-ctas">
+      <a class="b b-claro" href="#coleccion">Ver colección</a>
+      <button class="b b-fantasma" id="heroQuiz" type="button">Encuentra tu montura</button>
+    </div>
+  </div>
+  <span class="hero-scroll" aria-hidden="true"></span>
+</section>
+
+<!-- ===================== MÁS DESEADOS ===================== -->
+<section class="sec" id="topsellers">
   <div class="wrap">
-    <img class="logo-img" src="logo-blanco.png" alt="Ferrati" onerror="this.style.display='none'">
-    <div class="eyebrow">Maison suisse · Eyewear</div>
-    <h1>El sol, con distinción</h1>
-    <p>Colección de gafas de sol polarizadas con protección UV400. Diseño atemporal, elegancia suiza.</p>
-    <div class="rule"></div>
-    <button class="hero-quiz" id="heroQuiz" type="button">Encuentra tu montura ideal</button>
+    <div class="sec-head reveal">
+      <div>
+        <div class="f-kick">Selección Ferrati</div>
+        <h2 class="f-h2">Más deseados</h2>
+      </div>
+      <a class="sec-link" href="#coleccion">Ver toda la colección</a>
+    </div>
+    <div class="grid" id="grid-top"></div>
   </div>
 </section>
 
-<!-- FILTROS -->
-<section class="filtros">
-  <div class="wrap">
-    <div class="buscador">
-      <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
-      <input type="text" id="buscar" placeholder="Busca por nombre o referencia (ej. St. Moritz o 7331)…" autocomplete="off">
+<!-- ===================== EDITORIAL 1 ===================== -->
+<section class="edito">
+  <div class="edito-media">
+    <!-- REEMPLAZAR POR IMAGEN LIFESTYLE FERRATI (horizontal, alta resolución) -->
+    <img src="img/quiz-unisex.jpg" alt="Gafas de sol Ferrati en uso" loading="lazy" decoding="async">
+  </div>
+  <div class="edito-txt">
+    <div class="in"><h3>Hechas para destacar.</h3></div>
+  </div>
+</section>
+
+<!-- ===================== QUIZ VISUAL ===================== -->
+<section class="sec qv">
+  <div class="wrap qv-grid">
+    <div class="qv-caras reveal">
+      <figure><img src="img/quiz-dama.jpg" alt="Montura Ferrati en rostro femenino" loading="lazy" decoding="async"></figure>
+      <figure><img src="img/quiz-hombre.jpg" alt="Montura Ferrati en rostro masculino" loading="lazy" decoding="async"></figure>
+      <figure><img src="img/quiz-unisex.jpg" alt="Montura Ferrati unisex" loading="lazy" decoding="async"></figure>
     </div>
-    <div class="filtros-row" id="cats">
-      <span class="flabel">Categoría</span>
-      <button class="tab active" data-cat="todas">Todas</button>
-      <button class="tab" data-cat="dama">Dama</button>
-      <button class="tab" data-cat="hombre">Hombre</button>
-    </div>
-    <div class="filtros-row" id="mats">
-      <span class="flabel">Material</span>
-      <button class="chip-f active" data-mat="todas">Todos</button>
-      <button class="chip-f" data-mat="metalica">Metálica</button>
-      <button class="chip-f" data-mat="acetato">Acetato</button>
-      <button class="chip-f" data-mat="tr90">TR90</button>
+    <div class="reveal">
+      <div class="f-kick">Asesoría</div>
+      <h2 class="f-h2">¿Cuál te queda mejor?</h2>
+      <p class="f-lead">Descúbrelo en 5 preguntas.</p>
+      <div class="qv-acts">
+        <button class="b b-rojo" id="abrirQuizVisual" type="button">Hacer el test</button>
+        <a class="b b-linea" href="#guia">Ver por tipo de rostro</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- TOP SELLERS -->
-<section class="topsellers" id="topsellers">
-  <div class="wrap resultados">
-    <div>
-      <div class="kick-top">Selección Ferrati</div>
-      <h2>Los más deseados</h2>
-    </div>
-    <div class="conteo">Favoritos de la temporada</div>
-  </div>
-  <div class="wrap"><div class="grid" id="grid-top"></div></div>
-</section>
-
-<!-- GUÍA DE ROSTRO -->
+<!-- ===================== GUÍA DE ROSTRO (funcional, existente) ===================== -->
 <section class="rostro-sec" id="guia">
   <div class="wrap">
-    <div class="kick-top">Asesoría Ferrati</div>
-    <h2>¿Qué montura para tu rostro?</h2>
+    <div class="sec-head reveal">
+      <div>
+        <div class="f-kick">Guía Ferrati</div>
+        <h2 class="f-h2">Monturas por tipo de rostro</h2>
+      </div>
+    </div>
     <div class="rostro-grid" id="rostroGrid"></div>
     <div class="rostro-detalle" id="rostroDet"></div>
     <div class="ia-cta" id="iaCta">
       <div>
-        <h3>¿No conoces tu tipo de rostro?</h3>
-        <p>Te regalamos nuestro asesor de estilo con IA: copia el prompt, pégalo en Gemini o ChatGPT junto a una selfie de frente, y descubre tu tipo de rostro, las monturas que te favorecen y cómo se te ven puestas.</p>
+        <h3>¿No sabes tu tipo de rostro?</h3>
+        <p>Copia nuestro prompt, pégalo en Gemini o ChatGPT con una selfie y descubre qué te favorece.</p>
       </div>
       <a class="ia-btn" id="iaBtn" href="#" target="_blank" rel="noopener" style="display:none">Hablar con el asesor IA</a>
       <button class="ia-btn" id="iaCopy" type="button" style="display:none">Copiar prompt del asesor</button>
@@ -403,44 +727,189 @@ src="https://www.facebook.com/tr?id=1617001106599453&ev=PageView&noscript=1"
   </div>
 </section>
 
-<!-- RESULTADOS -->
-<div class="wrap"><div id="quizBanner"></div></div>
-<div class="wrap resultados">
-  <h2 id="subtitulo">Toda la colección</h2>
-  <div class="conteo" id="conteo"></div>
-</div>
-
-<!-- GRID -->
-<section class="catalogo">
-  <div class="wrap"><div class="grid" id="grid"></div></div>
-</section>
-
-<!-- CIERRE -->
-<section class="cierre" id="contacto">
-  <div class="wrap">
-    <img class="logo-img" src="logo-blanco.png" alt="Ferrati" onerror="this.style.display='none'">
-    <h2>Tu próxima mirada</h2>
-    <p>Escríbenos por WhatsApp con el nombre o la referencia. Te asesoramos y coordinamos el envío gratis a toda Colombia.</p>
-    <a class="btn-grande" href="https://wa.me/573244073508?text=Hola%20Ferrati%2C%20quiero%20info%20de%20las%20gafas%20de%20sol" target="_blank" rel="noopener">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.9.9-2.8-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5 0a6.6 6.6 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4a.5.5 0 0 0 0-.4l-.7-1.7c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.6 2.6 0 0 0-.8 1.9 4.5 4.5 0 0 0 1 2.4 10.3 10.3 0 0 0 4 3.5c2 .8 2 .5 2.4.5a2.3 2.3 0 0 0 1.5-1.1 1.9 1.9 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z"/></svg>
-      Cotizar por WhatsApp
-    </a>
+<!-- ===================== EDITORIAL 2 (dupla) ===================== -->
+<section class="edito edito-dupla">
+  <div class="edito-media">
+    <!-- REEMPLAZAR POR IMAGEN EDITORIAL FERRATI (primer plano de montura) -->
+    <img src="img/hero-casa.jpg" alt="Detalle de montura Ferrati" loading="lazy" decoding="async">
+  </div>
+  <div class="edito-media">
+    <!-- REEMPLAZAR POR IMAGEN LIFESTYLE FERRATI (persona usando Ferrati) -->
+    <img src="img/quiz-hombre.jpg" alt="Gafas Ferrati en uso" loading="lazy" decoding="async">
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="wrap foot-grid">
-    <div>
-      <img class="logo-img foot-logo" src="logo-blanco.png" alt="Ferrati" onerror="this.style.display='none'">
-      <div class="foot-meta">Distribuido por Solare · Envío gratis a toda Colombia</div>
+<!-- ===================== FERRATI EN CASA ===================== -->
+<section class="sec casa">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="f-kick">Solo Pereira</div>
+        <h2 class="f-h2">Ferrati en Casa</h2>
+      </div>
     </div>
-    <div class="foot-links">
-      <a href="https://instagram.com/ferrati.co" target="_blank" rel="noopener">@ferrati.co</a>
-      <a href="#contacto">WhatsApp</a>
+    <div class="casa-pasos reveal">
+      <div class="casa-paso"><div class="n">01</div><h4>Descubre</h4><p>Tu estilo</p></div>
+      <div class="casa-paso"><div class="n">02</div><h4>Elige</h4><p>3 Ferrati</p></div>
+      <div class="casa-paso"><div class="n">03</div><h4>Pruébalas</h4><p>En casa</p></div>
+      <div class="casa-paso"><div class="n">04</div><h4>Decide</h4><p>Sin presión</p></div>
+    </div>
+    <div class="casa-cta reveal">
+      <a class="b b-claro" href="casa.html">Conocer Ferrati en Casa</a>
+      <span class="casa-nota">Entrega en menos de 24 h · Depósito reembolsable</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SOCIAL PROOF ===================== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="f-kick">Comunidad</div>
+        <h2 class="f-h2">Vistas en Ferrati</h2>
+      </div>
+      <a class="sec-link" href="https://instagram.com/ferrati.co" target="_blank" rel="noopener">@ferrati.co</a>
+    </div>
+    <div class="social-grid reveal">
+      <figure><img src="img/story1.jpg" alt="Clienta usando gafas Ferrati" loading="lazy" decoding="async"><figcaption>@valenn.tna</figcaption></figure>
+      <figure><img src="img/story2.jpg" alt="Pedido Ferrati entregado" loading="lazy" decoding="async"><figcaption>Cliente Ferrati</figcaption></figure>
+      <figure><img src="img/story3.jpg" alt="Clienta usando gafas Ferrati" loading="lazy" decoding="async"><figcaption>@vale.bernal.g</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TODA LA COLECCIÓN ===================== -->
+<section id="coleccion">
+  <div class="wrap" style="padding-top:var(--s5)">
+    <div class="sec-head reveal" style="margin-bottom:var(--s3)">
+      <div>
+        <div class="f-kick">Catálogo</div>
+        <h2 class="f-h2">Toda la colección</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-bar">
+    <div class="wrap">
+      <div class="col-bar-in">
+        <div class="buscador">
+          <span class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
+          <input type="text" id="buscar" placeholder="Buscar por nombre o referencia" autocomplete="off" aria-label="Buscar en el catálogo">
+        </div>
+        <button class="btn-filtrar" id="filtrarBtn" type="button" aria-expanded="false" aria-controls="filtrosPanel">Filtrar</button>
+      </div>
+      <div id="filtrosPanel">
+        <div class="filtros-row" id="cats">
+          <span class="flabel">Para</span>
+          <button class="tab active" data-cat="todas" type="button">Todas</button>
+          <button class="tab" data-cat="dama" type="button">Dama</button>
+          <button class="tab" data-cat="hombre" type="button">Hombre</button>
+        </div>
+        <div class="filtros-row" id="mats">
+          <span class="flabel">Material</span>
+          <button class="chip-f active" data-mat="todas" type="button">Todos</button>
+          <button class="chip-f" data-mat="metalica" type="button">Metálica</button>
+          <button class="chip-f" data-mat="acetato" type="button">Acetato</button>
+          <button class="chip-f" data-mat="tr90" type="button">TR90</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap"><div id="quizBanner"></div></div>
+  <div class="wrap resultados">
+    <h2 id="subtitulo">Toda la colección</h2>
+    <div class="conteo" id="conteo"></div>
+  </div>
+  <section class="catalogo">
+    <div class="wrap"><div class="grid" id="grid"></div></div>
+  </section>
+</section>
+
+<!-- ===================== BENEFICIOS ===================== -->
+<section class="benef">
+  <div class="wrap benef-grid reveal">
+    <div class="benef-i">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2 12h2.4M19.6 12H22M5.9 18.1l-1.7 1.7M19.8 4.2l-1.7 1.7"/></svg>
+      <b>UV400</b><span>Protección solar total</span>
+    </div>
+    <div class="benef-i">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M7 7h10M7 17h10"/><circle cx="12" cy="12" r="9"/></svg>
+      <b>Polarizadas</b><span>Menos reflejos</span>
+    </div>
+    <div class="benef-i">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 7h11v10H2zM13 10h4l4 3.5V17h-8z"/><circle cx="6" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/></svg>
+      <b>Envío gratis</b><span>A toda Colombia</span>
+    </div>
+    <div class="benef-i">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l7.4 3v5.7c0 4.6-3.1 8.3-7.4 10.1-4.3-1.8-7.4-5.5-7.4-10.1V5.6z"/><path d="M9 12.2l2.1 2.1 4-4.2"/></svg>
+      <b>Compra segura</b><span>Asesoría antes de pagar</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="f-kick reveal">Información</div>
+    <h2 class="f-h2 reveal">Preguntas frecuentes</h2>
+    <div class="faq-list reveal">
+      <details><summary>¿Todas las gafas son polarizadas?</summary><div class="fa">Sí. Toda la colección de sol Ferrati es polarizada y cuenta con protección UV400: bloquea el 100% de los rayos UVA y UVB, y reduce los reflejos del asfalto, el agua y el vidrio.</div></details>
+      <details><summary>¿Qué materiales manejan?</summary><div class="fa">Tres: metálica, acetato y TR90. Puedes filtrar la colección por material más arriba. Cada ficha de producto indica también la forma y la medida de la montura.</div></details>
+      <details><summary>¿Cómo sé cuál me queda bien?</summary><div class="fa">Tienes dos caminos: el test de 5 preguntas, que te sugiere monturas según tu estilo, y la guía por tipo de rostro, donde eliges tu forma de cara y ves las monturas recomendadas.</div></details>
+      <details><summary>¿Cómo son los envíos?</summary><div class="fa">Envío gratis a toda Colombia. Coordinamos la entrega contigo por WhatsApp al confirmar tu pedido.</div></details>
+      <details><summary>¿Qué es Ferrati en Casa?</summary><div class="fa">Un programa en fase piloto solo para Pereira: eliges hasta 3 monturas, te llegan a casa en menos de 24 horas y las pruebas durante 3 días. Pagas únicamente la que te quedes; el depósito es reembolsable.</div></details>
+      <details><summary>¿Cómo hago mi pedido?</summary><div class="fa">Agrega las monturas que te gusten a tu pedido y envíanoslo por WhatsApp con un toque. Te confirmamos disponibilidad, resolvemos tus dudas y coordinamos el envío.</div></details>
+      <!-- PENDIENTE: agregar aquí GARANTÍA, CAMBIOS y FORMAS DE PAGO cuando definas las condiciones exactas.
+           Formato: <details><summary>Pregunta</summary><div class="fa">Respuesta.</div></details> -->
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer id="contacto">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <img class="logo-img foot-logo" src="logo-blanco.png" alt="Ferrati" onerror="this.style.display='none'">
+        <p class="foot-claim">El sol, con distinción.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Colección</h5>
+        <a href="#coleccion">Toda la colección</a>
+        <a href="#topsellers">Más deseados</a>
+        <a href="#guia">Guía de rostro</a>
+        <a href="casa.html">Ferrati en Casa</a>
+      </div>
+      <div class="foot-col">
+        <h5>Contacto</h5>
+        <a href="https://wa.me/573244073508?text=Hola%20Ferrati%2C%20quiero%20info%20de%20las%20gafas%20de%20sol" target="_blank" rel="noopener">WhatsApp 324 407 3508</a>
+        <a href="https://instagram.com/ferrati.co" target="_blank" rel="noopener">@ferrati.co</a>
+        <a href="#faq">Preguntas frecuentes</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>Ferrati · Distribuido por Solare</span>
+      <span>Envío gratis a toda Colombia</span>
     </div>
   </div>
 </footer>
+
+<!-- ===================== WHATSAPP FLOTANTE ===================== -->
+<a class="wa-float" href="https://wa.me/573244073508?text=Hola%20Ferrati%2C%20necesito%20ayuda%20para%20elegir%20mis%20gafas" target="_blank" rel="noopener" aria-label="¿Necesitas ayuda? Escríbenos por WhatsApp">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.9.9-2.8-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5 0a6.6 6.6 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4a.5.5 0 0 0 0-.4l-.7-1.7c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.6 2.6 0 0 0-.8 1.9 4.5 4.5 0 0 0 1 2.4 10.3 10.3 0 0 0 4 3.5c2 .8 2 .5 2.4.5a2.3 2.3 0 0 0 1.5-1.1 1.9 1.9 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z"/></svg>
+  <span class="t">¿Necesitas ayuda?</span>
+</a>
+
+<!-- ===================== MODAL DE PRODUCTO (ficha completa) ===================== -->
+<div class="pmodal" id="pModal" hidden>
+  <div class="pmodal-box">
+    <button class="pmodal-x" id="pModalX" type="button" aria-label="Cerrar">&times;</button>
+    <div id="pModalBody"></div>
+  </div>
+</div>
+
 
 <!-- QUIZ intro (popup de bienvenida) -->
 <div id="quizIntro" class="qintro" hidden>
@@ -521,6 +990,7 @@ src="https://www.facebook.com/tr?id=1617001106599453&ev=PageView&noscript=1"
 </div>
 
 <script>
+
 const WHATSAPP    = "573244073508";
 const CATALOGO_URL = "";
 const IA_URL = ""; /* link del asesor IA; si está vacío se usa PROMPT_IA */
@@ -1194,7 +1664,7 @@ function render(){
   subtitulo.textContent = estado.quiz ? 'Tu selección de estilo' : (estado.formas ? ('Recomendadas para '+estado.formaLabel) : (q ? ('Resultados: “'+estado.q.trim()+'”') : subLabel()));
   conteo.textContent = lista.length+(lista.length===1?' referencia':' referencias');
   document.getElementById('quizBanner').innerHTML = estado.quiz ? bannerHTML(lista.length) : '';
-  grid.innerHTML = lista.length ? lista.map(cardHTML).join('') : `<div class="vacio" style="grid-column:1/-1">Sin resultados. Prueba otro filtro, búsqueda o el quiz.</div>`;
+  grid.innerHTML = lista.length ? lista.map(pcardHTML).join('') : `<div class="vacio" style="grid-column:1/-1">Sin resultados. Prueba otro filtro, búsqueda o el quiz.</div>`;
   observeAll();
 }
 function syncFilterButtons(){
@@ -1211,10 +1681,12 @@ function openFromHash(){
   const [id,colorSlug]=decodeURIComponent(raw).split('__'); if(!byId(id)) return;
   estado.cat='todas';estado.mat='todas';estado.q='';document.getElementById('buscar').value='';
   syncFilterButtons();render();
-  const card=document.querySelector('#grid .card[data-id="'+id+'"]'); if(!card) return;
-  if(colorSlug){ const sw=card.querySelector('.sw[data-slug="'+colorSlug+'"]'); if(sw) selectColor(card,sw); }
+  const card=document.querySelector('#grid .pcard[data-id="'+id+'"]'); if(!card) return;
+  let ci=0;
+  if(colorSlug){ const p=byId(id); const i=p.colores.findIndex(c=>slug(c.codigo||c.nombre||'')===colorSlug); if(i>=0) ci=i; }
   card.scrollIntoView({behavior:'smooth',block:'center'});
   card.classList.remove('flash'); void card.offsetWidth; card.classList.add('flash');
+  setTimeout(()=>openProducto(id,ci),450);
 }
 
 /* ===== AUTO-CAMBIO DE COLOR (tarjetas visibles) ===== */
@@ -1237,9 +1709,10 @@ const io=('IntersectionObserver' in window)?new IntersectionObserver(es=>{
   es.forEach(en=> en.isIntersecting?startAuto(en.target):stopAuto(en.target));
 },{threshold:0.45}):null;
 function observeAll(){
-  if(!io) return;
-  io.disconnect(); timers.forEach(id=>clearInterval(id)); timers.clear();
-  document.querySelectorAll('.card').forEach(c=>io.observe(c));
+  /* el auto-cambio de color se sustituyo por el hover frente/3-4 (mas sobrio).
+     Aqui solo se activa el fade suave de entrada de las tarjetas nuevas. */
+  timers.forEach(id=>clearInterval(id)); timers.clear();
+  if(typeof revealAll==='function') revealAll();
 }
 
 /* ===== VISOR CON ZOOM (lightbox) ===== */
@@ -1545,13 +2018,170 @@ document.getElementById('iaModalGo').addEventListener('click',()=>{ setTimeout((
     go.removeAttribute('target');
   }
 })();
-document.getElementById('grid-top').innerHTML = productos.filter(p=>p.top).map(cardHTML).join('');
+(function(){
+  const tops=productos.filter(p=>p.top);
+  const resto=productos.filter(p=>!p.top&&p.colores&&p.colores.length);
+  const sel=tops.concat(resto).slice(0,8);   /* siempre 8 piezas en la vitrina */
+  document.getElementById('grid-top').innerHTML=sel.map(pcardHTML).join('');
+})();
 renderCart();
 render();
 openFromHash();
 window.addEventListener('hashchange',openFromHash);
 /* muestra el popup de bienvenida en la primera visita (piloto Warby-style) */
 try{ if(!localStorage.getItem('ferrati_quiz_v1') && !location.hash) setTimeout(openIntro,400); }catch(_){}
+
+
+/* =====================================================================
+   CAPA DE REDISEÑO — tarjeta minimalista + ficha en modal + microinteracciones
+   La ficha completa se sigue generando con cardHTML(), así que TODA la
+   lógica previa (colores, vistas, cantidad, carrito, IA, zoom) sigue igual.
+   ===================================================================== */
+
+/* ---------- tarjeta de la grilla: foto + nombre + referencia ---------- */
+function pcardHTML(p){
+  const c0=p.colores[0]||{};
+  const vis=p.colores.slice(0,5);
+  const dots=vis.map((c,i)=>
+    `<button class="pdot${i===0?' on':''}" type="button" data-ci="${i}" style="--c:${c.hex||'#999'}" title="${(c.nombre||'')}" aria-label="Color ${(c.nombre||i+1)}"></button>`).join('');
+  const mas=p.colores.length>vis.length?`<span class="pmore">+${p.colores.length-vis.length}</span>`:'';
+  const alt=(p.nombre||'Montura Ferrati')+(c0.nombre?(' · '+c0.nombre):'');
+  return `
+  <article class="pcard reveal" data-id="${p.id}" data-ci="0">
+    <div class="pcard-img">
+      ${p.top?'<span class="pbadge">Más deseada</span>':''}
+      <img class="pf" src="${c0.frente||''}" alt="${alt}" loading="lazy" decoding="async">
+      ${c0.lado?`<img class="pl" src="${c0.lado}" alt="" loading="lazy" decoding="async" aria-hidden="true">`:''}
+      <span class="pver" aria-hidden="true">Ver producto</span>
+    </div>
+    <div class="pcard-in">
+      <h3 class="pname">${p.nombre}</h3>
+      <div class="pref">Ref. ${c0.codigo||p.codigo||''}</div>
+      <div class="pdots">${dots}${mas}</div>
+    </div>
+  </article>`;
+}
+
+/* ---------- modal con la ficha completa ---------- */
+function anyOverlayOpen(){
+  const lb=document.getElementById('lightbox');
+  const dr=document.getElementById('cartDrawer');
+  const qz=document.getElementById('quiz');
+  return (lb&&!lb.hidden)||(dr&&dr.classList.contains('open'))||(qz&&!qz.hidden);
+}
+function openProducto(id,ci){
+  const p=(typeof byId==='function')?byId(id):null; if(!p) return;
+  const box=document.getElementById('pModalBody');
+  box.innerHTML=cardHTML(p);
+  const card=box.querySelector('.card');
+  const idx=+ci||0;
+  if(card&&idx){ const sw=card.querySelector('.sw[data-idx="'+idx+'"]'); if(sw&&typeof selectColor==='function') selectColor(card,sw); }
+  document.getElementById('pModal').hidden=false;
+  document.body.style.overflow='hidden';
+  const c=p.colores[idx]||p.colores[0]||{};
+  try{ if(window.fbq) fbq('track','ViewContent',{content_ids:[c.codigo||p.codigo||p.id],content_type:'product'}); }catch(_){}
+}
+function closeProducto(){
+  const m=document.getElementById('pModal'); if(!m||m.hidden) return;
+  m.hidden=true;
+  if(!anyOverlayOpen()) document.body.style.overflow='';
+}
+document.getElementById('pModalX').addEventListener('click',closeProducto);
+document.getElementById('pModal').addEventListener('click',e=>{ if(e.target.id==='pModal') closeProducto(); });
+
+/* ---------- interacción de la grilla ---------- */
+document.addEventListener('click',e=>{
+  /* cambiar color desde la tarjeta, sin abrir la ficha */
+  const dot=e.target.closest('.pdot');
+  if(dot){
+    const card=dot.closest('.pcard'); if(!card) return;
+    const p=(typeof byId==='function')?byId(card.dataset.id):null; if(!p) return;
+    const ci=+dot.dataset.ci, c=p.colores[ci]||p.colores[0]||{};
+    card.dataset.ci=ci;
+    const f=card.querySelector('.pf'), l=card.querySelector('.pl');
+    if(f&&c.frente) f.src=c.frente;
+    if(l){ if(c.lado){ l.src=c.lado; l.hidden=false; } else l.hidden=true; }
+    card.querySelectorAll('.pdot').forEach(d=>d.classList.toggle('on',d===dot));
+    const ref=card.querySelector('.pref'); if(ref) ref.textContent='Ref. '+(c.codigo||p.codigo||'');
+    return;
+  }
+  /* abrir la ficha completa */
+  const pc=e.target.closest('.pcard');
+  if(pc){ openProducto(pc.dataset.id, +pc.dataset.ci||0); return; }
+});
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeProducto(); });
+
+/* ---------- fade suave al entrar en pantalla ---------- */
+/* Nota: render() se ejecuta en el init, ANTES de este bloque, y llama a revealAll().
+   Por eso aqui solo se usa 'var' (se eleva e inicializa como undefined) y nunca
+   'const/let', que dejarian la variable en zona muerta temporal y romperian la pagina. */
+var revIO=null, revOK=false, revReduce=false, revStarted=false;
+function revealVisible(){
+  var els=document.querySelectorAll('.reveal:not(.in)');
+  for(var i=0;i<els.length;i++){
+    var r=els[i].getBoundingClientRect();
+    if(r.top < window.innerHeight*0.94 && r.bottom > -40) els[i].classList.add('in');
+  }
+}
+function revealAll(){
+  try{ revReduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches; }catch(_){}
+  if(!revStarted){
+    revStarted=true;
+    /* el estado oculto solo se activa si hay con que revelarlo */
+    if(!revReduce && ('IntersectionObserver' in window)) document.documentElement.classList.add('rv');
+  }
+  var els=document.querySelectorAll('.reveal:not(.in)');
+  if(!('IntersectionObserver' in window) || revReduce){
+    for(var i=0;i<els.length;i++) els[i].classList.add('in');
+    return;
+  }
+  if(!revIO) revIO=new IntersectionObserver(function(entries){
+    revOK=true;
+    entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); revIO.unobserve(en.target); } });
+  },{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+  for(var j=0;j<els.length;j++) revIO.observe(els[j]);
+  revealVisible();
+}
+/* respaldos: si el observador no dispara (navegadores embebidos, extensiones),
+   el scroll revela lo que entra en pantalla y a los 1.5 s se muestra todo igual */
+addEventListener('scroll',revealVisible,{passive:true});
+addEventListener('resize',revealVisible,{passive:true});
+addEventListener('load',revealVisible);
+setTimeout(revealVisible,400);
+setTimeout(function(){
+  if(!revOK){
+    /* el observador nunca disparo: se retira el estado oculto por completo.
+       Quitar la clase 'rv' no depende de que corran las transiciones. */
+    document.documentElement.classList.remove('rv');
+    var e=document.querySelectorAll('.reveal'); for(var i=0;i<e.length;i++) e[i].classList.add('in');
+  }
+},1500);
+
+/* ---------- filtros plegables en móvil ---------- */
+(function(){
+  const b=document.getElementById('filtrarBtn'), p=document.getElementById('filtrosPanel');
+  if(!b||!p) return;
+  b.addEventListener('click',()=>{
+    const abierto=p.classList.toggle('open');
+    b.setAttribute('aria-expanded',abierto?'true':'false');
+  });
+})();
+
+/* ---------- CTA del bloque visual del quiz ---------- */
+(function(){
+  const b=document.getElementById('abrirQuizVisual'), o=document.getElementById('abrirQuiz');
+  if(b&&o) b.addEventListener('click',()=>o.click());
+})();
+
+/* ---------- borde del header al hacer scroll ---------- */
+(function(){
+  const h=document.getElementById('hdr'); if(!h) return;
+  const upd=()=>h.classList.toggle('scrolled',window.scrollY>8);
+  upd(); window.addEventListener('scroll',upd,{passive:true});
+})();
+
+revealAll();
+
 </script>
 </body>
 </html>
