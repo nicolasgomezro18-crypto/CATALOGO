@@ -444,9 +444,6 @@ header .nav{height:66px}
 .edito-txt .in{max-width:var(--ancho);margin:0 auto}
 .edito-txt h3{font-family:var(--serif);font-weight:400;font-size:clamp(26px,4.6vw,50px);line-height:1.05;max-width:16ch}
 .edito-txt .b{margin-top:22px}
-.edito-dupla{display:grid;grid-template-columns:1fr;gap:6px}
-@media(min-width:760px){.edito-dupla{grid-template-columns:1fr 1fr;gap:14px}}
-.edito-dupla .edito-media{height:52vh;min-height:320px}
 
 /* ---------- QUIZ VISUAL ---------- */
 .qv{background:var(--hueso)}
@@ -571,6 +568,59 @@ footer{background:#000;color:#fff;padding:var(--s5) 0 var(--s4)}
 .pmodal-box .btn-wa:hover{background:#000}
 .pmodal-box .thumb.active,.pmodal-box .sw.active{border-color:var(--rojo)}
 
+
+/* ---------- QUIZ: accion secundaria discreta ---------- */
+.qv-sec{display:inline-block;margin-top:18px;background:none;border:none;padding:0;cursor:pointer;
+  font-family:var(--sans);font-size:13px;font-weight:300;color:var(--gris-texto);border-bottom:1px solid var(--linea);padding-bottom:3px}
+.qv-sec:hover{color:var(--negro);border-color:var(--negro)}
+
+/* ---------- FERRATI EN CASA (editorial) ---------- */
+.casa2{background:var(--blanco);border-top:1px solid var(--linea)}
+.casa2-grid{display:grid;grid-template-columns:1fr;gap:var(--s4);align-items:center}
+@media(min-width:900px){.casa2-grid{grid-template-columns:1fr 1fr;gap:70px}}
+.casa2-foto{position:relative;overflow:hidden;background:var(--hueso);aspect-ratio:4/5}
+.casa2-foto img{width:100%;height:100%;object-fit:cover}
+.casa2-txt h2{margin:10px 0 12px}
+.casa2-txt .f-lead{margin-bottom:var(--s3)}
+.casa2-pasos{list-style:none;margin:0 0 var(--s4);padding:0;border-top:1px solid var(--linea)}
+.casa2-pasos li{display:flex;align-items:baseline;gap:16px;padding:16px 2px;border-bottom:1px solid var(--linea)}
+.casa2-pasos .n{font-family:var(--serif);font-size:14px;color:var(--rojo);min-width:26px;letter-spacing:.06em}
+.casa2-pasos b{font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;min-width:104px}
+.casa2-pasos i{font-style:normal;font-weight:300;font-size:14px;color:var(--gris-texto)}
+@media(max-width:520px){
+  .casa2-pasos li{flex-wrap:wrap;gap:6px 14px}
+  .casa2-pasos i{width:100%;padding-left:42px}
+}
+
+/* ---------- MODAL: GUÍA DE ROSTRO ---------- */
+.gmodal{position:fixed;inset:0;z-index:150;background:rgba(0,0,0,.55);display:flex;align-items:flex-end;justify-content:center}
+.gmodal[hidden]{display:none}
+@media(min-width:760px){.gmodal{align-items:center;padding:28px}}
+.gmodal-box{position:relative;background:#fff;width:100%;max-width:760px;max-height:92vh;overflow-y:auto;
+  -webkit-overflow-scrolling:touch;padding:30px 22px 34px}
+@media(min-width:760px){.gmodal-box{padding:44px 44px 46px}}
+.gmodal-head{margin-bottom:var(--s3)}
+.gmodal-t{font-family:var(--serif);font-weight:500;font-size:clamp(24px,3.6vw,34px);line-height:1.06;margin-top:8px}
+.gmodal-box .rostro-detalle{margin-top:18px}
+/* el asesor IA queda como opcion secundaria dentro de la guia */
+.gmodal-box .ia-cta{margin-top:26px;padding-top:22px;border:none;border-top:1px solid var(--linea);background:none;
+  display:block;text-align:left}
+.gmodal-box .ia-cta h3{font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:8px}
+.gmodal-box .ia-cta p{font-size:13.5px;font-weight:300;color:var(--gris-texto);max-width:56ch;margin-bottom:14px}
+.gmodal-box .ia-btn{display:inline-block;background:none;border:1px solid var(--negro);color:var(--negro);
+  font-family:var(--sans);font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:12px 20px;cursor:pointer;text-decoration:none}
+.gmodal-box .ia-btn:hover{background:var(--negro);color:#fff}
+
+/* ---------- COLECCIÓN: un solo encabezado ---------- */
+.col-titulo{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.8vw,42px);line-height:1.04}
+#coleccion .sec-head{margin-bottom:var(--s2)}
+
+/* ---------- COMUNIDAD ---------- */
+.social-grid figcaption{font-weight:400;letter-spacing:.12em;text-transform:lowercase}
+
+/* ---------- consistencia fotográfica: mismo tratamiento en todas las secciones ---------- */
+.edito-media img,.qv-caras img,.social-grid img,.casa2-foto img,.hero-media img{filter:none}
+
 /* ---------- ajustes a piezas heredadas ---------- */
 .kick-top{font-size:10.5px;letter-spacing:.24em;color:var(--gris-texto)}
 .rostro-sec{padding:var(--s5) 0;border-top:1px solid var(--linea)}
@@ -684,43 +734,31 @@ src="https://www.facebook.com/tr?id=1617001106599453&ev=PageView&noscript=1"
       <p class="f-lead">Descúbrelo en 5 preguntas.</p>
       <div class="qv-acts">
         <button class="b b-rojo" id="abrirQuizVisual" type="button">Hacer el test</button>
-        <a class="b b-linea" href="#guia">Ver por tipo de rostro</a>
       </div>
+      <button class="qv-sec" id="abrirGuiaLink" type="button">¿Ya conoces tu tipo de rostro? Ver guía &rarr;</button>
     </div>
   </div>
 </section>
 
 <!-- ===================== GUÍA DE ROSTRO (funcional, existente) ===================== -->
-<section class="rostro-sec" id="guia">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div>
-        <div class="f-kick">Guía Ferrati</div>
-        <h2 class="f-h2">Monturas por tipo de rostro</h2>
-      </div>
+<!-- ===================== FERRATI EN CASA ===================== -->
+<section class="sec casa2">
+  <div class="wrap casa2-grid">
+    <div class="casa2-foto reveal">
+      <!-- IMAGEN FERRATI EN CASA -->
+      <img src="img/hero-casa.jpg" alt="Probándose gafas Ferrati en casa" loading="lazy" decoding="async">
     </div>
-    <div class="rostro-grid" id="rostroGrid"></div>
-    <div class="rostro-detalle" id="rostroDet"></div>
-    <div class="ia-cta" id="iaCta">
-      <div>
-        <h3>¿No sabes tu tipo de rostro?</h3>
-        <p>Copia nuestro prompt, pégalo en Gemini o ChatGPT con una selfie y descubre qué te favorece.</p>
-      </div>
-      <a class="ia-btn" id="iaBtn" href="#" target="_blank" rel="noopener" style="display:none">Hablar con el asesor IA</a>
-      <button class="ia-btn" id="iaCopy" type="button" style="display:none">Copiar prompt del asesor</button>
+    <div class="casa2-txt reveal">
+      <div class="f-kick">Ferrati en Casa</div>
+      <h2 class="f-h2">Elige 3.<br>Pruébalas.<br>Decide en casa.</h2>
+      <p class="f-lead">Encuentra tu favorita sin elegir a ciegas.</p>
+      <ol class="casa2-pasos">
+        <li><span class="n">01</span><b>Elige</b><i>Tus 3 favoritas</i></li>
+        <li><span class="n">02</span><b>Pruébalas</b><i>En casa</i></li>
+        <li><span class="n">03</span><b>Decide</b><i>Quédate con la que amas</i></li>
+      </ol>
+      <a class="b b-rojo" href="casa.html">Conocer Ferrati en Casa</a>
     </div>
-  </div>
-</section>
-
-<!-- ===================== EDITORIAL 2 (dupla) ===================== -->
-<section class="edito edito-dupla">
-  <div class="edito-media">
-    <!-- REEMPLAZAR POR IMAGEN EDITORIAL FERRATI (primer plano de montura) -->
-    <img src="img/hero-casa.jpg" alt="Detalle de montura Ferrati" loading="lazy" decoding="async">
-  </div>
-  <div class="edito-media">
-    <!-- REEMPLAZAR POR IMAGEN LIFESTYLE FERRATI (persona usando Ferrati) -->
-    <img src="img/quiz-hombre.jpg" alt="Gafas Ferrati en uso" loading="lazy" decoding="async">
   </div>
 </section>
 
@@ -746,10 +784,7 @@ src="https://www.facebook.com/tr?id=1617001106599453&ev=PageView&noscript=1"
 <section id="coleccion">
   <div class="wrap" style="padding-top:var(--s5)">
     <div class="sec-head reveal" style="margin-bottom:var(--s3)">
-      <div>
-        <div class="f-kick">Catálogo</div>
-        <h2 class="f-h2">Toda la colección</h2>
-      </div>
+      <div class="f-kick">Catálogo</div>
     </div>
   </div>
 
@@ -769,6 +804,15 @@ src="https://www.facebook.com/tr?id=1617001106599453&ev=PageView&noscript=1"
           <button class="tab" data-cat="dama" type="button">Dama</button>
           <button class="tab" data-cat="hombre" type="button">Hombre</button>
         </div>
+        <div class="filtros-row" id="formas">
+          <span class="flabel">Forma</span>
+          <button class="chip-f active" data-forma="todas" type="button">Todas</button>
+          <button class="chip-f" data-forma="aviador" type="button">Aviador</button>
+          <button class="chip-f" data-forma="cuadrada" type="button">Cuadrada</button>
+          <button class="chip-f" data-forma="rectangular" type="button">Rectangular</button>
+          <button class="chip-f" data-forma="redonda" type="button">Redonda</button>
+          <button class="chip-f" data-forma="cat" type="button">Cat-eye</button>
+        </div>
         <div class="filtros-row" id="mats">
           <span class="flabel">Material</span>
           <button class="chip-f active" data-mat="todas" type="button">Todos</button>
@@ -782,7 +826,7 @@ src="https://www.facebook.com/tr?id=1617001106599453&ev=PageView&noscript=1"
 
   <div class="wrap"><div id="quizBanner"></div></div>
   <div class="wrap resultados">
-    <h2 id="subtitulo">Toda la colección</h2>
+    <h2 class="f-h2 col-titulo" id="subtitulo">Toda la colección</h2>
     <div class="conteo" id="conteo"></div>
   </div>
   <section class="catalogo">
@@ -862,6 +906,27 @@ src="https://www.facebook.com/tr?id=1617001106599453&ev=PageView&noscript=1"
   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.9.9-2.8-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5 0a6.6 6.6 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4a.5.5 0 0 0 0-.4l-.7-1.7c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.6 2.6 0 0 0-.8 1.9 4.5 4.5 0 0 0 1 2.4 10.3 10.3 0 0 0 4 3.5c2 .8 2 .5 2.4.5a2.3 2.3 0 0 0 1.5-1.1 1.9 1.9 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z"/></svg>
   <span class="t">¿Necesitas ayuda?</span>
 </a>
+
+<!-- ===================== MODAL: GUÍA DE ROSTRO (+ asesor IA) ===================== -->
+<div class="gmodal" id="gModal" hidden>
+  <div class="gmodal-box">
+    <button class="pmodal-x" id="gModalX" type="button" aria-label="Cerrar">&times;</button>
+    <div class="gmodal-head">
+      <div class="f-kick">Guía Ferrati</div>
+      <h2 class="gmodal-t">Monturas por tipo de rostro</h2>
+    </div>
+    <div class="rostro-grid" id="rostroGrid"></div>
+    <div class="rostro-detalle" id="rostroDet"></div>
+    <div class="ia-cta" id="iaCta">
+      <div>
+        <h3>¿Todavía no sabes cuál es tu rostro?</h3>
+        <p>Analízalo con IA: copia el prompt, pégalo en Gemini o ChatGPT junto a una selfie de frente.</p>
+      </div>
+      <a class="ia-btn" id="iaBtn" href="#" target="_blank" rel="noopener" style="display:none">Hablar con el asesor IA</a>
+      <button class="ia-btn" id="iaCopy" type="button" style="display:none">Analizar mi rostro con IA</button>
+    </div>
+  </div>
+</div>
 
 <!-- ===================== MODAL DE PRODUCTO (ficha completa) ===================== -->
 <div class="pmodal" id="pModal" hidden>
@@ -1631,6 +1696,7 @@ function render(){
 function syncFilterButtons(){
   document.querySelectorAll('#cats .tab').forEach(t=>t.classList.toggle('active',t.dataset.cat===estado.cat));
   document.querySelectorAll('#mats .chip-f').forEach(t=>t.classList.toggle('active',t.dataset.mat===estado.mat));
+  if(typeof syncFormas==='function') syncFormas();
 }
 document.getElementById('cats').addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;estado.cat=b.dataset.cat;estado.formas=null;estado.colores=null;estado.mats=null;estado.quiz=false;syncFilterButtons();render();});
 document.getElementById('mats').addEventListener('click',e=>{const b=e.target.closest('.chip-f');if(!b)return;estado.mat=b.dataset.mat;estado.formas=null;estado.colores=null;estado.mats=null;estado.quiz=false;syncFilterButtons();render();});
@@ -1802,9 +1868,10 @@ document.getElementById('rostroDet').addEventListener('click',e=>{
   const r=ROSTROS.find(x=>x.k===v.dataset.k); if(!r)return;
   estado.formas=r.formas; estado.formaLabel='rostro '+r.n.toLowerCase(); estado.cat='todas'; estado.mat='todas'; estado.q=''; estado.colores=null; estado.quiz=false; document.getElementById('buscar').value='';
   syncFilterButtons(); render();
-  document.querySelector('.catalogo').scrollIntoView({behavior:'smooth',block:'start'});
+  if(typeof closeGuia==='function') closeGuia();
+  setTimeout(function(){ document.querySelector('.catalogo').scrollIntoView({behavior:'smooth',block:'start'}); },120);
 });
-document.getElementById('abrirGuia').addEventListener('click',()=>document.getElementById('guia').scrollIntoView({behavior:'smooth',block:'start'}));
+document.getElementById('abrirGuia').addEventListener('click',function(){ openGuia(); });
 
 /* ===== QUIZ DE ESTILO (tipo Warby Parker) ===== */
 const QUIZ_WEBHOOK=""; // (opcional) URL de webhook n8n para capturar correo + preferencias
@@ -2139,6 +2206,45 @@ setTimeout(function(){
   const h=document.getElementById('hdr'); if(!h) return;
   const upd=()=>h.classList.toggle('scrolled',window.scrollY>8);
   upd(); window.addEventListener('scroll',upd,{passive:true});
+})();
+
+/* ---------- MODAL: guía de rostro (incluye el asesor IA como opción secundaria) ---------- */
+function openGuia(){
+  var m=document.getElementById('gModal'); if(!m) return;
+  m.hidden=false; document.body.style.overflow='hidden';
+}
+function closeGuia(){
+  var m=document.getElementById('gModal'); if(!m||m.hidden) return;
+  m.hidden=true;
+  if(typeof anyOverlayOpen!=='function' || !anyOverlayOpen()) document.body.style.overflow='';
+}
+document.getElementById('gModalX').addEventListener('click',closeGuia);
+document.getElementById('gModal').addEventListener('click',function(e){ if(e.target.id==='gModal') closeGuia(); });
+(function(){ var b=document.getElementById('abrirGuiaLink'); if(b) b.addEventListener('click',openGuia); })();
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeGuia(); });
+/* el enlace #guia (usado por el prompt de IA) abre la guía */
+(function(){
+  function porHash(){ if(location.hash==='#guia') openGuia(); }
+  porHash(); addEventListener('hashchange',porHash);
+})();
+
+/* ---------- filtro por FORMA (usa el campo real p.forma) ---------- */
+function syncFormas(){
+  var act=(estado.formas&&estado.formas.length===1)?estado.formas[0]:'todas';
+  var els=document.querySelectorAll('#formas .chip-f');
+  for(var i=0;i<els.length;i++) els[i].classList.toggle('active',els[i].dataset.forma===act);
+}
+(function(){
+  var row=document.getElementById('formas'); if(!row) return;
+  row.addEventListener('click',function(e){
+    var b=e.target.closest('.chip-f'); if(!b) return;
+    var v=b.dataset.forma;
+    estado.formas=(v==='todas')?null:[v];
+    estado.colores=null; estado.mats=null; estado.quiz=false;
+    syncFilterButtons(); render();
+    if(v!=='todas') document.getElementById('subtitulo').textContent='Monturas '+b.textContent.toLowerCase();
+  });
+  syncFormas();
 })();
 
 revealAll();
