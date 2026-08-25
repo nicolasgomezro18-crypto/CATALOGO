@@ -574,23 +574,48 @@ footer{background:#000;color:#fff;padding:var(--s5) 0 var(--s4)}
   font-family:var(--sans);font-size:13px;font-weight:300;color:var(--gris-texto);border-bottom:1px solid var(--linea);padding-bottom:3px}
 .qv-sec:hover{color:var(--negro);border-color:var(--negro)}
 
-/* ---------- FERRATI EN CASA (editorial) ---------- */
-.casa2{background:var(--blanco);border-top:1px solid var(--linea)}
-.casa2-grid{display:grid;grid-template-columns:1fr;gap:var(--s4);align-items:center}
-@media(min-width:900px){.casa2-grid{grid-template-columns:1fr 1fr;gap:70px}}
-.casa2-foto{position:relative;overflow:hidden;background:var(--hueso);aspect-ratio:4/5}
-.casa2-foto img{width:100%;height:100%;object-fit:cover}
-.casa2-txt h2{margin:10px 0 12px}
-.casa2-txt .f-lead{margin-bottom:var(--s3)}
-.casa2-pasos{list-style:none;margin:0 0 var(--s4);padding:0;border-top:1px solid var(--linea)}
-.casa2-pasos li{display:flex;align-items:baseline;gap:16px;padding:16px 2px;border-bottom:1px solid var(--linea)}
-.casa2-pasos .n{font-family:var(--serif);font-size:14px;color:var(--rojo);min-width:26px;letter-spacing:.06em}
-.casa2-pasos b{font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;min-width:104px}
-.casa2-pasos i{font-style:normal;font-weight:300;font-size:14px;color:var(--gris-texto)}
-@media(max-width:520px){
-  .casa2-pasos li{flex-wrap:wrap;gap:6px 14px}
-  .casa2-pasos i{width:100%;padding-left:42px}
-}
+
+/* ---------- CATEGORÍAS VISUALES ---------- */
+.cats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+@media(min-width:760px){.cats-grid{gap:18px}}
+.cat-tile{position:relative;display:block;border:none;padding:0;background:var(--hueso);cursor:pointer;overflow:hidden;
+  aspect-ratio:3/4;text-align:left;width:100%}
+@media(min-width:760px){.cat-tile{aspect-ratio:4/5}}
+.cat-tile img{width:100%;height:100%;object-fit:contain;padding:14% 12% 26%;transition:transform .7s cubic-bezier(.22,.61,.36,1)}
+.cat-tile:hover img{transform:scale(1.05)}
+.cat-tile figcaption{position:absolute;left:0;right:0;bottom:0;padding:16px 14px}
+.cat-tile b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(15px,2.2vw,22px);line-height:1.1}
+.cat-tile span{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gris-texto);margin-top:5px}
+.cat-tile::after{content:'';position:absolute;inset:0;box-shadow:inset 0 0 0 1px var(--linea);transition:box-shadow .25s}
+.cat-tile:hover::after{box-shadow:inset 0 0 0 1px var(--negro)}
+
+/* ---------- GALERÍA UGC (carrusel) ---------- */
+.ugc-scroll{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 20px;scroll-snap-type:x mandatory}
+.ugc-scroll::-webkit-scrollbar{display:none}
+@media(min-width:900px){.ugc-scroll{padding:0 40px}}
+.ugc-track{display:flex;gap:10px;width:max-content;margin:0 auto}
+@media(min-width:760px){.ugc-track{gap:16px}}
+.ugc-item{position:relative;flex:none;width:70vw;max-width:330px;scroll-snap-align:center;background:#000;overflow:hidden}
+@media(min-width:760px){.ugc-item{width:300px}}
+.ugc-item>img,.ugc-item>video{width:100%;aspect-ratio:9/16;object-fit:cover;display:block;
+  transition:transform .8s cubic-bezier(.22,.61,.36,1)}
+.ugc-item:hover>img{transform:scale(1.04)}
+.ugc-cap{position:absolute;left:0;right:0;bottom:0;padding:44px 14px 14px;color:#fff;
+  background:linear-gradient(180deg,transparent,rgba(0,0,0,.8))}
+.ugc-autor{font-size:11px;letter-spacing:.1em;color:rgba(255,255,255,.85)}
+.ugc-link{display:inline-flex;align-items:center;gap:6px;margin-top:9px;background:rgba(255,255,255,.95);color:#000;
+  border:none;font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:9px 13px;cursor:pointer}
+.ugc-link:hover{background:var(--rojo);color:#fff}
+.ugc-modelo{display:block;font-family:var(--serif);font-size:15px;margin-top:4px}
+
+/* ---------- filtro por color ---------- */
+.fcolor{width:22px;height:22px;border-radius:50%;padding:0;border:1px solid var(--linea);background:var(--c,#999);
+  cursor:pointer;transition:transform .18s,box-shadow .18s;min-height:22px}
+.fcolor:hover{transform:scale(1.14)}
+.fcolor.active{box-shadow:0 0 0 1.5px #fff,0 0 0 3px var(--negro)}
+.fcolor-todos{width:auto;border-radius:0;background:#fff;padding:9px 15px;font-family:var(--sans);font-size:12px;
+  color:var(--negro);min-height:40px}
+.fcolor-todos.active{background:var(--negro);color:#fff;box-shadow:none;border-color:var(--negro)}
 
 /* ---------- MODAL: GUÍA DE ROSTRO ---------- */
 .gmodal{position:fixed;inset:0;z-index:150;background:rgba(0,0,0,.55);display:flex;align-items:flex-end;justify-content:center}
@@ -619,7 +644,7 @@ footer{background:#000;color:#fff;padding:var(--s5) 0 var(--s4)}
 .social-grid figcaption{font-weight:400;letter-spacing:.12em;text-transform:lowercase}
 
 /* ---------- consistencia fotográfica: mismo tratamiento en todas las secciones ---------- */
-.edito-media img,.qv-caras img,.social-grid img,.casa2-foto img,.hero-media img{filter:none}
+.edito-media img,.qv-caras img,.social-grid img,.cat-tile img,.hero-media img{filter:none}
 
 /* ---------- ajustes a piezas heredadas ---------- */
 .kick-top{font-size:10.5px;letter-spacing:.24em;color:var(--gris-texto)}
@@ -720,6 +745,20 @@ src="https://www.facebook.com/tr?id=1617001106599453&ev=PageView&noscript=1"
   </div>
 </section>
 
+<!-- ===================== CATEGORÍAS VISUALES ===================== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="f-kick">Explora</div>
+        <h2 class="f-h2">Por forma</h2>
+      </div>
+      <a class="sec-link" href="#coleccion">Ver todas</a>
+    </div>
+    <div class="cats-grid reveal" id="catsVis"></div>
+  </div>
+</section>
+
 <!-- ===================== QUIZ VISUAL ===================== -->
 <section class="sec qv">
   <div class="wrap qv-grid">
@@ -741,43 +780,32 @@ src="https://www.facebook.com/tr?id=1617001106599453&ev=PageView&noscript=1"
 </section>
 
 <!-- ===================== GUÍA DE ROSTRO (funcional, existente) ===================== -->
-<!-- ===================== FERRATI EN CASA ===================== -->
-<section class="sec casa2">
-  <div class="wrap casa2-grid">
-    <div class="casa2-foto reveal">
-      <!-- IMAGEN FERRATI EN CASA -->
-      <img src="img/hero-casa.jpg" alt="Probándose gafas Ferrati en casa" loading="lazy" decoding="async">
+<!-- ===================== MÁS MONTURAS ===================== -->
+<section class="sec" id="masmodelos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="f-kick">Colección</div>
+        <h2 class="f-h2">Más monturas</h2>
+      </div>
+      <a class="sec-link" href="#coleccion">Ver toda la colección</a>
     </div>
-    <div class="casa2-txt reveal">
-      <div class="f-kick">Ferrati en Casa</div>
-      <h2 class="f-h2">Elige 3.<br>Pruébalas.<br>Decide en casa.</h2>
-      <p class="f-lead">Encuentra tu favorita sin elegir a ciegas.</p>
-      <ol class="casa2-pasos">
-        <li><span class="n">01</span><b>Elige</b><i>Tus 3 favoritas</i></li>
-        <li><span class="n">02</span><b>Pruébalas</b><i>En casa</i></li>
-        <li><span class="n">03</span><b>Decide</b><i>Quédate con la que amas</i></li>
-      </ol>
-      <a class="b b-rojo" href="casa.html">Conocer Ferrati en Casa</a>
-    </div>
+    <div class="grid" id="grid-mas"></div>
   </div>
 </section>
 
 <!-- ===================== SOCIAL PROOF ===================== -->
-<section class="sec">
+<section class="sec ugc">
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
         <div class="f-kick">Comunidad</div>
         <h2 class="f-h2">Vistas en Ferrati</h2>
       </div>
-      <a class="sec-link" href="https://instagram.com/ferrati.co" target="_blank" rel="noopener">@ferrati.co</a>
-    </div>
-    <div class="social-grid reveal">
-      <figure><img src="img/story1.jpg" alt="Clienta usando gafas Ferrati" loading="lazy" decoding="async"><figcaption>@valenn.tna</figcaption></figure>
-      <figure><img src="img/story2.jpg" alt="Pedido Ferrati entregado" loading="lazy" decoding="async"><figcaption>Cliente Ferrati</figcaption></figure>
-      <figure><img src="img/story3.jpg" alt="Clienta usando gafas Ferrati" loading="lazy" decoding="async"><figcaption>@vale.bernal.g</figcaption></figure>
+      <a class="sec-link" href="https://instagram.com/ferrati.co" target="_blank" rel="noopener">Ver Instagram</a>
     </div>
   </div>
+  <div class="ugc-scroll reveal"><div class="ugc-track" id="ugcTrack"></div></div>
 </section>
 
 <!-- ===================== TODA LA COLECCIÓN ===================== -->
@@ -812,6 +840,18 @@ src="https://www.facebook.com/tr?id=1617001106599453&ev=PageView&noscript=1"
           <button class="chip-f" data-forma="rectangular" type="button">Rectangular</button>
           <button class="chip-f" data-forma="redonda" type="button">Redonda</button>
           <button class="chip-f" data-forma="cat" type="button">Cat-eye</button>
+        </div>
+        <div class="filtros-row" id="colores">
+          <span class="flabel">Color</span>
+          <button class="fcolor fcolor-todos active" data-col="todos" type="button">Todos</button>
+          <button class="fcolor" data-col="negro"  style="--c:#141414" type="button" title="Negro" aria-label="Negro"></button>
+          <button class="fcolor" data-col="cafe"   style="--c:#6b3f1d" type="button" title="Café / Carey" aria-label="Café o carey"></button>
+          <button class="fcolor" data-col="dorado" style="--c:#c8a13c" type="button" title="Dorado" aria-label="Dorado"></button>
+          <button class="fcolor" data-col="plata"  style="--c:#a9b1b8" type="button" title="Plata" aria-label="Plata"></button>
+          <button class="fcolor" data-col="gris"   style="--c:#6a6a6a" type="button" title="Gris" aria-label="Gris"></button>
+          <button class="fcolor" data-col="azul"   style="--c:#2f6fa8" type="button" title="Azul" aria-label="Azul"></button>
+          <button class="fcolor" data-col="verde"  style="--c:#2f6b45" type="button" title="Verde" aria-label="Verde"></button>
+          <button class="fcolor" data-col="rojo"   style="--c:#b3000c" type="button" title="Rojo" aria-label="Rojo"></button>
         </div>
         <div class="filtros-row" id="mats">
           <span class="flabel">Material</span>
@@ -1697,6 +1737,7 @@ function syncFilterButtons(){
   document.querySelectorAll('#cats .tab').forEach(t=>t.classList.toggle('active',t.dataset.cat===estado.cat));
   document.querySelectorAll('#mats .chip-f').forEach(t=>t.classList.toggle('active',t.dataset.mat===estado.mat));
   if(typeof syncFormas==='function') syncFormas();
+  if(typeof syncColores==='function') syncColores();
 }
 document.getElementById('cats').addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;estado.cat=b.dataset.cat;estado.formas=null;estado.colores=null;estado.mats=null;estado.quiz=false;syncFilterButtons();render();});
 document.getElementById('mats').addEventListener('click',e=>{const b=e.target.closest('.chip-f');if(!b)return;estado.mat=b.dataset.mat;estado.formas=null;estado.colores=null;estado.mats=null;estado.quiz=false;syncFilterButtons();render();});
@@ -2245,6 +2286,90 @@ function syncFormas(){
     if(v!=='todas') document.getElementById('subtitulo').textContent='Monturas '+b.textContent.toLowerCase();
   });
   syncFormas();
+})();
+
+/* ---------- CATEGORÍAS VISUALES (formas reales del catálogo) ---------- */
+(function(){
+  var cont=document.getElementById('catsVis'); if(!cont) return;
+  var CATS=[{k:'cuadrada',n:'Cuadrada'},{k:'cateye',n:'Cat-eye'},{k:'aviador',n:'Aviador'}];
+  cont.innerHTML=CATS.map(function(c){
+    var lista=productos.filter(function(p){ return (p.forma||'').toLowerCase().indexOf(c.k)>-1 && p.colores && p.colores.length; });
+    if(!lista.length) return '';
+    var f=(lista[0].colores[0]||{}).frente||'';
+    return '<button class="cat-tile" type="button" data-forma="'+c.k+'">'
+         + '<img src="'+f+'" alt="Monturas '+c.n+'" loading="lazy" decoding="async">'
+         + '<figcaption><b>'+c.n+'</b><span>'+lista.length+' monturas</span></figcaption></button>';
+  }).join('');
+  cont.addEventListener('click',function(e){
+    var t=e.target.closest('.cat-tile'); if(!t) return;
+    estado.formas=[t.dataset.forma]; estado.colores=null; estado.mats=null; estado.quiz=false;
+    estado.cat='todas'; estado.mat='todas'; estado.q=''; document.getElementById('buscar').value='';
+    syncFilterButtons(); render();
+    document.getElementById('subtitulo').textContent='Monturas '+t.querySelector('b').textContent.toLowerCase();
+    document.querySelector('.catalogo').scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+
+/* ---------- MÁS MONTURAS (8 piezas distintas a las de arriba) ---------- */
+(function(){
+  var cont=document.getElementById('grid-mas'); if(!cont) return;
+  var yaVistos={};
+  document.querySelectorAll('#grid-top .pcard').forEach(function(c){ yaVistos[c.dataset.id]=1; });
+  var resto=productos.filter(function(p){ return !yaVistos[p.id] && p.colores && p.colores.length; });
+  cont.innerHTML=resto.slice(0,8).map(pcardHTML).join('');
+})();
+
+/* ---------- GALERÍA "VISTAS EN FERRATI" ----------
+   Para agregar publicaciones: añade objetos a UGC.
+   img: foto o video (.mp4) · autor: @usuario · modelo: id de una referencia (opcional, muestra "Ver modelo") */
+var UGC=[
+  {img:'img/story1.jpg', autor:'@valenn.tna',    modelo:null},
+  {img:'img/story2.jpg', autor:'Cliente Ferrati', modelo:null},
+  {img:'img/story3.jpg', autor:'@vale.bernal.g', modelo:null}
+];
+(function(){
+  var t=document.getElementById('ugcTrack'); if(!t) return;
+  t.innerHTML=UGC.map(function(u){
+    var es_video=/\.mp4$/i.test(u.img);
+    var media = es_video
+      ? '<video src="'+u.img+'" muted loop playsinline preload="metadata"></video>'
+      : '<img src="'+u.img+'" alt="Cliente usando gafas Ferrati" loading="lazy" decoding="async">';
+    var p=u.modelo?byId(u.modelo):null;
+    return '<figure class="ugc-item">'+media+'<figcaption class="ugc-cap">'
+         + (p?'<span class="ugc-modelo">'+p.nombre+'</span>':'')
+         + '<div class="ugc-autor">'+(u.autor||'')+'</div>'
+         + (p?'<button class="ugc-link" type="button" data-ugc="'+p.id+'">Ver modelo &rarr;</button>':'')
+         + '</figcaption></figure>';
+  }).join('');
+  t.addEventListener('click',function(e){
+    var b=e.target.closest('.ugc-link'); if(b) openProducto(b.dataset.ugc,0);
+  });
+  /* los videos se reproducen solo cuando entran en pantalla */
+  if('IntersectionObserver' in window){
+    var vio=new IntersectionObserver(function(es){es.forEach(function(en){
+      var v=en.target; if(en.isIntersecting){ v.play().catch(function(){}); } else { v.pause(); }
+    });},{threshold:.5});
+    t.querySelectorAll('video').forEach(function(v){ vio.observe(v); });
+  }
+})();
+
+/* ---------- filtro por COLOR (usa los nombres reales de cada colorway) ---------- */
+function syncColores(){
+  var act=(estado.colores&&estado.colores.length===1)?estado.colores[0]:'todos';
+  var els=document.querySelectorAll('#colores .fcolor');
+  for(var i=0;i<els.length;i++) els[i].classList.toggle('active',els[i].dataset.col===act);
+}
+(function(){
+  var row=document.getElementById('colores'); if(!row) return;
+  row.addEventListener('click',function(e){
+    var b=e.target.closest('.fcolor'); if(!b) return;
+    var v=b.dataset.col;
+    estado.colores=(v==='todos')?null:[v];
+    estado.formas=null; estado.mats=null; estado.quiz=false;
+    syncFilterButtons(); render();
+    if(v!=='todos') document.getElementById('subtitulo').textContent='Monturas en '+(b.title||v).toLowerCase();
+  });
+  syncColores();
 })();
 
 revealAll();
