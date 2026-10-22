@@ -5,8 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="facebook-domain-verification" content="axdsmrewcpstayp4q2qazh99vdcp2c" />
 <title>Ferrati · Gafas de sol</title>
-<meta name="description" content="Gafas de sol Ferrati. Diseño suizo, lentes polarizadas con protección UV400. Encuentra tu montura y pídela por WhatsApp. Envío gratis a toda Colombia." />
+<meta name="description" content="Gafas de sol Ferrati. Diseño suizo, lentes polarizadas con protección UV400. Encuentra tu montura y pídela por WhatsApp. Envío gratis desde $200.000." />
 <meta name="theme-color" content="#000000" />
+<link rel="icon" href="favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Ferrati · El sol, con distinción" />
 <meta property="og:description" content="Gafas polarizadas diseñadas para destacar. Encuentra tu montura ideal." />
@@ -16,9 +19,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
-<link rel="preload" as="image" href="img/hero-tall.jpg" media="(max-width:819px)" />
-<link rel="preload" as="image" href="img/hero-wide.jpg" media="(min-width:820px)" />
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
 <style>
 /* ===== BASE HEREDADA (modales, ficha, quiz, carrito, visor) ===== */
 
@@ -353,7 +354,7 @@ img{max-width:100%}
 
 /* ---------- fade de entrada ---------- */
 /* a prueba de fallos: sin la clase .rv en <html>, el contenido se ve siempre */
-html.rv .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
+html.rv .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s var(--ease-out),transform .6s var(--ease-out)}
 html.rv .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){html.rv .reveal{opacity:1;transform:none;transition:none}}
 
@@ -410,7 +411,7 @@ header .nav{height:66px}
 .pcard{position:relative;cursor:pointer;background:none;border:none;padding:0;display:block;text-align:left}
 .pcard-img{position:relative;background:var(--hueso);aspect-ratio:1/1;overflow:hidden}
 .pcard-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:9%;
-  transition:opacity .5s ease,transform .7s cubic-bezier(.22,.61,.36,1)}
+  transition:opacity .3s ease,transform .45s var(--ease-out)}
 .pcard-img .pl{opacity:0}
 @media(hover:hover){
   .pcard:hover .pcard-img .pf{opacity:0}
@@ -451,7 +452,7 @@ header .nav{height:66px}
 @media(min-width:900px){.qv-grid{grid-template-columns:.92fr 1.08fr;gap:64px}}
 .qv-caras{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .qv-caras figure{margin:0;position:relative;overflow:hidden;background:#ddd;aspect-ratio:3/4}
-.qv-caras img{width:100%;height:100%;object-fit:cover;object-position:center 22%;transition:transform .8s cubic-bezier(.22,.61,.36,1)}
+.qv-caras img{width:100%;height:100%;object-fit:cover;object-position:center 22%;transition:transform .45s var(--ease-out)}
 .qv-caras figure:hover img{transform:scale(1.06)}
 .qv h2{margin-bottom:12px}
 .qv .f-lead{margin-bottom:26px}
@@ -461,7 +462,7 @@ header .nav{height:66px}
 .social-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
 @media(min-width:760px){.social-grid{gap:14px}}
 .social-grid figure{margin:0;position:relative;overflow:hidden;background:#000;aspect-ratio:9/16}
-.social-grid img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.22,.61,.36,1)}
+.social-grid img{width:100%;height:100%;object-fit:cover;transition:transform .45s var(--ease-out)}
 .social-grid figure:hover img{transform:scale(1.05)}
 .social-grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 12px 11px;color:#fff;font-size:10.5px;
   letter-spacing:.1em;background:linear-gradient(180deg,transparent,rgba(0,0,0,.75))}
@@ -581,7 +582,7 @@ footer{background:#000;color:#fff;padding:var(--s5) 0 var(--s4)}
 .cat-tile{position:relative;display:block;border:none;padding:0;background:var(--hueso);cursor:pointer;overflow:hidden;
   aspect-ratio:3/4;text-align:left;width:100%}
 @media(min-width:760px){.cat-tile{aspect-ratio:4/5}}
-.cat-tile img{width:100%;height:100%;object-fit:contain;padding:14% 12% 26%;transition:transform .7s cubic-bezier(.22,.61,.36,1)}
+.cat-tile img{width:100%;height:100%;object-fit:contain;padding:14% 12% 26%;transition:transform .45s var(--ease-out)}
 .cat-tile:hover img{transform:scale(1.05)}
 .cat-tile figcaption{position:absolute;left:0;right:0;bottom:0;padding:16px 14px}
 .cat-tile b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(15px,2.2vw,22px);line-height:1.1}
@@ -598,7 +599,7 @@ footer{background:#000;color:#fff;padding:var(--s5) 0 var(--s4)}
 .ugc-item{position:relative;flex:none;width:70vw;max-width:330px;scroll-snap-align:center;background:#000;overflow:hidden}
 @media(min-width:760px){.ugc-item{width:300px}}
 .ugc-item>img,.ugc-item>video{width:100%;aspect-ratio:9/16;object-fit:cover;display:block;
-  transition:transform .8s cubic-bezier(.22,.61,.36,1)}
+  transition:transform .45s var(--ease-out)}
 .ugc-item:hover>img{transform:scale(1.04)}
 .ugc-cap{position:absolute;left:0;right:0;bottom:0;padding:44px 14px 14px;color:#fff;
   background:linear-gradient(180deg,transparent,rgba(0,0,0,.8))}
@@ -663,7 +664,386 @@ footer{background:#000;color:#fff;padding:var(--s5) 0 var(--s4)}
 .cart-send{background:var(--rojo)}
 .cart-send:hover{background:#000}
 .lb-view.active{background:var(--rojo);border-color:var(--rojo)}
+
+/* =====================================================================
+   ETAPA 4 · guía Synthetic Architect
+   criterio emil-design-eng + referencias /taste (Sajú, Pixxiesx)
+   ===================================================================== */
+:root{
+  --ease-out:cubic-bezier(.23,1,.32,1);      /* entradas y respuesta: arranca rápido */
+  --ease-in-out:cubic-bezier(.77,0,.175,1);  /* movimiento sobre la pantalla */
+  --dur-press:160ms;
+}
+
+/* ---------- precio ---------- */
+.pprice{font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.04em;color:var(--negro);margin-top:5px}
+@media(min-width:900px){.pprice{font-size:14px}}
+.card-price{font-family:var(--sans);font-size:20px;font-weight:500;letter-spacing:.02em;margin:6px 0 4px}
+.ci-price{font-size:13px;font-weight:500;margin-top:3px}
+.cart-total{display:flex;justify-content:space-between;align-items:baseline;padding:12px 0 14px;margin-bottom:12px;border-top:1px solid var(--linea)}
+.cart-total span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gris-texto)}
+.cart-total b{font-size:20px;font-weight:500}
+
+/* ---------- CTA tras cada fila de producto (patrón Sajú) ---------- */
+.row-cta{display:flex;justify-content:center;margin-top:var(--s4)}
+
+/* ---------- UGC comprable (patrón Pixxiesx) ---------- */
+.ugc-nav{display:flex;align-items:center;gap:10px}
+.ugc-arrow{width:44px;height:44px;border:1px solid var(--negro);background:#fff;color:var(--negro);font-size:16px;cursor:pointer;
+  transition:background-color .2s ease,color .2s ease,opacity .2s ease,transform var(--dur-press) var(--ease-out)}
+.ugc-arrow:hover{background:var(--negro);color:#fff}
+.ugc-arrow:disabled{opacity:.3;cursor:default;background:#fff;color:var(--negro)}
+.ugc-arrow[hidden]{display:none}
+.ugc-chip{display:flex;align-items:center;gap:10px;width:100%;margin-top:10px;padding:8px 10px 8px 8px;border:none;cursor:pointer;
+  background:rgba(255,255,255,.96);color:#000;text-align:left;font-family:var(--sans);
+  transition:background-color .2s ease,transform var(--dur-press) var(--ease-out)}
+.ugc-chip img{width:44px;height:44px;object-fit:contain;background:var(--hueso);flex:none}
+.ugc-chip span{display:flex;flex-direction:column;min-width:0;flex:1}
+.ugc-chip b{font-family:var(--serif);font-weight:500;font-size:14px;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ugc-chip i{font-style:normal;font-size:12px;margin-top:2px}
+.ugc-chip em{font-style:normal;font-size:10px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+.ugc-chip:hover{background:#fff}
+
+/* ---------- zonas táctiles >= 24px (WCAG 2.5.8) ---------- */
+.pdots{gap:0;margin-left:-5px}
+.pdot{width:24px;height:24px;min-height:24px;border:none;background:none;box-shadow:none;display:inline-grid;place-items:center;padding:0}
+.pdot::before{content:"";width:13px;height:13px;border-radius:50%;background:var(--c,#999);box-shadow:inset 0 0 0 1px rgba(0,0,0,.14);
+  transition:transform var(--dur-press) var(--ease-out),box-shadow .18s ease}
+.pdot:hover{transform:none}
+.pdot.on{box-shadow:none}
+.pdot.on::before{box-shadow:0 0 0 1.5px #fff,0 0 0 3px var(--negro)}
+.fcolor{width:28px;height:28px;min-height:28px}
+.fcolor-todos{width:auto}
+.sec-link,.qv-sec{display:inline-block;padding-top:8px;padding-bottom:4px}
+.nav > a{display:inline-flex;align-items:center;min-height:44px}
+.nav-link{padding:12px 0}
+.cart-x{min-width:44px;min-height:44px}
+
+/* ---------- respuesta al presionar (emil: 0.95–0.98, 100–160ms, ease-out) ---------- */
+.b,.tab,.chip-f,.btn-filtrar,.cart-send,.btn-wa,.btn-ia,.step,.ci-step,.cart-btn{
+  transition:background-color .2s ease,color .2s ease,border-color .2s ease,transform var(--dur-press) var(--ease-out)}
+.b:active,.tab:active,.chip-f:active,.btn-filtrar:active,.cart-send:active,.btn-wa:active,.btn-ia:active,
+.step:active,.ci-step:active,.cart-btn:active,.ugc-arrow:active:not(:disabled),.ugc-chip:active{transform:scale(.97)}
+.fcolor:active,.pdot:active::before{transform:scale(.88)}
+.cat-tile{transition:transform var(--dur-press) var(--ease-out)}
+.cat-tile:active{transform:scale(.985)}
+.pcard-img{transition:transform var(--dur-press) var(--ease-out)}
+.pcard:active:not(:has(.pdot:active)):not(:has(.pquick:active)) .pcard-img{transform:scale(.985)}
+.wa-float:active{transform:scale(.95)}
+
+/* ---------- hover con movimiento solo donde hay mouse (en touch se queda pegado) ---------- */
+@media (hover:none),(pointer:coarse){
+  .cat-tile:hover img,.qv-caras figure:hover img,.social-grid figure:hover img,.ugc-item:hover>img,
+  .wa-float:hover,.fcolor:hover,.sw:hover,.card:hover{transform:none}
+  /* en touch la vista 3/4 nunca se ve: no se descarga */
+  .pcard-img .pl{display:none}
+}
+
+/* ---------- movimiento reducido: menos y más suave, no cero ---------- */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero-scroll::after{animation:none}
+  .pcard-img img,.cat-tile img,.qv-caras img,.social-grid img,.ugc-item>img{transition:opacity .2s ease;transform:none!important}
+  .b:active,.tab:active,.chip-f:active,.cat-tile:active,.pcard:active .pcard-img,.ugc-chip:active,.wa-float:active{transform:none}
+}
+
+/* ---------- contraste AA en el footer ---------- */
+.foot-bot{color:rgba(255,255,255,.62)}
+.foot-col h5{color:rgba(255,255,255,.62)}
+
+/* ---------- margen lateral: .hero-in y .resultados usaban padding abreviado y anulaban el de .wrap ---------- */
+.hero-in,.resultados{padding-left:20px;padding-right:20px}
+@media(min-width:900px){.hero-in,.resultados{padding-left:40px;padding-right:40px}}
+.ci-rm,.cart-clear{display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding-top:6px;padding-bottom:6px}
+
+/* ---------- tarjeta operable con teclado: botón real sobre la foto ---------- */
+.pcard-hit{position:absolute;inset:0;z-index:1;width:100%;height:100%;border:none;padding:0;background:transparent;cursor:pointer}
+.pcard-hit:focus-visible{outline:2px solid var(--rojo);outline-offset:-3px}
+.pver,.pbadge{z-index:2;pointer-events:none}
+.pcard-hit:focus-visible ~ .pver{opacity:1;transform:translate(-50%,0)}
+
+/* =====================================================================
+   SISTEMA V3 · TWO × Adanola  (+ escaparate animado estilo Franky's)
+   · una sola grotesca a peso regular; titulares con tracking negativo (TWO)
+   · monocromo + UN acento: el rojo Ferrati (el lugar del lima de TWO)
+   · interactivo = píldora 50px (TWO) · producto = marco 16px (TWO) · editorial = a sangre 0px (Adanola)
+   · líneas negras finas en vez de sombras (ambos)
+   ===================================================================== */
+:root{
+  --serif:'Inter Tight','Inter',ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --sans:'Inter',ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --negro:#000; --grafito:#323232; --hueso:#f0efe7; --niebla:#e6e6e6; --linea:#e6e6e6; --gris-texto:#4a4a4a;
+  --r-pill:50px; --r-marco:16px; --hdr-h:60px; --s5:64px; --s6:96px;
+}
+@media(min-width:900px){:root{--hdr-h:64px}}
+body{font-family:var(--sans);font-size:15px;letter-spacing:.005em;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.f-kick{font-family:var(--sans);font-weight:500;font-size:11px;letter-spacing:.14em;color:var(--grafito)}
+.f-h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,7.6vw,56px);line-height:1.02;letter-spacing:-.03em}
+.f-lead{font-size:16px;color:var(--grafito);font-weight:400}
+.sec-head-c{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;margin-bottom:32px}
+.sec-head-c .f-kick{margin:0}
+.sec{padding:var(--s5) 0}
+@media(min-width:900px){.sec{padding:var(--s6) 0}}
+
+/* ---------- botones: píldora (TWO), primario rojo, secundario fantasma (Adanola) ---------- */
+.b{border-radius:var(--r-pill);font-family:var(--sans);font-weight:500;font-size:13px;letter-spacing:.06em;padding:16px 30px;min-height:52px}
+.b-rojo{background:var(--rojo);color:#fff;border:1px solid var(--rojo)}
+.b-rojo:hover{background:#000;border-color:#000}
+.b-linea{background:transparent;color:#000;border:1px solid #000}
+.b-linea:hover{background:#000;color:#fff}
+
+/* ---------- barra de anuncio (Adanola) ---------- */
+.anuncio{background:#000;color:#fff;font-family:var(--sans);font-size:10.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  text-align:center;padding:9px 14px;line-height:1.35}
+.anuncio span[aria-hidden]{opacity:.45;margin:0 8px}
+
+/* ---------- header: logo al centro, hairline negra (Adanola) ---------- */
+header,header.scrolled{background:#fff;backdrop-filter:none;border-bottom:1px solid #000}
+header .nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:var(--hdr-h)}
+.nav-left{display:flex;align-items:center;gap:22px;justify-self:start}
+.nav-right{justify-self:end;gap:0}
+.nav-logo{justify-self:center}
+.logo-img{height:17px}
+@media(min-width:900px){.logo-img{height:20px}}
+.nav-ico{width:44px;height:44px;display:inline-grid;place-items:center;background:none;border:none;color:#000;cursor:pointer;margin-left:-12px}
+.nav-ico:hover{color:var(--rojo)}
+.nav-link{font-size:11.5px;font-weight:500;letter-spacing:.1em}
+.cart-btn{font-size:11.5px;font-weight:500;letter-spacing:.1em;margin-right:-6px;padding:0 6px}
+.col-bar{top:var(--hdr-h);border-bottom:1px solid #000}
+
+/* ---------- HERO ---------- */
+.hero3{background:var(--hueso);overflow:hidden}
+.hero3-in{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  min-height:calc(100svh - var(--hdr-h) - 34px);padding-top:26px;padding-bottom:34px}
+.hero3-eyebrow{font-size:10.5px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:var(--grafito)}
+.hero3-t{font-family:var(--serif);font-weight:400;font-size:clamp(44px,12vw,92px);line-height:.96;letter-spacing:-.04em;margin:14px 0 0}
+.br-m{display:inline}
+@media(min-width:900px){.br-m{display:none}}
+.hero3-sub{font-size:15px;color:var(--grafito);margin-top:12px;max-width:32ch}
+
+/* escaparate: gafas flotando sobre damero en perspectiva (Franky's) */
+.stage{position:relative;width:100%;max-width:760px;height:clamp(250px,72vw,380px);margin:10px auto 0;
+  background:var(--hueso);perspective:900px;cursor:grab;touch-action:pan-y;-webkit-user-select:none;user-select:none}
+.stage-floor{position:absolute;left:-45%;right:-45%;bottom:0;height:60%;z-index:0;
+  background:repeating-conic-gradient(#000 0% 25%,var(--hueso) 0% 50%) 50% 100%/54px 54px;
+  transform:rotateX(68deg);transform-origin:50% 100%;
+  -webkit-mask-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.9) 30%,transparent 88%);
+          mask-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.9) 30%,transparent 88%)}
+.stage-shadow{position:absolute;left:50%;bottom:24%;z-index:1;width:min(50%,330px);height:24px;margin-left:calc(min(50%,330px) / -2);
+  border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.55),rgba(0,0,0,0));animation:fl-sombra 4.4s ease-in-out infinite}
+.stage-obj{position:absolute;left:50%;top:2%;z-index:2;width:min(86%,500px);margin-left:calc(min(86%,500px) / -2);aspect-ratio:1440/1086;
+  mix-blend-mode:multiply;perspective:900px;animation:fl-obj 4.4s ease-in-out infinite;touch-action:pan-y}
+.so-wrap{position:absolute;inset:0;transition:transform .9s var(--ease-in-out)}
+.stage-obj[data-v="1"] .so-wrap{transform:rotateY(-8deg)}
+.stage-obj[data-v="3"] .so-wrap{transform:rotateY(8deg)}
+.so{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;
+  transition:opacity .55s var(--ease-out),filter .55s ease}
+.so-l,.so-m{opacity:0;filter:blur(3px)}
+.so-m{transform:scaleX(-1)}
+.stage-obj[data-v="1"] .so-f,.stage-obj[data-v="3"] .so-f{opacity:0;filter:blur(3px)}
+.stage-obj[data-v="1"] .so-l,.stage-obj[data-v="3"] .so-m{opacity:1;filter:none}
+@keyframes fl-obj{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes fl-sombra{0%,100%{transform:scale(1);opacity:.8}50%{transform:scale(.8);opacity:.45}}
+.stage.pausa .stage-obj,.stage.pausa .stage-shadow{animation-play-state:paused}
+.stage-views{position:absolute;left:50%;bottom:10px;z-index:3;transform:translateX(-50%);display:flex;gap:2px;
+  background:#fff;border:1px solid #000;border-radius:var(--r-pill);padding:3px}
+.sv{border:none;background:transparent;color:#000;border-radius:var(--r-pill);font-family:var(--sans);font-size:10.5px;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;padding:8px 13px;min-height:34px;cursor:pointer;
+  transition:background-color .2s ease,color .2s ease,transform var(--dur-press) var(--ease-out)}
+.sv[aria-pressed="true"]{background:#000;color:#fff}
+.sv:active{transform:scale(.95)}
+.stage-info{display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:14px}
+.si-row{display:flex;align-items:baseline;gap:12px;font-size:15px}
+.si-row b{font-family:var(--serif);font-weight:400;font-size:21px;letter-spacing:-.02em}
+.stage-dots{display:flex}
+.sdot{width:28px;height:28px;border:none;background:none;padding:0;display:inline-grid;place-items:center;cursor:pointer}
+.sdot::before{content:"";width:13px;height:13px;border-radius:2px;background:var(--c,#999);box-shadow:inset 0 0 0 1px rgba(0,0,0,.15);
+  transition:transform var(--dur-press) var(--ease-out)}
+.sdot[aria-pressed="true"]::before{box-shadow:0 0 0 1px var(--hueso),0 0 0 2px #000}
+.sdot:active::before{transform:scale(.85)}
+.si-ver{background:none;border:none;border-bottom:1px solid #000;padding:8px 0 3px;font-family:var(--sans);font-size:11.5px;
+  font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;color:#000}
+.si-ver:hover{color:var(--rojo);border-color:var(--rojo)}
+.hero3-ctas{display:flex;flex-direction:column;gap:10px;width:100%;max-width:340px;margin-top:20px}
+@media(min-width:640px){.hero3-ctas{flex-direction:row;justify-content:center;max-width:none}}
+
+/* ---------- cifras ---------- */
+.cifras{background:#fff;border-bottom:1px solid #000}
+.cifras-grid{display:grid;grid-template-columns:repeat(2,1fr)}
+@media(min-width:900px){.cifras-grid{grid-template-columns:repeat(4,1fr)}}
+.cifra{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;padding:26px 8px}
+.cifra b{font-family:var(--serif);font-weight:400;font-size:clamp(32px,9vw,52px);line-height:1;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+.cifra span{font-size:10.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--grafito)}
+.cifra:nth-child(odd){border-right:1px solid #000}
+.cifra:nth-child(-n+2){border-bottom:1px solid #000}
+@media(min-width:900px){
+  .cifra,.cifra:nth-child(-n+2){border-bottom:none}
+  .cifra{border-right:1px solid #000}
+  .cifra:last-child{border-right:none}
+}
+
+/* ---------- tarjeta de producto (TWO + Adanola) ---------- */
+.grid{gap:30px 8px}
+@media(min-width:640px){.grid{gap:36px 16px}}
+.pcard-img{border-radius:var(--r-marco);background:var(--hueso)}
+.pcard-img img{mix-blend-mode:multiply;padding:10%}
+.pcard-in{padding:10px 2px 0}
+.pdots{margin:0 0 2px -6px}
+.pdot::before{border-radius:2px;width:12px;height:12px}
+.pdot.on::before{box-shadow:0 0 0 1px #fff,0 0 0 2px #000}
+.prow{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.pname{font-family:var(--sans);font-weight:400;font-size:14px;line-height:1.3;letter-spacing:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.pprice{margin:0;font-size:14px;font-weight:400;letter-spacing:0;white-space:nowrap}
+.pbadge{border-radius:var(--r-pill);top:10px;left:10px;padding:5px 10px;font-size:9.5px;letter-spacing:.1em;font-weight:500}
+.pver{left:12px;bottom:14px;transform:translateY(6px);border-radius:var(--r-pill);padding:8px 14px}
+@media(hover:hover){.pcard:hover .pver{transform:none}}
+.pcard-hit:focus-visible ~ .pver{transform:none}
+.pquick{position:absolute;right:10px;bottom:10px;z-index:3;width:40px;height:40px;border-radius:50%;border:none;background:#000;color:#fff;
+  display:grid;place-items:center;cursor:pointer;transition:background-color .2s ease,transform var(--dur-press) var(--ease-out)}
+.pquick svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;grid-area:1/1}
+.pquick .i-ok{opacity:0}
+.pquick.ok{background:var(--rojo)}
+.pquick.ok .i-mas{opacity:0}
+.pquick.ok .i-ok{opacity:1}
+.pquick:hover{background:var(--rojo)}
+.pquick:active{transform:scale(.9)}
+.pquick:focus-visible{outline:2px solid var(--rojo);outline-offset:2px}
+
+/* ---------- editorial a sangre (Adanola) ---------- */
+.edito2{padding:var(--s5) 0 0}
+@media(min-width:900px){.edito2{padding-top:var(--s6)}}
+.edito-split{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.edito-split figure{margin:0;overflow:hidden;aspect-ratio:3/4;background:var(--hueso)}
+.edito-split img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* ---------- categorías, quiz, comunidad ---------- */
+.cat-tile{border-radius:var(--r-marco);background:var(--hueso)}
+.cat-tile::after{border-radius:var(--r-marco);box-shadow:inset 0 0 0 1px transparent}
+.cat-tile:hover::after{box-shadow:inset 0 0 0 1px #000}
+.cat-tile img{mix-blend-mode:multiply}
+.cat-tile figcaption{text-align:center}
+.cat-tile b{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;font-size:clamp(16px,2.4vw,24px)}
+.qv{background:var(--hueso)}
+.qv-grid{text-align:center}
+.qv-caras{grid-template-columns:repeat(2,1fr);gap:8px;max-width:560px;margin:0 auto;width:100%}
+.qv-caras figure{border-radius:var(--r-marco)}
+.qv .f-lead{margin-left:auto;margin-right:auto}
+.qv-acts{justify-content:center}
+@media(min-width:900px){.qv-grid{text-align:left}.qv .f-lead{margin-left:0}.qv-acts{justify-content:flex-start}}
+.ugc-item{border-radius:var(--r-marco)}
+.ugc-nav{justify-content:center;margin-top:4px}
+.ugc-arrow{border-radius:50%}
+.ugc-chip{border-radius:var(--r-pill);padding:6px 14px 6px 6px}
+.ugc-chip img{border-radius:50%;mix-blend-mode:multiply}
+
+/* ---------- colección: buscador y filtros en píldora ---------- */
+#coleccion .sec-head{justify-content:center;text-align:center}
+.buscador input{border-radius:var(--r-pill);border:1px solid #000;padding-left:44px}
+.buscador .ico{left:16px;color:#000}
+.btn-filtrar{border-radius:var(--r-pill)}
+.tab,.chip-f{border-radius:var(--r-pill);border:1px solid #000;font-size:12px;padding:8px 16px;min-height:38px}
+.tab.active,.chip-f.active{background:#000;border-color:#000;color:#fff}
+.fcolor{border:1px solid rgba(0,0,0,.18)}
+.fcolor-todos{border-radius:var(--r-pill);border:1px solid #000}
+.resultados{flex-direction:column;align-items:center;text-align:center;gap:6px}
+.col-titulo{font-family:var(--serif);font-weight:400;letter-spacing:-.03em}
+
+/* ---------- beneficios, FAQ, WhatsApp ---------- */
+.benef{border-top:1px solid #000}
+.benef-i{align-items:center;text-align:center}
+.faq{background:#fff;border-top:1px solid #000}
+.faq .f-kick,.faq .f-h2{text-align:center}
+.faq-list{border-top:1px solid #000}
+.faq details{border-bottom:1px solid #000}
+.wa-float{box-shadow:none;background:#000}
+
+/* ---------- ficha, carrito, quiz y guía con el mismo vocabulario ---------- */
+.pmodal-box .card-name{font-family:var(--serif);font-weight:400;letter-spacing:-.03em}
+.pmodal-box .card-media{background:var(--hueso)}
+.pmodal-box .viewer img,.pmodal-box .thumb img{mix-blend-mode:multiply}
+.pmodal-box .btn-wa,.cart-send,.qintro-pri,.qintro-sec,.quiz-next,.quiz-back,.ia-btn,.qb-btn,.rostro-ver,.btn-ia{border-radius:var(--r-pill)}
+.quiz-op,.rostro-card{border-radius:var(--r-marco)}
+
+@media (prefers-reduced-motion:reduce){
+  .stage-obj,.stage-shadow{animation:none}
+  .so,.so-wrap{transition:opacity .2s ease}
+}
+
+/* ---------- V3 · ajustes tras la revisión en navegador ---------- */
+/* el escenario ya no aísla la mezcla: así la foto que sobresale al flotar se funde con el fondo del hero */
+.stage{perspective:none;background:transparent}
+.stage-floor{transform:perspective(520px) rotateX(62deg);height:78%;
+  -webkit-mask-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.85) 28%,transparent 80%);
+          mask-image:linear-gradient(to top,#000 0%,rgba(0,0,0,.85) 28%,transparent 80%)}
+/* gafas más grandes en móvil */
+.stage{height:clamp(240px,68vw,340px)}
+.stage-obj{width:min(96%,520px);margin-left:calc(min(96%,520px) / -2);top:0}
+.stage-shadow{bottom:26%}
+/* barra de anuncio: una línea siempre */
+.anuncio{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:759px){
+  .anuncio .an-sep,.anuncio .an-msg{display:none}
+  .anuncio .an-msg.on{display:inline;animation:an-in .45s var(--ease-out)}
+}
+@keyframes an-in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.anuncio .an-msg.on{animation:none}}
+/* escritorio: el hero cabe en la primera pantalla */
+@media(min-width:900px){
+  .hero3-t{font-size:clamp(56px,6.4vw,84px)}
+  .hero3-sub{max-width:none}
+  .hero3-in{padding-top:22px;padding-bottom:28px}
+  .stage{height:300px;max-width:620px}
+  .stage-obj{width:min(84%,470px);margin-left:calc(min(84%,470px) / -2)}
+  .stage-info{flex-direction:row;gap:22px;margin-top:10px}
+  .si-ver{padding-top:4px}
+  .hero3-ctas{margin-top:16px}
+}
+
+.wa-float{transition:background .25s ease,opacity .3s var(--ease-out),transform .3s var(--ease-out)}
+.wa-float.wa-oculto{opacity:0;transform:translateY(12px);pointer-events:none}
+
+/* columnas que pueden encogerse: nombre|precio en una línea no debe ensanchar la grilla (320px) */
+.grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(min-width:900px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:1180px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.pcard,.pcard-in,.prow{min-width:0}
+.cats-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+@media(max-width:359px){.prow{flex-direction:column;align-items:flex-start;gap:1px}.pname{white-space:normal}}
+
+/* ---------- apartado de envío (dentro del bloque de cifras) ---------- */
+.cifras-envio{display:flex;align-items:center;justify-content:center;gap:12px;text-align:left;
+  border-top:1px solid #000;padding:18px 4px;font-size:14px;line-height:1.4}
+.cifras-envio svg{width:26px;height:26px;flex:none;fill:none;stroke:#000;stroke-width:1.4}
+.cifras-envio b{font-weight:500}
+@media(min-width:900px){.cifras-envio{font-size:15px;padding:20px 0}}
+/* la cifra larga del laboratorio no debe partir la cuadrícula */
+.cifra span{max-width:16ch}
+/* carrito: estado del envío */
+.cart-envio{font-size:12.5px;padding:10px 12px;margin:2px 0 4px;border-radius:var(--r-pill);background:var(--hueso);text-align:center}
+.cart-envio.ok{background:#e8f3ec;color:#14502d}
+.cart-envio:empty{display:none}
+
+/* ---------- escaparate 3D (model-viewer; las fotos quedan de respaldo) ---------- */
+.stage-3dw{position:absolute;left:0;top:-2%;width:100%;height:84%;z-index:2;visibility:hidden;opacity:0;
+  transition:opacity .8s var(--ease-out),visibility 0s linear .8s;animation:fl-obj 4.4s ease-in-out infinite}
+.stage-3dw model-viewer{display:block;width:100%;height:100%;background:transparent;--poster-color:transparent}
+.stage-3dw model-viewer::part(default-progress-bar){display:none}
+.stage-3dw model-viewer:focus{outline:none}
+.stage-3dw model-viewer:focus-visible{outline:2px solid #000;outline-offset:2px;border-radius:var(--r-marco)}
+.stage.st3d .stage-3dw{visibility:visible;opacity:1;transition:opacity .8s var(--ease-out)}
+.stage.st3d .stage-obj{visibility:hidden;opacity:0;transition:opacity .5s ease,visibility 0s linear .5s}
+.stage.pausa .stage-3dw{animation-play-state:paused}
+@media(max-width:899px){.stage-3dw{left:-20px;width:calc(100% + 40px)}}
+.st-hint{position:absolute;right:0;top:4px;z-index:3;display:flex;align-items:center;gap:5px;font-size:10.5px;font-weight:500;
+  letter-spacing:.12em;color:#000;pointer-events:none;opacity:0;transition:opacity .5s ease}
+.st-hint svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.stage.st3d .st-hint{opacity:1}
+.stage.st3d .st-hint.fuera{opacity:0}
+@media(prefers-reduced-motion:reduce){.stage-3dw{animation:none}}
 </style>
+<script>/* pruebas locales: el pixel no envia eventos reales (en ferrati.com.co funciona normal) */
+if(/^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname)){ window.fbq=function(){}; }</script>
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -685,75 +1065,107 @@ src="https://www.facebook.com/tr?id=1617001106599453&ev=PageView&noscript=1"
 <body>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1617001106599453&ev=PageView&noscript=1"/></noscript>
 
+<!-- ===================== BARRA DE ANUNCIO ===================== -->
+<div class="anuncio"><span class="an-msg on">Envío gratis desde <span data-envio>$200.000</span></span><span class="an-sep" aria-hidden="true">·</span><span class="an-msg">+1.000 gafas vendidas</span><span class="an-sep" aria-hidden="true">·</span><span class="an-msg">100% polarizadas</span></div>
+
 <!-- ===================== HEADER ===================== -->
 <header id="hdr">
   <div class="wrap nav">
-    <a href="#top" aria-label="Ferrati · inicio"><img class="logo-img" src="logo-negro.png" alt="Ferrati" onerror="this.style.display='none'"></a>
-    <div class="nav-right">
+    <div class="nav-left">
+      <button class="nav-ico" id="navBuscar" type="button" aria-label="Buscar en la colección">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </button>
       <button class="nav-link nav-solo-desktop" id="abrirQuiz" type="button">Tu montura</button>
       <button class="nav-link nav-solo-desktop" id="abrirGuia" type="button">Guía de rostro</button>
-      <button class="cart-btn" id="abrirCarrito" type="button" aria-label="Abrir pedido">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/><path d="M2 3h3l2.4 12.4a1 1 0 0 0 1 .8h8.7a1 1 0 0 0 1-.8L21 7H6"/></svg>
-        <span class="nav-solo-desktop">Pedido</span><span class="cart-count" id="cartCount" style="display:none">0</span>
+    </div>
+    <a class="nav-logo" href="#top" aria-label="Ferrati · inicio"><img class="logo-img" src="logo-negro.png" alt="Ferrati" onerror="this.style.display='none'"></a>
+    <div class="nav-right">
+      <button class="cart-btn" id="abrirCarrito" type="button" aria-label="Abrir carrito">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/><path d="M2 3h3l2.4 12.4a1 1 0 0 0 1 .8h8.7a1 1 0 0 0 1-.8L21 7H6"/></svg>
+        <span class="nav-solo-desktop">Carrito</span><span class="cart-count" id="cartCount" style="display:none">0</span>
       </button>
     </div>
   </div>
 </header>
 
-<!-- ===================== HERO ===================== -->
-<section class="hero" id="top">
-  <div class="hero-media">
-    <picture>
-      <source media="(min-width:820px)" srcset="img/hero-wide.jpg">
-      <img src="img/hero-tall.jpg" alt="Modelo con gafas de sol Ferrati" fetchpriority="high" decoding="async">
-    </picture>
-  </div>
-  <div class="wrap hero-in">
-    <div class="hero-eyebrow">Maison suisse · Eyewear</div>
-    <h1>El sol,<br>con distinción</h1>
-    <p class="hero-sub">Gafas polarizadas diseñadas para destacar.</p>
-    <div class="hero-ctas">
-      <a class="b b-claro" href="#coleccion">Ver colección</a>
-      <button class="b b-fantasma" id="heroQuiz" type="button">Encuentra tu montura</button>
+<!-- ===================== HERO · titular centrado (TWO) + escaparate animado (Franky's) ===================== -->
+<section class="hero3" id="top">
+  <div class="wrap hero3-in">
+    <div class="hero3-eyebrow">Maison suisse · Eyewear</div>
+    <h1 class="hero3-t">El sol,<br class="br-m"> con distinción.</h1>
+    <p class="hero3-sub">Gafas polarizadas diseñadas para destacar.</p>
+    <div class="stage" id="stage">
+      <div class="stage-floor" aria-hidden="true"></div>
+      <div class="stage-shadow" aria-hidden="true"></div>
+      <div class="stage-obj" id="stageObj" data-v="0">
+        <div class="so-wrap">
+          <img class="so so-f" alt="Gafas de sol Ferrati" fetchpriority="high" decoding="async" width="1440" height="1086">
+          <img class="so so-l" alt="" aria-hidden="true" decoding="async" width="1440" height="1086">
+          <img class="so so-m" alt="" aria-hidden="true" decoding="async" width="1440" height="1086">
+        </div>
+      </div>
+      <div class="stage-3dw" id="stage3d"></div>
+      <div class="stage-views" role="group" aria-label="Vista de la montura">
+        <button class="sv" type="button" data-v="0" aria-pressed="true">Frente</button>
+        <button class="sv" type="button" data-v="1" aria-pressed="false">3/4</button>
+        <button class="sv sv-giro" id="stageGiro" type="button" aria-pressed="true">Girar</button>
+      </div>
+    </div>
+    <div class="stage-info">
+      <div class="si-row"><b id="stageName">Ferrati</b><span data-precio>$230.000</span></div>
+      <div class="stage-dots" id="stageDots" role="group" aria-label="Colores disponibles"></div>
+      <button class="si-ver" id="stageVer" type="button">Ver modelo &rarr;</button>
+    </div>
+    <div class="hero3-ctas">
+      <a class="b b-rojo" href="#coleccion">Ver colección</a>
+      <button class="b b-linea" id="heroQuiz" type="button">Encuentra tu montura</button>
     </div>
   </div>
-  <span class="hero-scroll" aria-hidden="true"></span>
+</section>
+
+<!-- ===================== CIFRAS · animadas y calculadas de los datos reales ===================== -->
+<section class="cifras" aria-label="Ferrati en cifras">
+  <div class="wrap cifras-grid">
+    <div class="cifra"><b data-to="1000" data-pre="+">+1.000</b><span>Gafas vendidas</span></div>
+    <div class="cifra"><b data-to="2">2</b><span>Años en el mercado</span></div>
+    <div class="cifra"><b data-to="1" data-pre="Nº">Nº1</b><span>Marca en trabajar con laboratorio</span></div>
+    <div class="cifra"><b data-k="modelos" data-to="67">67</b><span>Modelos</span></div>
+  </div>
+  <div class="wrap">
+    <div class="cifras-envio">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 7h11v10H2zM13 10h4l4 3.5V17h-8z"/><circle cx="6" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/></svg>
+      <span><b>Envío gratis a toda Colombia</b> en compras desde <span data-envio>$200.000</span></span>
+    </div>
+  </div>
 </section>
 
 <!-- ===================== MÁS DESEADOS ===================== -->
 <section class="sec" id="topsellers">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <div>
-        <div class="f-kick">Selección Ferrati</div>
-        <h2 class="f-h2">Más deseados</h2>
-      </div>
-      <a class="sec-link" href="#coleccion">Ver toda la colección</a>
+    <div class="sec-head sec-head-c reveal">
+      <div class="f-kick">Selección Ferrati</div>
+      <h2 class="f-h2">Más deseados</h2>
     </div>
     <div class="grid" id="grid-top"></div>
+    <div class="row-cta"><a class="b b-linea" href="#coleccion">Ver toda la colección</a></div>
   </div>
 </section>
 
-<!-- ===================== EDITORIAL 1 ===================== -->
-<section class="edito">
-  <div class="edito-media">
-    <!-- REEMPLAZAR POR IMAGEN LIFESTYLE FERRATI (horizontal, alta resolución) -->
-    <img src="img/quiz-unisex.jpg" alt="Gafas de sol Ferrati en uso" loading="lazy" decoding="async">
-  </div>
-  <div class="edito-txt">
-    <div class="in"><h3>Hechas para destacar.</h3></div>
+<!-- ===================== EDITORIAL · par a sangre (Adanola) ===================== -->
+<section class="edito2">
+  <div class="wrap sec-head sec-head-c reveal"><h2 class="f-h2">Hechas para destacar.</h2></div>
+  <div class="edito-split">
+    <figure><img src="img/hero-tall.jpg" alt="Modelo con gafas de sol Ferrati" loading="lazy" decoding="async" width="900" height="1200"></figure>
+    <figure><img src="img/quiz-unisex.jpg" alt="Gafas de sol Ferrati en uso junto al mar" loading="lazy" decoding="async" width="720" height="900"></figure>
   </div>
 </section>
 
 <!-- ===================== CATEGORÍAS VISUALES ===================== -->
 <section class="sec">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <div>
-        <div class="f-kick">Explora</div>
-        <h2 class="f-h2">Por forma</h2>
-      </div>
-      <a class="sec-link" href="#coleccion">Ver todas</a>
+    <div class="sec-head sec-head-c reveal">
+      <div class="f-kick">Explora</div>
+      <h2 class="f-h2">Por forma</h2>
     </div>
     <div class="cats-grid reveal" id="catsVis"></div>
   </div>
@@ -765,7 +1177,6 @@ src="https://www.facebook.com/tr?id=1617001106599453&ev=PageView&noscript=1"
     <div class="qv-caras reveal">
       <figure><img src="img/quiz-dama.jpg" alt="Montura Ferrati en rostro femenino" loading="lazy" decoding="async"></figure>
       <figure><img src="img/quiz-hombre.jpg" alt="Montura Ferrati en rostro masculino" loading="lazy" decoding="async"></figure>
-      <figure><img src="img/quiz-unisex.jpg" alt="Montura Ferrati unisex" loading="lazy" decoding="async"></figure>
     </div>
     <div class="reveal">
       <div class="f-kick">Asesoría</div>
@@ -783,26 +1194,26 @@ src="https://www.facebook.com/tr?id=1617001106599453&ev=PageView&noscript=1"
 <!-- ===================== MÁS MONTURAS ===================== -->
 <section class="sec" id="masmodelos">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <div>
-        <div class="f-kick">Colección</div>
-        <h2 class="f-h2">Más monturas</h2>
-      </div>
-      <a class="sec-link" href="#coleccion">Ver toda la colección</a>
+    <div class="sec-head sec-head-c reveal">
+      <div class="f-kick">Colección</div>
+      <h2 class="f-h2">Más monturas</h2>
     </div>
     <div class="grid" id="grid-mas"></div>
+    <div class="row-cta"><a class="b b-linea" href="#coleccion">Ver toda la colección</a></div>
   </div>
 </section>
 
 <!-- ===================== SOCIAL PROOF ===================== -->
 <section class="sec ugc">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <div>
-        <div class="f-kick">Comunidad</div>
-        <h2 class="f-h2">Vistas en Ferrati</h2>
+    <div class="sec-head sec-head-c reveal">
+      <div class="f-kick">Comunidad</div>
+      <h2 class="f-h2">Vistas en Ferrati</h2>
+      <div class="ugc-nav">
+        <button class="ugc-arrow" id="ugcPrev" type="button" aria-label="Anterior" hidden>&larr;</button>
+        <button class="ugc-arrow" id="ugcNext" type="button" aria-label="Siguiente" hidden>&rarr;</button>
+        <a class="sec-link" href="https://instagram.com/ferrati.co" target="_blank" rel="noopener">Ver Instagram</a>
       </div>
-      <a class="sec-link" href="https://instagram.com/ferrati.co" target="_blank" rel="noopener">Ver Instagram</a>
     </div>
   </div>
   <div class="ugc-scroll reveal"><div class="ugc-track" id="ugcTrack"></div></div>
@@ -812,7 +1223,7 @@ src="https://www.facebook.com/tr?id=1617001106599453&ev=PageView&noscript=1"
 <section id="coleccion">
   <div class="wrap" style="padding-top:var(--s5)">
     <div class="sec-head reveal" style="margin-bottom:var(--s3)">
-      <div class="f-kick">Catálogo</div>
+      <div class="f-kick">Colección</div>
     </div>
   </div>
 
@@ -887,7 +1298,7 @@ src="https://www.facebook.com/tr?id=1617001106599453&ev=PageView&noscript=1"
     </div>
     <div class="benef-i">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 7h11v10H2zM13 10h4l4 3.5V17h-8z"/><circle cx="6" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/></svg>
-      <b>Envío gratis</b><span>A toda Colombia</span>
+      <b>Envío gratis</b><span>Desde <span data-envio>$200.000</span></span>
     </div>
     <div class="benef-i">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l7.4 3v5.7c0 4.6-3.1 8.3-7.4 10.1-4.3-1.8-7.4-5.5-7.4-10.1V5.6z"/><path d="M9 12.2l2.1 2.1 4-4.2"/></svg>
@@ -905,8 +1316,8 @@ src="https://www.facebook.com/tr?id=1617001106599453&ev=PageView&noscript=1"
       <details><summary>¿Todas las gafas son polarizadas?</summary><div class="fa">Sí. Toda la colección de sol Ferrati es polarizada y cuenta con protección UV400: bloquea el 100% de los rayos UVA y UVB, y reduce los reflejos del asfalto, el agua y el vidrio.</div></details>
       <details><summary>¿Qué materiales manejan?</summary><div class="fa">Tres: metálica, acetato y TR90. Puedes filtrar la colección por material más arriba. Cada ficha de producto indica también la forma y la medida de la montura.</div></details>
       <details><summary>¿Cómo sé cuál me queda bien?</summary><div class="fa">Tienes dos caminos: el test de 5 preguntas, que te sugiere monturas según tu estilo, y la guía por tipo de rostro, donde eliges tu forma de cara y ves las monturas recomendadas.</div></details>
-      <details><summary>¿Cómo son los envíos?</summary><div class="fa">Envío gratis a toda Colombia. Coordinamos la entrega contigo por WhatsApp al confirmar tu pedido.</div></details>
-      <details><summary>¿Cómo hago mi pedido?</summary><div class="fa">Agrega las monturas que te gusten a tu pedido y envíanoslo por WhatsApp con un toque. Te confirmamos disponibilidad, resolvemos tus dudas y coordinamos el envío.</div></details>
+      <details><summary>¿Cómo son los envíos?</summary><div class="fa">Envío gratis a toda Colombia en compras desde <span data-envio>$200.000</span>. Coordinamos la entrega contigo por WhatsApp al confirmar tu pedido.</div></details>
+      <details><summary>¿Cómo compro?</summary><div class="fa">Agrega las monturas que te gusten al carrito y finaliza tu compra por WhatsApp con un toque. Te confirmamos disponibilidad, resolvemos tus dudas y coordinamos el envío.</div></details>
       <!-- PENDIENTE: agregar aquí GARANTÍA, CAMBIOS y FORMAS DE PAGO cuando definas las condiciones exactas.
            Formato: <details><summary>Pregunta</summary><div class="fa">Respuesta.</div></details> -->
     </div>
@@ -936,7 +1347,7 @@ src="https://www.facebook.com/tr?id=1617001106599453&ev=PageView&noscript=1"
     </div>
     <div class="foot-bot">
       <span>Ferrati · Distribuido por Solare</span>
-      <span>Envío gratis a toda Colombia</span>
+      <span>Envío gratis desde <span data-envio>$200.000</span></span>
     </div>
   </div>
 </footer>
@@ -948,7 +1359,7 @@ src="https://www.facebook.com/tr?id=1617001106599453&ev=PageView&noscript=1"
 </a>
 
 <!-- ===================== MODAL: GUÍA DE ROSTRO (+ asesor IA) ===================== -->
-<div class="gmodal" id="gModal" hidden>
+<div class="gmodal" id="gModal" role="dialog" aria-modal="true" aria-label="Guía de rostro" hidden>
   <div class="gmodal-box">
     <button class="pmodal-x" id="gModalX" type="button" aria-label="Cerrar">&times;</button>
     <div class="gmodal-head">
@@ -969,7 +1380,7 @@ src="https://www.facebook.com/tr?id=1617001106599453&ev=PageView&noscript=1"
 </div>
 
 <!-- ===================== MODAL DE PRODUCTO (ficha completa) ===================== -->
-<div class="pmodal" id="pModal" hidden>
+<div class="pmodal" id="pModal" role="dialog" aria-modal="true" aria-label="Ficha del producto" hidden>
   <div class="pmodal-box">
     <button class="pmodal-x" id="pModalX" type="button" aria-label="Cerrar">&times;</button>
     <div id="pModalBody"></div>
@@ -1006,19 +1417,21 @@ src="https://www.facebook.com/tr?id=1617001106599453&ev=PageView&noscript=1"
 
 <!-- CARRITO -->
 <div class="cart-overlay" id="cartOverlay" hidden></div>
-<aside class="cart-drawer" id="cartDrawer" aria-label="Tu pedido">
+<aside class="cart-drawer" id="cartDrawer" aria-label="Tu carrito">
   <div class="cart-head">
-    <h3>Tu pedido</h3>
+    <h3>Tu carrito</h3>
     <button class="cart-x" id="cartClose" aria-label="Cerrar">&times;</button>
   </div>
   <div class="cart-body" id="cartBody"></div>
   <div class="cart-foot" id="cartFoot" style="display:none">
     <div class="cart-tot"><span>Unidades: <b id="cartUnits">0</b></span><span>Referencias: <b id="cartRefs">0</b></span></div>
+    <div class="cart-envio" id="cartEnvio"></div>
+    <div class="cart-total"><span>Total</span><b id="cartTotal">$0</b></div>
     <button class="cart-send" id="cartSend">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2z"/></svg>
-      Enviar pedido por WhatsApp
+      Finalizar compra por WhatsApp
     </button>
-    <button class="cart-clear" id="cartClear">Vaciar pedido</button>
+    <button class="cart-clear" id="cartClear">Vaciar carrito</button>
   </div>
 </aside>
 
@@ -1058,6 +1471,14 @@ src="https://www.facebook.com/tr?id=1617001106599453&ev=PageView&noscript=1"
 <script>
 
 const WHATSAPP    = "573244073508";
+const PRECIO_SOL  = 230000;   /* precio de la linea Sol (COP) */
+const ENVIO_GRATIS_DESDE = 200000;   /* envio gratis a toda Colombia desde este subtotal (COP) */
+/* modelos 3D por codigo de color: el escaparate del inicio los muestra en vez de las fotos.
+   Vacio = escaparate de fotos (el 3D de prueba se veia tosco). Para activarlo: { "9810PC1": "3d/montreux.glb" } */
+const MODELOS_3D = {};
+function fmtCOP(n){ return "$" + String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
+/* miniatura de la grilla: img/X.jpg -> img/t/X.jpg (si falta, se recarga la grande) */
+function th(s){ return s ? s.replace(/^img\//, "img/t/") : ""; }
 const CATALOGO_URL = "";
 const IA_URL = ""; /* link del asesor IA; si está vacío se usa PROMPT_IA */
 const PROMPT_IA = `Actúa como el asesor de estilo de Ferrati, marca premium de gafas. Responde en español, con tono fresco, cercano y honesto. Vas a ayudarme a descubrir qué gafas me favorecen y a probármelas virtualmente.
@@ -1642,6 +2063,7 @@ function cardHTML(p){
     <div class="card-body">
       <div class="card-name">${p.nombre}</div>
       <div class="card-code">${c0.codigo?('Ref. '+c0.codigo):(p.codigo?('Ref. '+p.codigo):'')}</div>
+      <div class="card-price">${fmtCOP(PRECIO_SOL)}</div>
       <div class="ficha">
         ${p.forma?`<div><span>Forma</span> ${cap(p.forma)}</div>`:''}
         ${p.medida?`<div><span>Tamaño</span> ${p.medida}</div>`:''}
@@ -1838,7 +2260,7 @@ function addToCart(p,color,qty){
   if(ex) ex.qty=Math.min(999,ex.qty+qty);
   else cart.push({key,id:p.id,modelo:p.nombre,ref:color.codigo||p.codigo||'',color:color.nombre||'',img:color.frente||'',qty});
   saveCart(); renderCart(); bumpCart();
-  try{ if(window.fbq) fbq('track','AddToCart'); }catch(_){}
+  try{ if(window.fbq) fbq('track','AddToCart',{content_ids:[color.codigo||p.codigo||p.id],content_type:'product',value:PRECIO_SOL*qty,currency:'COP'}); }catch(_){}
 }
 function setCartQty(key,qty){ const i=cart.find(x=>x.key===key); if(!i)return; i.qty=Math.max(1,Math.min(999,qty|0||1)); saveCart(); renderCart(); }
 function removeCart(key){ cart=cart.filter(x=>x.key!==key); saveCart(); renderCart(); }
@@ -1846,13 +2268,14 @@ function renderCart(){
   const u=cartUnits(); const b=document.getElementById('cartCount');
   b.textContent=u; b.style.display=u?'':'none';
   const body=document.getElementById('cartBody'), foot=document.getElementById('cartFoot');
-  if(!cart.length){ body.innerHTML='<div class="cart-empty">Tu pedido está vacío.<br>Agrega modelos desde el catálogo.</div>'; foot.style.display='none'; return; }
+  if(!cart.length){ body.innerHTML='<div class="cart-empty">Tu carrito está vacío.<br>Agrega las monturas que te gusten.</div>'; foot.style.display='none'; return; }
   foot.style.display='';
   body.innerHTML=cart.map(i=>`<div class="cart-item" data-key="${i.key}">
     <div class="ci-thumb">${i.img?('<img src="'+i.img+'" alt="">'):''}</div>
     <div class="ci-info">
       <div class="ci-name">${i.modelo}</div>
       <div class="ci-ref">Ref. ${i.ref}${i.color?(' · '+i.color):''}</div>
+      <div class="ci-price">${fmtCOP(PRECIO_SOL*i.qty)}</div>
       <div class="ci-qty">
         <button class="ci-step" data-d="-1" type="button">&minus;</button>
         <input class="ci-input" type="text" inputmode="numeric" value="${i.qty}">
@@ -1862,12 +2285,18 @@ function renderCart(){
     </div></div>`).join('');
   document.getElementById('cartUnits').textContent=u;
   document.getElementById('cartRefs').textContent=cart.length;
+  var tt=document.getElementById('cartTotal'); if(tt) tt.textContent=fmtCOP(PRECIO_SOL*u);
+  var ev=document.getElementById('cartEnvio');
+  if(ev){ var falta=ENVIO_GRATIS_DESDE-PRECIO_SOL*u;
+    ev.className='cart-envio'+(falta<=0?' ok':'');
+    ev.textContent=falta<=0?'Envío gratis a toda Colombia':('Te faltan '+fmtCOP(falta)+' para el envío gratis'); }
 }
 function cartWA(){
-  let msg='Hola Ferrati, quiero cotizar este pedido:\n\n';
-  cart.forEach((i,n)=>{ msg+=(n+1)+') '+i.modelo+' · Ref. '+i.ref+(i.color?(' · '+i.color):'')+' · x'+i.qty+'\n'; });
-  msg+='\nTotal: '+cartUnits()+' unidades · '+cart.length+' referencias.';
-  msg+='\nCatálogo: '+(CATALOGO_URL||(location.origin+location.pathname));
+  let msg='Hola Ferrati, quiero comprar:\n\n';
+  cart.forEach((i,n)=>{ msg+=(n+1)+') '+i.modelo+' · Ref. '+i.ref+(i.color?(' · '+i.color):'')+' · x'+i.qty+' · '+fmtCOP(PRECIO_SOL*i.qty)+'\n'; });
+  msg+='\nTotal a pagar: '+fmtCOP(PRECIO_SOL*cartUnits())+' ('+cartUnits()+(cartUnits()===1?' unidad':' unidades')+').';
+  msg+='\nEnvío: '+(PRECIO_SOL*cartUnits()>=ENVIO_GRATIS_DESDE?'gratis':'por confirmar')+'.';
+  msg+='\nDesde: '+(CATALOGO_URL||(location.origin+location.pathname));
   return 'https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(msg);
 }
 function openCart(){ document.getElementById('cartDrawer').classList.add('open'); document.getElementById('cartOverlay').hidden=false; }
@@ -1876,7 +2305,7 @@ document.getElementById('abrirCarrito').addEventListener('click',openCart);
 document.getElementById('cartClose').addEventListener('click',closeCart);
 document.getElementById('cartOverlay').addEventListener('click',closeCart);
 document.getElementById('cartClear').addEventListener('click',()=>{ cart=[]; saveCart(); renderCart(); });
-document.getElementById('cartSend').addEventListener('click',()=>{ if(cart.length){ try{ if(window.fbq) fbq('track','Contact'); }catch(_){} window.open(cartWA(),'_blank'); } });
+document.getElementById('cartSend').addEventListener('click',()=>{ if(cart.length){ try{ if(window.fbq){ fbq('track','InitiateCheckout',{content_ids:cart.map(i=>i.ref),content_type:'product',num_items:cartUnits(),value:PRECIO_SOL*cartUnits(),currency:'COP'}); fbq('track','Contact'); } }catch(_){} window.open(cartWA(),'_blank'); } });
 document.getElementById('cartBody').addEventListener('click',e=>{
   const item=e.target.closest('.cart-item'); if(!item)return; const key=item.dataset.key;
   const step=e.target.closest('.ci-step'); if(step){ const it=cart.find(x=>x.key===key); setCartQty(key,(it?it.qty:1)+(+step.dataset.d)); return; }
@@ -2132,14 +2561,15 @@ function pcardHTML(p){
   <article class="pcard reveal" data-id="${p.id}" data-ci="0">
     <div class="pcard-img">
       ${p.top?'<span class="pbadge">Más deseada</span>':''}
-      <img class="pf" src="${c0.frente||''}" alt="${alt}" loading="lazy" decoding="async">
-      ${c0.lado?`<img class="pl" src="${c0.lado}" alt="" loading="lazy" decoding="async" aria-hidden="true">`:''}
+      <img class="pf" src="${th(c0.frente)}" data-full="${c0.frente||''}" alt="${alt}" loading="lazy" decoding="async" width="640" height="483">
+      ${c0.lado?`<img class="pl" src="${th(c0.lado)}" data-full="${c0.lado}" alt="" loading="lazy" decoding="async" aria-hidden="true" width="640" height="483">`:''}
+      <button class="pcard-hit" type="button" aria-label="Ver ${p.nombre}, ${fmtCOP(PRECIO_SOL)}"></button>
       <span class="pver" aria-hidden="true">Ver producto</span>
+      <button class="pquick" type="button" aria-label="Agregar ${p.nombre} al carrito"><svg class="i-mas" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><svg class="i-ok" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button>
     </div>
     <div class="pcard-in">
-      <h3 class="pname">${p.nombre}</h3>
-      <div class="pref">Ref. ${c0.codigo||p.codigo||''}</div>
       <div class="pdots">${dots}${mas}</div>
+      <div class="prow"><h3 class="pname">${p.nombre}</h3><div class="pprice">${fmtCOP(PRECIO_SOL)}</div></div>
     </div>
   </article>`;
 }
@@ -2151,6 +2581,7 @@ function anyOverlayOpen(){
   const qz=document.getElementById('quiz');
   return (lb&&!lb.hidden)||(dr&&dr.classList.contains('open'))||(qz&&!qz.hidden);
 }
+var __lastFocus=null;
 function openProducto(id,ci){
   const p=(typeof byId==='function')?byId(id):null; if(!p) return;
   const box=document.getElementById('pModalBody');
@@ -2158,8 +2589,10 @@ function openProducto(id,ci){
   const card=box.querySelector('.card');
   const idx=+ci||0;
   if(card&&idx){ const sw=card.querySelector('.sw[data-idx="'+idx+'"]'); if(sw&&typeof selectColor==='function') selectColor(card,sw); }
+  __lastFocus=document.activeElement;
   document.getElementById('pModal').hidden=false;
   document.body.style.overflow='hidden';
+  setTimeout(function(){ var x=document.getElementById('pModalX'); if(x) x.focus(); },0);
   const c=p.colores[idx]||p.colores[0]||{};
   try{ if(window.fbq) fbq('track','ViewContent',{content_ids:[c.codigo||p.codigo||p.id],content_type:'product'}); }catch(_){}
 }
@@ -2167,6 +2600,7 @@ function closeProducto(){
   const m=document.getElementById('pModal'); if(!m||m.hidden) return;
   m.hidden=true;
   if(!anyOverlayOpen()) document.body.style.overflow='';
+  if(__lastFocus&&__lastFocus.focus&&document.body.contains(__lastFocus)) __lastFocus.focus();
 }
 document.getElementById('pModalX').addEventListener('click',closeProducto);
 document.getElementById('pModal').addEventListener('click',e=>{ if(e.target.id==='pModal') closeProducto(); });
@@ -2181,13 +2615,23 @@ document.addEventListener('click',e=>{
     const ci=+dot.dataset.ci, c=p.colores[ci]||p.colores[0]||{};
     card.dataset.ci=ci;
     const f=card.querySelector('.pf'), l=card.querySelector('.pl');
-    if(f&&c.frente) f.src=c.frente;
-    if(l){ if(c.lado){ l.src=c.lado; l.hidden=false; } else l.hidden=true; }
+    if(f&&c.frente){ f.dataset.full=c.frente; f.src=th(c.frente); }
+    if(l){ if(c.lado){ l.dataset.full=c.lado; l.src=th(c.lado); l.hidden=false; } else l.hidden=true; }
     card.querySelectorAll('.pdot').forEach(d=>d.classList.toggle('on',d===dot));
     const ref=card.querySelector('.pref'); if(ref) ref.textContent='Ref. '+(c.codigo||p.codigo||'');
     return;
   }
   /* abrir la ficha completa */
+  /* agregar rapido desde la tarjeta (color elegido con los cuadritos, 1 unidad) */
+  const qa=e.target.closest('.pquick');
+  if(qa){
+    const card=qa.closest('.pcard'); const p=(typeof byId==='function')?byId(card.dataset.id):null; if(!p) return;
+    const c=p.colores[+card.dataset.ci||0]||p.colores[0]||{};
+    addToCart(p,c,1);
+    qa.classList.add('ok'); qa.setAttribute('aria-label',p.nombre+' agregada al carrito');
+    clearTimeout(qa._t); qa._t=setTimeout(()=>{ qa.classList.remove('ok'); qa.setAttribute('aria-label','Agregar '+p.nombre+' al carrito'); },1400);
+    return;
+  }
   const pc=e.target.closest('.pcard');
   if(pc){ openProducto(pc.dataset.id, +pc.dataset.ci||0); return; }
 });
@@ -2265,12 +2709,15 @@ setTimeout(function(){
 /* ---------- MODAL: guía de rostro (incluye el asesor IA como opción secundaria) ---------- */
 function openGuia(){
   var m=document.getElementById('gModal'); if(!m) return;
+  __lastFocus=document.activeElement;
   m.hidden=false; document.body.style.overflow='hidden';
+  setTimeout(function(){ var x=document.getElementById('gModalX'); if(x) x.focus(); },0);
 }
 function closeGuia(){
   var m=document.getElementById('gModal'); if(!m||m.hidden) return;
   m.hidden=true;
   if(typeof anyOverlayOpen!=='function' || !anyOverlayOpen()) document.body.style.overflow='';
+  if(__lastFocus&&__lastFocus.focus&&document.body.contains(__lastFocus)) __lastFocus.focus();
 }
 document.getElementById('gModalX').addEventListener('click',closeGuia);
 document.getElementById('gModal').addEventListener('click',function(e){ if(e.target.id==='gModal') closeGuia(); });
@@ -2309,8 +2756,9 @@ function syncFormas(){
     var lista=productos.filter(function(p){ return (p.forma||'').toLowerCase().indexOf(c.k)>-1 && p.colores && p.colores.length; });
     if(!lista.length) return '';
     var f=(lista[0].colores[0]||{}).frente||'';
+    var ft=th(f);
     return '<button class="cat-tile" type="button" data-forma="'+c.k+'">'
-         + '<img src="'+f+'" alt="Monturas '+c.n+'" loading="lazy" decoding="async">'
+         + '<img src="'+ft+'" data-full="'+f+'" alt="Monturas '+c.n+'" loading="lazy" decoding="async">'
          + '<figcaption><b>'+c.n+'</b><span>'+lista.length+' monturas</span></figcaption></button>';
   }).join('');
   cont.addEventListener('click',function(e){
@@ -2347,11 +2795,13 @@ var UGC=[
     var media = es_video
       ? '<video src="'+u.img+'" muted loop playsinline preload="metadata"></video>'
       : '<img src="'+u.img+'" alt="Cliente usando gafas Ferrati" loading="lazy" decoding="async">';
-    var p=u.modelo?byId(u.modelo):null;
+    var p=u.modelo?byId(u.modelo):null, c=p?(p.colores[0]||{}):null;
+    /* ficha comprable sobre la publicacion: miniatura + nombre + precio */
+    var chip=p?('<button class="ugc-chip ugc-link" type="button" data-ugc="'+p.id+'">'
+         + '<img src="'+th(c.frente)+'" data-full="'+(c.frente||'')+'" alt="" loading="lazy">'
+         + '<span><b>'+p.nombre+'</b><i>'+fmtCOP(PRECIO_SOL)+'</i></span><em>Ver &rarr;</em></button>'):'';
     return '<figure class="ugc-item">'+media+'<figcaption class="ugc-cap">'
-         + (p?'<span class="ugc-modelo">'+p.nombre+'</span>':'')
-         + '<div class="ugc-autor">'+(u.autor||'')+'</div>'
-         + (p?'<button class="ugc-link" type="button" data-ugc="'+p.id+'">Ver modelo &rarr;</button>':'')
+         + '<div class="ugc-autor">'+(u.autor||'')+'</div>' + chip
          + '</figcaption></figure>';
   }).join('');
   t.addEventListener('click',function(e){
@@ -2365,6 +2815,20 @@ var UGC=[
     t.querySelectorAll('video').forEach(function(v){ vio.observe(v); });
   }
 })();
+
+/* flechas del carrusel: solo aparecen cuando hay mas piezas que pantalla */
+(function(){
+  var sc=document.querySelector('.ugc-scroll'), pv=document.getElementById('ugcPrev'), nx=document.getElementById('ugcNext');
+  if(!sc||!pv||!nx) return;
+  function upd(){ var over=sc.scrollWidth>sc.clientWidth+4; pv.hidden=nx.hidden=!over;
+    pv.disabled=sc.scrollLeft<4; nx.disabled=sc.scrollLeft+sc.clientWidth>=sc.scrollWidth-4; }
+  function paso(d){ var it=sc.querySelector('.ugc-item'); var w=it?it.getBoundingClientRect().width+16:300; sc.scrollBy({left:d*w,behavior:'smooth'}); }
+  pv.addEventListener('click',function(){ paso(-1); }); nx.addEventListener('click',function(){ paso(1); });
+  sc.addEventListener('scroll',upd,{passive:true}); addEventListener('resize',upd); upd();
+})();
+/* si una miniatura no existe todavia, se carga la foto grande */
+document.addEventListener('error',function(e){ var i=e.target;
+  if(i&&i.tagName==='IMG'&&i.dataset&&i.dataset.full&&i.src.indexOf('/t/')>-1){ i.src=i.dataset.full; } },true);
 
 /* ---------- filtro por COLOR (usa los nombres reales de cada colorway) ---------- */
 function syncColores(){
@@ -2383,6 +2847,190 @@ function syncColores(){
     if(v!=='todos') document.getElementById('subtitulo').textContent='Monturas en '+(b.title||v).toLowerCase();
   });
   syncColores();
+})();
+
+/* ---------- precio en los textos fijos (anuncio, escaparate) ---------- */
+document.querySelectorAll('[data-precio]').forEach(function(el){ el.textContent=fmtCOP(PRECIO_SOL); });
+document.querySelectorAll('[data-envio]').forEach(function(el){ el.textContent=fmtCOP(ENVIO_GRATIS_DESDE); });
+
+/* ---------- lupa del header: baja a la coleccion y enfoca el buscador ---------- */
+(function(){
+  var b=document.getElementById('navBuscar'), inp=document.getElementById('buscar'); if(!b||!inp) return;
+  b.addEventListener('click',function(){
+    document.getElementById('coleccion').scrollIntoView({behavior:'smooth',block:'start'});
+    setTimeout(function(){ try{ inp.focus({preventScroll:true}); }catch(_){ inp.focus(); } },450);
+  });
+})();
+
+/* ---------- ESCAPARATE DEL HERO (la "gorra" de Franky's, con gafas) ----------
+   Flota sobre un piso de damero; gira frente -> 3/4 -> frente -> 3/4 espejo (las gafas son simetricas,
+   asi el espejo muestra el otro lado). Se pausa fuera de pantalla, con la pestaña oculta y con
+   movimiento reducido. Arrastrar gira a mano; un toque sin arrastrar abre la ficha. */
+(function(){
+  var st=document.getElementById('stage'); if(!st) return;
+  function sirve(q){ return q.colores.some(function(c){ return c.frente&&c.lado; }); }
+  var p=null, k;
+  for(k=0;k<productos.length&&!p;k++) if(productos[k].top&&sirve(productos[k])) p=productos[k];
+  for(k=0;k<productos.length&&!p;k++) if(sirve(productos[k])) p=productos[k];
+  if(!p){ st.hidden=true; return; }
+  var obj=document.getElementById('stageObj'), f=obj.querySelector('.so-f'), l=obj.querySelector('.so-l'), m=obj.querySelector('.so-m');
+  var giro=document.getElementById('stageGiro'), vistas=st.querySelectorAll('.sv[data-v]'), dots=document.getElementById('stageDots');
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var ci=0, v=0, timer=null, auto=!reduce, visible=true, reanudar=null;
+  for(k=0;k<p.colores.length;k++) if(p.colores[k].frente&&p.colores[k].lado){ ci=k; break; }
+  dots.innerHTML=p.colores.slice(0,6).map(function(c,i){
+    return '<button class="sdot" type="button" data-ci="'+i+'" style="--c:'+(c.hex||'#999')+'" aria-label="Color '+(c.nombre||(i+1))+'" aria-pressed="false"></button>';
+  }).join('');
+  function pintar(){
+    var c=p.colores[ci]||{}; f.src=c.frente||''; l.src=c.lado||c.frente||''; m.src=c.lado||c.frente||'';
+    f.alt=p.nombre+(c.nombre?(' · '+c.nombre):'');
+    document.getElementById('stageName').textContent=p.nombre;
+    var ds=dots.querySelectorAll('.sdot'); for(var i=0;i<ds.length;i++) ds[i].setAttribute('aria-pressed',i===ci?'true':'false');
+  }
+  function setV(nv){
+    v=(nv+4)%4; obj.dataset.v=v;
+    for(var i=0;i<vistas.length;i++){ var vv=+vistas[i].dataset.v; vistas[i].setAttribute('aria-pressed',((vv===0&&v%2===0)||(vv===1&&v%2===1))?'true':'false'); }
+    if(es3d()) orbitar(v);
+  }
+  function start(){ if(timer||!auto||reduce||!visible||es3d()) return; timer=setInterval(function(){ setV(v+1); },2600); }
+  function stop(){ clearInterval(timer); timer=null; }
+  function setAuto(a){ auto=a&&!reduce; giro.setAttribute('aria-pressed',auto?'true':'false');
+    if(es3d()){ mv.autoRotate=auto; if(auto) for(var i=0;i<vistas.length;i++) vistas[i].setAttribute('aria-pressed','false'); return; }
+    if(auto) start(); else stop(); }
+  function manual(){ setAuto(false); clearTimeout(reanudar); if(!reduce) reanudar=setTimeout(function(){ setAuto(true); },7000); }
+  st.addEventListener('click',function(e){
+    var b=e.target.closest('.sv'); if(!b) return;
+    if(b===giro){ clearTimeout(reanudar); setAuto(!auto); return; }
+    manual(); setV(+b.dataset.v);
+  });
+  dots.addEventListener('click',function(e){ var d=e.target.closest('.sdot'); if(!d) return; ci=+d.dataset.ci; pintar(); modo3d(); manual(); });
+  document.getElementById('stageVer').addEventListener('click',function(){ openProducto(p.id,ci); });
+  var x0=null, movio=false;
+  obj.addEventListener('pointerdown',function(e){ x0=e.clientX; movio=false; try{ obj.setPointerCapture(e.pointerId); }catch(_){} });
+  obj.addEventListener('pointermove',function(e){
+    if(x0===null) return;
+    /* un giro por gesto: deslizar a la izquierda gira hacia un lado, a la derecha hacia el otro */
+    if(!movio&&Math.abs(e.clientX-x0)>30){ movio=true; manual(); setV(v+(e.clientX<x0?1:-1)); }
+  });
+  obj.addEventListener('pointerup',function(){ if(x0!==null&&!movio) openProducto(p.id,ci); x0=null; });
+  obj.addEventListener('pointercancel',function(){ x0=null; });
+  document.addEventListener('visibilitychange',function(){ if(document.hidden){ stop(); } else if(visible){ start(); } });
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      visible=es[0].isIntersecting; st.classList.toggle('pausa',!visible);
+      if(visible) start(); else stop();
+    },{threshold:.15}).observe(st);
+  }
+  /* ---- 3D: si el color elegido tiene modelo (MODELOS_3D), model-viewer reemplaza las fotos.
+     Se carga cuando la pagina ya termino, nunca frena el inicio; si algo falla se quedan las fotos. ---- */
+  var mv=null, mvSrc='', mvListo=false, caja=document.getElementById('stage3d'), hint=null;
+  var ORB=[0,-38,0,38];   /* grados de cada vista: frente, 3/4, frente, 3/4 espejo */
+  function glbDe(){ var c=p.colores[ci]||{}; return MODELOS_3D[c.codigo]||''; }
+  function es3d(){ return !!(mv&&mvListo&&st.classList.contains('st3d')); }
+  function radio(){
+    /* ~1,6 m de ancho visible: la montura llena el visor y en diagonal (45°) no se corta */
+    var r=mv.getBoundingClientRect(), a=r.width/Math.max(1,r.height);
+    return Math.max(1.2,Math.min(2.6,2.985/a)).toFixed(2)+'m';
+  }
+  function orbitar(n){
+    /* el giro automatico rota la montura, no la camara: se compensa para que no salte */
+    var tt=(mv.turntableRotation||0)*180/Math.PI, cur=mv.getCameraOrbit().theta*180/Math.PI;
+    var d=((ORB[n]+tt-cur)%360+540)%360-180;   /* el camino corto: nunca da varias vueltas */
+    mv.cameraOrbit=(cur+d)+'deg 76deg '+radio();
+  }
+  function modo3d(){
+    var g=glbDe();
+    if(mv&&g&&mvSrc!==g){ mvListo=false; mvSrc=g; mv.src=g; }
+    var on=!!(mv&&g&&mvListo);
+    st.classList.toggle('st3d',on);
+    if(on){ stop(); mv.autoRotate=auto;
+      /* girando solo no hay vista fija; quieto (movimiento reducido) la camara respeta la vista marcada */
+      if(auto){ for(var i=0;i<vistas.length;i++) vistas[i].setAttribute('aria-pressed','false'); } else orbitar(v);
+    } else { if(mv) mv.autoRotate=false; start(); }
+  }
+  function crear3d(){
+    mv=document.createElement('model-viewer');
+    var at={'camera-controls':'','touch-action':'pan-y','disable-zoom':'','disable-pan':'','interaction-prompt':'none',
+      'auto-rotate-delay':'0','rotation-per-second':'22deg','camera-orbit':'-38deg 76deg 1.7m',
+      'min-camera-orbit':'auto 50deg 1m','max-camera-orbit':'auto 100deg 3m','environment-image':'neutral',
+      'exposure':'1.1','shadow-intensity':'0','loading':'eager','alt':p.nombre+' en 3D: desliza para girar la montura'};
+    for(var a in at) mv.setAttribute(a,at[a]);
+    mv.addEventListener('load',function(){ mvListo=true; modo3d(); });
+    mv.addEventListener('error',function(){ mvListo=false; st.classList.remove('st3d'); start(); });
+    mv.addEventListener('camera-change',function(e){
+      if(!e.detail||e.detail.source!=='user-interaction') return;
+      manual(); for(var i=0;i<vistas.length;i++) vistas[i].setAttribute('aria-pressed','false');
+      if(hint) hint.classList.add('fuera');
+    });
+    /* un toque sin arrastrar abre la ficha, igual que con las fotos */
+    var px=0, py=0, pt=0;
+    mv.addEventListener('pointerdown',function(e){ px=e.clientX; py=e.clientY; pt=Date.now(); });
+    mv.addEventListener('pointerup',function(e){ if(Math.abs(e.clientX-px)<8&&Math.abs(e.clientY-py)<8&&Date.now()-pt<450) openProducto(p.id,ci); });
+    caja.appendChild(mv);
+    mv.cameraOrbit='-38deg 76deg '+radio();
+    var rz=null;
+    window.addEventListener('resize',function(){ clearTimeout(rz); rz=setTimeout(function(){
+      var o=mv.getCameraOrbit(); mv.cameraOrbit=o.theta+'rad '+o.phi+'rad '+radio(); },150); });
+    /* sello 360° en la esquina: avisa que se puede girar; se va con la primera interaccion */
+    hint=document.createElement('span'); hint.className='st-hint'; hint.setAttribute('aria-hidden','true');
+    hint.innerHTML='<svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.34-5.66M20 4v4.5h-4.5"/></svg>360°';
+    st.appendChild(hint);
+    modo3d();
+  }
+  function cargar3d(){
+    if(!caja||!window.customElements||!p.colores.some(function(c){ return MODELOS_3D[c.codigo]; })) return;
+    if(navigator.connection&&navigator.connection.saveData) return;   /* modo ahorro de datos: solo fotos */
+    try{ var cv=document.createElement('canvas'), gl=cv.getContext('webgl2')||cv.getContext('webgl'); if(!gl) return;
+      var lc=gl.getExtension('WEBGL_lose_context'); if(lc) lc.loseContext(); }catch(_){ return; }
+    var s=document.createElement('script'); s.type='module';
+    s.src='https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js';
+    s.onload=crear3d; document.head.appendChild(s);
+  }
+  function luego(){ (window.requestIdleCallback||function(f){ setTimeout(f,400); })(cargar3d,{timeout:2500}); }
+  if(document.readyState==='complete') luego(); else window.addEventListener('load',luego);
+  if(reduce) st.classList.add('pausa');
+  pintar(); setV(0); setAuto(auto);
+})();
+
+/* ---------- CIFRAS: cuentan hacia arriba al entrar en pantalla ----------
+   Modelos, colores y precio salen de los datos: se actualizan solos con el catalogo. */
+(function(){
+  var els=document.querySelectorAll('.cifra b[data-to]'); if(!els.length) return;
+  var nc=0; productos.forEach(function(q){ nc+=q.colores.length; });
+  var datos={modelos:productos.length, colores:nc, precio:PRECIO_SOL};
+  function fmt(x,el){ return (el.dataset.pre||'')+String(Math.round(x)).replace(/\B(?=(\d{3})+(?!\d))/g,'.')+(el.dataset.suf||''); }
+  var i;
+  for(i=0;i<els.length;i++){ var kk=els[i].dataset.k; if(kk&&datos[kk]!=null) els[i].dataset.to=datos[kk]; els[i].textContent=fmt(+els[i].dataset.to,els[i]); }
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(reduce||!('IntersectionObserver' in window)) return;   /* sin animacion: se quedan con el valor final */
+  function animar(el){
+    if(el.dataset.hecho) return; el.dataset.hecho='1';
+    var to=+el.dataset.to, t0=0, D=1500, fin=false;
+    el.textContent=fmt(0,el);
+    function paso(t){ if(fin) return; if(!t0) t0=t; var q=Math.min(1,(t-t0)/D), e=1-Math.pow(1-q,4);
+      el.textContent=fmt(to*e,el); if(q<1) requestAnimationFrame(paso); else fin=true; }
+    requestAnimationFrame(paso);
+    setTimeout(function(){ if(!fin){ fin=true; el.textContent=fmt(to,el); } },D+600);   /* seguro si el navegador frena los cuadros */
+  }
+  var io=new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ animar(en.target); io.unobserve(en.target); } }); },{threshold:.6});
+  for(i=0;i<els.length;i++) io.observe(els[i]);
+})();
+
+/* barra de anuncio: en movil rota los mensajes (en escritorio se ven todos) */
+(function(){
+  var ms=document.querySelectorAll('.anuncio .an-msg'); if(ms.length<2) return;
+  var i=0;
+  setInterval(function(){
+    if(window.innerWidth>=760||document.hidden) return;
+    ms[i].classList.remove('on'); i=(i+1)%ms.length; ms[i].classList.add('on');
+  },3200);
+})();
+
+/* WhatsApp no compite con los CTA del hero: aparece al pasar la primera pantalla */
+(function(){
+  var wa=document.querySelector('.wa-float'), hero=document.querySelector('.hero3');
+  if(!wa||!hero||!('IntersectionObserver' in window)) return;   /* sin soporte: queda siempre visible */
+  new IntersectionObserver(function(es){ wa.classList.toggle('wa-oculto',es[0].intersectionRatio>0.35); },{threshold:[0,0.35,0.6,1]}).observe(hero);
 })();
 
 revealAll();
